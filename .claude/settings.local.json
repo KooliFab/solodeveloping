@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(npm run build:*)",
+      "Bash(node test-ftp.js:*)",
+      "Bash(npm run deploy:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

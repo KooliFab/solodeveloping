@@ -1,0 +1,171 @@
+{
+  "header": {
+    "title": "Les Aventures de Cogni",
+    "navBook": "Le Livre",
+    "navApp": "L'Application",
+    "navBenefits": "Bénéfices",
+    "navAbout": "À Propos",
+    "navFreeStory": "Histoire Gratuite",
+    "buyNow": "Acheter"
+  },
+  "hero": {
+    "title": "Découvrez l'univers magique et ludique de Cogni",
+    "subtitle": "Rejoignez Cogni le corgi dans des aventures interactives qui éveillent la curiosité, la créativité et les premières compétences clés grâce à un livre illustré et une application pleine d’activités amusantes.",
+    "buyBook": "Commander le livre",
+    "englishVersion": "Version Anglaise",
+    "frenchVersion": "Version Française",
+    "downloadApp": "Découvrir l'application",
+    "scrollToExplore": "Faites défiler pour explorer",
+    "imageAlt": "Cogni le Corgi et son ami traversent un portail magique – Illustration du livre pour enfants Les Aventures de Cogni"
+  },
+  "bookSection": {
+    "title": "Le livre Les Aventures de Cogni",
+    "description": "Un album jeunesse coloré et captivant qui stimule l’imagination et rend chaque lecture vivante et amusante.",
+    "bookTitle": "Pourquoi enfants et parents adorent Les Aventures de Cogni",
+    "seasonTitle": "Histoires guidées par les saisons",
+    "seasonDesc": "Chaque saison ouvre la porte à une nouvelle aventure magique, parfaite pour lire, jouer et rêver toute l’année.",
+    "multimediaTitle": "Contenu audio et interactif",
+    "multimediaDesc": "Associez le livre à notre application gratuite pour débloquer narration audio, mini-jeux et surprises exclusives.",
+    "educationalTitle": "Pensé pour apprendre en jouant",
+    "educationalDesc": "Des histoires et activités conçues pour encourager la logique, la créativité, la curiosité et la confiance — sans jamais oublier le plaisir.",
+    "buyButton": "Acheter sur Amazon",
+    "englishVersion": "Version Anglaise",
+    "frenchVersion": "Version Française"
+  },
+  "appSection": {
+    "title": "L'application Cogni – jouez et explorez encore plus loin",
+    "description": "Transformez chaque aventure en une expérience interactive personnalisée grâce à notre application ludique pour enfants de 3 à 10 ans.",
+    "experienceTitle": "Ce que propose l'application",
+    "createStoryTitle": "Créez vos propres épisodes",
+    "createStoryDesc": "À chaque saison, générez des épisodes uniques qui suivent l’ambiance du moment, pour maintenir l’excitation et la découverte.",
+    "gamesTitle": "Jeux amusants intégrés",
+    "gamesDesc": "Chaque épisode débloque des casse-têtes, défis logiques, activités artistiques et petits jeux interactifs pour apprendre tout en s’amusant.",
+    "printStoryTitle": "Imprimez votre histoire",
+    "printStoryDesc": "Compilez vos aventures favorites et imprimez un livre unique que vous pourrez lire ensemble.",
+    "downloadButton": "Télécharger l'application",
+    "appImageAlt": "Interface de l'application éducative Cogni"
+  },
+  "benefitsSection": {
+    "title": "Bénéfices & développement global",
+    "description": "Notre objectif à long terme est de proposer un apprentissage ludique qui soutient le développement global de l’enfant à travers des histoires interactives et des activités immersives.",
+    "cognitiveTitle": "Développement cognitif",
+    "cognitiveDesc": "Énigmes visuelles, jeux de logique et défis de mémoire encouragent observation, réflexion et résolution de problèmes.",
+    "motorTitle": "Motricité fine",
+    "motorDesc": "Coloriages, tracés simples et interactions manuelles renforcent coordination et gestes précis.",
+    "languageTitle": "Acquisition du langage",
+    "languageDesc": "Histoires riches en vocabulaire, narration guidée et lecture multilingue favorisent expression et compréhension.",
+    "socialTitle": "Compétences socio-émotionnelles",
+    "socialDesc": "Aventures centrées sur l’amitié, le courage et la coopération pour développer empathie, confiance et gestion des émotions."
+  },
+  "aboutUsSection": {
+    "title": "À Propos de Nous",
+    "subtitle": "Rencontrez l'équipe derrière les aventures ludiques de Cogni.",
+    "teamTitle": "Notre Équipe",
+    "teamDesc": "Les Aventures de Cogni ont été imaginées par des parents, créateurs et passionnés qui souhaitent relier jeu, créativité et nouvelles technologies pour les enfants de 4 à 10 ans.",
+    "missionTitle": "Notre Mission",
+    "missionDesc": "Créer des expériences amusantes, évolutives et inspirantes qui aident les enfants à développer des compétences essentielles tout en jouant avec Cogni.",
+    "beliefTitle": "Notre Vision",
+    "beliefDesc": "Nous croyons au pouvoir des histoires pour inspirer, émerveiller et accompagner les enfants dans leur découverte du monde."
+  },
+  "ctaSection": {
+    "title": "Recevez une histoire gratuite",
+    "description": "Téléchargez gratuitement une histoire originale des Aventures de Cogni et recevez en avant-première nos nouvelles saisons, activités ludiques et offres exclusives directement dans votre boîte de réception.",
+    "emailPlaceholder": "Entrez votre adresse courriel",
+    "subscribeButton": "Recevoir mon histoire gratuite",
+    "emailRequiredTitle": "Courriel Requis",
+    "emailRequiredDesc": "Veuillez entrer votre adresse courriel.",
+    "subscribedTitle": "Abonné !",
+    "subscribedDesc": "Merci pour votre inscription ! Votre histoire arrive dans quelques instants."
+  },
+  "footer": {
+    "title": "Les Aventures de Cogni",
+    "description": "Des histoires magiques qui éveillent la curiosité et développent les premières compétences de votre enfant par le jeu et l’aventure.",
+    "quickLinks": "Liens Rapides",
+    "contact": "Contact",
+    "email": "Courriel : hello@cognibook.com",
+    "followUs": "Suivez-Nous",
+    "copyright": "© {{year}} Les Aventures de Cogni. Tous droits réservés. Conçu avec 🩵 au 🇨🇦 - Québec ⚜️"
+  },
+  "toastMessages": {
+    "buyInterestTitle": "Merci de votre intérêt !",
+    "buyInterestDesc": "La fonctionnalité d'achat sera bientôt disponible. Restez à l'écoute !",
+    "appDownloadTitle": "Téléchargement de l'application",
+    "appDownloadDesc": "L'application compagnon sera bientôt disponible sur iOS et Android !"
+  },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "subtitle": "Tout ce que vous devez savoir sur Les Aventures de Cogni",
+    "ageQuestion": "À partir de quel âge Les Aventures de Cogni sont-elles recommandées ?",
+    "ageAnswer": "Le livre et l'application ont été conçus pour les enfants de 3 à 10 ans, avec des niveaux d'activités adaptés à chaque étape.",
+    "contentQuestion": "Quel type de contenu trouve-t-on dans le livre et l'application ?",
+    "contentAnswer": "Vous y trouverez des histoires interactives illustrées, des puzzles éducatifs, des jeux sensoriels et des activités qui favorisent le développement cognitif, moteur, linguistique et social.",
+    "languagesQuestion": "Les Aventures de Cogni sont-elles disponibles en plusieurs langues ?",
+    "languagesAnswer": "Oui, le livre et l'application sont proposés en anglais, espagnol et français afin de soutenir le bilinguisme.",
+    "appQuestion": "Existe-t-il une application complémentaire au livre ?",
+    "appAnswer": "Oui, l'application mobile gratuite prolonge l'expérience de lecture avec du contenu interactif exclusif, des jeux éducatifs et des mises à jour saisonnières."
+  },
+  "meta": {
+    "website": {
+      "title": "Les Aventures de Cogni | Livre interactif et application éducative pour enfants",
+      "description": "Les Aventures de Cogni associent un livre jeunesse illustré à une application éducative interactive afin de développer imagination, langage, motricité fine et compétences socio-émotionnelles.",
+      "keywords": "livre interactif pour enfants, application éducative, histoires personnalisées, jeux éducatifs, apprentissage ludique, développement cognitif, motricité fine, Cogni, livre jeunesse, application mobile enfants, lecture interactive",
+      "author": "Les Aventures de Cogni",
+      "structuredData": {
+        "name": "Les Aventures de Cogni",
+        "description": "Univers éducatif interactif pour enfants réunissant livre illustré et application mobile.",
+        "offers": {
+          "price": "14.99",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+          "ratingValue": "4.8",
+          "reviewCount": "124"
+        },
+        "book": {
+          "name": "Les Aventures de Cogni",
+          "description": "Livre jeunesse interactif avec contenu multimédia et activités pédagogiques."
+        },
+        "app": {
+          "name": "Application Les Aventures de Cogni",
+          "description": "Application éducative interactive avec jeux, narration audio et activités personnalisées pour enfants."
+        }
+      }
+    }
+  },
+  "notFound": {
+    "title": "Oups ! Page introuvable",
+    "description": "On dirait que Cogni s'est égaré ! La page que vous cherchez n'existe pas ou a été déplacée.",
+    "homeButton": "Retour à l'accueil",
+    "backButton": "Revenir en arrière",
+    "funMessage": "Même les aventuriers se perdent parfois ! 🐕✨"
+  },
+  "bookLanding": {
+    "highlight": "Accès instantané",
+    "formTitle": "Poursuivez l'aventure numérique",
+    "formSubtitle": "Nous vous envoyons un lien direct pour ouvrir l'application sur votre appareil mobile.",
+    "emailLabel": "Votre courriel",
+    "emailPlaceholder": "votre@courriel.com",
+    "submitButton": "Envoyez-moi le lien de l'application",
+    "sendingButton": "Envoi en cours...",
+    "helperDesc": "Utilisez une adresse consultable depuis votre téléphone ou votre tablette.",
+    "secureLabel": "Sécurisé et confidentiel",
+    "confirmLabel": "Je confirme avoir acheté le livre Les Aventures de Cogni et accepter de recevoir le lien de l'application par courriel.",
+    "confirmRequired": "Veuillez confirmer que vous possédez le livre",
+    "emailRequiredTitle": "Courriel Requis",
+    "emailRequiredDesc": "Veuillez entrer votre adresse courriel.",
+    "invalidEmailTitle": "Courriel Invalide",
+    "invalidEmailDesc": "Veuillez entrer une adresse courriel valide.",
+    "successTitle": "Vérifiez Votre Courriel !",
+    "successDesc": "Nous vous avons envoyé le lien pour accéder à l'application éducative.",
+    "thankYouHelper": "Ouvrez le courriel sur votre téléphone ou tablette pour commencer avec Cogni.",
+    "thankYouCta": "Retour à l'Accueil",
+    "errorTitle": "Oups !",
+    "errorDesc": "Une erreur s'est produite. Veuillez réessayer.",
+    "thankYouTitle": "Courriel Envoyé !",
+    "thankYouDesc": "Consultez votre boîte de réception pour le lien sécurisé vers Les Aventures de Cogni.",
+    "checkEmailMessage": "N'oubliez pas de vérifier votre dossier pourriel si vous ne le voyez pas.",
+    "privacyNote": "Nous utilisons votre courriel uniquement pour vous envoyer le lien de l'application, jamais de pourriel.",
+    "currentLanguage": "fr"
+  }
+}

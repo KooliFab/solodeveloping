@@ -1,0 +1,171 @@
+{
+  "header": {
+    "title": "Cogni's Adventures",
+    "navBook": "The Book",
+    "navApp": "The App",
+    "navBenefits": "Benefits",
+    "navAbout": "About Us",
+    "navFreeStory": "Free Story",
+    "buyNow": "Buy Now"
+  },
+  "hero": {
+    "title": "Explore Cogni’s Magical & Playful Universe",
+    "subtitle": "Join Cogni the corgi on interactive adventures that spark curiosity, creativity, and early skills through a beautifully illustrated storybook paired with a fun, activity-filled app.",
+    "buyBook": "Buy the Book",
+    "englishVersion": "English Version",
+    "frenchVersion": "French Version",
+    "downloadApp": "Discover the App",
+    "scrollToExplore": "Scroll to Explore",
+    "imageAlt": "Cogni the Corgi and his friend stepping through a magical portal – Illustration from the Cogni Adventures children's book"
+  },
+  "bookSection": {
+    "title": "The Cogni Adventures Book",
+    "description": "A colorful, captivating storybook that fuels imagination and makes every reading moment playful and engaging.",
+    "bookTitle": "Why Kids and Parents Love The Cogni Adventures",
+    "seasonTitle": "Stories Inspired by the Seasons",
+    "seasonDesc": "Each season unlocks a new magical quest—perfect for reading, playing, and exploring all year long.",
+    "multimediaTitle": "Audio & Interactive Content",
+    "multimediaDesc": "Pair the book with our free app to activate audio narration, mini-games, and exclusive surprises.",
+    "educationalTitle": "Designed for Learning Through Play",
+    "educationalDesc": "Stories and activities built to encourage logic, creativity, curiosity, and confidence—always with fun at the center.",
+    "buyButton": "Buy on Amazon",
+    "englishVersion": "English Version",
+    "frenchVersion": "French Version"
+  },
+  "appSection": {
+    "title": "The Cogni App – Extend the Adventure",
+    "description": "Turn every story into a personalized interactive experience with our playful app for children aged 3 to 10.",
+    "experienceTitle": "What the App Offers",
+    "createStoryTitle": "Create Your Own Episodes",
+    "createStoryDesc": "Each season generates unique episodes inspired by the time of year, keeping your child engaged and excited.",
+    "gamesTitle": "Fun Built-In Games",
+    "gamesDesc": "Each episode unlocks puzzles, logic challenges, creative activities, and small interactive games that make learning joyful.",
+    "printStoryTitle": "Print Your Custom Story",
+    "printStoryDesc": "Combine your favorite episodes and print a unique book to enjoy together.",
+    "downloadButton": "Download the App",
+    "appImageAlt": "Cogni educational app interface"
+  },
+  "benefitsSection": {
+    "title": "Benefits & Whole-Child Growth",
+    "description": "Our long-term goal is to offer playful learning that supports the child’s overall development through interactive stories and immersive activities.",
+    "cognitiveTitle": "Cognitive Development",
+    "cognitiveDesc": "Visual riddles, logic puzzles, and memory challenges nurture observation, reasoning, and problem-solving.",
+    "motorTitle": "Fine Motor Skills",
+    "motorDesc": "Coloring, simple tracing, and hands-on interactions strengthen coordination and precise movements.",
+    "languageTitle": "Language Acquisition",
+    "languageDesc": "Rich storytelling, guided narration, and multilingual reading encourage expression and comprehension.",
+    "socialTitle": "Socio-Emotional Skills",
+    "socialDesc": "Adventures centered on friendship, courage, and cooperation help children develop empathy, confidence, and emotional awareness."
+  },
+  "aboutUsSection": {
+    "title": "About Us",
+    "subtitle": "Meet the team behind Cogni’s playful adventures.",
+    "teamTitle": "Our Team",
+    "teamDesc": "Cogni’s Adventures was created by parents, storytellers, and creatives passionate about blending play, imagination, and digital experiences for children aged 4 to 10.",
+    "missionTitle": "Our Mission",
+    "missionDesc": "To create engaging, evolving, and inspiring experiences that help children develop key skills while having fun with Cogni the corgi.",
+    "beliefTitle": "Our Vision",
+    "beliefDesc": "We believe in the power of storytelling to inspire, spark wonder, and support children as they explore the world around them."
+  },
+  "ctaSection": {
+    "title": "Get a Free Story",
+    "description": "Download a free original Cogni Adventures story and receive new seasons, playful activities, and exclusive updates directly in your inbox.",
+    "emailPlaceholder": "Enter your email address",
+    "subscribeButton": "Get My Free Story",
+    "emailRequiredTitle": "Email Required",
+    "emailRequiredDesc": "Please enter your email address.",
+    "subscribedTitle": "You're In!",
+    "subscribedDesc": "Thank you for subscribing! Your story is on its way."
+  },
+  "footer": {
+    "title": "The Cogni Adventures",
+    "description": "Magical stories that spark curiosity and support your child’s early development through play and adventure.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "email": "Email: hello@cognibook.com",
+    "followUs": "Follow Us",
+    "copyright": "© {{year}} The Cogni Adventures. All rights reserved. Designed with 🩵 in Canada – Québec ⚜️"
+  },
+  "toastMessages": {
+    "buyInterestTitle": "Thank you for your interest!",
+    "buyInterestDesc": "The purchase feature is coming soon. Stay tuned!",
+    "appDownloadTitle": "App Download",
+    "appDownloadDesc": "The companion app will be available soon on iOS and Android!"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about Cogni's Adventures",
+    "ageQuestion": "What age is the book suitable for?",
+    "ageAnswer": "The book is designed for children ages 3–10.",
+    "contentQuestion": "What kind of content does the book include?",
+    "contentAnswer": "The book includes interactive stories, educational puzzles, and activities that promote cognitive, motor, language, and social-emotional development.",
+    "languagesQuestion": "Is the book available in multiple languages?",
+    "languagesAnswer": "Yes, the book is available in English, Spanish, and French.",
+    "appQuestion": "Is there a companion app for the book?",
+    "appAnswer": "Yes, our companion app extends the book experience with additional interactive content and games."
+  },
+  "meta": {
+    "website": {
+      "title": "Cogni's Adventures — Interactive Children's Book and Educational App",
+      "description": "Discover Cogni's Adventures — an interactive children's book and educational app that builds cognitive, language, motor, and social-emotional skills for kids ages 3–10.",
+      "keywords": "children's book, kids book, interactive book, educational app, kids learning app, social-emotional learning, language development, printable stories, corgi, Cogni's Adventures",
+      "author": "Cogni's Adventures",
+      "structuredData": {
+        "name": "Cogni's Adventures",
+        "description": "Interactive educational content for children with books and mobile app",
+        "offers": {
+          "price": "14.99",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+          "ratingValue": "4.8",
+          "reviewCount": "124"
+        },
+        "book": {
+          "name": "Cogni's Adventures",
+          "description": "Interactive children's book with multimedia content and educational activities"
+        },
+        "app": {
+          "name": "Cogni's Adventures App",
+          "description": "Interactive educational app with games and multimedia content for children"
+        }
+      }
+    }
+  },
+  "notFound": {
+    "title": "Oops! Page Not Found",
+    "description": "It looks like Cogni wandered off the path! The page you're looking for doesn't exist or has been moved.",
+    "homeButton": "Back to Home",
+    "backButton": "Go Back",
+    "funMessage": "Even adventurers get lost sometimes! 🐕✨"
+  },
+  "bookLanding": {
+    "highlight": "Get instant access",
+    "formTitle": "Continue the adventure",
+    "formSubtitle": "We'll send you a link to open the app on your phone or tablet.",
+    "emailLabel": "Your Email",
+    "emailPlaceholder": "your@email.com",
+    "submitButton": "Send Me the App Link",
+    "sendingButton": "Sending...",
+    "helperDesc": "Enter an email you can access on your mobile device.",
+    "secureLabel": "Safe & Secure",
+    "confirmLabel": "I confirm I purchased Cogni's Adventures book and agree to receive the app link by email.",
+    "confirmRequired": "Please confirm you own the book",
+    "emailRequiredTitle": "Email Required",
+    "emailRequiredDesc": "Please enter your email address.",
+    "invalidEmailTitle": "Invalid Email",
+    "invalidEmailDesc": "Please enter a valid email address.",
+    "successTitle": "Check Your Email!",
+    "successDesc": "We've sent you the link to access the app.",
+    "thankYouHelper": "Open the email on your phone or tablet to get started with Cogni.",
+    "thankYouCta": "Back to Home",
+    "errorTitle": "Oops!",
+    "errorDesc": "Something went wrong. Please try again.",
+    "thankYouTitle": "Email Sent!",
+    "thankYouDesc": "Check your inbox for the link to access Cogni's Adventures.",
+    "checkEmailMessage": "Don't forget to check your spam folder if you don't see it.",
+    "privacyNote": "We'll only use your email to send the app link. No spam, ever.",
+    "currentLanguage": "en"
+  }
+}
