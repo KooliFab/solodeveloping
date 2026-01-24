@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Calendar, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 import { blogPosts } from '@/data/blogPosts';
 
 const BlogList = () => {
@@ -89,6 +90,7 @@ const BlogList = () => {
           )}
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

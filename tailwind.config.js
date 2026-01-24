@@ -17,9 +17,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "Archivo", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
         display: ["Space Grotesk", "sans-serif"],
-        mono: ["JetBrains Mono", "Fira Code", "monospace"],
+        mono: ["JetBrains Mono", "monospace"],
       },
       colors: {
         // Dark mode first color system with electric blue accents
@@ -63,7 +63,7 @@ module.exports = {
           200: "#bfdbfe",
           300: "#93c5fd",
           400: "#60a5fa",
-          500: "#3b82f6",  // Main electric blue
+          500: "#2563eb",  // System Blue - Main accent
           600: "#2563eb",
           700: "#1d4ed8",
           800: "#1e40af",

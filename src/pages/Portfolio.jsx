@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 import AgencyHero from '@/components/portfolio/AgencyHero';
 import ExpertiseSection from '@/components/portfolio/ExpertiseSection';
 import HorizontalShowcase from '@/components/portfolio/HorizontalShowcase';
@@ -35,28 +36,7 @@ const Portfolio = () => {
           <HorizontalShowcase />
           <ProjectsShowcase />
           <ContactSection />
-
-          {/* Footer */}
-          <footer className="py-12 px-6 border-t border-border/50 bg-card/30">
-            <div className="max-w-7xl mx-auto">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div className="text-sm text-muted-foreground font-mono">
-                  © {new Date().getFullYear()} solodeveloping.com · Level up with purpose
-                </div>
-                <div className="flex gap-6 text-sm">
-                  <a href="#" className="text-muted-foreground hover:text-electric-500 transition-colors">
-                    GitHub
-                  </a>
-                  <a href="#" className="text-muted-foreground hover:text-electric-500 transition-colors">
-                    LinkedIn
-                  </a>
-                  <a href="#" className="text-muted-foreground hover:text-electric-500 transition-colors">
-                    Twitter
-                  </a>
-                </div>
-              </div>
-            </div>
-          </footer>
+          <Footer />
         </main>
       </div>
     </>

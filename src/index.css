@@ -1,43 +1,48 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  /* Dark mode first (default) - Electric blue accents */
+  /* Dark mode first (default) - Solo Leveling color palette */
   :root {
-    --background: 220 13% 9%; /* Deep dark gray #141720 */
-    --foreground: 210 20% 98%;
+    --background: 0 0% 2%; /* Obsidian Black #050505 */
+    --foreground: 0 0% 100%; /* Pure White */
 
-    --card: 220 13% 13%; /* Slightly lighter #1d2333 */
-    --card-foreground: 210 20% 98%;
+    --card: 0 0% 8%; /* Slightly lighter #141414 */
+    --card-foreground: 0 0% 100%;
 
-    --popover: 220 13% 9%;
-    --popover-foreground: 210 20% 98%;
+    --popover: 0 0% 2%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Electric Blue Primary - Solo Leveling inspired */
-    --primary: 217 91% 60%; /* Bright electric blue #3b82f6 */
+    /* System Blue - Solo Leveling accent */
+    --primary: 217 91% 54%; /* System Blue #2563EB */
     --primary-foreground: 0 0% 100%;
 
     /* Darker slate secondary */
-    --secondary: 220 13% 18%; /* #252d3d */
-    --secondary-foreground: 210 20% 98%;
+    --secondary: 0 0% 12%; /* #1f1f1f */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 13% 18%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 217 91% 60%; /* Electric blue accent */
+    --accent: 217 91% 54%; /* System Blue accent #2563EB */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 18%;
-    --input: 220 13% 18%;
-    --ring: 217 91% 60%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 217 91% 54%;
 
     --radius: 0.5rem;
+
+    /* Custom cursor size */
+    --cursor-size: 20px;
+    --cursor-hover-size: 80px;
+    --accent-blue: #2563EB;
   }
 
   /* Light mode - Available but not default */
@@ -78,10 +83,18 @@
   * {
     @apply border-border;
   }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
-    font-family: "Archivo", sans-serif;
+    font-family: "Inter", sans-serif;
     overflow-x: hidden;
+    cursor: none; /* Hide default cursor */
+    background-color: #050505;
   }
   h1,
   h2,
@@ -90,7 +103,7 @@
   h5,
   h6 {
     font-family: "Space Grotesk", sans-serif;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
   code,
   pre {
@@ -173,6 +186,39 @@
 
   .shadow-electric-lg {
     box-shadow: 0 20px 60px -10px rgba(59, 130, 246, 0.4);
+  }
+
+  /* Custom Cursor */
+  #cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background 0.3s;
+    mix-blend-mode: difference;
+  }
+
+  #cursor.hovered {
+    width: var(--cursor-hover-size);
+    height: var(--cursor-hover-size);
+    background: rgba(255, 255, 255, 1);
+    mix-blend-mode: difference;
+    border: none;
+  }
+
+  /* Grid Background */
+  .grid-background {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 }
 
