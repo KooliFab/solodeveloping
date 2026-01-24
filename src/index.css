@@ -5,38 +5,72 @@
 @tailwind utilities;
 
 @layer base {
+  /* Dark mode first (default) - Electric blue accents */
   :root {
-    --background: 240 6% 10%; /* Dark Zinc #18181B */
-    --foreground: 0 0% 98%;
+    --background: 220 13% 9%; /* Deep dark gray #141720 */
+    --foreground: 210 20% 98%;
 
-    --card: 240 6% 15%;
-    --card-foreground: 0 0% 98%;
+    --card: 220 13% 13%; /* Slightly lighter #1d2333 */
+    --card-foreground: 210 20% 98%;
 
-    --popover: 240 6% 10%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 220 13% 9%;
+    --popover-foreground: 210 20% 98%;
 
-    /* Vibrant Blue Primary #2563EB */
-    --primary: 221 83% 53%;
+    /* Electric Blue Primary - Solo Leveling inspired */
+    --primary: 217 91% 60%; /* Bright electric blue #3b82f6 */
     --primary-foreground: 0 0% 100%;
 
-    /* Darker Blue Secondary */
-    --secondary: 240 5% 26%; /* Zinc 800 */
-    --secondary-foreground: 0 0% 98%;
+    /* Darker slate secondary */
+    --secondary: 220 13% 18%; /* #252d3d */
+    --secondary-foreground: 210 20% 98%;
 
-    --muted: 240 5% 26%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 220 13% 18%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 221 83% 53%;
+    --accent: 217 91% 60%; /* Electric blue accent */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 20% 98%;
 
-    --border: 240 5% 26%;
-    --input: 240 5% 26%;
-    --ring: 221 83% 53%;
+    --border: 220 13% 18%;
+    --input: 220 13% 18%;
+    --ring: 217 91% 60%;
 
-    --radius: 0.25rem;
+    --radius: 0.5rem;
+  }
+
+  /* Light mode - Available but not default */
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.5rem;
   }
 }
 

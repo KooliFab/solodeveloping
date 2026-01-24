@@ -1,6 +1,8 @@
 import path from 'node:path';
 import react from '@vitejs/plugin-react';
+import mdx from '@mdx-js/rollup';
 import { defineConfig, loadEnv } from 'vite';
+import rehypePrettyCode from 'rehype-pretty-code';
 
 const configHorizonsViteErrorHandler = `
 const observer = new MutationObserver((mutations) => {
@@ -179,7 +181,28 @@ export default defineConfig(({ mode }) => {
 	console.log(`🔥 Firebase Project ID: ${env.VITE_FIREBASE_PROJECT_ID}`);
 	
 	return {
-	plugins: [react(), addTransformIndexHtml],
+	plugins: [
+		{
+			enforce: 'pre',
+			...mdx({
+				providerImportSource: '@mdx-js/react',
+				rehypePlugins: [
+					[
+						rehypePrettyCode,
+						{
+							theme: {
+								dark: 'one-dark-pro',
+								light: 'github-light'
+							},
+							keepBackground: false,
+						}
+					]
+				]
+			})
+		},
+		react(),
+		addTransformIndexHtml
+	],
 	// Explicitly pass env variables to the app
 	define: {
 		'import.meta.env.VITE_FIREBASE_API_KEY': JSON.stringify(env.VITE_FIREBASE_API_KEY),
@@ -231,7 +254,7 @@ export default defineConfig(({ mode }) => {
 						'@radix-ui/react-alert-dialog',
 					],
 					// Animation libraries
-					'animation-vendor': ['framer-motion'],
+					'animation-vendor': ['framer-motion', 'gsap', 'lenis'],
 					// i18n libraries
 					'i18n-vendor': ['i18next', 'react-i18next', 'i18next-browser-languagedetector', 'i18next-http-backend'],
 				},
@@ -253,6 +276,10 @@ export default defineConfig(({ mode }) => {
 			'react-dom',
 			'react-router-dom',
 			'framer-motion',
+			'gsap',
+			'gsap/ScrollTrigger',
+			'gsap/SplitText',
+			'lenis',
 			'i18next',
 			'react-i18next',
 		],

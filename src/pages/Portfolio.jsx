@@ -1,39 +1,63 @@
-import React, { useRef } from 'react';
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import Navbar from '@/components/layout/Navbar';
-import Hero from '@/components/portfolio/Hero';
-import ProjectGrid from '@/components/portfolio/ProjectGrid';
-import ParallaxBackground from '@/components/layout/ParallaxBackground';
+import DeveloperHero from '@/components/portfolio/DeveloperHero';
+import ExpertiseSection from '@/components/portfolio/ExpertiseSection';
+import ProjectsShowcase from '@/components/portfolio/ProjectsShowcase';
+import ContactSection from '@/components/portfolio/ContactSection';
 import CustomCursor from '@/components/ui/CustomCursor';
+import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
 const Portfolio = () => {
+  // Initialize Lenis smooth scrolling
+  useSmoothScroll();
+
   return (
-    <div className="min-h-screen bg-background text-foreground relative selection:bg-primary/30 selection:text-primary-foreground">
-      <CustomCursor />
-      <ParallaxBackground />
-      <Navbar />
-      
-      <main className="relative z-10">
-        <Hero />
-        <ProjectGrid />
-        
-        {/* Footer / Contact Skeleton */}
-        <section className="py-24 px-6 md:px-24 border-t border-border bg-background/50 backdrop-blur-sm">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8">Ready to build something extraordinary?</h2>
-            <a 
-              href="mailto:contact@example.com" 
-              className="inline-block text-xl md:text-2xl text-primary hover:text-accent underline decoration-2 underline-offset-8 transition-colors cursor-pointer"
-            >
-              Let's create together
-            </a>
-            
-             <p className="mt-16 text-muted-foreground text-sm">
-              © {new Date().getFullYear()} Developer Portfolio. Crafted with React & Framer Motion.
-            </p>
-          </div>
-        </section>
-      </main>
-    </div>
+    <>
+      <Helmet>
+        <title>solodeveloping.com - Full-Stack Developer | AI • Mobile • Web</title>
+        <meta name="description" content="I build intelligent mobile experiences and AI automation for founders who need to ship fast. 10+ years experience, 15+ apps shipped, zero missed deadlines." />
+        <meta name="keywords" content="full-stack developer, mobile app development, AI automation, React Native, web development, solo developer" />
+        <meta property="og:title" content="solodeveloping.com - Full-Stack Developer" />
+        <meta property="og:description" content="AI automation • Mobile apps • Full-stack development. Work directly with an experienced developer who delivers results." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://solodeveloping.com" />
+      </Helmet>
+
+      <div className="min-h-screen bg-background text-foreground relative selection:bg-electric-500/30 selection:text-white">
+        <CustomCursor />
+        <Navbar />
+
+        <main className="relative">
+          <DeveloperHero />
+          <ExpertiseSection />
+          <ProjectsShowcase />
+          <ContactSection />
+
+          {/* Footer */}
+          <footer className="py-12 px-6 border-t border-border/50 bg-card/30">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div className="text-sm text-muted-foreground">
+                  © {new Date().getFullYear()} solodeveloping.com. Built with React, Framer Motion & GSAP.
+                </div>
+                <div className="flex gap-6 text-sm">
+                  <a href="#" className="text-muted-foreground hover:text-electric-500 transition-colors">
+                    GitHub
+                  </a>
+                  <a href="#" className="text-muted-foreground hover:text-electric-500 transition-colors">
+                    LinkedIn
+                  </a>
+                  <a href="#" className="text-muted-foreground hover:text-electric-500 transition-colors">
+                    Twitter
+                  </a>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </main>
+      </div>
+    </>
   );
 };
 
