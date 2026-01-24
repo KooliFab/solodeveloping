@@ -10,6 +10,13 @@ const HorizontalShowcase = () => {
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
 
+  // Ensure track starts at x:0 immediately on mount
+  useEffect(() => {
+    if (trackRef.current) {
+      trackRef.current.style.transform = 'translate3d(0px, 0px, 0px)';
+    }
+  }, []);
+
   const projects = [
     {
       id: 1,
@@ -69,7 +76,11 @@ const HorizontalShowcase = () => {
   ];
 
   useEffect(() => {
-    import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+    let ctx;
+    let lenisReadyListener;
+
+    const initAnimation = async () => {
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
       gsap.registerPlugin(ScrollTrigger);
 
       const section = sectionRef.current;
@@ -77,46 +88,109 @@ const HorizontalShowcase = () => {
 
       if (!section || !track) return;
 
-      // Calculate total scroll width
-      const trackWidth = track.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      const scrollDistance = trackWidth - viewportWidth;
+      // Wait for Lenis to be ready (simplified)
+      if (!window.lenis) {
+        await new Promise((resolve) => {
+          lenisReadyListener = () => resolve();
+          window.addEventListener('lenis:ready', lenisReadyListener, { once: true });
+          setTimeout(resolve, 500); // Reduced fallback timeout
+        });
+      }
 
-      // Create horizontal scroll animation
-      const horizontalScroll = gsap.to(track, {
-        x: -scrollDistance,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: () => `+=${scrollDistance}`,
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true
-        }
-      });
+      // Use GSAP context for better cleanup
+      ctx = gsap.context(() => {
+        // Calculate total scroll width
+        const getScrollDistance = () => {
+          const trackWidth = track.scrollWidth;
+          const viewportWidth = window.innerWidth;
+          return trackWidth - viewportWidth;
+        };
 
-      // Parallax effect on project cards
-      const cards = track.querySelectorAll('.project-card');
-      cards.forEach((card, index) => {
-        gsap.to(card, {
-          y: () => -50 + (index % 2) * 100,
+        const scrollDistance = getScrollDistance();
+
+        // Kill any existing tweens on track first
+        gsap.killTweensOf(track);
+
+        // Set initial position explicitly
+        gsap.set(track, {
+          x: 0,
+          force3D: true,
+          clearProps: 'all' // Clear any previous GSAP properties
+        });
+
+        // Re-apply the x:0 after clearing
+        gsap.set(track, { x: 0, force3D: true });
+
+        // Create horizontal scroll animation with timeline
+        gsap.to(track, {
+          x: -scrollDistance,
           ease: 'none',
           scrollTrigger: {
             trigger: section,
             start: 'top top',
-            end: () => `+=${scrollDistance}`,
-            scrub: 1
+            end: `+=${scrollDistance}`,
+            scrub: 0.5,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            fastScrollEnd: true,
+            markers: false, // Disable markers
+            scroller: document.body,
+            onRefresh: () => {
+              // Reset position on refresh
+              gsap.set(track, { x: 0, force3D: true });
+            }
           }
         });
-      });
 
-      return () => {
-        horizontalScroll.kill();
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      };
-    });
+        // Simplified parallax - only on odd cards for better performance
+        const cards = track.querySelectorAll('.project-card');
+        cards.forEach((card, index) => {
+          if (index % 2 === 0) {
+            gsap.to(card, {
+              y: -30,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: section,
+                start: 'top top',
+                end: `+=${scrollDistance}`,
+                scrub: 0.5
+              }
+            });
+          }
+        });
+
+        // Debounced resize handler
+        let resizeTimer;
+        const handleResize = () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            ScrollTrigger.refresh();
+          }, 250);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+          window.removeEventListener('resize', handleResize);
+          if (resizeTimer) clearTimeout(resizeTimer);
+        };
+      }, section);
+
+      // Single refresh after a brief delay
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+      });
+    };
+
+    initAnimation();
+
+    return () => {
+      if (ctx) ctx.revert();
+      if (lenisReadyListener) {
+        window.removeEventListener('lenis:ready', lenisReadyListener);
+      }
+    };
   }, []);
 
   return (
@@ -136,7 +210,12 @@ const HorizontalShowcase = () => {
       <div
         ref={trackRef}
         className="flex items-center gap-12 px-[5vw] py-20"
-        style={{ width: 'max-content', height: '100vh' }}
+        style={{
+          width: 'max-content',
+          height: '100vh',
+          transform: 'translate3d(0px, 0px, 0px)',
+          willChange: 'transform'
+        }}
       >
         {/* Intro card */}
         <div className="flex-shrink-0 w-[40vw] min-w-[400px] h-[70vh] flex flex-col justify-center">
