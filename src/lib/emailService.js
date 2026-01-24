@@ -1,4 +1,4 @@
-import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import { db } from './firebase';
 
 /**
@@ -9,14 +9,7 @@ import { db } from './firebase';
  */
 export const saveEmailSubscription = async (email, language = 'en') => {
   try {
-    // First check if the email already exists
     const emailsRef = collection(db, 'newsletter_subscribers');
-    // const q = query(emailsRef, where('email', '==', email));
-    // const querySnapshot = await getDocs(q);
-
-    // if (!querySnapshot.empty) {
-    //   return { success: false, message: 'This email is already subscribed.' };
-    // }
 
     // Add the new email document
     const docRef = await addDoc(emailsRef, {

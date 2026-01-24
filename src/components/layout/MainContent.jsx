@@ -19,7 +19,6 @@ const MainContent = ({ handleBuyNow, handleDownloadApp, scrollToSection }) => {
       <AppSection handleDownloadApp={handleDownloadApp} />
       <BenefitsSection />
       <FaqSection />
-      {/* <AboutUsSection /> */}
       <CtaSection
         handleBuyNow={handleBuyNow}
       />

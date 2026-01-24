@@ -46,20 +46,26 @@ const LandingPage = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-6xl md:text-8xl font-extrabold tracking-tight leading-none"
           >
-            CRAFTING DI<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary text-glow">GITAL</span>
-            <br />
-            RE<span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary text-glow">ALITIES</span>
+            I BUILD.<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary text-glow">YOU SELL.</span>
           </motion.h1>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto"
+            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto space-y-4"
           >
-            Full-stack developer specializing in AI-driven interfaces, 
-            performant web applications, and immersive user experiences.
-          </motion.p>
+            <p className="font-semibold text-foreground text-2xl md:text-3xl">
+              I will bootstrap your idea.
+            </p>
+            <p className="text-lg">
+              Expert Fullstack Development • Mobile • Web • Backend • Automation
+            </p>
+            <p className="text-base text-muted-foreground/80 italic">
+              From concept to launch—one developer, zero handoffs.
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -71,13 +77,13 @@ const LandingPage = () => {
               href="#portfolio"
               className="px-8 py-4 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:scale-105"
             >
-              View My Work
+              See What I've Built
             </a>
             <a
               href="#contact"
               className="px-8 py-4 glass-panel rounded-xl font-bold text-lg hover:bg-white/5 transition-all hover:scale-105 border border-white/10"
             >
-              Get in Touch
+              Hire Me
             </a>
           </motion.div>
 

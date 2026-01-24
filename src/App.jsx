@@ -1,5 +1,5 @@
-import React, { Suspense, lazy } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from '@/components/ui/toaster';
 
@@ -20,8 +20,6 @@ const PageLoader = () => (
 );
 
 const App = () => {
-  const location = useLocation();
-
   return (
     <HelmetProvider>
       <div className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground">

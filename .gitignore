@@ -48,3 +48,5 @@ build
 .stylelintcache
 
 /node_modules
+.firebase/
+firebase-debug.log

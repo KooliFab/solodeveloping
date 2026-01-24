@@ -44,8 +44,6 @@ const initializeGA = () => {
       // Link attribution for better click tracking
       link_attribution: true,
     });
-
-    console.log('Google Analytics initialized:', GA_MEASUREMENT_ID);
   }
 };
 

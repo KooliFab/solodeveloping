@@ -3,16 +3,6 @@
  */
 
 /**
- * Get meta tag content from translation files
- * @param {object} t - Translation function from useTranslation hook
- * @param {string} key - Translation key
- * @returns {string} - Translated content
- */
-export const getMetaContent = (t, key) => {
-  return t(key);
-};
-
-/**
  * Generate meta tags for a section
  * @param {object} t - Translation function from useTranslation hook
  * @param {string} section - Section name (e.g., 'app', 'book', 'website')

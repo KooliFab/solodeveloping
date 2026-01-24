@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
+import CodeBlock from '@/components/ui/CodeBlock';
 import { blogPosts } from '@/data/blogPosts';
 
 const BlogPost = () => {
@@ -93,10 +94,9 @@ const BlogPost = () => {
               prose-a:text-primary prose-a:no-underline hover:prose-a:underline
               prose-strong:text-foreground
               prose-img:rounded-xl prose-img:shadow-2xl prose-img:border prose-img:border-primary/10
-              prose-code:text-primary prose-code:bg-primary/5 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
-              prose-pre:bg-muted/50 prose-pre:border prose-pre:border-primary/10
               prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:py-1 prose-blockquote:not-italic
-              prose-li:text-muted-foreground"
+              prose-li:text-muted-foreground
+              prose-ul:text-muted-foreground prose-ol:text-muted-foreground"
           >
             {/* Hero Image */}
             {post.coverImage && (
@@ -111,6 +111,26 @@ const BlogPost = () => {
             
             <ReactMarkdown
               components={{
+                // Custom renderer for code blocks with syntax highlighting
+                code: ({ node, inline, className, children, ...props }) => {
+                  const match = /language-(\w+)/.exec(className || '');
+                  const language = match ? match[1] : '';
+                  const codeString = String(children).replace(/\n$/, '');
+
+                  if (!inline && language) {
+                    return <CodeBlock language={language}>{codeString}</CodeBlock>;
+                  }
+
+                  // Inline code
+                  return (
+                    <code 
+                      className="bg-gray-800 text-blue-400 px-2 py-1 rounded text-sm font-mono border border-gray-700 before:content-none after:content-none" 
+                      {...props}
+                    >
+                      {children}
+                    </code>
+                  );
+                },
                 // Custom renderer for images to make them responsive and styled
                 img: ({node, ...props}) => (
                   <span className="block my-8">

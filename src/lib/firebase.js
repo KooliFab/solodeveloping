@@ -13,9 +13,6 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
-// Debug: Log which Firebase project is being used
-console.log('🔥 Firebase Project:', import.meta.env.VITE_FIREBASE_PROJECT_ID);
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
