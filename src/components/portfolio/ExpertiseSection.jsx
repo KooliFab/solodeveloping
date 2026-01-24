@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Smartphone, Brain, Code2, Zap, Database, Cloud } from 'lucide-react';
+import gsap from 'gsap';
 
 const expertiseAreas = [
   {
@@ -48,28 +49,78 @@ const expertiseAreas = [
 ];
 
 const ExpertiseSection = () => {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Heading reveal animation
+      if (headingRef.current) {
+        gsap.fromTo(
+          headingRef.current,
+          {
+            opacity: 0,
+            y: 100
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: headingRef.current,
+              start: 'top 80%',
+              end: 'bottom 60%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+      }
+
+      // Stagger cards animation
+      cardsRef.current.forEach((card, index) => {
+        if (!card) return;
+
+        gsap.fromTo(
+          card,
+          {
+            opacity: 0,
+            y: 80,
+            rotateX: -15
+          },
+          {
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              end: 'bottom 60%',
+              toggleActions: 'play none none reverse'
+            },
+            delay: index * 0.1
+          }
+        );
+      });
+    });
+  }, []);
+
   return (
-    <section className="py-24 px-4 bg-card/30">
+    <section ref={sectionRef} className="py-24 px-4 bg-card/30">
       <div className="container mx-auto max-w-7xl">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold font-display mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+        <div ref={headingRef} className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-4">
             Areas of <span className="text-electric-500">Expertise</span>
-          </motion.h2>
-          <motion.p
-            className="text-xl text-muted-foreground max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Full-stack capabilities with deep specialization in AI, mobile, and modern web technologies.
-          </motion.p>
+          </p>
         </div>
 
         {/* Expertise grid */}
@@ -77,15 +128,13 @@ const ExpertiseSection = () => {
           {expertiseAreas.map((area, index) => {
             const Icon = area.icon;
             return (
-              <motion.div
+              <div
                 key={area.title}
+                ref={(el) => (cardsRef.current[index] = el)}
                 className="group relative"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                style={{ perspective: '1000px' }}
               >
-                <div className="h-full p-6 rounded-2xl bg-card border border-border/50 hover:border-electric-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-electric-500/10">
+                <div className="h-full p-6 rounded-2xl bg-card border border-border/50 hover:border-electric-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-electric-500/10 hover:scale-105 hover:-translate-y-2">
                   {/* Icon */}
                   <div className="mb-4">
                     <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${area.color} p-2.5 group-hover:scale-110 transition-transform duration-300`}>
@@ -119,7 +168,7 @@ const ExpertiseSection = () => {
                   {/* Gradient overlay on hover */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-electric-500/0 to-electric-500/0 group-hover:from-electric-500/5 group-hover:to-electric-500/0 transition-all duration-500 pointer-events-none" />
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

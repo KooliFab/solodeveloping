@@ -1,11 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Navbar from '@/components/layout/Navbar';
-import DeveloperHero from '@/components/portfolio/DeveloperHero';
+import AgencyHero from '@/components/portfolio/AgencyHero';
 import ExpertiseSection from '@/components/portfolio/ExpertiseSection';
+import HorizontalShowcase from '@/components/portfolio/HorizontalShowcase';
 import ProjectsShowcase from '@/components/portfolio/ProjectsShowcase';
 import ContactSection from '@/components/portfolio/ContactSection';
-import CustomCursor from '@/components/ui/CustomCursor';
+import MagneticCursor from '@/components/ui/MagneticCursor';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
 const LandingPage = () => {
@@ -26,12 +27,13 @@ const LandingPage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-background text-foreground relative selection:bg-electric-500/30 selection:text-white">
-        <CustomCursor />
+        <MagneticCursor enabled={true} />
         <Navbar />
 
         <main className="relative">
-          <DeveloperHero />
+          <AgencyHero />
           <ExpertiseSection />
+          <HorizontalShowcase />
           <ProjectsShowcase />
           <ContactSection />
 

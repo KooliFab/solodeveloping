@@ -81,6 +81,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Archivo", sans-serif;
+    overflow-x: hidden;
   }
   h1,
   h2,
@@ -94,6 +95,12 @@
   code,
   pre {
     font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+  }
+
+  /* Smooth animations globally */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -113,6 +120,59 @@
     box-shadow:
       0 0 5px theme("colors.primary.DEFAULT"),
       0 0 10px theme("colors.primary.DEFAULT");
+  }
+
+  /* Agency-style utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  .perspective-2000 {
+    perspective: 2000px;
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* Smooth hardware acceleration */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Agency-style text reveal */
+  .text-reveal {
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  .text-reveal > * {
+    display: inline-block;
+    transform: translateY(100%);
+  }
+
+  /* Gradient text utilities */
+  .gradient-text {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Agency-style shadows */
+  .shadow-electric {
+    box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.3);
+  }
+
+  .shadow-electric-lg {
+    box-shadow: 0 20px 60px -10px rgba(59, 130, 246, 0.4);
   }
 }
 

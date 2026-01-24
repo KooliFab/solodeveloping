@@ -1,11 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Navbar from '@/components/layout/Navbar';
-import DeveloperHero from '@/components/portfolio/DeveloperHero';
+import AgencyHero from '@/components/portfolio/AgencyHero';
 import ExpertiseSection from '@/components/portfolio/ExpertiseSection';
+import HorizontalShowcase from '@/components/portfolio/HorizontalShowcase';
 import ProjectsShowcase from '@/components/portfolio/ProjectsShowcase';
 import ContactSection from '@/components/portfolio/ContactSection';
-import CustomCursor from '@/components/ui/CustomCursor';
+import MagneticCursor from '@/components/ui/MagneticCursor';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
 const Portfolio = () => {
@@ -25,12 +26,13 @@ const Portfolio = () => {
       </Helmet>
 
       <div className="min-h-screen bg-background text-foreground relative selection:bg-electric-500/30 selection:text-white">
-        <CustomCursor />
+        <MagneticCursor enabled={true} />
         <Navbar />
 
         <main className="relative">
-          <DeveloperHero />
+          <AgencyHero />
           <ExpertiseSection />
+          <HorizontalShowcase />
           <ProjectsShowcase />
           <ContactSection />
 
@@ -38,8 +40,8 @@ const Portfolio = () => {
           <footer className="py-12 px-6 border-t border-border/50 bg-card/30">
             <div className="max-w-7xl mx-auto">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div className="text-sm text-muted-foreground">
-                  © {new Date().getFullYear()} solodeveloping.com. Built with React, Framer Motion & GSAP.
+                <div className="text-sm text-muted-foreground font-mono">
+                  © {new Date().getFullYear()} solodeveloping.com · Level up with purpose
                 </div>
                 <div className="flex gap-6 text-sm">
                   <a href="#" className="text-muted-foreground hover:text-electric-500 transition-colors">
