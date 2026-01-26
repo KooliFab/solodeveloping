@@ -1,6 +1,6 @@
-# Cogni's Adventures Website
+# Solo Developing Portfolio
 
-## Deployment
+A modern, responsive portfolio website showcasing full-stack development skills and projects.
 
 This project includes an automated FTP deployment system to easily deploy the website to Hostinger.
 

@@ -13,7 +13,6 @@ import {
 const languages = [
   { code: 'en', name: 'English' },
   { code: 'fr', name: 'Français' },
-  { code: 'es', name: 'Español' },
 ];
 
 const LanguageSwitcher = () => {
@@ -22,30 +21,26 @@ const LanguageSwitcher = () => {
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     
-    // Update URL to reflect language change
+    // Update HTML lang attribute for accessibility and SEO
+    document.documentElement.setAttribute('lang', lng);
+    
+    // Build new path based on selected language
     const currentPath = window.location.pathname;
-    const pathSegments = currentPath.split('/');
-    const supportedLanguages = ['en', 'fr', 'es'];
-    
-    // Check if the first segment is a language code
-    const firstSegment = pathSegments[1] || '';
-    const hasLangInPath = supportedLanguages.includes(firstSegment);
-    
     let newPath;
-    if (hasLangInPath) {
-      // Replace existing language code
-      pathSegments[1] = lng === 'en' ? '' : lng;
-      newPath = pathSegments.filter(Boolean).join('/');
-    } else {
-      // Add language code (except for English which is default)
-      newPath = lng === 'en' ? currentPath : `/${lng}${currentPath}`;
+    
+    // Check if current path has /fr prefix
+    const hasFrPrefix = currentPath.startsWith('/fr');
+    
+    if (lng === 'en') {
+      // Remove /fr prefix if switching to English
+      newPath = hasFrPrefix ? currentPath.replace(/^\/fr/, '') || '/' : currentPath;
+    } else if (lng === 'fr') {
+      // Add /fr prefix if switching to French
+      newPath = hasFrPrefix ? currentPath : `/fr${currentPath}`;
     }
     
-    // Ensure path starts with slash
-    newPath = newPath.startsWith('/') ? newPath : `/${newPath}`;
-    
-    // Update URL without page reload
-    window.history.pushState({}, '', newPath);
+    // Navigate to the new path
+    window.location.href = newPath;
   };
 
   const currentLanguage = languages.find(lang => lang.code === i18n.language)?.name || i18n.language;

@@ -1,8 +1,11 @@
 {
-  "name": "web-app",
+  "name": "solo-developing-portfolio",
   "type": "module",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
+  "description": "Professional portfolio website for Solo Developing - Full-stack developer specializing in React, Node.js, and AI integration",
+  "author": "Solo Developing",
+  "homepage": "https://solodeveloping.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

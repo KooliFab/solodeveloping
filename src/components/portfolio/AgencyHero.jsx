@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Code2, Sparkles, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { splitTextAdvanced } from '@/utils/textSplit';
 
@@ -10,6 +11,7 @@ import { splitTextAdvanced } from '@/utils/textSplit';
  * Inspired by The Brink Agency's bold typography and animations
  */
 const AgencyHero = () => {
+  const { t } = useTranslation();
   const heroRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
@@ -173,10 +175,10 @@ const AgencyHero = () => {
           <div ref={titleRef} className="mb-10 space-y-2">
             <h1 className="font-display font-bold tracking-tight leading-[0.9] perspective-1000">
               <div className="hero-title-line text-6xl md:text-8xl lg:text-9xl mb-4 text-foreground">
-                I build full stack.
+                {t('hero.title1')}
               </div>
               <div className="hero-title-line text-6xl md:text-8xl lg:text-9xl mb-4 bg-gradient-to-r from-electric-400 via-electric-500 to-electric-600 bg-clip-text text-transparent">
-                You scale fast.
+                {t('hero.title2')}
               </div>
             </h1>
           </div>
@@ -186,26 +188,26 @@ const AgencyHero = () => {
             <div className="flex flex-wrap gap-6 text-lg md:text-xl text-muted-foreground font-mono mb-8">
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-electric-500 rounded-full animate-pulse" />
-                Mobile apps
+                {t('hero.tag1')}
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-electric-500 rounded-full animate-pulse" />
-                Web apps
+                {t('hero.tag2')}
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-electric-500 rounded-full animate-pulse" />
-                Blockchain
+                {t('hero.tag3')}
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-electric-500 rounded-full animate-pulse" />
-                Automation
+                {t('hero.tag4')}
               </span>
             </div>
 
             <p className="text-2xl md:text-3xl lg:text-4xl text-muted-foreground font-light leading-relaxed">
-              <span className="text-foreground font-medium">20+ years experience.</span>{' '}
-              <span className="text-foreground font-medium">No overpromise, no underdeliver.</span>{' '}
-              <span className="text-electric-500 font-semibold">I ship!</span>
+              <span className="text-foreground font-medium">{t('hero.experience')}</span>{' '}
+              <span className="text-foreground font-medium">{t('hero.promise')}</span>{' '}
+              <span className="text-electric-500 font-semibold">{t('hero.action')}</span>
             </p>
           </div>
 
@@ -221,7 +223,7 @@ const AgencyHero = () => {
               className="group relative overflow-hidden bg-electric-500 hover:bg-electric-600 text-white px-10 py-8 text-xl rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.6)]"
             >
               <span className="relative z-10 flex items-center gap-3">
-                Let's Build Something
+                {t('hero.ctaPrimary')}
                 <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-electric-600 to-electric-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -233,7 +235,7 @@ const AgencyHero = () => {
               className="border-2 border-electric-500/50 text-electric-500 hover:bg-electric-500/10 hover:border-electric-500 px-10 py-8 text-xl rounded-full transition-all duration-300 hover:scale-105 backdrop-blur-sm"
             >
               <Code2 className="w-6 h-6 mr-3" />
-              View Projects
+              {t('hero.ctaSecondary')}
             </Button>
           </motion.div>
 
@@ -247,18 +249,18 @@ const AgencyHero = () => {
             {[
               {
                 icon: Zap,
-                title: 'Fast Start',
-                description: 'No agency overhead. Ship in days, not months.'
+                title: t('hero.feature1Title'),
+                description: t('hero.feature1Desc')
               },
               {
                 icon: Sparkles,
-                title: 'Direct Line',
-                description: 'Work with who builds. Zero middlemen.'
+                title: t('hero.feature2Title'),
+                description: t('hero.feature2Desc')
               },
               {
                 icon: Code2,
-                title: 'Full Stack',
-                description: 'One person. Total accountability. Real value.'
+                title: t('hero.feature3Title'),
+                description: t('hero.feature3Desc')
               }
             ].map((feature, index) => (
               <div
@@ -285,7 +287,7 @@ const AgencyHero = () => {
         transition={{ delay: 2, duration: 0.8 }}
       >
         <div className="flex flex-col items-center text-muted-foreground">
-          <span className="text-sm mb-3 font-mono tracking-wider">SCROLL</span>
+          <span className="text-sm mb-3 font-mono tracking-wider">{t('hero.scrollLabel')}</span>
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}

@@ -298,7 +298,7 @@ export const sendSlackNotification = async (buttonName, additionalData = {}) => 
         {
           color: color,
           fields: fields,
-          footer: 'CogniBook Website',
+          footer: 'Solo Developing Portfolio',
           ts: timestamp,
         },
       ],
@@ -380,7 +380,7 @@ export const trackPageVisit = async (pageName, additionalData = {}) => {
         {
           color: '#10b981', // Green color for page visits
           fields: fields,
-          footer: 'CogniBook Website',
+          footer: 'Solo Developing Portfolio',
           ts: timestamp,
         },
       ],

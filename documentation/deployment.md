@@ -1,47 +1,92 @@
-# Language Routing Fix for Production
+# Portfolio Deployment Guide
 
-## Issue
-Language routing paths (`/fr`, `/es`, `/en`) were working correctly in development mode but not in production after deployment.
+## Overview
+This document outlines the deployment process for the Solo Developing portfolio website.
 
-## Root Cause
-The issue was in the `.htaccess` file configuration. The original configuration had a condition that only applied the SPA routing rule when accessing via the www subdomain:
+## Build Process
+The portfolio uses Vite for building and bundling:
 
-```apache
-# If accessing via www subdomain, continue with normal processing
-RewriteCond %{HTTP_HOST} ^www\. [NC]
+```bash
+npm run build
 ```
 
-This meant that when accessing the site without the www prefix (e.g., directly at `cognibook.com/fr`), the SPA routing rule wasn't being applied, causing language paths to fail.
+This creates an optimized production build in the `dist/` directory.
 
-## Solution
-The `.htaccess` file has been updated to apply the SPA routing rules for all requests, regardless of whether they come through www or non-www domains:
+## Deployment Configuration
+The site uses a standard SPA (Single Page Application) configuration with proper routing support.
+
+### .htaccess Configuration
+For Apache servers, the `.htaccess` file ensures proper routing:
 
 ```apache
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
   
-  # For all requests to non-existent files or directories, handle SPA routing
-  # This ensures language paths like /fr and /es work correctly
+  # Handle SPA routing - redirect all non-file requests to index.html
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^ index.html [QSA,L]
 </IfModule>
 ```
 
-## Deployment
-After making this change, redeploy the application using:
+### Netlify Configuration
+For Netlify deployment, use `_redirects` file:
+
+```
+/*    /index.html   200
+```
+
+## Environment Variables
+Set up the following environment variables for production:
+
+```bash
+VITE_SLACK_WEBHOOK_URL=your_slack_webhook_url
+VITE_EMAIL_SERVICE_URL=your_email_service_url
+```
+
+## Deployment Steps
+
+### Manual Deployment
+1. Build the project:
+   ```bash
+   npm run build
+   ```
+
+2. Upload the `dist/` folder contents to your web server
+
+### Automated Deployment
+The project includes deployment scripts for common platforms:
 
 ```bash
 npm run deploy
 ```
 
-This will build the project and deploy it to Hostinger with the fixed `.htaccess` configuration.
-
 ## Verification
-After deployment, verify that language routing works correctly by testing these URLs:
-- `https://cognibook.com/fr`
-- `https://cognibook.com/es`
-- `https://cognibook.com/en` or `https://cognibook.com/`
+After deployment, verify the following:
+- `https://solodeveloping.com/` - Main portfolio page loads
+- `https://solodeveloping.com/portfolio` - Portfolio section works
+- `https://solodeveloping.com/blog` - Blog section accessible
+- Contact form functionality
+- All project links and demos work correctly
 
-Ensure that each URL loads the correct language version of the site.
+## Performance Optimization
+The build process includes:
+- JavaScript and CSS minification
+- Image optimization
+- Code splitting for better loading
+- Gzip compression support
+
+## SEO Considerations
+Ensure the following are properly configured:
+- Meta tags for all pages
+- Sitemap.xml accessibility
+- Robots.txt configuration
+- Open Graph tags for social sharing
+
+## Monitoring
+After deployment, monitor:
+- Page load speeds
+- Contact form submissions
+- Error rates
+- User engagement metrics

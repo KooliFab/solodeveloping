@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from '@/components/ui/toaster';
+import { useTranslation } from 'react-i18next';
 
 // Lazy load pages
 const LandingPage = lazy(() => import('@/pages/LandingPage'));
@@ -55,6 +56,43 @@ const PageLoader = () => (
 );
 
 const App = () => {
+  const { i18n } = useTranslation();
+
+  // Detect and set language based on URL path
+  useEffect(() => {
+    const path = window.location.pathname;
+    const langMatch = path.match(/^\/([a-z]{2})(\/|$)/);
+    
+    if (langMatch && ['en', 'fr'].includes(langMatch[1])) {
+      const detectedLang = langMatch[1];
+      if (i18n.language !== detectedLang) {
+        i18n.changeLanguage(detectedLang);
+      }
+    } else {
+      // Default to English if no language prefix
+      if (i18n.language !== 'en') {
+        i18n.changeLanguage('en');
+      }
+    }
+  }, [i18n]);
+
+  // Update HTML lang attribute when language changes
+  useEffect(() => {
+    const handleLanguageChange = (lng) => {
+      document.documentElement.setAttribute('lang', lng);
+    };
+
+    // Set initial language
+    handleLanguageChange(i18n.language);
+
+    // Listen for language changes
+    i18n.on('languageChanged', handleLanguageChange);
+
+    return () => {
+      i18n.off('languageChanged', handleLanguageChange);
+    };
+  }, [i18n]);
+
   return (
     <HelmetProvider>
       <CustomCursor />
@@ -65,10 +103,19 @@ const App = () => {
         <div className="relative z-10">
           <Suspense fallback={<PageLoader />}>
             <Routes>
+              {/* English routes (default - no language prefix) */}
               <Route path="/" element={<LandingPage />} />
               <Route path="/blog" element={<BlogList />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/portfolio" element={<Portfolio />} />
+              
+              {/* French routes (with /fr prefix) */}
+              <Route path="/fr" element={<LandingPage />} />
+              <Route path="/fr/blog" element={<BlogList />} />
+              <Route path="/fr/blog/:slug" element={<BlogPost />} />
+              <Route path="/fr/portfolio" element={<Portfolio />} />
+              
+              {/* 404 for all other routes */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

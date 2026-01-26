@@ -2,19 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://cognibook.com/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cognibook.com/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://cognibook.com/es"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://cognibook.com/fr"/>
+    <loc>https://solodeveloping.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.cognibook.com/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.cognibook.com/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.cognibook.com/es"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.cognibook.com/fr"/>
+    <loc>https://www.solodeveloping.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.solodeveloping.com/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://solodeveloping.com/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/portfolio"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://solodeveloping.com/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/blog"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

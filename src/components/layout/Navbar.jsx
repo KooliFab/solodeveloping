@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Code2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '@/components/layout/LanguageSwitcher';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { i18n, t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,12 +19,15 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Get language prefix for URLs
+  const langPrefix = i18n.language === 'fr' ? '/fr' : '';
+
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/#about' },
-    { name: 'Portfolio', path: '/portfolio' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'Contact', path: '/#contact' },
+    { name: t('navbar.home'), path: `${langPrefix}/` },
+    { name: t('navbar.about'), path: `${langPrefix}/#about` },
+    { name: t('navbar.portfolio'), path: `${langPrefix}/portfolio` },
+    { name: t('navbar.blog'), path: `${langPrefix}/blog` },
+    { name: t('navbar.contact'), path: `${langPrefix}/#contact` },
   ];
 
   return (
@@ -60,11 +66,12 @@ const Navbar = () => {
               )}
             </Link>
           ))}
+          <LanguageSwitcher />
           <a
             href="mailto:contact@solodeveloping.com"
             className="px-5 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:bg-primary/90 transition-all duration-300 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)]"
           >
-            Hire Me
+            {t('navbar.hireMe')}
           </a>
         </div>
 
@@ -97,11 +104,14 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
+              <div className="mt-2">
+                <LanguageSwitcher />
+              </div>
               <a
                 href="mailto:contact@solodeveloping.com"
                 className="mt-4 w-full py-3 bg-primary text-primary-foreground rounded-xl text-center font-bold"
               >
-                Hire Me
+                {t('navbar.hireMe')}
               </a>
             </div>
           </motion.div>

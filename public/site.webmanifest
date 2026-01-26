@@ -1,7 +1,7 @@
 {
-  "name": "Cogni's Adventures",
-  "short_name": "Cogni",
-  "description": "Interactive children's book and app with educational content for kids",
+  "name": "Solo Developing",
+  "short_name": "SoloDev",
+  "description": "Full-stack developer portfolio showcasing modern web applications and mobile solutions",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
