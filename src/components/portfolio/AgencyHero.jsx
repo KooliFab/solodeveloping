@@ -21,8 +21,8 @@ const AgencyHero = () => {
     import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
       gsap.registerPlugin(ScrollTrigger);
 
-      // Split text for character-by-character animation
-      const titleElements = titleRef.current?.querySelectorAll('.hero-title-line');
+      // Check if mobile - skip text splitting animation to prevent cropping
+      const isMobile = window.innerWidth < 768;
 
       // Timeline for entrance animations
       const tl = gsap.timeline({
@@ -30,29 +30,65 @@ const AgencyHero = () => {
         delay: 0.2
       });
 
-      // Animate each title line with stagger
-      titleElements?.forEach((line, index) => {
-        const split = splitTextAdvanced(line);
+      // Only run character-by-character animation on desktop
+      // On mobile, the text splitting causes cropping due to white-space: nowrap
+      if (!isMobile) {
+        // Split text for character-by-character animation
+        const titleElements = titleRef.current?.querySelectorAll('.hero-title-line');
 
+        // Animate each title line with stagger
+        titleElements?.forEach((line, index) => {
+          const isGradientLine = line.classList.contains('bg-gradient-to-r');
+          
+          if (isGradientLine) {
+            // Simple fade-in for gradient text (text-splitting breaks gradient)
+            tl.fromTo(
+              line,
+              {
+                opacity: 0,
+                y: 60,
+              },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power4.out'
+              },
+              index * 0.3
+            );
+          } else {
+            // Character-by-character animation for regular text
+            const split = splitTextAdvanced(line);
+
+            tl.fromTo(
+              split.chars,
+              {
+                opacity: 0,
+                y: 120,
+                rotateX: -90,
+                transformOrigin: '50% 100%'
+              },
+              {
+                opacity: 1,
+                y: 0,
+                rotateX: 0,
+                duration: 1.2,
+                stagger: 0.03,
+                ease: 'power4.out'
+              },
+              index * 0.3
+            );
+          }
+        });
+      } else {
+        // Simple fade-in for mobile without text splitting
+        const titleElements = titleRef.current?.querySelectorAll('.hero-title-line');
         tl.fromTo(
-          split.chars,
-          {
-            opacity: 0,
-            y: 120,
-            rotateX: -90,
-            transformOrigin: '50% 100%'
-          },
-          {
-            opacity: 1,
-            y: 0,
-            rotateX: 0,
-            duration: 1.2,
-            stagger: 0.03,
-            ease: 'power4.out'
-          },
-          index * 0.3
+          titleElements,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
         );
-      });
+      }
 
       // Subtitle fade in
       tl.fromTo(
@@ -137,39 +173,40 @@ const AgencyHero = () => {
           <div ref={titleRef} className="mb-10 space-y-2">
             <h1 className="font-display font-bold tracking-tight leading-[0.9] perspective-1000">
               <div className="hero-title-line text-6xl md:text-8xl lg:text-9xl mb-4 text-foreground">
-                Building Digital
+                I build full stack.
               </div>
               <div className="hero-title-line text-6xl md:text-8xl lg:text-9xl mb-4 bg-gradient-to-r from-electric-400 via-electric-500 to-electric-600 bg-clip-text text-transparent">
-                Experiences
-              </div>
-              <div className="hero-title-line text-5xl md:text-7xl lg:text-8xl text-foreground">
-                That Level Up Fast
+                You scale fast.
               </div>
             </h1>
           </div>
 
           {/* Subtitle with proof points */}
           <div ref={subtitleRef} className="mb-16 max-w-4xl">
-            <p className="text-2xl md:text-3xl lg:text-4xl text-muted-foreground mb-8 font-light leading-relaxed">
-              <span className="text-foreground font-medium">10+ years.</span>{' '}
-              <span className="text-foreground font-medium">15+ apps.</span>{' '}
-              <span className="text-electric-500 font-semibold">Zero missed deadlines.</span>
-            </p>
-
-            <div className="flex flex-wrap gap-6 text-lg md:text-xl text-muted-foreground font-mono">
+            <div className="flex flex-wrap gap-6 text-lg md:text-xl text-muted-foreground font-mono mb-8">
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-electric-500 rounded-full animate-pulse" />
-                AI Automation
+                Mobile apps
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-electric-500 rounded-full animate-pulse" />
-                Mobile Apps
+                Web apps
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-electric-500 rounded-full animate-pulse" />
-                Full-Stack
+                Blockchain
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-electric-500 rounded-full animate-pulse" />
+                Automation
               </span>
             </div>
+
+            <p className="text-2xl md:text-3xl lg:text-4xl text-muted-foreground font-light leading-relaxed">
+              <span className="text-foreground font-medium">20+ years experience.</span>{' '}
+              <span className="text-foreground font-medium">No overpromise, no underdeliver.</span>{' '}
+              <span className="text-electric-500 font-semibold">I ship!</span>
+            </p>
           </div>
 
           {/* CTAs */}

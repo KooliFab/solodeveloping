@@ -218,7 +218,7 @@ const HorizontalShowcase = () => {
         }}
       >
         {/* Intro card */}
-        <div className="flex-shrink-0 w-[40vw] min-w-[400px] h-[70vh] flex flex-col justify-center">
+        <div className="flex-shrink-0 w-[85vw] md:w-[40vw] md:min-w-[400px] h-[75vh] md:h-[60vh] flex flex-col justify-center">
           <h3 className="text-5xl md:text-6xl font-bold font-display mb-6 leading-tight">
             Featured
             <br />
@@ -235,7 +235,7 @@ const HorizontalShowcase = () => {
         {projects.map((project, index) => (
           <div
             key={project.id}
-            className="project-card flex-shrink-0 w-[45vw] min-w-[500px] h-[70vh] group cursor-pointer"
+            className="project-card flex-shrink-0 w-[85vw] md:w-[45vw] md:min-w-[500px] h-[75vh] md:h-[60vh] group cursor-pointer"
           >
             <div className="relative h-full rounded-3xl overflow-hidden border border-electric-500/20 bg-card/50 backdrop-blur-sm hover:border-electric-500/50 transition-all duration-500 hover:shadow-[0_0_50px_rgba(59,130,246,0.2)]">
               {/* Background gradient */}
@@ -314,7 +314,7 @@ const HorizontalShowcase = () => {
         ))}
 
         {/* End card - CTA */}
-        <div className="flex-shrink-0 w-[40vw] min-w-[400px] h-[70vh] flex flex-col justify-center items-center text-center px-8">
+        <div className="flex-shrink-0 w-[85vw] md:w-[40vw] md:min-w-[400px] h-[85vh] md:h-[70vh] flex flex-col justify-center items-center text-center px-8">
           <h3 className="text-5xl md:text-6xl font-bold font-display mb-6">
             Want to see
             <br />

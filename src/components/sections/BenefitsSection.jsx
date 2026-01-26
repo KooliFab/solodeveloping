@@ -70,14 +70,14 @@ const BenefitsSection = () => {
   }, []);
 
   return (
-    <section id="benefits" className="py-20 bg-gradient-to-b from-white to-blue-50">
+    <section id="benefits" className="py-12 md:py-16 lg:py-20 bg-gradient-to-b from-white to-blue-50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-12 lg:mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">{t('benefitsSection.title')}</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -87,9 +87,9 @@ const BenefitsSection = () => {
           <div className="w-20 h-1 bg-[hsl(var(--primary))] mx-auto mt-8"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-11 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-11 gap-6 md:gap-8 items-center">
           {/* Left Column */}
-          <div className="lg:col-span-4 space-y-8">
+          <div className="lg:col-span-4 space-y-6 md:space-y-8">
             <BenefitCard
               icon={benefitItems[0].icon}
               title={benefitItems[0].title}
@@ -122,7 +122,7 @@ const BenefitsSection = () => {
           </div>
 
           {/* Right Column */}
-          <div className="lg:col-span-4 space-y-8">
+          <div className="lg:col-span-4 space-y-6 md:space-y-8">
             <BenefitCard
               icon={benefitItems[1].icon}
               title={benefitItems[1].title}

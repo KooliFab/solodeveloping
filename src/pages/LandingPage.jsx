@@ -18,7 +18,7 @@ const LandingPage = () => {
     <>
       <Helmet>
         <title>solodeveloping.com - Level Up Your Project | AI • Mobile • Web</title>
-        <meta name="description" content="I build intelligent mobile experiences and AI automation for founders who need to ship fast. 10+ years experience, 15+ apps shipped, zero missed deadlines." />
+        <meta name="description" content="I build full stack platforms from mobile to web to blockchain. 20+ years experience. No overpromise, no underdeliver. I ship!" />
         <meta name="keywords" content="full-stack developer, mobile app development, AI automation, React Native, web development, solo developer, UAE developer, Canada developer" />
         <meta property="og:title" content="solodeveloping.com - Full-Stack Developer" />
         <meta property="og:description" content="AI automation • Mobile apps • Full-stack development. Work directly with an experienced developer who delivers results." />

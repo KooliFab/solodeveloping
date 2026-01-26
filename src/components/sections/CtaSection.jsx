@@ -91,7 +91,7 @@ const CtaSection = ({ handleBuyNow }) => {
   };
 
   return (
-    <section id="free-story" className="py-20 hero-gradient text-white">
+    <section id="free-story" className="py-12 md:py-16 lg:py-20 hero-gradient text-white">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

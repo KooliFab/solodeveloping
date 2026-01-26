@@ -15,20 +15,20 @@ const Hero = ({ handleBuyNow, handleDownloadApp, scrollToSection }) => {
   return (
     <section
       aria-labelledby="hero-heading"
-      className={`${paddingTop} pb-20 relative overflow-hidden`}
+      className={`${paddingTop} pb-12 md:pb-16 lg:pb-20 relative md:overflow-x-hidden`}
     >
-      <div className="blob-animation" aria-hidden="true"></div>
+      <div className="blob-animation hidden md:block" aria-hidden="true"></div>
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center md:gap-12">
           {/* Title - order 1 on mobile, left column on desktop */}
           <div className="w-full md:w-1/2 order-1 mb-6 md:mb-0">
-            <h1 id="hero-heading" className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-gray-800">
+            <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight text-gray-800 break-words">
               {t('hero.title')}
             </h1>
 
             {/* Subtitle and buttons - shown on desktop only (after title in same column) */}
             <div className="hidden md:block">
-              <p className="text-xl text-gray-600 mb-8" role="doc-subtitle">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 md:mb-8 max-w-2xl break-words" role="doc-subtitle">
                 {t('hero.subtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
@@ -40,7 +40,8 @@ const Hero = ({ handleBuyNow, handleDownloadApp, scrollToSection }) => {
                       className="rounded-full bg-primary hover:bg-primary/90 text-white"
                       aria-label={t('hero.frenchVersion')}
                     >
-                      <span className="mr-2 text-xl">🇫🇷</span> {t('hero.frenchVersion')}
+                      <span className="mr-2 text-lg sm:text-xl flex-shrink-0">🇫🇷</span>
+                      <span className="whitespace-nowrap">{t('hero.frenchVersion')}</span>
                     </Button>
                     <Button
                       onClick={() => handleBuyNow('English Version', import.meta.env.VITE_AMAZON_ASIN_EN)}
@@ -48,7 +49,8 @@ const Hero = ({ handleBuyNow, handleDownloadApp, scrollToSection }) => {
                       className="rounded-full bg-primary hover:bg-primary/90 text-white"
                       aria-label={t('hero.englishVersion')}
                     >
-                      <span className="mr-2 text-xl">🇬🇧</span> {t('hero.englishVersion')}
+                      <span className="mr-2 text-lg sm:text-xl flex-shrink-0">🇬🇧</span>
+                      <span className="whitespace-nowrap">{t('hero.englishVersion')}</span>
                     </Button>
                   </>
                 ) : (
@@ -59,7 +61,8 @@ const Hero = ({ handleBuyNow, handleDownloadApp, scrollToSection }) => {
                       className="rounded-full bg-primary hover:bg-primary/90 text-white"
                       aria-label={t('hero.englishVersion')}
                     >
-                      <span className="mr-2 text-xl">🇬🇧</span> {t('hero.englishVersion')}
+                      <span className="mr-2 text-lg sm:text-xl flex-shrink-0">🇬🇧</span>
+                      <span className="whitespace-nowrap">{t('hero.englishVersion')}</span>
                     </Button>
                     <Button
                       onClick={() => handleBuyNow('Version Française', import.meta.env.VITE_AMAZON_ASIN_FR)}
@@ -67,7 +70,8 @@ const Hero = ({ handleBuyNow, handleDownloadApp, scrollToSection }) => {
                       className="rounded-full bg-primary hover:bg-primary/90 text-white"
                       aria-label={t('hero.frenchVersion')}
                     >
-                      <span className="mr-2 text-xl">🇫🇷</span> {t('hero.frenchVersion')}
+                      <span className="mr-2 text-lg sm:text-xl flex-shrink-0">🇫🇷</span>
+                      <span className="whitespace-nowrap">{t('hero.frenchVersion')}</span>
                     </Button>
                   </>
                 )}
@@ -86,7 +90,7 @@ const Hero = ({ handleBuyNow, handleDownloadApp, scrollToSection }) => {
 
           {/* Image - order 2 on mobile, right column on desktop */}
           <div className="w-full md:w-1/2 relative mb-10 md:mb-0 order-2">
-            <div className="relative floating">
+            <div className="relative md:animate-float">
               <img
                 src="/illustrations/home_header.webp"
                 alt={t('hero.imageAlt')}
@@ -105,7 +109,7 @@ const Hero = ({ handleBuyNow, handleDownloadApp, scrollToSection }) => {
 
           {/* Subtitle and buttons - order 3 on mobile (after image), hidden on desktop */}
           <div className="w-full order-3 md:hidden">
-            <p className="text-xl text-gray-600 mb-8" role="doc-subtitle">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 md:mb-8 max-w-2xl break-words" role="doc-subtitle">
               {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
@@ -117,7 +121,8 @@ const Hero = ({ handleBuyNow, handleDownloadApp, scrollToSection }) => {
                     className="rounded-full bg-primary hover:bg-primary/90 text-white"
                     aria-label={t('hero.frenchVersion')}
                   >
-                    <span className="mr-2 text-xl">🇫🇷</span> {t('hero.frenchVersion')}
+                    <span className="mr-2 text-lg sm:text-xl flex-shrink-0">🇫🇷</span>
+                    <span className="whitespace-nowrap">{t('hero.frenchVersion')}</span>
                   </Button>
                   <Button
                     onClick={() => handleBuyNow('English Version', import.meta.env.VITE_AMAZON_ASIN_EN)}
@@ -125,7 +130,8 @@ const Hero = ({ handleBuyNow, handleDownloadApp, scrollToSection }) => {
                     className="rounded-full bg-primary hover:bg-primary/90 text-white"
                     aria-label={t('hero.englishVersion')}
                   >
-                    <span className="mr-2 text-xl">🇬🇧</span> {t('hero.englishVersion')}
+                    <span className="mr-2 text-lg sm:text-xl flex-shrink-0">🇬🇧</span>
+                    <span className="whitespace-nowrap">{t('hero.englishVersion')}</span>
                   </Button>
                 </>
               ) : (
@@ -136,7 +142,8 @@ const Hero = ({ handleBuyNow, handleDownloadApp, scrollToSection }) => {
                     className="rounded-full bg-primary hover:bg-primary/90 text-white"
                     aria-label={t('hero.englishVersion')}
                   >
-                    <span className="mr-2 text-xl">🇬🇧</span> {t('hero.englishVersion')}
+                    <span className="mr-2 text-lg sm:text-xl flex-shrink-0">🇬🇧</span>
+                    <span className="whitespace-nowrap">{t('hero.englishVersion')}</span>
                   </Button>
                   <Button
                     onClick={() => handleBuyNow('Version Française', import.meta.env.VITE_AMAZON_ASIN_FR)}
@@ -144,7 +151,8 @@ const Hero = ({ handleBuyNow, handleDownloadApp, scrollToSection }) => {
                     className="rounded-full bg-primary hover:bg-primary/90 text-white"
                     aria-label={t('hero.frenchVersion')}
                   >
-                    <span className="mr-2 text-xl">🇫🇷</span> {t('hero.frenchVersion')}
+                    <span className="mr-2 text-lg sm:text-xl flex-shrink-0">🇫🇷</span>
+                    <span className="whitespace-nowrap">{t('hero.frenchVersion')}</span>
                   </Button>
                 </>
               )}
@@ -161,7 +169,7 @@ const Hero = ({ handleBuyNow, handleDownloadApp, scrollToSection }) => {
           </div>
         </div>
 
-        <div className="flex justify-center mt-16">
+        <div className="flex justify-center mt-8 md:mt-12 lg:mt-16">
           <button
             onClick={() => scrollToSection('book')}
             className="scroll-down flex flex-col items-center text-gray-500 hover:text-primary transition-colors"

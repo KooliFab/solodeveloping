@@ -24,7 +24,7 @@ const BookSection = ({ handleBuyNow }) => {
   return (
     <section
       id="book"
-      className="py-20 bg-gradient-to-b from-white to-purple-50"
+      className="py-12 md:py-16 lg:py-20 bg-gradient-to-b from-white to-purple-50"
       aria-labelledby="book-section-title"
       itemScope
       itemType="https://schema.org/Product"
@@ -41,7 +41,7 @@ const BookSection = ({ handleBuyNow }) => {
             {...leftContentAnimation}
             className="md:w-1/2 w-full"
           >
-            <div className="relative floating max-w-md mx-auto">
+            <div className="relative md:animate-float max-w-md mx-auto">
               <img
                 src="/images/book/book.webp"
                 alt="Cogni's Adventures Book Cover - Interactive children's book with educational content"
@@ -72,7 +72,7 @@ const BookSection = ({ handleBuyNow }) => {
                   <Button
                     onClick={() => handleBuyNow('Version Française', import.meta.env.VITE_AMAZON_ASIN_FR)}
                     size="lg"
-                    className="rounded-full bg-primary hover:bg-primary/90 text-white h-14 text-base"
+                    className="rounded-full bg-primary hover:bg-primary/90 text-white text-base"
                     aria-label={t('bookSection.frenchVersion')}
                   >
                     <span className="mr-2 text-xl">🇫🇷</span> {t('bookSection.frenchVersion')}
@@ -81,7 +81,7 @@ const BookSection = ({ handleBuyNow }) => {
                     onClick={() => handleBuyNow('English Version', import.meta.env.VITE_AMAZON_ASIN_EN)}
                     size="lg"
                     variant="outline"
-                    className="rounded-full border-primary text-primary hover:bg-primary/10 h-14 text-base"
+                    className="rounded-full border-primary text-primary hover:bg-primary/10 text-base"
                     aria-label={t('bookSection.englishVersion')}
                   >
                     <span className="mr-2 text-xl">🇬🇧</span> {t('bookSection.englishVersion')}
@@ -92,7 +92,7 @@ const BookSection = ({ handleBuyNow }) => {
                   <Button
                     onClick={() => handleBuyNow('English Version', import.meta.env.VITE_AMAZON_ASIN_EN)}
                     size="lg"
-                    className="rounded-full bg-primary hover:bg-primary/90 text-white h-14 text-base"
+                    className="rounded-full bg-primary hover:bg-primary/90 text-white text-base"
                     aria-label={t('bookSection.englishVersion')}
                   >
                     <span className="mr-2 text-xl">🇬🇧</span> {t('bookSection.englishVersion')}
@@ -101,7 +101,7 @@ const BookSection = ({ handleBuyNow }) => {
                     onClick={() => handleBuyNow('Version Française', import.meta.env.VITE_AMAZON_ASIN_FR)}
                     size="lg"
                     variant="outline"
-                    className="rounded-full border-primary text-primary hover:bg-primary/10 h-14 text-base"
+                    className="rounded-full border-primary text-primary hover:bg-primary/10 text-base"
                     aria-label={t('bookSection.frenchVersion')}
                   >
                     <span className="mr-2 text-xl">🇫🇷</span> {t('bookSection.frenchVersion')}

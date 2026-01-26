@@ -42,12 +42,10 @@ const DeveloperHero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
-              <span className="block text-foreground">I build intelligent</span>
+              <span className="block text-foreground">I build full stack.</span>
               <span className="block bg-gradient-to-r from-electric-400 to-electric-600 bg-clip-text text-transparent animate-glow">
-                mobile experiences
+                You scale fast.
               </span>
-              <span className="block text-foreground">for founders who</span>
-              <span className="block text-electric-500">level up fast</span>
             </motion.h1>
           </div>
 
@@ -59,13 +57,12 @@ const DeveloperHero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <span className="font-semibold text-foreground">10+ years.</span>{' '}
-            <span className="font-semibold text-foreground">15+ apps shipped.</span>{' '}
-            <span className="font-semibold text-electric-500">Zero missed deadlines.</span>
-            <br />
-            <span className="text-lg mt-4 block">
-              AI automation • Mobile apps • Full-stack development
+            <span className="text-lg block mb-4">
+              Mobile apps • Web apps • Blockchain • Automation
             </span>
+            <span className="font-semibold text-foreground">20+ years experience.</span>{' '}
+            <span className="font-semibold text-foreground">No overpromise, no underdeliver.</span>{' '}
+            <span className="font-semibold text-electric-500">I ship!</span>
           </motion.p>
 
           {/* CTAs */}

@@ -22,7 +22,7 @@ const AppSection = ({ handleDownloadApp }) => {
 
   return (
     
-      <section id="app" className="py-20 bg-gradient-to-b from-purple-50 to-white">
+      <section id="app" className="py-12 md:py-16 lg:py-20 bg-gradient-to-b from-purple-50 to-white">
       <div className="container mx-auto px-4">
         <SectionHeader 
           title={t('appSection.title')} 
@@ -74,7 +74,7 @@ const AppSection = ({ handleDownloadApp }) => {
             {...rightContentAnimation}
             className="md:w-1/2 mb-10 md:mb-0"
           >
-            <div className="relative floating max-w-md mx-auto">
+            <div className="relative md:animate-float max-w-md mx-auto">
               <img
                 src="/images/app/en/smartphone-en.webp"
                 alt={t('appSection.appImageAlt')}

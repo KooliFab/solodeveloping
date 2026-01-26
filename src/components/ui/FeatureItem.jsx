@@ -17,13 +17,13 @@ const FeatureItem = ({
   iconColor = "text-primary" 
 }) => {
   return (
-    <div className="flex items-start gap-4">
-      <div className={`${iconBgColor} p-3 rounded-full`}>
-        {React.cloneElement(icon, { className: `h-6 w-6 ${iconColor}` })}
+    <div className="flex items-start gap-3 md:gap-4">
+      <div className={`${iconBgColor} p-2.5 md:p-3 rounded-full flex-shrink-0`}>
+        {React.cloneElement(icon, { className: `h-5 w-5 md:h-6 md:w-6 ${iconColor}` })}
       </div>
-      <div>
-        <h4 className="text-xl font-semibold mb-2">{title}</h4>
-        <p className="text-gray-600">
+      <div className="flex-1 min-w-0">
+        <h4 className="text-lg md:text-xl font-semibold mb-1.5 md:mb-2">{title}</h4>
+        <p className="text-gray-600 text-sm md:text-base leading-relaxed break-words">
           {description}
         </p>
       </div>
