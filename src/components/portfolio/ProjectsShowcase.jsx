@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
@@ -55,12 +56,13 @@ const projects = [
 ];
 
 const ProjectsShowcase = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [hoveredProject, setHoveredProject] = useState(null);
   const sectionRef = useRef(null);
   const projectCardsRef = useRef([]);
 
+  const langPrefix = i18n.language === 'fr' ? '/fr' : '';
   const categories = [t('projects.filterAll'), t('projects.filterAI'), t('projects.filterMobile'), t('projects.filterWeb')];
 
   const filteredProjects = selectedCategory === t('projects.filterAll')
@@ -287,14 +289,16 @@ const ProjectsShowcase = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <Button
-            size="lg"
-            variant="outline"
-            className="group border-electric-500 text-electric-500 hover:bg-electric-500 hover:text-white px-8 py-6 text-lg rounded-full transition-all duration-300"
-          >
-            {t('projects.viewAllButton')}
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <Link to={`${langPrefix}/projects`}>
+            <Button
+              size="lg"
+              variant="outline"
+              className="group border-electric-500 text-electric-500 hover:bg-electric-500 hover:text-white px-8 py-6 text-lg rounded-full transition-all duration-300"
+            >
+              {t('projects.viewAllButton')}
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>

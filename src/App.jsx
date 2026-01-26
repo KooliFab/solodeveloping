@@ -145,15 +145,15 @@ const App = () => {
             <Routes>
               {/* English routes (default - no language prefix) */}
               <Route path="/" element={<LandingPage />} />
-              <Route path="/blog" element={<BlogList />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
-              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/articles" element={<BlogList />} />
+              <Route path="/articles/:slug" element={<BlogPost />} />
+              <Route path="/projects" element={<Portfolio />} />
               
               {/* French routes (with /fr prefix) */}
               <Route path="/fr" element={<LandingPage />} />
-              <Route path="/fr/blog" element={<BlogList />} />
-              <Route path="/fr/blog/:slug" element={<BlogPost />} />
-              <Route path="/fr/portfolio" element={<Portfolio />} />
+              <Route path="/fr/articles" element={<BlogList />} />
+              <Route path="/fr/articles/:slug" element={<BlogPost />} />
+              <Route path="/fr/projects" element={<Portfolio />} />
               
               {/* 404 for all other routes */}
               <Route path="*" element={<NotFound />} />

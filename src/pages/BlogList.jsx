@@ -22,7 +22,7 @@ const BlogList = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Technical Blog</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Articles</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Thoughts on software engineering, architecture, and developer experience.
             </p>
@@ -42,7 +42,7 @@ const BlogList = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-primary/30 transition-all group flex flex-col h-full"
                 >
-                  <Link to={`/blog/${post.slug}`} className="block overflow-hidden h-48 relative">
+                  <Link to={`/articles/${post.slug}`} className="block overflow-hidden h-48 relative">
                     <div className="absolute inset-0 bg-primary/20 group-hover:bg-primary/10 transition-colors z-10" />
                     <img 
                       src={post.coverImage} 
@@ -60,7 +60,7 @@ const BlogList = () => {
                     </div>
                     
                     <h2 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-primary transition-colors">
-                      <Link to={`/blog/${post.slug}`}>
+                      <Link to={`/articles/${post.slug}`}>
                         {title}
                       </Link>
                     </h2>
@@ -72,7 +72,7 @@ const BlogList = () => {
                     )}
                     
                     <Link 
-                      to={`/blog/${post.slug}`}
+                      to={`/articles/${post.slug}`}
                       className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors mt-auto"
                     >
                       Read Article <ArrowRight className="w-4 h-4" />

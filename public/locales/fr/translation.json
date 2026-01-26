@@ -3,10 +3,9 @@
     "brand": "SOLODEVELOPING",
     "home": "Accueil",
     "about": "À propos",
-    "portfolio": "Portfolio",
-    "blog": "Blog",
-    "contact": "Contact",
-    "hireMe": "Me recruter"
+    "portfolio": "Projets",
+    "blog": "Articles",
+    "hireMe": "Contact"
   },
   "hero": {
     "title1": "Je développe full stack.",

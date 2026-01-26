@@ -17,7 +17,7 @@ const BlogPost = () => {
   const post = blogPosts.find(p => p.slug === slug);
 
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    return <Navigate to="/articles" replace />;
   }
 
   // Get content safely based on language, fallback to English
@@ -42,11 +42,11 @@ const BlogPost = () => {
             transition={{ duration: 0.5 }}
           >
             <Link 
-              to="/blog" 
+              to="/articles" 
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-4 group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              Back to Blog
+              Back to Articles
             </Link>
           </motion.div>
 

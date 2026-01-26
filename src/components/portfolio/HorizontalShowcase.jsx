@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 
@@ -8,9 +9,11 @@ import gsap from 'gsap';
  * Inspired by The Brink Agency's horizontal scroll sections
  */
 const HorizontalShowcase = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
+  
+  const langPrefix = i18n.language === 'fr' ? '/fr' : '';
 
   // Ensure track starts at x:0 immediately on mount
   useEffect(() => {
@@ -325,9 +328,12 @@ const HorizontalShowcase = () => {
           <p className="text-xl text-muted-foreground mb-8 max-w-md">
             {t('horizontalShowcase.ctaDescription')}
           </p>
-          <button className="px-8 py-4 bg-electric-500 hover:bg-electric-600 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]">
+          <Link 
+            to={`${langPrefix}/#contact`}
+            className="px-8 py-4 bg-electric-500 hover:bg-electric-600 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]"
+          >
             {t('horizontalShowcase.ctaButton')}
-          </button>
+          </Link>
         </div>
       </div>
 

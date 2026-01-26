@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 
@@ -8,6 +9,8 @@ import gsap from 'gsap';
  * Integrates with GSAP ScrollTrigger for synchronized animations
  */
 export const useSmoothScroll = () => {
+  const location = useLocation();
+
   useEffect(() => {
     let lenisInstance;
 
@@ -51,6 +54,17 @@ export const useSmoothScroll = () => {
       // Emit custom event when Lenis is ready (immediate)
       requestAnimationFrame(() => {
         window.dispatchEvent(new CustomEvent('lenis:ready'));
+        
+        // Check for hash on initial load/mount
+        if (location.hash) {
+          const target = document.querySelector(location.hash);
+          if (target) {
+            // Small delay to ensure layout is ready
+            setTimeout(() => {
+              lenisInstance.scrollTo(target, { offset: 0, duration: 1.5 });
+            }, 100);
+          }
+        }
       });
     };
 
@@ -64,5 +78,15 @@ export const useSmoothScroll = () => {
       }
       gsap.ticker.lagSmoothing(500, 33);
     };
-  }, []);
+  }, []); // Run once on mount
+
+  // Handle hash changes while component is mounted
+  useEffect(() => {
+    if (location.hash && window.lenis) {
+      const target = document.querySelector(location.hash);
+      if (target) {
+        window.lenis.scrollTo(target, { offset: 0, duration: 1.5 });
+      }
+    }
+  }, [location.hash]);
 };

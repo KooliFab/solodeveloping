@@ -25,9 +25,8 @@ const Navbar = () => {
   const navLinks = [
     { name: t('navbar.home'), path: `${langPrefix}/` },
     { name: t('navbar.about'), path: `${langPrefix}/#about` },
-    { name: t('navbar.portfolio'), path: `${langPrefix}/portfolio` },
-    { name: t('navbar.blog'), path: `${langPrefix}/blog` },
-    { name: t('navbar.contact'), path: `${langPrefix}/#contact` },
+    { name: t('navbar.portfolio'), path: `${langPrefix}/projects` },
+    { name: t('navbar.blog'), path: `${langPrefix}/articles` },
   ];
 
   return (
@@ -67,12 +66,12 @@ const Navbar = () => {
             </Link>
           ))}
           <LanguageSwitcher />
-          <a
-            href="mailto:contact@solodeveloping.com"
+          <Link
+            to={`${langPrefix}/#contact`}
             className="px-5 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:bg-primary/90 transition-all duration-300 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)]"
           >
             {t('navbar.hireMe')}
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -107,12 +106,13 @@ const Navbar = () => {
               <div className="mt-2">
                 <LanguageSwitcher />
               </div>
-              <a
-                href="mailto:contact@solodeveloping.com"
-                className="mt-4 w-full py-3 bg-primary text-primary-foreground rounded-xl text-center font-bold"
+              <Link
+                to={`${langPrefix}/#contact`}
+                onClick={() => setIsOpen(false)}
+                className="mt-4 w-full py-3 bg-primary text-primary-foreground rounded-xl text-center font-bold inline-block"
               >
                 {t('navbar.hireMe')}
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}
