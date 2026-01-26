@@ -242,16 +242,9 @@ export default defineConfig(({ mode }) => {
 					'react-vendor': ['react', 'react-dom', 'react-router-dom'],
 					// UI component libraries
 					'ui-vendor': [
-						'@radix-ui/react-dialog',
 						'@radix-ui/react-toast',
 						'@radix-ui/react-dropdown-menu',
-						'@radix-ui/react-tabs',
-						'@radix-ui/react-slider',
-						'@radix-ui/react-checkbox',
-						'@radix-ui/react-label',
 						'@radix-ui/react-slot',
-						'@radix-ui/react-avatar',
-						'@radix-ui/react-alert-dialog',
 					],
 					// Animation libraries
 					'animation-vendor': ['framer-motion', 'gsap', 'lenis'],
