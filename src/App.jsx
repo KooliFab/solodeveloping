@@ -1,8 +1,9 @@
-import { Suspense, lazy, useEffect } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from '@/components/ui/toaster';
 import { useTranslation } from 'react-i18next';
+import IntroAnimation from '@/components/ui/IntroAnimation';
 
 // Lazy load pages
 const LandingPage = lazy(() => import('@/pages/LandingPage'));
@@ -92,6 +93,7 @@ const PageLoader = () => (
 
 const App = () => {
   const { i18n } = useTranslation();
+  const [showIntro, setShowIntro] = useState(true);
 
   // Detect and set language based on URL path
   useEffect(() => {
@@ -130,6 +132,9 @@ const App = () => {
 
   return (
     <HelmetProvider>
+      {showIntro && (
+        <IntroAnimation onComplete={() => setShowIntro(false)} />
+      )}
       <GreenCursor />
       <div className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground relative">
         {/* Grid Background - Fixed across entire site */}
