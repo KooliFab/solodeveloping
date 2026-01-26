@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 @layer base {
-  /* Dark mode first (default) - Solo Leveling color palette */
+  /* Dark mode first (default) - Terminal green color palette */
   :root {
     --background: 0 0% 2%; /* Obsidian Black #050505 */
     --foreground: 0 0% 100%; /* Pure White */
@@ -16,8 +16,8 @@
     --popover: 0 0% 2%;
     --popover-foreground: 0 0% 100%;
 
-    /* System Blue - Solo Leveling accent */
-    --primary: 217 91% 54%; /* System Blue #2563EB */
+    /* Terminal Green - Main accent */
+    --primary: 142 71% 45%; /* Green #22c55e */
     --primary-foreground: 0 0% 100%;
 
     /* Darker slate secondary */
@@ -27,7 +27,7 @@
     --muted: 0 0% 12%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 217 91% 54%; /* System Blue accent #2563EB */
+    --accent: 142 71% 45%; /* Green accent #22c55e */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -35,14 +35,9 @@
 
     --border: 0 0% 18%;
     --input: 0 0% 18%;
-    --ring: 217 91% 54%;
+    --ring: 142 71% 45%;
 
     --radius: 0.5rem;
-
-    /* Custom cursor size */
-    --cursor-size: 20px;
-    --cursor-hover-size: 80px;
-    --accent-blue: #2563EB;
   }
 
   /* Light mode - Available but not default */
@@ -56,7 +51,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 217 91% 60%;
+    --primary: 142 71% 45%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96.1%;
@@ -65,7 +60,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 217 91% 60%;
+    --accent: 142 71% 45%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -73,7 +68,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 217 91% 60%;
+    --ring: 142 71% 45%;
 
     --radius: 0.5rem;
   }
@@ -93,8 +88,8 @@
     @apply bg-background text-foreground;
     font-family: "Inter", sans-serif;
     overflow-x: hidden;
-    cursor: none; /* Hide default cursor */
     background-color: #050505;
+    cursor: none; /* Hide default cursor for custom green cursor */
   }
   h1,
   h2,
@@ -160,20 +155,17 @@
     will-change: transform;
   }
 
-  /* Agency-style text reveal */
-  .text-reveal {
-    overflow: hidden;
-    display: inline-block;
-  }
-
-  .text-reveal > * {
-    display: inline-block;
-    transform: translateY(100%);
+  /* Grid Background */
+  .grid-background {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 
   /* Gradient text utilities */
   .gradient-text {
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -181,44 +173,42 @@
 
   /* Agency-style shadows */
   .shadow-electric {
-    box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 10px 40px -10px rgba(34, 197, 94, 0.3);
   }
 
   .shadow-electric-lg {
-    box-shadow: 0 20px 60px -10px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 20px 60px -10px rgba(34, 197, 94, 0.4);
   }
 
-  /* Custom Cursor */
-  #cursor {
+  /* Simple Green Cursor */
+  #green-cursor {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: var(--cursor-size);
-    height: var(--cursor-size);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.1);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #22c55e;
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s, background 0.3s;
-    mix-blend-mode: difference;
+    transition: width 0.2s ease, height 0.2s ease, border-width 0.2s ease;
   }
 
-  #cursor.hovered {
-    width: var(--cursor-hover-size);
-    height: var(--cursor-hover-size);
-    background: rgba(255, 255, 255, 1);
-    mix-blend-mode: difference;
-    border: none;
+  #green-cursor-dot {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
   }
 
-  /* Grid Background */
-  .grid-background {
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+  /* Cursor hover state */
+  body.cursor-hover #green-cursor {
+    width: 40px;
+    height: 40px;
+    border-width: 2px;
   }
 }
 
@@ -254,7 +244,7 @@
 }
 
 .code-block-copy-btn {
-  @apply flex items-center gap-2 px-3 py-1.5 text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 rounded transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500;
+  @apply flex items-center gap-2 px-3 py-1.5 text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 rounded transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500;
 }
 
 /* Syntax Highlighter Overrides */
@@ -287,7 +277,7 @@
 
 /* Inline code styling */
 .prose code:not(pre code) {
-  @apply bg-gray-800 text-blue-400 px-2 py-1 rounded text-sm font-mono border border-gray-700 before:content-none after:content-none font-medium;
+  @apply bg-gray-800 text-green-400 px-2 py-1 rounded text-sm font-mono border border-gray-700 before:content-none after:content-none font-medium;
 }
 
 /* Pre block reset for custom syntax highlighter */
@@ -307,7 +297,7 @@
   right: -10%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(60px);
   animation: blob-pulse 8s ease-in-out infinite;
@@ -349,5 +339,5 @@
 .book-shadow {
   box-shadow:
     0 10px 40px -10px rgba(0, 0, 0, 0.2),
-    0 20px 60px -20px rgba(37, 99, 235, 0.3);
+    0 20px 60px -20px rgba(34, 197, 94, 0.3);
 }

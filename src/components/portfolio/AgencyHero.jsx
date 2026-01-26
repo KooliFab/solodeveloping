@@ -153,7 +153,7 @@ const AgencyHero = () => {
       {/* Animated grid with parallax */}
       <div
         ref={gridRef}
-        className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f610_1px,transparent_1px),linear-gradient(to_bottom,#3b82f610_1px,transparent_1px)] bg-[size:6rem_6rem] pointer-events-none"
+        className="absolute inset-0 bg-[linear-gradient(to_right,#22c55e10_1px,transparent_1px),linear-gradient(to_bottom,#22c55e10_1px,transparent_1px)] bg-[size:6rem_6rem] pointer-events-none"
         style={{ willChange: 'transform' }}
       />
 
@@ -220,7 +220,7 @@ const AgencyHero = () => {
           >
             <Button
               size="lg"
-              className="group relative overflow-hidden bg-electric-500 hover:bg-electric-600 text-white px-10 py-8 text-xl rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.6)]"
+              className="group relative overflow-hidden bg-electric-500 hover:bg-electric-600 text-white px-10 py-8 text-xl rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(34,197,94,0.6)]"
             >
               <span className="relative z-10 flex items-center gap-3">
                 {t('hero.ctaPrimary')}
@@ -265,7 +265,7 @@ const AgencyHero = () => {
             ].map((feature, index) => (
               <div
                 key={feature.title}
-                className="group relative p-8 rounded-3xl bg-card/30 backdrop-blur-md border border-electric-500/20 hover:border-electric-500/50 transition-all duration-500 hover:bg-card/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)]"
+                className="group relative p-8 rounded-3xl bg-card/30 backdrop-blur-md border border-electric-500/20 hover:border-electric-500/50 transition-all duration-500 hover:bg-card/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.1)]"
               >
                 <feature.icon className="w-10 h-10 text-electric-500 mb-4 group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="font-bold text-xl mb-2 text-foreground">{feature.title}</h3>

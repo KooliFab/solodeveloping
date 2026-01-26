@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
+  
   return (
     <footer id="footer" className="py-32 px-6 bg-black text-center relative">
       <motion.div
@@ -9,9 +12,9 @@ const Footer = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <h2 className="font-display text-[10vw] leading-[0.8] font-bold text-white mb-8 hover:text-[#2563EB] transition-colors duration-500 cursor-pointer">
-          <a href="mailto:hello@solodeveloping.com">
-            LET'S TALK
+        <h2 className="font-display text-[10vw] leading-[0.8] font-bold text-white mb-8 hover:text-green-500 transition-colors duration-500 cursor-pointer">
+          <a href={`mailto:${t('footer.email')}`}>
+            {t('footer.ctaTitle')}
           </a>
         </h2>
       </motion.div>
@@ -29,7 +32,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className="hover:text-white transition-colors"
         >
-          LinkedIn
+          {t('footer.linkLinkedIn')}
         </a>
         <a
           href="https://github.com/yourusername"
@@ -37,7 +40,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className="hover:text-white transition-colors"
         >
-          GitHub
+          {t('footer.linkGitHub')}
         </a>
         <a
           href="https://pub.dev/publishers/yourpublisher"
@@ -45,7 +48,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className="hover:text-white transition-colors"
         >
-          Pub.dev
+          {t('footer.linkPubDev')}
         </a>
         <a
           href="https://twitter.com/yourusername"
@@ -53,12 +56,12 @@ const Footer = () => {
           rel="noopener noreferrer"
           className="hover:text-white transition-colors"
         >
-          Twitter
+          {t('footer.linkTwitter')}
         </a>
       </motion.div>
 
       <div className="mt-20 text-xs text-gray-800">
-        &copy; {new Date().getFullYear()} SOLO DEVELOPING. SYSTEM INTEGRITY 100%.
+        {t('footer.copyright', { year: new Date().getFullYear() })}
       </div>
     </footer>
   );

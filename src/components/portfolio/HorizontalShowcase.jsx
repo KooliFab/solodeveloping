@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 
 /**
@@ -7,6 +8,7 @@ import gsap from 'gsap';
  * Inspired by The Brink Agency's horizontal scroll sections
  */
 const HorizontalShowcase = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
 
@@ -202,7 +204,7 @@ const HorizontalShowcase = () => {
       {/* Section header - fixed */}
       <div className="absolute top-8 left-8 z-20">
         <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold font-display text-foreground/10">
-          Projects
+          {t('horizontalShowcase.sectionTitle')}
         </h2>
       </div>
 
@@ -220,14 +222,14 @@ const HorizontalShowcase = () => {
         {/* Intro card */}
         <div className="flex-shrink-0 w-[85vw] md:w-[40vw] md:min-w-[400px] h-[75vh] md:h-[60vh] flex flex-col justify-center">
           <h3 className="text-5xl md:text-6xl font-bold font-display mb-6 leading-tight">
-            Featured
+            {t('horizontalShowcase.introTitle')}
             <br />
             <span className="bg-gradient-to-r from-electric-400 to-electric-600 bg-clip-text text-transparent">
-              Work
+              {t('horizontalShowcase.introTitleHighlight')}
             </span>
           </h3>
           <p className="text-xl text-muted-foreground max-w-md leading-relaxed">
-            A curated selection of projects that showcase technical excellence and business impact.
+            {t('horizontalShowcase.introDescription')}
           </p>
         </div>
 
@@ -237,14 +239,14 @@ const HorizontalShowcase = () => {
             key={project.id}
             className="project-card flex-shrink-0 w-[85vw] md:w-[45vw] md:min-w-[500px] h-[75vh] md:h-[60vh] group cursor-pointer"
           >
-            <div className="relative h-full rounded-3xl overflow-hidden border border-electric-500/20 bg-card/50 backdrop-blur-sm hover:border-electric-500/50 transition-all duration-500 hover:shadow-[0_0_50px_rgba(59,130,246,0.2)]">
+            <div className="relative h-full rounded-3xl overflow-hidden border border-electric-500/20 bg-card/50 backdrop-blur-sm hover:border-electric-500/50 transition-all duration-500 hover:shadow-[0_0_50px_rgba(34,197,94,0.2)]">
               {/* Background gradient */}
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-10 group-hover:opacity-20 transition-opacity duration-500`}
               />
 
               {/* Grid overlay */}
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f608_1px,transparent_1px),linear-gradient(to_bottom,#3b82f608_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,#22c55e08_1px,transparent_1px),linear-gradient(to_bottom,#22c55e08_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
               {/* Content */}
               <div className="relative h-full p-12 flex flex-col justify-between">
@@ -288,7 +290,7 @@ const HorizontalShowcase = () => {
                       className="flex items-center gap-2 text-foreground hover:text-electric-500 transition-colors group/link"
                     >
                       <Github className="w-5 h-5" />
-                      <span className="text-sm font-medium">View Code</span>
+                      <span className="text-sm font-medium">{t('horizontalShowcase.viewCode')}</span>
                       <ExternalLink className="w-4 h-4 opacity-0 group-hover/link:opacity-100 transition-opacity" />
                     </a>
                   )}
@@ -296,7 +298,7 @@ const HorizontalShowcase = () => {
                     href={project.link}
                     className="flex items-center gap-2 text-foreground hover:text-electric-500 transition-colors group/link"
                   >
-                    <span className="text-sm font-medium">Live Demo</span>
+                    <span className="text-sm font-medium">{t('horizontalShowcase.liveDemo')}</span>
                     <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                   </a>
                 </div>
@@ -316,22 +318,22 @@ const HorizontalShowcase = () => {
         {/* End card - CTA */}
         <div className="flex-shrink-0 w-[85vw] md:w-[40vw] md:min-w-[400px] h-[85vh] md:h-[70vh] flex flex-col justify-center items-center text-center px-8">
           <h3 className="text-5xl md:text-6xl font-bold font-display mb-6">
-            Want to see
+            {t('horizontalShowcase.ctaTitle')}
             <br />
-            <span className="text-electric-500">more?</span>
+            <span className="text-electric-500">{t('horizontalShowcase.ctaTitleHighlight')}</span>
           </h3>
           <p className="text-xl text-muted-foreground mb-8 max-w-md">
-            These are just highlights. Let's discuss your project.
+            {t('horizontalShowcase.ctaDescription')}
           </p>
-          <button className="px-8 py-4 bg-electric-500 hover:bg-electric-600 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]">
-            Get in Touch
+          <button className="px-8 py-4 bg-electric-500 hover:bg-electric-600 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]">
+            {t('horizontalShowcase.ctaButton')}
           </button>
         </div>
       </div>
 
       {/* Scroll hint */}
       <div className="absolute bottom-8 right-8 text-muted-foreground font-mono text-sm flex items-center gap-3">
-        <span>DRAG TO SCROLL</span>
+        <span>{t('horizontalShowcase.scrollHint')}</span>
         <svg
           className="w-6 h-6"
           fill="none"

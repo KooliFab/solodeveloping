@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 
 // Sample project data - replace with actual projects
@@ -53,17 +54,25 @@ const projects = [
   }
 ];
 
-const categories = ['All', 'AI/Automation', 'Mobile', 'Web App'];
-
 const ProjectsShowcase = () => {
+  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [hoveredProject, setHoveredProject] = useState(null);
   const sectionRef = useRef(null);
   const projectCardsRef = useRef([]);
 
-  const filteredProjects = selectedCategory === 'All'
+  const categories = [t('projects.filterAll'), t('projects.filterAI'), t('projects.filterMobile'), t('projects.filterWeb')];
+
+  const filteredProjects = selectedCategory === t('projects.filterAll')
     ? projects
-    : projects.filter(p => p.category === selectedCategory);
+    : projects.filter(p => {
+        const categoryMap = {
+          [t('projects.filterAI')]: 'AI/Automation',
+          [t('projects.filterMobile')]: 'Mobile',
+          [t('projects.filterWeb')]: 'Web App'
+        };
+        return p.category === categoryMap[selectedCategory];
+      });
 
   useEffect(() => {
     import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
@@ -133,7 +142,7 @@ const ProjectsShowcase = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Featured <span className="text-electric-500">Projects</span>
+            {t('projects.title')} <span className="text-electric-500">{t('projects.titleHighlight')}</span>
           </motion.h2>
           <motion.p
             className="text-xl text-muted-foreground max-w-2xl mx-auto"
@@ -142,7 +151,7 @@ const ProjectsShowcase = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            Curated selection of impactful work. Each project delivered on time, on budget.
+            {t('projects.subtitle')}
           </motion.p>
         </div>
 
@@ -283,7 +292,7 @@ const ProjectsShowcase = () => {
             variant="outline"
             className="group border-electric-500 text-electric-500 hover:bg-electric-500 hover:text-white px-8 py-6 text-lg rounded-full transition-all duration-300"
           >
-            View All Projects
+            {t('projects.viewAllButton')}
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
         </motion.div>

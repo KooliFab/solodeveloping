@@ -1,54 +1,56 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Smartphone, Brain, Code2, Zap, Database, Cloud } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 
-const expertiseAreas = [
-  {
-    icon: Brain,
-    title: 'AI/Automation',
-    description: 'Build intelligent systems that save time and reduce costs. Document processing, data analysis, workflow automation.',
-    highlights: ['OpenAI Integration', 'Custom ML Models', 'Process Automation'],
-    color: 'from-electric-400 to-electric-600'
-  },
-  {
-    icon: Smartphone,
-    title: 'Mobile Development',
-    description: 'Native-quality apps for iOS and Android. Cross-platform with React Native or native Swift/Kotlin.',
-    highlights: ['React Native', 'iOS/Android', 'App Store Deployment'],
-    color: 'from-purple-400 to-purple-600'
-  },
-  {
-    icon: Code2,
-    title: 'Full-Stack Development',
-    description: 'End-to-end web applications. Modern React frontends, scalable Node.js backends, cloud infrastructure.',
-    highlights: ['React/Next.js', 'Node.js/Python', 'API Design'],
-    color: 'from-cyan-400 to-cyan-600'
-  },
-  {
-    icon: Database,
-    title: 'Database Architecture',
-    description: 'Design and optimize database systems. SQL, NoSQL, caching strategies, performance tuning.',
-    highlights: ['PostgreSQL', 'MongoDB', 'Redis'],
-    color: 'from-green-400 to-green-600'
-  },
-  {
-    icon: Cloud,
-    title: 'Cloud & DevOps',
-    description: 'Deploy and scale applications on AWS, GCP, or Azure. CI/CD pipelines, monitoring, infrastructure as code.',
-    highlights: ['AWS/GCP', 'Docker/K8s', 'CI/CD'],
-    color: 'from-orange-400 to-orange-600'
-  },
-  {
-    icon: Zap,
-    title: 'Performance Optimization',
-    description: 'Make applications blazingly fast. Code optimization, caching, CDN setup, lighthouse scoring.',
-    highlights: ['Code Splitting', 'Caching', 'Lighthouse 90+'],
-    color: 'from-yellow-400 to-yellow-600'
-  }
-];
-
 const ExpertiseSection = () => {
+  const { t } = useTranslation();
+  
+  const expertiseAreas = [
+    {
+      icon: Brain,
+      title: t('expertise.aiTitle'),
+      description: t('expertise.aiDescription'),
+      highlights: [t('expertise.aiHighlight1'), t('expertise.aiHighlight2'), t('expertise.aiHighlight3')],
+      color: 'from-electric-400 to-electric-600'
+    },
+    {
+      icon: Smartphone,
+      title: t('expertise.mobileTitle'),
+      description: t('expertise.mobileDescription'),
+      highlights: [t('expertise.mobileHighlight1'), t('expertise.mobileHighlight2'), t('expertise.mobileHighlight3')],
+      color: 'from-purple-400 to-purple-600'
+    },
+    {
+      icon: Code2,
+      title: t('expertise.fullstackTitle'),
+      description: t('expertise.fullstackDescription'),
+      highlights: [t('expertise.fullstackHighlight1'), t('expertise.fullstackHighlight2'), t('expertise.fullstackHighlight3')],
+      color: 'from-cyan-400 to-cyan-600'
+    },
+    {
+      icon: Database,
+      title: t('expertise.databaseTitle'),
+      description: t('expertise.databaseDescription'),
+      highlights: [t('expertise.databaseHighlight1'), t('expertise.databaseHighlight2'), t('expertise.databaseHighlight3')],
+      color: 'from-green-400 to-green-600'
+    },
+    {
+      icon: Cloud,
+      title: t('expertise.cloudTitle'),
+      description: t('expertise.cloudDescription'),
+      highlights: [t('expertise.cloudHighlight1'), t('expertise.cloudHighlight2'), t('expertise.cloudHighlight3')],
+      color: 'from-orange-400 to-orange-600'
+    },
+    {
+      icon: Zap,
+      title: t('expertise.performanceTitle'),
+      description: t('expertise.performanceDescription'),
+      highlights: [t('expertise.performanceHighlight1'), t('expertise.performanceHighlight2'), t('expertise.performanceHighlight3')],
+      color: 'from-yellow-400 to-yellow-600'
+    }
+  ];
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const cardsRef = useRef([]);
@@ -116,10 +118,10 @@ const ExpertiseSection = () => {
         {/* Section header */}
         <div ref={headingRef} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-4">
-            Areas of <span className="text-electric-500">Expertise</span>
+            {t('expertise.title')} <span className="text-electric-500">{t('expertise.titleHighlight')}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Full-stack capabilities with deep specialization in AI, mobile, and modern web technologies.
+            {t('expertise.subtitle')}
           </p>
         </div>
 
@@ -181,13 +183,13 @@ const ExpertiseSection = () => {
           viewport={{ once: true }}
         >
           <p className="text-lg text-muted-foreground mb-4">
-            Not sure which stack fits your project?
+            {t('expertise.ctaText')}
           </p>
           <a
             href="#contact"
             className="text-electric-500 font-semibold hover:underline inline-flex items-center gap-2"
           >
-            Let's discuss your needs
+            {t('expertise.ctaLink')}
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </a>
         </motion.div>

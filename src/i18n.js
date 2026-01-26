@@ -31,7 +31,7 @@ i18n
   .init({
     supportedLngs: ['en', 'fr'],
     fallbackLng: 'en',
-    debug: true, 
+    debug: false, 
     detection: {
       order: ['path', 'querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag'],
       lookupQuerystring: 'lang',
