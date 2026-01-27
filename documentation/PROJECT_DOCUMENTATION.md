@@ -53,8 +53,9 @@ solo-developing/
 │   │   └── ui/                     # Reusable UI components
 │   ├── pages/                      # Page components
 │   │   ├── LandingPage.jsx         # Main portfolio page
-│   │   ├── Portfolio.jsx           # Detailed portfolio view
+│   │   ├── About.jsx               # About page
 │   │   ├── BlogList.jsx            # Blog listing page
+│   │   ├── BlogPost.jsx            # Individual blog post
 │   │   └── NotFound.jsx            # 404 error page
 │   ├── hooks/                      # Custom React hooks
 │   ├── lib/                        # Utility libraries
@@ -67,15 +68,13 @@ solo-developing/
 ## Key Components
 
 ### Portfolio Components
-- **AgencyHero.jsx**: Main hero section with introduction
+- **Hero.jsx**: Main hero section with introduction
 - **ProjectsShowcase.jsx**: Featured projects gallery
 - **HorizontalShowcase.jsx**: Horizontal scrolling project display
 - **ExpertiseSection.jsx**: Technical skills overview
 - **ContactSection.jsx**: Contact form and information
 
 ### UI Components
-- **CustomCursor.jsx**: Interactive cursor effects
-- **MagneticCursor.jsx**: Magnetic hover interactions
 - **CodeBlock.jsx**: Syntax-highlighted code display
 - **Button.jsx**: Reusable button component
 - **Card.jsx**: Content card component

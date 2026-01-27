@@ -1,9 +1,8 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import AgencyHero from '@/components/portfolio/AgencyHero';
+import Hero from '@/components/portfolio/Hero';
 import ExpertiseSection from '@/components/portfolio/ExpertiseSection';
 import HorizontalShowcase from '@/components/portfolio/HorizontalShowcase';
 import ProjectsShowcase from '@/components/portfolio/ProjectsShowcase';
@@ -32,7 +31,7 @@ const LandingPage = () => {
         <Navbar />
 
         <main className="relative">
-          <AgencyHero />
+          <Hero />
           <ExpertiseSection />
           <HorizontalShowcase />
           <ProjectsShowcase />

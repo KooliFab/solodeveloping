@@ -1,7 +1,7 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '@/components/ui/Toaster';
 import { useTranslation } from 'react-i18next';
 import IntroAnimation from '@/components/ui/IntroAnimation';
 
@@ -10,7 +10,6 @@ const LandingPage = lazy(() => import('@/pages/LandingPage'));
 const About = lazy(() => import('@/pages/About'));
 const BlogList = lazy(() => import('@/pages/BlogList'));
 const BlogPost = lazy(() => import('@/pages/BlogPost'));
-const Portfolio = lazy(() => import('@/pages/Portfolio'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
 
 // Simple Green Cursor Component
@@ -149,14 +148,14 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/articles" element={<BlogList />} />
               <Route path="/articles/:slug" element={<BlogPost />} />
-              <Route path="/projects" element={<Portfolio />} />
+              <Route path="/projects" element={<LandingPage />} />
               
               {/* French routes (with /fr prefix) */}
               <Route path="/fr" element={<LandingPage />} />
               <Route path="/fr/about" element={<About />} />
               <Route path="/fr/articles" element={<BlogList />} />
               <Route path="/fr/articles/:slug" element={<BlogPost />} />
-              <Route path="/fr/projects" element={<Portfolio />} />
+              <Route path="/fr/projects" element={<LandingPage />} />
               
               {/* 404 for all other routes */}
               <Route path="*" element={<NotFound />} />

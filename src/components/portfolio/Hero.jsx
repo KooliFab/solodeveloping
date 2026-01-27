@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Code2, Sparkles, Zap } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { splitTextAdvanced } from '@/utils/textSplit';
 
 /**
- * Agency-style hero section with dramatic text reveals and parallax
- * Inspired by The Brink Agency's bold typography and animations
+ * Hero section with dramatic text reveals and parallax
+ * Main landing page hero component
  */
-const AgencyHero = () => {
+const Hero = () => {
   const { t } = useTranslation();
   const heroRef = useRef(null);
   const titleRef = useRef(null);
@@ -301,4 +301,4 @@ const AgencyHero = () => {
   );
 };
 
-export default AgencyHero;
+export default Hero;

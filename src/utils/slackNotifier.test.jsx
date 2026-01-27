@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { trackButtonClick, sendSlackNotification } from './slackNotifier';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 
 const SlackNotifierTest = () => {
   const testBasicNotification = () => {
