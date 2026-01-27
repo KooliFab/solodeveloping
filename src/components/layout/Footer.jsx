@@ -27,7 +27,7 @@ const Footer = () => {
         transition={{ delay: 0.1 }}
       >
         <a
-          href="https://www.linkedin.com/in/yourprofile"
+          href="https://www.linkedin.com/in/%F0%9F%92%BB-fabien-chung-a1793830/"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-white transition-colors"

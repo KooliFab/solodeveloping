@@ -134,7 +134,7 @@ const ProjectsShowcase = () => {
   }, [filteredProjects]);
 
   return (
-    <section className="py-24 px-4 bg-background">
+    <section id="projects" ref={sectionRef} className="py-24 px-4 bg-background">
       <div className="container mx-auto max-w-7xl">
         {/* Section header */}
         <div className="text-center mb-16">

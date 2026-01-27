@@ -135,5 +135,30 @@
     "keywords": "full-stack developer, mobile app development, AI automation, React Native, web development, solo developer, UAE developer, Canada developer",
     "ogTitle": "solodeveloping.com - Full-Stack Developer",
     "ogDescription": "AI automation • Mobile apps • Full-stack development. Work directly with an experienced developer who delivers results."
+  },
+  "aboutPage": {
+    "title": "About Me",
+    "subtitle": "Solo Developer & Digital Craftsman",
+    "inspiration": {
+      "title": "The Solo Path",
+      "content": "Solo developing isn't just a career choice; it's a commitment to efficiency, clarity, and holistic product building. By handling the full stack—from database architecture to user interface—I eliminate the communication gaps that plague large teams. This means faster iteration, cohesive design, and a product that truly reflects the vision. It's about taking full ownership and delivering excellence without the overhead."
+    },
+    "profile": {
+      "title": "Who Am I?",
+      "name": "Fabien Chung",
+      "role": "Solo Developer",
+      "bio": "I am a passionate developer with over 20 years of experience in the tech industry. My journey has taken me through various roles and technologies, but my heart lies in building end-to-end solutions. I specialize in AI automation, mobile app development, and modern web applications. My goal is to help businesses scale by providing robust, scalable, and beautiful software solutions."
+    },
+    "recommendations": {
+      "title": "What Others Say",
+      "subtitle": "Trusted by clients and colleagues alike."
+    },
+    "pricing": {
+      "title": "Services & Distinctions",
+      "subtitle": "Clear value, recognized expertise.",
+      "hourly": "Hourly Rate",
+      "project": "Project Based",
+      "contact": "Contact for Quote"
+    }
   }
 }

@@ -135,5 +135,30 @@
     "keywords": "développeur full-stack, développement d'applications mobiles, automatisation IA, React Native, développement web, développeur solo, développeur EAU, développeur Canada",
     "ogTitle": "solodeveloping.com - Développeur Full-Stack",
     "ogDescription": "Automatisation IA • Applications mobiles • Développement full-stack. Travaillez directement avec un développeur expérimenté qui livre des résultats."
+  },
+  "aboutPage": {
+    "title": "À Propos",
+    "subtitle": "Développeur Solo & Artisan Numérique",
+    "inspiration": {
+      "title": "La Voie Solo",
+      "content": "Le développement en solo n'est pas juste un choix de carrière ; c'est un engagement envers l'efficacité, la clarté et la construction de produits holistiques. En gérant toute la pile technique—de l'architecture de la base de données à l'interface utilisateur—j'élimine les lacunes de communication qui affligent les grandes équipes. Cela signifie une itération plus rapide, une conception cohérente et un produit qui reflète vraiment la vision. Il s'agit de prendre l'entière responsabilité et de livrer l'excellence sans les frais généraux."
+    },
+    "profile": {
+      "title": "Qui Suis-Je ?",
+      "name": "Fabien Chung",
+      "role": "Développeur Solo",
+      "bio": "Je suis un développeur passionné avec plus de 20 ans d'expérience dans l'industrie technologique. Mon parcours m'a mené à travers divers rôles et technologies, mais mon cœur réside dans la construction de solutions de bout en bout. Je me spécialise dans l'automatisation IA, le développement d'applications mobiles et les applications web modernes. Mon objectif est d'aider les entreprises à grandir en fournissant des solutions logicielles robustes, évolutives et belles."
+    },
+    "recommendations": {
+      "title": "Ce Que Disent les Autres",
+      "subtitle": "La confiance de clients et collègues."
+    },
+    "pricing": {
+      "title": "Services & Distinctions",
+      "subtitle": "Valeur claire, expertise reconnue.",
+      "hourly": "Taux Horaire",
+      "project": "Au Projet",
+      "contact": "Contactez pour Devis"
+    }
   }
 }
