@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Send, CheckCircle } from 'lucide-react';
+import { Mail, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { sendSlackNotification } from '@/utils/slackNotifier';
 
 const ContactSection = () => {
   const { t } = useTranslation();
@@ -12,13 +13,32 @@ const ContactSection = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setIsSubmitting(true);
+    setSubmitError(false);
+
+    const result = await sendSlackNotification('Contact Form Submission', {
+      Name: formData.name,
+      Email: formData.email,
+      'Project Type': formData.project,
+      Message: formData.message,
+      Status: 'New Lead',
+    });
+
+    setIsSubmitting(false);
+
+    if (result.success) {
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', project: '', message: '' });
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } else {
+      setSubmitError(true);
+      setTimeout(() => setSubmitError(false), 5000);
+    }
   };
 
   const handleChange = (e) => {
@@ -148,16 +168,28 @@ const ContactSection = () => {
               </div>
 
               <div className="flex justify-between items-center">
-                <span className="text-xs text-gray-600 font-mono">STATUS: {isSubmitted ? t('contact.statusSent') : t('contact.statusReady')}</span>
+                <span className="text-xs text-gray-600 font-mono">
+                  STATUS: {isSubmitting ? t('contact.statusSending') : isSubmitted ? t('contact.statusSent') : submitError ? t('contact.statusError') : t('contact.statusReady')}
+                </span>
                 <button
                   type="submit"
-                  disabled={isSubmitted}
+                  disabled={isSubmitted || isSubmitting}
                   className="bg-white text-black px-6 py-3 font-bold font-display uppercase tracking-wider hover:bg-green-500 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitted ? (
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <Send className="w-5 h-5 animate-pulse" />
+                      {t('contact.buttonSending')}
+                    </span>
+                  ) : isSubmitted ? (
                     <span className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5" />
                       {t('contact.buttonSubmitted')}
+                    </span>
+                  ) : submitError ? (
+                    <span className="flex items-center gap-2">
+                      <AlertCircle className="w-5 h-5" />
+                      {t('contact.buttonRetry')}
                     </span>
                   ) : (
                     <span className="flex items-center gap-2">

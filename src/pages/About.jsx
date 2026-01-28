@@ -6,6 +6,9 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/Button';
 import { ArrowRight, Linkedin, Star, Award, Code, Terminal } from 'lucide-react';
+import { testimonials } from '@/data/testimonials';
+import profilePoster from '@/assets/images/profile-poster.jpg';
+import profileVideo from '@/assets/videos/profile-loop.mp4';
 
 const About = () => {
   const { t } = useTranslation();
@@ -42,40 +45,56 @@ const About = () => {
           {/* Profile Section */}
           <section className="bg-card/30 py-20 border-y border-white/5">
             <div className="container mx-auto px-6">
-              <div className="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto">
+              <div className="flex flex-col gap-12 max-w-4xl mx-auto">
                 <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="w-full md:w-1/3 flex justify-center"
+                  className="w-full"
                 >
-                  <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-2xl bg-gradient-to-br from-primary/10 to-transparent flex items-center justify-center">
-                     {/* Placeholder for Profile Image */}
-                     <span className="text-6xl">👨‍💻</span>
+                  <div className="relative aspect-video w-full rounded-3xl overflow-hidden border-2 border-primary/20 shadow-2xl bg-gradient-to-br from-primary/10 to-transparent group">
+                     {/* Video Profile */}
+                     <video 
+                       className="w-full h-full object-cover"
+                       autoPlay 
+                       loop 
+                       muted 
+                       playsInline
+                       poster={profilePoster}
+                     >
+                        <source src={profileVideo} type="video/mp4" />
+                        {/* Fallback for when video is loading or unsupported */}
+                        <div className="w-full h-full bg-black/50 flex items-center justify-center">
+                          <span className="text-6xl">👨‍💻</span>
+                        </div>
+                     </video>
                   </div>
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                  className="w-full md:w-2/3 space-y-6"
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="w-full space-y-6 text-center md:text-left"
                 >
-                  <h2 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-                    {t('aboutPage.profile.name')}
-                    <span className="text-primary text-xl px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
+                  <div className="flex flex-col md:flex-row md:items-center gap-4">
+                    <h2 className="text-3xl md:text-5xl font-bold">
+                      {t('aboutPage.profile.name')}
+                    </h2>
+                    <span className="w-fit text-primary text-xl px-4 py-1 bg-primary/10 rounded-full border border-primary/20">
                       {t('aboutPage.profile.role')}
                     </span>
-                  </h2>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  </div>
+                  <p className="text-xl text-muted-foreground leading-relaxed">
                     {t('aboutPage.profile.bio')}
                   </p>
-                  <div className="pt-4">
+                  <div className="pt-4 flex justify-center md:justify-start">
                     <Button
                       variant="outline"
-                      className="gap-2 border-primary/50 text-primary hover:bg-primary/10"
+                      size="lg"
+                      className="gap-2 border-primary/50 text-primary hover:bg-primary/10 rounded-full"
                       onClick={() => window.open('https://www.linkedin.com/in/%F0%9F%92%BB-fabien-chung-a1793830/', '_blank')}
                     >
                       <Linkedin className="w-5 h-5" />
@@ -100,32 +119,7 @@ const About = () => {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              {[
-                {
-                  id: 1,
-                  text: "I have the pleasure of working with Fabien for over 4 years... he is one of the most talented and dedicated professionals I have ever met. His ability to think outside the box and come up with innovative solutions... is truly impressive.",
-                  author: "Eric Schaffner",
-                  role: "Founder, ZeLoop"
-                },
-                {
-                  id: 2,
-                  text: "It has been a privilege of working with Fabien for more than 2 years... he is an excellent tech lead. He designed and implemented efficient architectures and solved various business and technical issues... Fabien is a perfect choice.",
-                  author: "Mykyta Gazul",
-                  role: "ReactJS & Flutter Developer"
-                },
-                {
-                  id: 3,
-                  text: "Fabien's role at MyRide901 is both strategic... and tactical... He is professional and focused when collaborating with our Development and QA teams... providing thought leadership... He is a pleasure to work with.",
-                  author: "Aysha von Buchstab",
-                  role: "Co-Founder, MyRide901"
-                },
-                {
-                  id: 4,
-                  text: "Fabien m'accompagne comme mentor en entrepreneuriat et ses conseils sont d'une aide précieuse. Il m'aide à voir plus clair dans les angles morts de mon entreprise... Je suis très reconnaissante de son soutien.",
-                  author: "Martine Marcheterre",
-                  role: "Enseignante & Entrepreneur"
-                }
-              ].map((rec, i) => (
+              {testimonials.map((rec, i) => (
                 <motion.div
                   key={rec.id}
                   initial={{ opacity: 0, y: 20 }}
