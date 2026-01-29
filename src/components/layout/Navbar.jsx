@@ -25,7 +25,6 @@ const Navbar = () => {
   const navLinks = [
     { name: t('navbar.home'), path: `${langPrefix}/` },
     { name: t('navbar.about'), path: `${langPrefix}/about` },
-    { name: t('navbar.portfolio'), path: `${langPrefix}/#projects` },
     { name: t('navbar.blog'), path: `${langPrefix}/articles` },
   ];
 
@@ -55,6 +54,7 @@ const Navbar = () => {
               className={`relative text-sm font-medium transition-colors hover:text-primary ${
                 location.pathname === link.path ? 'text-primary' : 'text-muted-foreground'
               }`}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
             >
               {link.name}
               {location.pathname === link.path && (
@@ -98,7 +98,10 @@ const Navbar = () => {
                   key={link.name}
                   to={link.path}
                   className="text-lg font-medium text-foreground/80 hover:text-primary transition-colors"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    setIsOpen(false);
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                  }}
                 >
                   {link.name}
                 </Link>

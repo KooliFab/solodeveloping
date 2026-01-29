@@ -35,7 +35,7 @@ const Footer = () => {
           {t('footer.linkLinkedIn')}
         </a>
         <a
-          href="https://github.com/yourusername"
+          href="https://github.com/KooliFab"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-white transition-colors"
@@ -51,12 +51,12 @@ const Footer = () => {
           {t('footer.linkPubDev')}
         </a>
         <a
-          href="https://twitter.com/yourusername"
+          href="https://medium.com/@fabien.chung"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-white transition-colors"
         >
-          {t('footer.linkTwitter')}
+          {t('footer.linkMedium')}
         </a>
       </motion.div>
 

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
@@ -12,6 +13,18 @@ import profileVideo from '@/assets/videos/profile-loop.mp4';
 
 const About = () => {
   const { t } = useTranslation();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   return (
     <>
@@ -36,7 +49,7 @@ const About = () => {
                 {t('aboutPage.inspiration.title')}
               </h1>
               <div className="h-1 w-20 bg-primary mx-auto mb-8 rounded-full" />
-              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light">
+              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light whitespace-pre-line">
                 {t('aboutPage.inspiration.content')}
               </p>
             </motion.div>
@@ -87,7 +100,7 @@ const About = () => {
                       {t('aboutPage.profile.role')}
                     </span>
                   </div>
-                  <p className="text-xl text-muted-foreground leading-relaxed">
+                  <p className="text-xl text-muted-foreground leading-relaxed whitespace-pre-line">
                     {t('aboutPage.profile.bio')}
                   </p>
                   <div className="pt-4 flex justify-center md:justify-start">
@@ -107,7 +120,7 @@ const About = () => {
           </section>
 
           {/* Recommendations Section */}
-          <section className="container mx-auto px-6 py-20">
+          <section id="recommendations" className="container mx-auto px-6 py-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

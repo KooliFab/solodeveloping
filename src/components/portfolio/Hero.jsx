@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Code2, Sparkles, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
@@ -11,12 +12,19 @@ import { splitTextAdvanced } from '@/utils/textSplit';
  * Main landing page hero component
  */
 const Hero = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const heroRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const bgLayerRef = useRef(null);
   const gridRef = useRef(null);
+
+  const handleSecondaryCta = () => {
+    const currentLang = i18n.language;
+    const prefix = currentLang === 'fr' ? '/fr' : '';
+    navigate(`${prefix}/about#recommendations`);
+  };
 
   useEffect(() => {
     // Import ScrollTrigger dynamically
@@ -233,6 +241,7 @@ const Hero = () => {
             <Button
               size="lg"
               variant="outline"
+              onClick={handleSecondaryCta}
               className="border-2 border-electric-500/50 text-electric-500 hover:bg-electric-500/10 hover:border-electric-500 px-10 py-8 text-xl rounded-full transition-all duration-300 hover:scale-105 backdrop-blur-sm"
             >
               <Code2 className="w-6 h-6 mr-3" />

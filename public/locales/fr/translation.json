@@ -3,7 +3,6 @@
     "brand": "SOLODEVELOPING",
     "home": "Accueil",
     "about": "À propos",
-    "portfolio": "Projets",
     "blog": "Articles",
     "hireMe": "Contact"
   },
@@ -126,7 +125,7 @@
     "linkLinkedIn": "LinkedIn",
     "linkGitHub": "GitHub",
     "linkPubDev": "Pub.dev",
-    "linkTwitter": "Twitter",
+    "linkMedium": "Medium",
     "copyright": "© {{year}} SOLO DEVELOPING. INTÉGRITÉ DU SYSTÈME 100%."
   },
   "meta": {
@@ -140,14 +139,14 @@
     "title": "À Propos",
     "subtitle": "Développeur Solo & Artisan Numérique",
     "inspiration": {
-      "title": "La Voie Solo",
-      "content": "Le développement en solo n'est pas juste un choix de carrière ; c'est un engagement envers l'efficacité, la clarté et la construction de produits holistiques. En gérant toute la pile technique—de l'architecture de la base de données à l'interface utilisateur—j'élimine les lacunes de communication qui affligent les grandes équipes. Cela signifie une itération plus rapide, une conception cohérente et un produit qui reflète vraiment la vision. Il s'agit de prendre l'entière responsabilité et de livrer l'excellence sans les frais généraux."
+      "title": "L'esprit \"Solo Leveling\"",
+      "content": "Ce nom est un clin d'œil au manga Solo Leveling. Pour autant, \"Solo Developing\" ne signifie pas travailler seul ; c'est une volonté de progression constante. À l'image d'un \"level up\" infini, je saisis chaque projet comme une opportunité de maîtriser toutes les facettes d'un produit : de l'architecture technique jusqu'au marketing et à la stratégie d'entreprise.\n\nCar la réussite d'un projet ne repose pas uniquement sur le code, mais aussi sur la capacité à comprendre le marché et à collaborer avec les équipes internes. Cette approche holistique me permet de combler les fossés de communication et de maintenir une vision de haut niveau. J'allie ainsi l'efficacité d'un développeur autonome à l'esprit collaboratif nécessaire pour concrétiser notre vision commune, sans friction."
     },
     "profile": {
       "title": "Qui Suis-Je ?",
       "name": "Fabien Chung",
-      "role": "Développeur Solo",
-      "bio": "Je suis un développeur passionné avec plus de 20 ans d'expérience dans l'industrie technologique. Mon parcours m'a mené à travers divers rôles et technologies, mais mon cœur réside dans la construction de solutions de bout en bout. Je me spécialise dans l'automatisation IA, le développement d'applications mobiles et les applications web modernes. Mon objectif est d'aider les entreprises à grandir en fournissant des solutions logicielles robustes, évolutives et belles."
+      "role": "Développeur Full Stack orienté Produit",
+      "bio": "Avec plus de 20 ans d'expérience dans l'industrie tech, mon expertise fondamentale repose sur le développement full-stack orienté mobile. Cependant, mon parcours ne s'arrête pas au code. J'y ai ajouté des compétences de Product Ownership, acquises au fil de mes expériences professionnelles, ce qui m'a permis de mieux aligner la technique aux besoins business, tout en intégrant les automatisations IA pour maximiser l'efficacité.\n\nActuellement, je développe mes connaissances en marketing afin d'avoir la palette la plus complète possible. Mon objectif est d'offrir une vision holistique qui fait le pont entre une ingénierie robuste et la croissance du produit."
     },
     "recommendations": {
       "title": "Ce Que Disent les Autres",

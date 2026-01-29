@@ -3,7 +3,6 @@
     "brand": "SOLODEVELOPING",
     "home": "Home",
     "about": "About",
-    "portfolio": "Projects",
     "blog": "Articles",
     "hireMe": "Contact"
   },
@@ -126,7 +125,7 @@
     "linkLinkedIn": "LinkedIn",
     "linkGitHub": "GitHub",
     "linkPubDev": "Pub.dev",
-    "linkTwitter": "Twitter",
+    "linkMedium": "Medium",
     "copyright": "© {{year}} SOLO DEVELOPING. SYSTEM INTEGRITY 100%."
   },
   "meta": {
@@ -140,18 +139,18 @@
     "title": "About Me",
     "subtitle": "Solo Developer & Digital Craftsman",
     "inspiration": {
-      "title": "The Solo Path",
-      "content": "Solo developing isn't just a career choice; it's a commitment to efficiency, clarity, and holistic product building. By handling the full stack—from database architecture to user interface—I eliminate the communication gaps that plague large teams. This means faster iteration, cohesive design, and a product that truly reflects the vision. It's about taking full ownership and delivering excellence without the overhead."
+      "title": "The \"Solo Leveling\" Mindset",
+      "content": "The name is a nod to the manga Solo Leveling. However, \"Solo Developing\" doesn't mean working alone; it’s a commitment to constant progression. Like an infinite \"level up,\" I treat every project as an opportunity to master every facet of a product—from technical architecture to marketing and business strategy.\n\nSuccess requires more than just code; it depends on understanding the market and collaborating effectively with internal teams. This holistic approach allows me to bridge communication gaps and maintain a high-level vision. I combine the efficiency of an autonomous builder with the collaborative spirit needed to bring our shared vision to life, friction-free."
     },
     "profile": {
       "title": "Who Am I?",
       "name": "Fabien Chung",
-      "role": "Solo Developer",
-      "bio": "I am a passionate developer with over 20 years of experience in the tech industry. My journey has taken me through various roles and technologies, but my heart lies in building end-to-end solutions. I specialize in AI automation, mobile app development, and modern web applications. My goal is to help businesses scale by providing robust, scalable, and beautiful software solutions."
+      "role": "Full Stack Product Developer",
+      "bio": "With over 20 years of experience in the tech industry, my core expertise lies in mobile-first full-stack development. However, my journey extends beyond code. Through my professional experience, I have honed Product Ownership skills to better align technology with business needs, while integrating AI automations to maximize efficiency.\n\nCurrently, I am expanding my marketing knowledge to build the most complete skillset possible. My goal is to offer a holistic vision that bridges the gap between robust engineering and product growth."
     },
     "recommendations": {
       "title": "What Others Say",
-      "subtitle": "Trusted by clients and colleagues alike."
+      "subtitle": "Trusted reviews from my linkedin profile"
     },
     "pricing": {
       "title": "Services & Distinctions",
