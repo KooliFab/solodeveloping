@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { useTranslation } from 'react-i18next';
-import gsap from 'gsap';
 
 // Sample project data - replace with actual projects
 import { projects } from '@/data/projects';
@@ -14,8 +13,6 @@ const ProjectsShowcase = () => {
   const { t, i18n } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [hoveredProject, setHoveredProject] = useState(null);
-  const sectionRef = useRef(null);
-  const projectCardsRef = useRef([]);
 
   const langPrefix = i18n.language === 'fr' ? '/fr' : '';
   const categories = [t('projects.filterAll'), t('projects.filterAI'), t('projects.filterMobile'), t('projects.filterWeb')];
@@ -31,65 +28,8 @@ const ProjectsShowcase = () => {
         return p.category === categoryMap[selectedCategory];
       });
 
-  useEffect(() => {
-    import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Animate project cards with image reveal effect
-      projectCardsRef.current.forEach((card, index) => {
-        if (!card) return;
-
-        const imageContainer = card.querySelector('.project-image');
-        const overlay = card.querySelector('.image-overlay');
-
-        // Card entrance animation
-        gsap.fromTo(
-          card,
-          {
-            opacity: 0,
-            y: 100,
-            scale: 0.95
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 85%',
-              end: 'bottom 60%',
-              toggleActions: 'play none none reverse'
-            }
-          }
-        );
-
-        // Image reveal animation with overlay sliding
-        if (overlay) {
-          gsap.fromTo(
-            overlay,
-            {
-              x: '-100%'
-            },
-            {
-              x: '100%',
-              duration: 1.2,
-              ease: 'power4.inOut',
-              scrollTrigger: {
-                trigger: card,
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-              }
-            }
-          );
-        }
-      });
-    });
-  }, [filteredProjects]);
-
   return (
-    <section id="projects" ref={sectionRef} className="py-24 px-4 bg-background">
+    <section id="projects" className="py-24 px-4 bg-background">
       <div className="container mx-auto max-w-7xl">
         {/* Section header */}
         <div className="text-center mb-16">
@@ -146,10 +86,13 @@ const ProjectsShowcase = () => {
             transition={{ duration: 0.3 }}
           >
             {filteredProjects.map((project, index) => (
-              <div
+              <motion.div
                 key={project.id}
-                ref={(el) => (projectCardsRef.current[index] = el)}
                 className="group relative"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
@@ -169,8 +112,6 @@ const ProjectsShowcase = () => {
                       </span>
                     </div>
 
-                    {/* Image reveal overlay */}
-                    <div className="image-overlay absolute inset-0 bg-electric-500 z-10" />
                   </div>
 
                   {/* Project info */}
@@ -232,7 +173,7 @@ const ProjectsShowcase = () => {
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-electric-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 </div>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </AnimatePresence>

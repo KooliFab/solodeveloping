@@ -1,26 +1,17 @@
-import { useEffect, useRef } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import gsap from 'gsap';
+import { useRef } from 'react';
 
 /**
  * Horizontal scrolling project showcase
- * Inspired by The Brink Agency's horizontal scroll sections
+ * Classic horizontal scroll - scroll horizontally within the section
  */
 const HorizontalShowcase = () => {
   const { t, i18n } = useTranslation();
-  const sectionRef = useRef(null);
-  const trackRef = useRef(null);
+  const scrollContainerRef = useRef(null);
   
   const langPrefix = i18n.language === 'fr' ? '/fr' : '';
-
-  // Ensure track starts at x:0 immediately on mount
-  useEffect(() => {
-    if (trackRef.current) {
-      trackRef.current.style.transform = 'translate3d(0px, 0px, 0px)';
-    }
-  }, []);
 
   const projects = [
     {
@@ -80,169 +71,70 @@ const HorizontalShowcase = () => {
     }
   ];
 
-  useEffect(() => {
-    let ctx;
-    let lenisReadyListener;
-
-    const initAnimation = async () => {
-      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-      gsap.registerPlugin(ScrollTrigger);
-
-      const section = sectionRef.current;
-      const track = trackRef.current;
-
-      if (!section || !track) return;
-
-      // Wait for Lenis to be ready (simplified)
-      if (!window.lenis) {
-        await new Promise((resolve) => {
-          lenisReadyListener = () => resolve();
-          window.addEventListener('lenis:ready', lenisReadyListener, { once: true });
-          setTimeout(resolve, 500); // Reduced fallback timeout
-        });
-      }
-
-      // Use GSAP context for better cleanup
-      ctx = gsap.context(() => {
-        // Calculate total scroll width
-        const getScrollDistance = () => {
-          const trackWidth = track.scrollWidth;
-          const viewportWidth = window.innerWidth;
-          return trackWidth - viewportWidth;
-        };
-
-        const scrollDistance = getScrollDistance();
-
-        // Kill any existing tweens on track first
-        gsap.killTweensOf(track);
-
-        // Set initial position explicitly
-        gsap.set(track, {
-          x: 0,
-          force3D: true,
-          clearProps: 'all' // Clear any previous GSAP properties
-        });
-
-        // Re-apply the x:0 after clearing
-        gsap.set(track, { x: 0, force3D: true });
-
-        // Create horizontal scroll animation with timeline
-        gsap.to(track, {
-          x: -scrollDistance,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top top',
-            end: `+=${scrollDistance}`,
-            scrub: 0.5,
-            pin: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            fastScrollEnd: true,
-            markers: false, // Disable markers
-            scroller: document.body,
-            onRefresh: () => {
-              // Reset position on refresh
-              gsap.set(track, { x: 0, force3D: true });
-            }
-          }
-        });
-
-        // Simplified parallax - only on odd cards for better performance
-        const cards = track.querySelectorAll('.project-card');
-        cards.forEach((card, index) => {
-          if (index % 2 === 0) {
-            gsap.to(card, {
-              y: -30,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: section,
-                start: 'top top',
-                end: `+=${scrollDistance}`,
-                scrub: 0.5
-              }
-            });
-          }
-        });
-
-        // Debounced resize handler
-        let resizeTimer;
-        const handleResize = () => {
-          clearTimeout(resizeTimer);
-          resizeTimer = setTimeout(() => {
-            ScrollTrigger.refresh();
-          }, 250);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-          window.removeEventListener('resize', handleResize);
-          if (resizeTimer) clearTimeout(resizeTimer);
-        };
-      }, section);
-
-      // Single refresh after a brief delay
-      requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
+  const scrollBy = (direction) => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = window.innerWidth * 0.6;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
       });
-    };
-
-    initAnimation();
-
-    return () => {
-      if (ctx) ctx.revert();
-      if (lenisReadyListener) {
-        window.removeEventListener('lenis:ready', lenisReadyListener);
-      }
-    };
-  }, []);
+    }
+  };
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative overflow-hidden bg-background/50"
-      style={{ minHeight: '100vh' }}
-    >
-      {/* Section header - fixed */}
-      <div className="absolute top-8 left-8 z-20">
+    <section className="relative py-20 bg-background/50">
+      {/* Section header */}
+      <div className="container mx-auto px-4 mb-12">
         <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold font-display text-foreground/10">
           {t('horizontalShowcase.sectionTitle')}
         </h2>
-      </div>
-
-      {/* Horizontal track */}
-      <div
-        ref={trackRef}
-        className="flex items-center gap-12 px-[5vw] py-20"
-        style={{
-          width: 'max-content',
-          height: '100vh',
-          transform: 'translate3d(0px, 0px, 0px)',
-          willChange: 'transform'
-        }}
-      >
-        {/* Intro card */}
-        <div className="flex-shrink-0 w-[85vw] md:w-[40vw] md:min-w-[400px] h-[75vh] md:h-[60vh] flex flex-col justify-center">
-          <h3 className="text-5xl md:text-6xl font-bold font-display mb-6 leading-tight">
+        <div className="mt-6">
+          <h3 className="text-4xl md:text-5xl font-bold font-display mb-4 leading-tight">
             {t('horizontalShowcase.introTitle')}
-            <br />
-            <span className="bg-gradient-to-r from-electric-400 to-electric-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-electric-400 to-electric-600 bg-clip-text text-transparent ml-3">
               {t('horizontalShowcase.introTitleHighlight')}
             </span>
           </h3>
-          <p className="text-xl text-muted-foreground max-w-md leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
             {t('horizontalShowcase.introDescription')}
           </p>
         </div>
+      </div>
 
+      {/* Navigation arrows */}
+      <div className="container mx-auto px-4 mb-6 flex justify-end gap-3">
+        <button
+          onClick={() => scrollBy('left')}
+          className="p-3 rounded-full border border-electric-500/30 text-electric-500 hover:bg-electric-500/10 transition-all duration-300"
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button
+          onClick={() => scrollBy('right')}
+          className="p-3 rounded-full border border-electric-500/30 text-electric-500 hover:bg-electric-500/10 transition-all duration-300"
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+      </div>
+
+      {/* Horizontal scroll container */}
+      <div
+        ref={scrollContainerRef}
+        className="flex gap-8 overflow-x-auto px-4 md:px-8 pb-8 snap-x snap-mandatory scrollbar-thin scrollbar-track-transparent scrollbar-thumb-electric-500/30 hover:scrollbar-thumb-electric-500/50"
+        style={{
+          scrollbarWidth: 'thin',
+          scrollPaddingLeft: '1rem'
+        }}
+      >
         {/* Project cards */}
         {projects.map((project, index) => (
           <div
             key={project.id}
-            className="project-card flex-shrink-0 w-[85vw] md:w-[45vw] md:min-w-[500px] h-[75vh] md:h-[60vh] group cursor-pointer"
+            className="project-card flex-shrink-0 w-[85vw] md:w-[45vw] md:min-w-[500px] max-w-[600px] group cursor-pointer snap-start"
           >
-            <div className="relative h-full rounded-3xl overflow-hidden border border-electric-500/20 bg-card/50 backdrop-blur-sm hover:border-electric-500/50 transition-all duration-500 hover:shadow-[0_0_50px_rgba(34,197,94,0.2)]">
+            <div className="relative h-full min-h-[450px] rounded-3xl overflow-hidden border border-electric-500/20 bg-card/50 backdrop-blur-sm hover:border-electric-500/50 transition-all duration-500 hover:shadow-[0_0_50px_rgba(34,197,94,0.2)]">
               {/* Background gradient */}
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-10 group-hover:opacity-20 transition-opacity duration-500`}
@@ -252,10 +144,10 @@ const HorizontalShowcase = () => {
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#22c55e08_1px,transparent_1px),linear-gradient(to_bottom,#22c55e08_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
               {/* Content */}
-              <div className="relative h-full p-12 flex flex-col justify-between">
+              <div className="relative h-full p-8 md:p-10 flex flex-col justify-between">
                 {/* Header */}
                 <div>
-                  <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center justify-between mb-6">
                     <span className="text-sm font-mono text-electric-500 uppercase tracking-wider">
                       {project.category}
                     </span>
@@ -264,20 +156,20 @@ const HorizontalShowcase = () => {
                     </span>
                   </div>
 
-                  <h4 className="text-4xl font-bold font-display mb-6 group-hover:text-electric-500 transition-colors duration-300">
+                  <h4 className="text-3xl md:text-4xl font-bold font-display mb-4 group-hover:text-electric-500 transition-colors duration-300">
                     {project.title}
                   </h4>
 
-                  <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
                     {project.description}
                   </p>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-4 py-2 text-sm bg-electric-500/10 text-electric-500 rounded-full font-mono border border-electric-500/20"
+                        className="px-3 py-1.5 text-sm bg-electric-500/10 text-electric-500 rounded-full font-mono border border-electric-500/20"
                       >
                         {tag}
                       </span>
@@ -286,7 +178,7 @@ const HorizontalShowcase = () => {
                 </div>
 
                 {/* Footer */}
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-6 mt-6">
                   {project.github && (
                     <a
                       href={project.github}
@@ -307,7 +199,7 @@ const HorizontalShowcase = () => {
                 </div>
 
                 {/* Number indicator */}
-                <div className="absolute top-12 right-12 text-8xl font-bold text-electric-500/10 font-display">
+                <div className="absolute top-8 right-8 text-7xl font-bold text-electric-500/10 font-display">
                   {String(index + 1).padStart(2, '0')}
                 </div>
               </div>
@@ -319,8 +211,8 @@ const HorizontalShowcase = () => {
         ))}
 
         {/* End card - CTA */}
-        <div className="flex-shrink-0 w-[85vw] md:w-[40vw] md:min-w-[400px] h-[85vh] md:h-[70vh] flex flex-col justify-center items-center text-center px-8">
-          <h3 className="text-5xl md:text-6xl font-bold font-display mb-6">
+        <div className="flex-shrink-0 w-[85vw] md:w-[40vw] md:min-w-[400px] min-h-[450px] flex flex-col justify-center items-center text-center px-8 snap-start">
+          <h3 className="text-4xl md:text-5xl font-bold font-display mb-6">
             {t('horizontalShowcase.ctaTitle')}
             <br />
             <span className="text-electric-500">{t('horizontalShowcase.ctaTitleHighlight')}</span>
@@ -338,7 +230,7 @@ const HorizontalShowcase = () => {
       </div>
 
       {/* Scroll hint */}
-      <div className="absolute bottom-8 right-8 text-muted-foreground font-mono text-sm flex items-center gap-3">
+      <div className="container mx-auto px-4 mt-6 text-muted-foreground font-mono text-sm flex items-center gap-3">
         <span>{t('horizontalShowcase.scrollHint')}</span>
         <svg
           className="w-6 h-6"
