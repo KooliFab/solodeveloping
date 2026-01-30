@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from '@/components/ui/Toaster';
 import { useTranslation } from 'react-i18next';
 import IntroAnimation from '@/components/ui/IntroAnimation';
+import GreenCursor from '@/components/ui/GreenCursor';
 
 // Lazy load pages
 const LandingPage = lazy(() => import('@/pages/LandingPage'));
@@ -11,76 +12,6 @@ const About = lazy(() => import('@/pages/About'));
 const BlogList = lazy(() => import('@/pages/BlogList'));
 const BlogPost = lazy(() => import('@/pages/BlogPost'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
-
-// Simple Green Cursor Component
-const GreenCursor = () => {
-  useEffect(() => {
-    const cursor = document.getElementById('green-cursor');
-    const cursorDot = document.getElementById('green-cursor-dot');
-    if (!cursor || !cursorDot) return;
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-
-    const handleMouseMove = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      // Instant dot follow
-      cursorDot.style.left = mouseX + 'px';
-      cursorDot.style.top = mouseY + 'px';
-    };
-
-    const handleMouseEnter = () => {
-      document.body.classList.add('cursor-hover');
-    };
-
-    const handleMouseLeave = () => {
-      document.body.classList.remove('cursor-hover');
-    };
-
-    // Smooth cursor ring follow
-    const animateCursor = () => {
-      const dx = mouseX - cursorX;
-      const dy = mouseY - cursorY;
-      
-      cursorX += dx * 0.15;
-      cursorY += dy * 0.15;
-      
-      cursor.style.left = cursorX + 'px';
-      cursor.style.top = cursorY + 'px';
-      
-      requestAnimationFrame(animateCursor);
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-
-    // Add hover effect to interactive elements
-    const triggers = document.querySelectorAll('a, button, input, textarea, select, [role="button"]');
-    triggers.forEach(trigger => {
-      trigger.addEventListener('mouseenter', handleMouseEnter);
-      trigger.addEventListener('mouseleave', handleMouseLeave);
-    });
-
-    animateCursor();
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      triggers.forEach(trigger => {
-        trigger.removeEventListener('mouseenter', handleMouseEnter);
-        trigger.removeEventListener('mouseleave', handleMouseLeave);
-      });
-    };
-  }, []);
-
-  return (
-    <>
-      <div id="green-cursor"></div>
-      <div id="green-cursor-dot"></div>
-    </>
-  );
-};
 
 // Loading component
 const PageLoader = () => (
