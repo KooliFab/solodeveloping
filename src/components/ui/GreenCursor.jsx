@@ -53,9 +53,6 @@ const GreenCursor = () => {
       cursorDot.style.top = `${mouseY}px`;
     };
 
-    const handleMouseEnter = () => document.body.classList.add('cursor-hover');
-    const handleMouseLeave = () => document.body.classList.remove('cursor-hover');
-
     const animateCursor = () => {
       cursorX += (mouseX - cursorX) * 0.15;
       cursorY += (mouseY - cursorY) * 0.15;
@@ -64,26 +61,37 @@ const GreenCursor = () => {
       animationId = requestAnimationFrame(animateCursor);
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
+    // Use event delegation for hover detection (works with dynamically added elements)
+    const interactiveSelector = 'a, button, input, textarea, select, [role="button"]';
+    
+    const handleMouseOver = (e) => {
+      if (e.target.closest(interactiveSelector)) {
+        document.body.classList.add('cursor-hover');
+      }
+    };
+    
+    const handleMouseOut = (e) => {
+      if (e.target.closest(interactiveSelector)) {
+        // Only remove if not moving to another interactive element
+        const relatedTarget = e.relatedTarget;
+        if (!relatedTarget?.closest?.(interactiveSelector)) {
+          document.body.classList.remove('cursor-hover');
+        }
+      }
+    };
 
-    const triggers = document.querySelectorAll(
-      'a, button, input, textarea, select, [role="button"]'
-    );
-    triggers.forEach((el) => {
-      el.addEventListener('mouseenter', handleMouseEnter);
-      el.addEventListener('mouseleave', handleMouseLeave);
-    });
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseover', handleMouseOver);
+    document.addEventListener('mouseout', handleMouseOut);
 
     animateCursor();
 
     return () => {
-      document.body.classList.remove('custom-cursor-active');
+      document.body.classList.remove('custom-cursor-active', 'cursor-hover');
       document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseover', handleMouseOver);
+      document.removeEventListener('mouseout', handleMouseOut);
       if (animationId) cancelAnimationFrame(animationId);
-      triggers.forEach((el) => {
-        el.removeEventListener('mouseenter', handleMouseEnter);
-        el.removeEventListener('mouseleave', handleMouseLeave);
-      });
     };
   }, [showCursor]);
 

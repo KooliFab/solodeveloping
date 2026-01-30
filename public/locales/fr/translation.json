@@ -150,29 +150,29 @@
     },
     "recommendations": {
       "title": "Ils m'ont fait confiance",
-      "subtitle": "Retrouvez ces recommandations sur mon profil LinkedIn",
+      "subtitle": "Retrouvez les recommandations complètes sur mon profil LinkedIn",
       "list": [
         {
           "id": 1,
-          "text": "J'ai eu le plaisir de travailler avec Fabien pendant plus de 4 ans... c'est l'un des professionnels les plus talentueux et dévoués que j'aie jamais rencontrés. Sa capacité à sortir des sentiers battus et à proposer des solutions innovantes... est vraiment impressionnante.",
+          "text": "Fabien est l'un des professionnels les plus talentueux et impliqués que j'ai rencontrés. Sa capacité à sortir des sentiers battus pour trouver des solutions innovantes est impressionnante. Mais Fabien est aussi très pragmatique et focalisé sur l'utilisateur : il n'hésite pas à me challenger quand j'arrive avec des idées folles, pour les canaliser vers une mise en œuvre pratique et réalisable.",
           "author": "Eric S.",
-          "role": "Fondateur, ZeLoop"
+          "role": "Fondateur"
         },
         {
           "id": 2,
-          "text": "Ce fut un privilège de travailler avec Fabien pendant plus de 2 ans... c'est un excellent tech lead. Il a conçu et mis en œuvre des architectures efficaces et résolu divers problèmes techniques et commerciaux... Fabien est un choix parfait.",
+          "text": "C'est un privilège de travailler avec Fabien depuis plus de 2 ans. C'est un excellent Tech Lead qui conçoit des architectures efficaces. Fabien m'a personnellement aidé à relever des défis techniques difficiles, grâce auxquels j'ai énormément appris. C'est aussi un collaborateur formidable, toujours disponible pour offrir soutien et conseils. Le choix idéal pour un leader technique.",
           "author": "Mykyta G.",
           "role": "Développeur ReactJS & Flutter"
         },
         {
           "id": 3,
-          "text": "Le rôle de Fabien chez MyRide901 est à la fois stratégique... et tactique... Il est professionnel et concentré lorsqu'il collabore avec nos équipes de développement et d'assurance qualité... apportant un leadership éclairé... C'est un plaisir de travailler avec lui.",
+          "text": "Le rôle de Fabien est à la fois stratégique (capacité architecturale) et tactique (développement senior et déploiement). Il est professionnel et concentré lorsqu'il collabore avec nos équipes QA et Dev, garantissant les meilleures pratiques. Il apporte un véritable leadership d'opinion pour identifier les options et recommander les solutions techniques. Fabien est très réactif et c'est un plaisir de travailler avec lui.",
           "author": "Aysha V",
-          "role": "Co-fondatrice, MyRide901"
+          "role": "Co-fondatrice"
         },
         {
           "id": 4,
-          "text": "Fabien m'accompagne comme mentor en entrepreneuriat et ses conseils sont d'une aide précieuse. Il m'aide à voir plus clair dans les angles morts de mon entreprise... Je suis très reconnaissante de son soutien.",
+          "text": "Fabien m'accompagne comme mentor en entrepreneuriat. Il m'aide à voir plus clair dans les angles morts de mon entreprise, à structurer mes idées et à prioriser l'essentiel dans la phase de démarrage. Je suis très reconnaissante de son soutien pour développer mon entreprise de façon stratégique et cohérente.",
           "author": "Martine M.",
           "role": "Enseignante & Entrepreneur"
         }
