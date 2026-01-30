@@ -7,13 +7,14 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/Button';
 import { ArrowRight, Linkedin, Star, Award, Code, Terminal } from 'lucide-react';
-import { testimonials } from '@/data/testimonials';
 import profilePoster from '@/assets/images/profile-poster.jpg';
 import profileVideo from '@/assets/videos/profile-loop.mp4';
 
 const About = () => {
   const { t } = useTranslation();
   const location = useLocation();
+  const testimonials = t('aboutPage.recommendations.list', { returnObjects: true });
+  const testimonialsList = Array.isArray(testimonials) ? testimonials : [];
 
   useEffect(() => {
     if (location.hash) {
@@ -132,7 +133,7 @@ const About = () => {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              {testimonials.map((rec, i) => (
+              {testimonialsList.map((rec, i) => (
                 <motion.div
                   key={rec.id}
                   initial={{ opacity: 0, y: 20 }}

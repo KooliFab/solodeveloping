@@ -7,17 +7,17 @@
     "hireMe": "Contact"
   },
   "hero": {
-    "title1": "Je développe full stack.",
-    "title2": "Vous grandissez vite.",
-    "tag1": "Apps mobiles",
-    "tag2": "Apps web",
+    "title1": "Je bâtis la tech.",
+    "title2": "Vous propulsez le business.",
+    "tag1": "iOS & Android",
+    "tag2": "Plateformes web",
     "tag3": "Blockchain",
-    "tag4": "Automatisation",
+    "tag4": "Automatisation IA",
     "experience": "Plus de 20 ans d'expérience.",
     "promise": "Pas de promesses en l'air, que des résultats.",
     "action": "Je livre!",
-    "ctaPrimary": "Construisons ensemble",
-    "ctaSecondary": "Voir les projets",
+    "ctaPrimary": "Voir mes projets",
+    "ctaSecondary": "Témoignages",
     "feature1Title": "Démarrage rapide",
     "feature1Desc": "Pas de frais d'agence. Livraison en jours, pas en mois.",
     "feature2Title": "Communication directe",
@@ -149,8 +149,34 @@
       "bio": "Avec plus de 20 ans d'expérience dans l'industrie tech, mon expertise fondamentale repose sur le développement full-stack orienté mobile. Cependant, mon parcours ne s'arrête pas au code. J'y ai ajouté des compétences de Product Ownership, acquises au fil de mes expériences professionnelles, ce qui m'a permis de mieux aligner la technique aux besoins business, tout en intégrant les automatisations IA pour maximiser l'efficacité.\n\nActuellement, je développe mes connaissances en marketing afin d'avoir la palette la plus complète possible. Mon objectif est d'offrir une vision holistique qui fait le pont entre une ingénierie robuste et la croissance du produit."
     },
     "recommendations": {
-      "title": "Ce Que Disent les Autres",
-      "subtitle": "La confiance de clients et collègues."
+      "title": "Ils m'ont fait confiance",
+      "subtitle": "Retrouvez ces recommandations sur mon profil LinkedIn",
+      "list": [
+        {
+          "id": 1,
+          "text": "J'ai eu le plaisir de travailler avec Fabien pendant plus de 4 ans... c'est l'un des professionnels les plus talentueux et dévoués que j'aie jamais rencontrés. Sa capacité à sortir des sentiers battus et à proposer des solutions innovantes... est vraiment impressionnante.",
+          "author": "Eric S.",
+          "role": "Fondateur, ZeLoop"
+        },
+        {
+          "id": 2,
+          "text": "Ce fut un privilège de travailler avec Fabien pendant plus de 2 ans... c'est un excellent tech lead. Il a conçu et mis en œuvre des architectures efficaces et résolu divers problèmes techniques et commerciaux... Fabien est un choix parfait.",
+          "author": "Mykyta G.",
+          "role": "Développeur ReactJS & Flutter"
+        },
+        {
+          "id": 3,
+          "text": "Le rôle de Fabien chez MyRide901 est à la fois stratégique... et tactique... Il est professionnel et concentré lorsqu'il collabore avec nos équipes de développement et d'assurance qualité... apportant un leadership éclairé... C'est un plaisir de travailler avec lui.",
+          "author": "Aysha V",
+          "role": "Co-fondatrice, MyRide901"
+        },
+        {
+          "id": 4,
+          "text": "Fabien m'accompagne comme mentor en entrepreneuriat et ses conseils sont d'une aide précieuse. Il m'aide à voir plus clair dans les angles morts de mon entreprise... Je suis très reconnaissante de son soutien.",
+          "author": "Martine M.",
+          "role": "Enseignante & Entrepreneur"
+        }
+      ]
     },
     "pricing": {
       "title": "Services & Distinctions",
