@@ -1,7 +1,10 @@
 export const blogPosts = [
   {
     id: "comment-reussir-se-lever-plus-tot",
-    slug: "comment-reussir-se-lever-plus-tot",
+    slug: {
+      en: "how-to-successfully-wake-up-earlier",
+      fr: "comment-reussir-a-se-lever-plus-tot",
+    },
     title: {
       en: "How to Successfully Wake Up Earlier",
       fr: "Comment réussir à se lever plus tôt",
@@ -216,7 +219,10 @@ Si vous avez aimé cet article, n'hésitez pas à recommander, partager et comme
   },
   {
     id: "the-power-of-lazy-loading",
-    slug: "the-power-of-lazy-loading",
+    slug: {
+      en: "the-power-of-lazy-loading",
+      fr: "la-puissance-du-lazy-loading",
+    },
     title: {
       en: 'The power of "Lazy Loading": Optimization and Cost Savings with Flutter and Firebase',
       fr: 'La puissance du "Lazy Loading" : Optimisation et Économie avec Flutter et Firebase',
@@ -529,7 +535,10 @@ Pour une startup comme LOVT, avec des ressources limitées, chaque moyen d'optim
   },
   {
     id: "progressive-web-app-with-flutter",
-    slug: "progressive-web-app-with-flutter",
+    slug: {
+      en: "progressive-web-app-with-flutter",
+      fr: "progressive-web-apps-avec-flutter",
+    },
     title: {
       en: "Progressive Web App with Flutter: launch your applications quickly 🚀",
       fr: "Progressive Web Apps avec Flutter : pour lancer vos applications rapidement 🚀",

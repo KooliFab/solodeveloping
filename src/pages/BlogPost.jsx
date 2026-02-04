@@ -4,18 +4,27 @@ import ReactMarkdown from 'react-markdown';
 import SEO from '@/components/SEO';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
+import { ArrowLeft, Calendar, User, Clock, ChevronRight } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CodeBlock from '@/components/ui/CodeBlock';
 import { blogPosts } from '@/data/blogPosts';
+
+// New Components
+import ReadingProgress from '@/components/blog/ReadingProgress';
+import TableOfContents from '@/components/blog/TableOfContents';
+import ShareButtons from '@/components/blog/ShareButtons';
+import ArticleSuggestions from '@/components/blog/ArticleSuggestions';
 
 const BlogPost = () => {
   const { slug } = useParams();
   const { i18n } = useTranslation();
   const currentLang = i18n.language || 'en';
   
-  const post = blogPosts.find(p => p.slug === slug);
+  // Find post by checking all locale slugs
+  const post = blogPosts.find(p => 
+    Object.values(p.slug).includes(slug)
+  );
 
   if (!post) {
     return <Navigate to="/articles" replace />;
@@ -30,135 +39,187 @@ const BlogPost = () => {
   const wordCount = content.split(/\s+/).length;
   const readTime = Math.ceil(wordCount / 200);
 
+  // Calculate alternates for SEO
+  const alternates = {
+    en: `https://solodeveloping.com/articles/${post.slug.en}`,
+    fr: `https://solodeveloping.com/fr/articles/${post.slug.fr}`,
+  };
+
+  const langPrefix = currentLang === 'fr' ? '/fr' : '';
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
+      <ReadingProgress />
+      
       <SEO 
         title={title}
         description={subtitle}
         path={`/articles/${slug}`}
         image={post.coverImage}
+        alternates={alternates}
       />
       <Navbar />
       
-      <main className="pt-24 pb-16 px-6">
-        <article className="max-w-3xl mx-auto space-y-8">
-          {/* Back Button */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+      <main className="pt-24 pb-16">
+        {/* Breadcrumb & Back */}
+        <div className="max-w-[1400px] mx-auto px-6 mb-8">
+          <Link 
+            to={`${langPrefix}/articles`} 
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
           >
-            <Link 
-              to="/articles" 
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-4 group"
-            >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              Back to Articles
-            </Link>
-          </motion.div>
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            {currentLang === 'fr' ? 'Retour aux articles' : 'Back to Articles'}
+          </Link>
+        </div>
 
-          {/* Header */}
-          <motion.header
+        {/* Hero Section - Immersive */}
+        <header className="max-w-[1400px] mx-auto px-6 mb-16">
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="space-y-6"
+            transition={{ duration: 0.5 }}
+            className="grid lg:grid-cols-2 gap-12 items-center"
           >
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+            <div className="space-y-6 order-2 lg:order-1">
+              <div className="flex flex-wrap gap-4 text-sm font-medium text-primary">
+                <span className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
+                  Blog
+                </span>
+                <span className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 flex items-center gap-2">
+                  <Clock className="w-3 h-3" /> {readTime} min read
+                </span>
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-balance font-extrabold tracking-tight leading-tight">
                 {title}
               </h1>
+              
               {subtitle && (
-                <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                <p className="text-xl text-muted-foreground leading-relaxed text-balance">
                   {subtitle}
                 </p>
               )}
+
+              <div className="flex items-center gap-4 pt-4 border-t border-white/10">
+                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                  {post.author.charAt(0)}
+                </div>
+                <div>
+                  <div className="font-semibold">{post.author}</div>
+                  <time className="text-sm text-muted-foreground" dateTime={post.date}>
+                    {new Date(post.date).toLocaleDateString(currentLang, { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                </div>
+              </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground border-b border-primary/10 pb-8">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-primary" />
-                <time dateTime={post.date}>{new Date(post.date).toLocaleDateString(currentLang, { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-              </div>
-              <div className="flex items-center gap-2">
-                <User className="w-4 h-4 text-primary" />
-                <span>{post.author}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-primary" />
-                <span>{readTime} min read</span>
-              </div>
-            </div>
-          </motion.header>
-
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="prose prose-invert prose-lg max-w-none 
-              prose-headings:text-foreground prose-headings:font-bold 
-              prose-p:text-muted-foreground prose-p:leading-relaxed
-              prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-              prose-strong:text-foreground
-              prose-img:rounded-xl prose-img:shadow-2xl prose-img:border prose-img:border-primary/10
-              prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:py-1 prose-blockquote:not-italic
-              prose-li:text-muted-foreground
-              prose-ul:text-muted-foreground prose-ol:text-muted-foreground"
-          >
-            {/* Hero Image */}
-            {post.coverImage && (
-              <div className="mb-10 rounded-2xl overflow-hidden shadow-2xl border border-primary/20 bg-muted/20">
+            <div className="order-1 lg:order-2">
+              <motion.div 
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="rounded-3xl overflow-hidden shadow-2xl border border-white/10 aspect-video relative group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-60 z-10" />
                 <img 
                   src={post.coverImage} 
                   alt={title} 
-                  className="w-full h-auto object-cover max-h-[500px] mb-0" // mb-0 to override prose default
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-              </div>
-            )}
-            
-            <ReactMarkdown
-              components={{
-                // Custom renderer for code blocks with syntax highlighting
-                code: ({ node, inline, className, children, ...props }) => {
-                  const match = /language-(\w+)/.exec(className || '');
-                  const language = match ? match[1] : '';
-                  const codeString = String(children).replace(/\n$/, '');
-
-                  if (!inline && language) {
-                    return <CodeBlock language={language}>{codeString}</CodeBlock>;
-                  }
-
-                  // Inline code
-                  return (
-                    <code 
-                      className="bg-gray-800 text-blue-400 px-2 py-1 rounded text-sm font-mono border border-gray-700 before:content-none after:content-none" 
-                      {...props}
-                    >
-                      {children}
-                    </code>
-                  );
-                },
-                // Custom renderer for images to make them responsive and styled
-                img: ({node, ...props}) => (
-                  <span className="block my-8">
-                    <img 
-                      {...props} 
-                      className="rounded-xl shadow-lg w-full border border-primary/10"
-                      loading="lazy"
-                    />
-                  </span>
-                ),
-                // Custom renderer for links to open external links in new tab
-                a: ({node, ...props}) => (
-                  <a {...props} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline" />
-                ),
-              }}
-            >
-              {content}
-            </ReactMarkdown>
+              </motion.div>
+            </div>
           </motion.div>
-        </article>
+        </header>
+
+        {/* Content Layout */}
+        <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          {/* Left Sidebar (Share) */}
+          <aside className="lg:col-span-1 hidden lg:block">
+            <ShareButtons title={title} url={window.location.href} description={subtitle} />
+          </aside>
+
+          {/* Main Content */}
+          <article className="lg:col-span-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="prose prose-invert prose-lg max-w-none prose-editorial
+                font-serif
+                prose-headings:text-foreground prose-headings:font-bold prose-headings:font-sans prose-headings:scroll-mt-32
+                prose-p:text-zinc-300 prose-p:leading-8 prose-p:text-pretty
+                prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline
+                prose-strong:text-white prose-strong:font-bold
+                prose-img:rounded-2xl prose-img:shadow-xl prose-img:border prose-img:border-white/10 prose-img:my-12
+                prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
+                prose-li:text-zinc-400 prose-li:marker:text-primary
+                prose-code:font-mono prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none"
+            >
+              <ReactMarkdown
+                components={{
+                  h2: ({node, ...props}) => {
+                    const id = props.children[0]?.toString().toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+                    return <h2 id={id} {...props} />;
+                  },
+                  h3: ({node, ...props}) => {
+                    const id = props.children[0]?.toString().toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+                    return <h3 id={id} {...props} />;
+                  },
+                  code: ({ node, inline, className, children, ...props }) => {
+                    const match = /language-(\w+)/.exec(className || '');
+                    const language = match ? match[1] : '';
+                    const codeString = String(children).replace(/\n$/, '');
+
+                    if (!inline && language) {
+                      return (
+                        <div className="my-8 rounded-xl overflow-hidden shadow-2xl border border-white/10">
+                           <CodeBlock language={language}>{codeString}</CodeBlock>
+                        </div>
+                      );
+                    }
+                    return <code className={className} {...props}>{children}</code>;
+                  },
+                  img: ({node, ...props}) => (
+                    <span className="block my-12 group">
+                      <img 
+                        {...props} 
+                        className="rounded-2xl shadow-2xl w-full border border-white/10 group-hover:shadow-primary/10 transition-shadow duration-500"
+                        loading="lazy"
+                      />
+                      {props.alt && (
+                        <span className="block text-center text-sm text-muted-foreground mt-4 italic">
+                          {props.alt}
+                        </span>
+                      )}
+                    </span>
+                  ),
+                  a: ({node, ...props}) => (
+                    <a {...props} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors border-b border-primary/30 hover:border-primary" />
+                  ),
+                }}
+              >
+                {content}
+              </ReactMarkdown>
+
+              {/* Mobile Share (Bottom) */}
+              <div className="lg:hidden mt-12 py-8 border-t border-white/10">
+                <p className="text-center mb-4 font-semibold">Share this article</p>
+                <div className="flex justify-center">
+                  <ShareButtons title={title} url={window.location.href} description={subtitle} />
+                </div>
+              </div>
+
+            </motion.div>
+            
+            <ArticleSuggestions currentSlug={slug} />
+          </article>
+
+          {/* Right Sidebar (TOC) */}
+          <aside className="lg:col-span-3 hidden lg:block">
+            <TableOfContents content={content} />
+          </aside>
+        </div>
       </main>
       <Footer />
     </div>

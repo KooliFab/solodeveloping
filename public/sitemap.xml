@@ -66,4 +66,53 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Blog Posts -->
+  <!-- How to Successfully Wake Up Earlier -->
+  <url>
+    <loc>https://solodeveloping.com/articles/how-to-successfully-wake-up-earlier</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/articles/how-to-successfully-wake-up-earlier"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://solodeveloping.com/fr/articles/comment-reussir-a-se-lever-plus-tot"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://solodeveloping.com/fr/articles/comment-reussir-a-se-lever-plus-tot</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/articles/how-to-successfully-wake-up-earlier"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://solodeveloping.com/fr/articles/comment-reussir-a-se-lever-plus-tot"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- The power of Lazy Loading -->
+  <url>
+    <loc>https://solodeveloping.com/articles/the-power-of-lazy-loading</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/articles/the-power-of-lazy-loading"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://solodeveloping.com/fr/articles/la-puissance-du-lazy-loading"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://solodeveloping.com/fr/articles/la-puissance-du-lazy-loading</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/articles/the-power-of-lazy-loading"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://solodeveloping.com/fr/articles/la-puissance-du-lazy-loading"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Progressive Web App with Flutter -->
+  <url>
+    <loc>https://solodeveloping.com/articles/progressive-web-app-with-flutter</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/articles/progressive-web-app-with-flutter"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://solodeveloping.com/fr/articles/progressive-web-apps-avec-flutter"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://solodeveloping.com/fr/articles/progressive-web-apps-avec-flutter</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/articles/progressive-web-app-with-flutter"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://solodeveloping.com/fr/articles/progressive-web-apps-avec-flutter"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
-const SEO = ({ titleKey, descriptionKey, title, description, path = '', image }) => {
+const SEO = ({ titleKey, descriptionKey, title, description, path = '', image, alternates }) => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language;
   
@@ -24,8 +24,9 @@ const SEO = ({ titleKey, descriptionKey, title, description, path = '', image })
     : `${siteUrl}${pathForUrl}`;
 
   // Construct alternate URLs
-  const urlEn = `${siteUrl}${pathForUrl}`;
-  const urlFr = `${siteUrl}/fr${pathForUrl}`;
+  // If alternates are provided (for localized slugs), use them, otherwise use standard path logic
+  const urlEn = alternates?.en || `${siteUrl}${pathForUrl}`;
+  const urlFr = alternates?.fr || `${siteUrl}/fr${pathForUrl}`;
 
   // Get metadata content (prioritize direct props, then translation keys)
   const metaTitle = title || (titleKey ? t(titleKey) : 'Solo Developing');

@@ -39,6 +39,9 @@ const BlogList = () => {
             {blogPosts.map((post, index) => {
               const title = post.title[currentLang] || post.title['en'];
               const subtitle = post.subtitle[currentLang] || post.subtitle['en'];
+              const slug = post.slug[currentLang] || post.slug['en'];
+              const langPrefix = currentLang === 'fr' ? '/fr' : '';
+              const linkPath = `${langPrefix}/articles/${slug}`;
               
               return (
                 <motion.article
@@ -48,7 +51,7 @@ const BlogList = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-primary/30 transition-all group flex flex-col h-full"
                 >
-                  <Link to={`/articles/${post.slug}`} className="block overflow-hidden h-48 relative">
+                  <Link to={linkPath} className="block overflow-hidden h-48 relative">
                     <div className="absolute inset-0 bg-primary/20 group-hover:bg-primary/10 transition-colors z-10" />
                     <img 
                       src={post.coverImage} 
@@ -65,8 +68,8 @@ const BlogList = () => {
                       </time>
                     </div>
                     
-                    <h2 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-primary transition-colors">
-                      <Link to={`/articles/${post.slug}`}>
+                      <h2 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+                        <Link to={linkPath}>
                         {title}
                       </Link>
                     </h2>
@@ -78,7 +81,7 @@ const BlogList = () => {
                     )}
                     
                     <Link 
-                      to={`/articles/${post.slug}`}
+                      to={linkPath}
                       className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors mt-auto"
                     >
                       Read Article <ArrowRight className="w-4 h-4" />
