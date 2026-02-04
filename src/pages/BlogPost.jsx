@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import SEO from '@/components/SEO';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
@@ -31,6 +32,12 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO 
+        title={title}
+        description={subtitle}
+        path={`/articles/${slug}`}
+        image={post.coverImage}
+      />
       <Navbar />
       
       <main className="pt-24 pb-16 px-6">

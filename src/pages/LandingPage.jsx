@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import SEO from '@/components/SEO';
 import { useTranslation } from 'react-i18next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -16,16 +16,11 @@ const LandingPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{t('meta.title')}</title>
-        <meta name="description" content={t('meta.description')} />
-        <meta name="keywords" content={t('meta.keywords')} />
-        <meta property="og:title" content={t('meta.ogTitle')} />
-        <meta property="og:description" content={t('meta.ogDescription')} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://solodeveloping.com" />
-        <link rel="canonical" href="https://solodeveloping.com" />
-      </Helmet>
+      <SEO 
+        titleKey="meta.title" 
+        descriptionKey="meta.description" 
+        path="/"
+      />
 
       <div className="min-h-screen bg-background text-foreground relative selection:bg-electric-500/30 selection:text-white">
         <Navbar />

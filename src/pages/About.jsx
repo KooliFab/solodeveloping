@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import SEO from '@/components/SEO';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/Button';
@@ -29,10 +29,11 @@ const About = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{t('aboutPage.title')} | SOLODEVELOPING</title>
-        <meta name="description" content={t('aboutPage.inspiration.content')} />
-      </Helmet>
+      <SEO 
+        titleKey="aboutPage.title" 
+        descriptionKey="aboutPage.inspiration.content" 
+        path="/about"
+      />
 
       <div className="min-h-screen bg-background text-foreground relative selection:bg-primary/30 selection:text-primary-foreground">
         <Navbar />

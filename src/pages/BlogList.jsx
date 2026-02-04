@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import SEO from '@/components/SEO';
 import { Calendar, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -12,6 +13,11 @@ const BlogList = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO 
+        title="Articles | Solo Developing"
+        description="Thoughts on software engineering, architecture, and developer experience."
+        path="/articles"
+      />
       <Navbar />
       
       <main className="pt-24 px-6 pb-20">
