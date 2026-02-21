@@ -4,8 +4,8 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/portfolio/Hero';
 import ExpertiseSection from '@/components/portfolio/ExpertiseSection';
-import HorizontalShowcase from '@/components/portfolio/HorizontalShowcase';
-import ProjectsShowcase from '@/components/portfolio/ProjectsShowcase';
+import FounderProducts from '@/components/portfolio/FounderProducts';
+import SkillShowcase from '@/components/portfolio/SkillShowcase';
 import ContactSection from '@/components/portfolio/ContactSection';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
@@ -28,8 +28,8 @@ const LandingPage = () => {
         <main className="relative">
           <Hero />
           <ExpertiseSection />
-          <HorizontalShowcase />
-          <ProjectsShowcase />
+          <FounderProducts />
+          <SkillShowcase />
           <ContactSection />
           <Footer />
         </main>

@@ -16,58 +16,58 @@ const HorizontalShowcase = () => {
   const projects = [
     {
       id: 1,
-      title: 'AI Document Processor',
-      category: 'AI/Automation',
-      year: '2024',
-      description: 'Reduced manual review from 4 hours to 15 minutes with 98% accuracy using advanced AI processing',
-      tags: ['React', 'Python', 'OpenAI', 'FastAPI'],
-      color: 'from-blue-500 to-cyan-500',
-      link: '#',
-      github: '#'
+      title: 'ZeLoop',
+      category: 'Social · Eco · Blockchain',
+      year: '2018 — Présent',
+      description: 'Réseau social écologique qui récompense les gestes éco-responsables en cryptomonnaie. Co-fondateur & lead developer. Déployé en marque blanche pour 4 partenaires — newBin, StopMego, Cherry et Eau de Paris.',
+      tags: ['Flutter', 'Firebase', 'Blockchain', 'White Label', 'Machine Learning'],
+      color: 'from-green-500 to-emerald-600',
+      link: 'https://zeloop.net',
+      github: null
     },
     {
       id: 2,
-      title: 'Mobile E-Commerce Platform',
-      category: 'Mobile',
-      year: '2024',
-      description: 'Increased conversions 40% with streamlined checkout and custom dashboard',
-      tags: ['React Native', 'Node.js', 'Stripe', 'MongoDB'],
-      color: 'from-purple-500 to-pink-500',
-      link: '#',
-      github: '#'
+      title: 'LOVT',
+      category: 'Marketplace · Jobs',
+      year: '2024 — Présent',
+      description: 'Marketplace de services dédiée aux jeunes. Co-fondateur & Product Owner. 2 000 inscriptions en 1 mois grâce à une stratégie PWA Flutter — zéro store, déploiement en quelques semaines.',
+      tags: ['Flutter', 'PWA', 'Firebase', 'Analytics', 'Growth'],
+      color: 'from-blue-500 to-cyan-500',
+      link: 'https://lovt.ca',
+      github: null
     },
     {
       id: 3,
-      title: 'Real-Time Analytics',
-      category: 'Web App',
-      year: '2023',
-      description: 'Enterprise platform processing 1M+ events/day with sub-100ms latency',
-      tags: ['React', 'WebSocket', 'D3.js', 'PostgreSQL'],
-      color: 'from-orange-500 to-red-500',
-      link: '#',
-      github: '#'
+      title: 'Reward Engine API',
+      category: 'Backend · Blockchain',
+      year: '2018 — Présent',
+      description: 'API REST générique de récompense par cryptomonnaie, le moteur technique derrière ZeLoop. Supporte 4 blockchains — Ethereum, EOS, Binance Smart Chain et VeChain. Smart contracts en Solidity & C++.',
+      tags: ['Node.js', 'REST API', 'Solidity', 'C++', 'Ethereum', 'VeChain'],
+      color: 'from-purple-500 to-violet-600',
+      link: 'https://spotter.zeloop.net',
+      github: null
     },
     {
       id: 4,
-      title: 'Fitness Tracking App',
-      category: 'Mobile',
-      year: '2023',
-      description: 'Cross-platform fitness app with AI-powered workout recommendations',
-      tags: ['React Native', 'TensorFlow', 'Firebase', 'Redux'],
-      color: 'from-green-500 to-emerald-500',
-      link: '#',
-      github: '#'
+      title: 'OpenFleet',
+      category: 'iOS Native · B2B',
+      year: '2018 — 2020',
+      description: 'Application iOS de gestion de flotte automobile B2B. Lead developer sur l\'intégration logicielle smartphone / boîtier véhicule. Architecture VIPER modulaire, sécurisation Bluetooth/BLE, déployé en marque blanche pour plusieurs clients entreprises.',
+      tags: ['Swift', 'UIKit', 'BLE', 'VIPER', 'Protobuf', 'Realm'],
+      color: 'from-orange-500 to-red-500',
+      link: 'https://www.openfleet.com',
+      github: null
     },
     {
       id: 5,
-      title: 'SaaS Marketing Platform',
-      category: 'Web App',
-      year: '2024',
-      description: 'All-in-one marketing automation platform for SMBs',
-      tags: ['Next.js', 'Prisma', 'Tailwind', 'Vercel'],
-      color: 'from-yellow-500 to-orange-500',
-      link: '#',
-      github: '#'
+      title: 'Cogni',
+      category: 'EdTech · PWA',
+      year: '2023 — Présent',
+      description: 'Application compagnon du livre physique "Les Aventures de Cogni". Génère un nombre infini d\'épisodes interactifs avec des énigmes aléatoires. Accessible directement depuis le navigateur — aucune installation requise.',
+      tags: ['Flutter', 'PWA', 'Firebase', 'Flutter Web'],
+      color: 'from-amber-500 to-yellow-500',
+      link: 'https://cognibook.com',
+      github: null
     }
   ];
 
