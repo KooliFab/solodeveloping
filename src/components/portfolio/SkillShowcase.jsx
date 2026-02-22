@@ -23,20 +23,24 @@ const AppIcon = ({ app, index }) => {
       className="flex flex-col items-center gap-1.5 group/icon"
     >
       {/* Icon square */}
-      <div
+      <motion.div
+        whileHover={{
+          rotate: [0, -9, 7, -4, 2, 0],
+          scale:  [1, 1.15, 1.1, 1.05, 1.02, 1],
+          transition: { duration: 0.4, ease: 'easeInOut' },
+        }}
         className="w-14 h-14 rounded-2xl flex items-center justify-center
                    text-white font-bold text-base select-none
-                   shadow-md transition-all duration-200
-                   group-hover/icon:scale-110 group-hover/icon:shadow-lg"
+                   shadow-md cursor-pointer"
         style={{
           background: `linear-gradient(145deg, ${app.gradFrom}, ${app.gradTo})`,
           boxShadow: `0 4px 14px ${app.gradFrom}55`,
         }}
       >
         {app.initial}
-      </div>
+      </motion.div>
       {/* Label */}
-      <span className="text-[10px] text-muted-foreground text-center leading-tight max-w-[64px] truncate">
+      <span className="text-[10px] font-mono text-muted-foreground text-center leading-tight max-w-[64px] truncate">
         {app.name}
       </span>
     </motion.div>
@@ -126,11 +130,12 @@ const SkillShowcase = () => {
             STACK
           </p>
           <div className="-mt-4 md:-mt-6">
-            <div className="flex items-center gap-3 mb-3">
-              <Cpu className="w-5 h-5 text-electric-500" />
-              <span className="text-sm font-mono text-electric-500 uppercase tracking-widest">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="font-mono text-electric-500 text-base font-bold phosphor-glow select-none">$</span>
+              <span className="text-sm font-mono text-electric-500 uppercase tracking-widest phosphor-glow">
                 {t('skills.badge')}
               </span>
+              <span className="cursor-blink text-electric-500 font-mono text-sm select-none">█</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
               {t('skills.title1')}{' '}

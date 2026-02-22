@@ -196,19 +196,19 @@ const Hero = () => {
           <div ref={subtitleRef} className="mb-16 max-w-4xl">
             <div className="flex flex-wrap gap-6 text-lg md:text-xl text-muted-foreground font-mono mb-8">
               <span className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-electric-500 rounded-full animate-pulse" />
+                <span className="dot-live text-electric-500 text-xs leading-none select-none">●</span>
                 {t('hero.tag1')}
               </span>
               <span className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-electric-500 rounded-full animate-pulse" />
+                <span className="dot-live text-electric-500 text-xs leading-none select-none">●</span>
                 {t('hero.tag2')}
               </span>
               <span className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-electric-500 rounded-full animate-pulse" />
+                <span className="dot-live text-electric-500 text-xs leading-none select-none">●</span>
                 {t('hero.tag3')}
               </span>
               <span className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-electric-500 rounded-full animate-pulse" />
+                <span className="dot-live text-electric-500 text-xs leading-none select-none">●</span>
                 {t('hero.tag4')}
               </span>
             </div>
@@ -229,22 +229,22 @@ const Hero = () => {
           >
             <Button
               size="lg"
-              className="group relative overflow-hidden bg-electric-500 hover:bg-electric-600 text-white px-10 py-8 text-xl rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(34,197,94,0.6)]"
+              className="group relative overflow-hidden bg-transparent border-2 border-electric-500 text-electric-500 font-mono px-10 py-8 text-lg rounded-lg transition-all duration-300 hover:bg-electric-500/10 hover:shadow-[0_0_40px_rgba(34,197,94,0.35),inset_0_0_30px_rgba(34,197,94,0.05)] tracking-widest uppercase phosphor-glow"
             >
               <span className="relative z-10 flex items-center gap-3">
+                <span className="opacity-50 font-mono">&gt;_</span>
                 {t('hero.ctaPrimary')}
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-electric-600 to-electric-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Button>
 
             <Button
               size="lg"
               variant="outline"
               onClick={handleSecondaryCta}
-              className="border-2 border-electric-500/50 text-electric-500 hover:bg-electric-500/10 hover:border-electric-500 px-10 py-8 text-xl rounded-full transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+              className="group border border-border/50 text-muted-foreground hover:text-electric-500 hover:border-electric-500/50 font-mono px-10 py-8 text-lg rounded-lg transition-all duration-300 hover:bg-electric-500/5 tracking-widest backdrop-blur-sm uppercase"
             >
-              <Code2 className="w-6 h-6 mr-3" />
+              <span className="font-mono opacity-40 mr-2 text-sm group-hover:opacity-70 transition-opacity">&lt;/&gt;</span>
               {t('hero.ctaSecondary')}
             </Button>
           </motion.div>

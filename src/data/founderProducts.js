@@ -4,6 +4,7 @@ export const founderProducts = [
     title: "ZeLoop",
     translationKey: "zeloop",
     color: "purple",
+    status: "live",
     link: "https://zeloop.net",
     tags: ["Flutter", "Firebase", "Blockchain", "White Label", "ML"],
     technicalProjects: [
@@ -29,6 +30,7 @@ export const founderProducts = [
     title: "LOVT",
     translationKey: "lovt",
     color: "green",
+    status: "live",
     link: "https://lovt.ca",
     tags: ["Flutter", "PWA", "Firebase", "Analytics", "Growth"],
     technicalProjects: [
@@ -49,6 +51,7 @@ export const founderProducts = [
     title: "Cogni",
     translationKey: "cogni",
     color: "blue",
+    status: "live",
     link: "https://cognibook.com",
     tags: ["Flutter", "PWA", "Firebase", "EdTech"],
     technicalProjects: [
@@ -64,6 +67,7 @@ export const founderProducts = [
     title: "Hiiba",
     translationKey: "hiiba",
     color: "pink",
+    status: "live",
     link: "https://hiiba.ae",
     tags: ["Flutter", "Firebase", "Marketplace", "UAE"],
     technicalProjects: [
@@ -79,6 +83,7 @@ export const founderProducts = [
     title: "BarcodeVibe",
     translationKey: "barcode",
     color: "red",
+    status: "mvp",
     link: null,
     tags: ["Flutter", "PWA", "Firebase", "Barcode"],
     technicalProjects: [

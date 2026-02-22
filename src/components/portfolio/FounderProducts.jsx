@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Code2, Rocket } from 'lucide-react';
+import { ExternalLink, Code2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { founderProducts } from '@/data/founderProducts';
 
@@ -139,8 +139,8 @@ const ProductCard = ({ product, isExpanded, isTabMode, onClick, layoutId, wrappe
     <motion.div 
       layoutId={layoutId}
       onClick={onClick}
-      className={`overflow-hidden bg-background flex flex-col justify-between w-full transition-colors duration-300 ${
-        isExpanded ? 'md:min-h-[85vh] shadow-2xl' : 'h-[8rem] sm:h-[10rem] cursor-pointer shadow-xl'
+      className={`overflow-hidden bg-background flex flex-col w-full transition-colors duration-300 ${
+        isExpanded ? 'shadow-2xl' : 'h-[8rem] sm:h-[10rem] cursor-pointer shadow-xl'
       } ${wrapperClass || ''}`}
       style={{ 
         border: `1px solid ${accent}40`, 
@@ -189,6 +189,20 @@ const ProductCard = ({ product, isExpanded, isTabMode, onClick, layoutId, wrappe
                 <span className="text-muted-foreground/40 text-xs md:text-sm">·</span>
                 <span className="text-xs md:text-sm text-muted-foreground font-medium uppercase tracking-wider">
                   {t(`founderProducts.items.${pKey}.role`)}
+                </span>
+                {/* Status badge — visible in expanded + collapsed */}
+                <span
+                  className="inline-flex items-center gap-1 px-2 py-0.5 font-mono text-[10px] rounded border"
+                  style={{
+                    color:        product.status === 'live' ? accent : '#f59e0b',
+                    borderColor:  product.status === 'live' ? `${accent}40` : '#f59e0b40',
+                    background:   product.status === 'live' ? `${accent}08` : '#f59e0b08',
+                  }}
+                >
+                  <span className={product.status === 'live' ? 'dot-live' : ''}>●</span>
+                  <span className="uppercase tracking-widest ml-0.5">
+                    {product.status === 'live' ? 'LIVE' : 'MVP'}
+                  </span>
                 </span>
               </motion.div>
 
@@ -263,7 +277,7 @@ const ProductCard = ({ product, isExpanded, isTabMode, onClick, layoutId, wrappe
       </motion.div>
       {/* ── Technical sub-projects ── */}
       <div
-        className={`px-6 py-8 md:px-12 md:py-12 flex-1 flex flex-col justify-end bg-gradient-to-t from-black/5 to-transparent transition-all duration-300 ${isExpanded ? 'opacity-100 h-auto' : 'opacity-0 h-0 overflow-hidden'}`}
+        className={`px-6 py-8 md:px-12 md:py-12 flex flex-col bg-gradient-to-t from-black/5 to-transparent transition-all duration-300 ${isExpanded ? 'opacity-100 h-auto' : 'opacity-0 h-0 overflow-hidden'}`}
         style={{ borderTop: `1px solid ${accent}25` }}
       >
         {/* Sub-section label */}
@@ -320,11 +334,12 @@ const FounderProducts = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="inline-flex items-center justify-center gap-3 mb-5 px-4 py-2 rounded-full border border-electric-500/30 bg-electric-500/10">
-            <Rocket className="w-5 h-5 text-electric-500" />
-            <span className="text-sm font-mono text-electric-500 uppercase tracking-widest font-bold">
+          <div className="inline-flex items-center justify-center gap-2 mb-5 px-4 py-2 rounded-md border border-electric-500/30 bg-electric-500/5">
+            <span className="font-mono text-electric-500 text-base font-bold phosphor-glow select-none">&gt;</span>
+            <span className="text-sm font-mono text-electric-500 tracking-widest font-bold phosphor-glow">
               {t('founderProducts.badge')}
             </span>
+            <span className="cursor-blink text-electric-500 font-mono text-sm select-none ml-0.5">█</span>
           </div>
           <h2 className="text-5xl md:text-6xl font-bold font-display mb-6">
             {t('founderProducts.title1')}{' '}
@@ -385,7 +400,7 @@ const FounderProducts = () => {
               })}
             </div>
           ) : (
-            <div className="w-full max-w-6xl flex flex-row transition-all duration-500 min-h-[85vh] isolate">
+            <div className="w-full max-w-6xl flex flex-row transition-all duration-500 isolate">
               {/* Tabs Column (Unexpanded Cards) */}
               <div className="hidden md:flex flex-col gap-2 relative z-20 mt-12 mb-20 mr-[-1px]">
                 {founderProducts.map((product) => {

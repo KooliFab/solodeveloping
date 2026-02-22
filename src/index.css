@@ -359,7 +359,53 @@
     0 20px 60px -20px rgba(34, 197, 94, 0.3);
 }
 
-/* Editorial Typography */
+/* ── Terminal Vibe ───────────────────────────────────────────── */
+
+/* Blinking block cursor */
+@keyframes cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Icon jiggle/wobble on hover */
+@keyframes icon-jiggle {
+  0%   { transform: rotate(0deg) scale(1); }
+  20%  { transform: rotate(-9deg) scale(1.14); }
+  40%  { transform: rotate(7deg) scale(1.09); }
+  60%  { transform: rotate(-4deg) scale(1.05); }
+  80%  { transform: rotate(2deg) scale(1.02); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+/* Phosphor CRT screen flicker */
+@keyframes phosphor-flicker {
+  0%, 88%, 100% { opacity: 1; }
+  89%  { opacity: 0.72; }
+  90%  { opacity: 1; }
+  95%  { opacity: 0.88; }
+}
+
+/* Live status dot pulse */
+@keyframes dot-live {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+/* Utilities */
+.cursor-blink {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+.dot-live {
+  animation: dot-live 1.8s ease-in-out infinite;
+}
+
+.phosphor-glow {
+  animation: phosphor-flicker 12s ease-in-out infinite;
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.55), 0 0 22px rgba(34, 197, 94, 0.2);
+}
+
+/* ── Editorial Typography ────────────────────────────────────── */
 .font-serif {
   font-family: "Merriweather", serif;
 }
