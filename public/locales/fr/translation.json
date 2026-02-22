@@ -185,5 +185,110 @@
       "project": "Au Projet",
       "contact": "Contactez pour Devis"
     }
+  },
+  "founderProducts": {
+    "badge": "Fondateur & Solopreneur",
+    "title1": "Ce que j'ai",
+    "title2": "construit",
+    "subtitleMobile": "Produits fondés et développés en autonomie.",
+    "subtitleDesktop": "Produits fondés et développés en autonomie. Cliquez sur un projet pour l'étendre et découvrir son architecture technique.",
+    "techComponents": "Composants techniques",
+    "items": {
+      "zeloop": {
+        "role": "Co-fondateur & CTO",
+        "year": "2018 — Présent",
+        "tagline": "Réseau social écologique qui récompense les gestes éco-responsables en cryptomonnaie — déployé sous 4 marques distinctes.",
+        "projects": {
+          "whitelabel": {
+            "title": "White Label Architecture",
+            "description": "Un seul codebase Flutter déployé sous 4 identités visuelles — newBin, StopMego, Cherry et Eau de Paris. Système de thèmes dynamiques et configuration par client."
+          },
+          "api": {
+            "title": "Reward Engine API",
+            "description": "API REST générique de récompense par cryptomonnaie. 4 blockchains — Ethereum, EOS, Binance Smart Chain et VeChain. Smart contracts en Solidity & C++."
+          },
+          "spotter": {
+            "title": "ZeLoop Spotter",
+            "description": "Application de terrain pour les collecteurs de déchets, intégrée à la blockchain VeChain. Mini-app web Flutter déployée sans store."
+          }
+        }
+      },
+      "lovt": {
+        "role": "Co-fondateur & CTO",
+        "year": "2024 — Présent",
+        "tagline": "Marketplace de services dédiée aux jeunes — 2 000 inscriptions en 1 mois grâce à une stratégie PWA sans passage par les stores.",
+        "projects": {
+          "pwa": {
+            "title": "Flutter PWA Strategy",
+            "description": "Déploiement en quelques semaines, zéro store. Après optimisation du lazy loading : 3× plus d'inscriptions tout en réduisant les lectures Firebase sous le seuil du free tier."
+          },
+          "installer": {
+            "title": "pwa_installer",
+            "description": "Librairie Dart open source publiée sur pub.dev. Déclenche nativement le bandeau d'installation PWA depuis Flutter Web — fonctionnalité absente du framework par défaut."
+          }
+        }
+      },
+      "cogni": {
+        "role": "Solo Founder",
+        "year": "2023 — Présent",
+        "tagline": "Application compagnon du livre physique \"Les Aventures de Cogni\" — génère un nombre infini d'épisodes interactifs avec des énigmes aléatoires.",
+        "projects": {
+          "engine": {
+            "title": "Generative Episode Engine",
+            "description": "Moteur de génération d'épisodes et d'énigmes aléatoires lié au livre physique. Chaque session offre une expérience unique — le contenu ne s'épuise jamais."
+          }
+        }
+      },
+      "hiiba": {
+        "role": "Co-fondateur & CTO",
+        "year": "2024 — Présent",
+        "tagline": "Première marketplace de dons d'objets aux Émirats Arabes Unis — connecte donneurs et receveurs dans une économie circulaire locale.",
+        "projects": {
+          "app": {
+            "title": "Flutter Marketplace App",
+            "description": "Application multiplateforme iOS, Android et Web. Gestion des annonces, matching géolocalisé, notifications push et système de messagerie intégré."
+          }
+        }
+      },
+      "barcode": {
+        "role": "Solopreneur",
+        "year": "2025 — En cours",
+        "tagline": "Tracker de prix par scan de code-barres — détecte la shrinkflation en temps réel quand un produit rétrécit sans que son prix baisse.",
+        "projects": {
+          "scanner": {
+            "title": "Shrinkflation Scanner",
+            "description": "PWA Flutter qui suit l'historique des prix produit par produit et alerte quand le grammage diminue sans baisse de prix — un problème grand public, sous-détecté."
+          }
+        }
+      }
+    }
+  },
+  "skills": {
+    "badge": "Expertise technique",
+    "title1": "Ce que je",
+    "title2": "maîtrise",
+    "subtitle": "7 ans d'expérience Flutter & iOS natif. Un éventail de projets couvrant le mobile, le web, les APIs et la blockchain.",
+    "categories": {
+      "mobile": {
+        "label": "Applications Mobile",
+        "meta": "7 ans · 10 apps"
+      },
+      "web": {
+        "label": "Web & PWA",
+        "meta": "5 ans · 8 apps"
+      },
+      "backend": {
+        "label": "Backend & API",
+        "meta": "Node.js · PHP · Flask"
+      },
+      "blockchain": {
+        "label": "Blockchain",
+        "meta": "ETH · EOS · BSC · VeChain"
+      },
+      "opensource": {
+        "label": "Open Source",
+        "meta": "pub.dev · Dart"
+      }
+    }
   }
 }

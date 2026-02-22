@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/portfolio/Hero';
-import ExpertiseSection from '@/components/portfolio/ExpertiseSection';
 import FounderProducts from '@/components/portfolio/FounderProducts';
 import SkillShowcase from '@/components/portfolio/SkillShowcase';
 import ContactSection from '@/components/portfolio/ContactSection';
@@ -27,7 +26,6 @@ const LandingPage = () => {
 
         <main className="relative">
           <Hero />
-          <ExpertiseSection />
           <FounderProducts />
           <SkillShowcase />
           <ContactSection />

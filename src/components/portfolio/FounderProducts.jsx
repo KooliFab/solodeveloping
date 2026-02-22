@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Code2, Rocket } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { founderProducts } from '@/data/founderProducts';
 
 const useIsMobile = (breakpoint = 768) => {
@@ -22,10 +23,14 @@ const ACCENT = {
   amber:  '#f59e0b',
   purple: '#8b5cf6',
   orange: '#f97316',
+  pink:   '#ec4899',
+  red:    '#ef4444',
 };
 
 // ─── Technical sub-project card ──────────────────────────────────────────────
-const TechCard = ({ tech, accent, index }) => (
+const TechCard = ({ tech, accent, index, pKey }) => {
+  const { t } = useTranslation();
+  return (
   <motion.div
     initial={{ opacity: 0, y: 12 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +43,7 @@ const TechCard = ({ tech, accent, index }) => (
   >
     {/* Header */}
     <div className="flex items-start justify-between gap-2">
-      <h4 className="text-sm font-bold leading-snug">{tech.title}</h4>
+      <h4 className="text-sm font-bold leading-snug">{t(`founderProducts.items.${pKey}.projects.${tech.translationKey}.title`)}</h4>
       {tech.link && (
         <a
           href={tech.link}
@@ -56,7 +61,7 @@ const TechCard = ({ tech, accent, index }) => (
 
     {/* Description */}
     <p className="text-xs text-muted-foreground leading-relaxed flex-1">
-      {tech.description}
+      {t(`founderProducts.items.${pKey}.projects.${tech.translationKey}.description`)}
     </p>
 
     {/* Tags */}
@@ -76,11 +81,14 @@ const TechCard = ({ tech, accent, index }) => (
       ))}
     </div>
   </motion.div>
-);
+  );
+};
 
 // ─── Product Card (Stackable & Expandable) ────────────────────────────────────
 const ProductCard = ({ product, isExpanded, isTabMode, onClick, layoutId, wrapperStyle, wrapperClass, wrapperAnimate }) => {
+  const { t } = useTranslation();
   const accent = ACCENT[product.color] || ACCENT.green;
+  const pKey = product.translationKey;
 
   if (isTabMode) {
     return (
@@ -93,11 +101,24 @@ const ProductCard = ({ product, isExpanded, isTabMode, onClick, layoutId, wrappe
           borderRight: 'none',
           borderTopLeftRadius: '1.5rem',
           borderBottomLeftRadius: '1.5rem',
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0,
           ...wrapperStyle
         }}
-        initial={false}
-        animate={wrapperAnimate}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        initial={{
+          borderTopLeftRadius: '1.5rem',
+          borderBottomLeftRadius: '1.5rem',
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0,
+        }}
+        animate={{
+          borderTopLeftRadius: '1.5rem',
+          borderBottomLeftRadius: '1.5rem',
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0,
+          ...wrapperAnimate,
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 30, borderTopRightRadius: { duration: 0 }, borderBottomRightRadius: { duration: 0 }, borderTopLeftRadius: { duration: 0 }, borderBottomLeftRadius: { duration: 0 } }}
       >
         <motion.div className="flex items-center gap-3 px-4 py-4 md:px-5 md:py-5">
           <div 
@@ -118,17 +139,29 @@ const ProductCard = ({ product, isExpanded, isTabMode, onClick, layoutId, wrappe
     <motion.div 
       layoutId={layoutId}
       onClick={onClick}
-      className={`rounded-3xl overflow-hidden bg-background flex flex-col justify-between w-full transition-colors duration-300 ${
+      className={`overflow-hidden bg-background flex flex-col justify-between w-full transition-colors duration-300 ${
         isExpanded ? 'md:min-h-[85vh] shadow-2xl' : 'h-[8rem] sm:h-[10rem] cursor-pointer shadow-xl'
       } ${wrapperClass || ''}`}
       style={{ 
         border: `1px solid ${accent}40`, 
+        borderRadius: '1.5rem',
         boxShadow: `0 20px 40px -15px ${accent}20`,
         ...wrapperStyle
       }}
-      initial={false}
-      animate={wrapperAnimate}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      initial={{
+        borderTopLeftRadius: '1.5rem',
+        borderBottomLeftRadius: '1.5rem',
+        borderTopRightRadius: '1.5rem',
+        borderBottomRightRadius: '1.5rem',
+      }}
+      animate={{
+        borderTopLeftRadius: '1.5rem',
+        borderBottomLeftRadius: '1.5rem',
+        borderTopRightRadius: '1.5rem',
+        borderBottomRightRadius: '1.5rem',
+        ...wrapperAnimate,
+      }}
+      transition={{ type: "spring", stiffness: 300, damping: 30, borderTopRightRadius: { duration: 0 }, borderBottomRightRadius: { duration: 0 }, borderTopLeftRadius: { duration: 0 }, borderBottomLeftRadius: { duration: 0 } }}
     >
       {/* ── Card header (always visible) ── */}
       <motion.div layout="position" className="w-full text-left">
@@ -151,11 +184,11 @@ const ProductCard = ({ product, isExpanded, isTabMode, onClick, layoutId, wrappe
               {/* Meta row */}
               <motion.div layout="position" className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-2 md:mb-3">
                 <span className="text-xs md:text-sm font-mono font-medium" style={{ color: accent }}>
-                  {product.year}
+                  {t(`founderProducts.items.${pKey}.year`)}
                 </span>
                 <span className="text-muted-foreground/40 text-xs md:text-sm">·</span>
                 <span className="text-xs md:text-sm text-muted-foreground font-medium uppercase tracking-wider">
-                  {product.role}
+                  {t(`founderProducts.items.${pKey}.role`)}
                 </span>
               </motion.div>
 
@@ -176,7 +209,7 @@ const ProductCard = ({ product, isExpanded, isTabMode, onClick, layoutId, wrappe
               >
                 <div className="pt-2 md:pt-4">
                   <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6 max-w-4xl">
-                    {product.tagline}
+                    {t(`founderProducts.items.${pKey}.tagline`)}
                   </p>
                   
                   {/* Product tags */}
@@ -240,7 +273,7 @@ const ProductCard = ({ product, isExpanded, isTabMode, onClick, layoutId, wrappe
             className="text-sm md:text-base font-mono uppercase tracking-widest font-bold"
             style={{ color: accent }}
           >
-            Composants techniques
+            {t('founderProducts.techComponents')}
           </span>
           <div
             className="flex-1 h-px opacity-50"
@@ -259,7 +292,7 @@ const ProductCard = ({ product, isExpanded, isTabMode, onClick, layoutId, wrappe
           }`}
         >
           {product.technicalProjects.map((tech, i) => (
-            <TechCard key={tech.title} tech={tech} accent={accent} index={i} />
+            <TechCard key={tech.translationKey} tech={tech} accent={accent} index={i} pKey={pKey} />
           ))}
         </div>
       </div>
@@ -269,6 +302,7 @@ const ProductCard = ({ product, isExpanded, isTabMode, onClick, layoutId, wrappe
 
 // ─── Section ─────────────────────────────────────────────────────────────────
 const FounderProducts = () => {
+  const { t } = useTranslation();
   const [expandedId, setExpandedId] = useState(null);
   const isMobile = useIsMobile();
 
@@ -289,17 +323,17 @@ const FounderProducts = () => {
           <div className="inline-flex items-center justify-center gap-3 mb-5 px-4 py-2 rounded-full border border-electric-500/30 bg-electric-500/10">
             <Rocket className="w-5 h-5 text-electric-500" />
             <span className="text-sm font-mono text-electric-500 uppercase tracking-widest font-bold">
-              Fondateur & Solopreneur
+              {t('founderProducts.badge')}
             </span>
           </div>
           <h2 className="text-5xl md:text-6xl font-bold font-display mb-6">
-            Ce que j'ai{' '}
-            <span className="text-electric-500">construit</span>
+            {t('founderProducts.title1')}{' '}
+            <span className="text-electric-500">{t('founderProducts.title2')}</span>
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {isMobile
-              ? 'Produits fondés et développés en autonomie.'
-              : "Produits fondés et développés en autonomie. Cliquez sur un projet pour l'étendre et découvrir son architecture technique."}
+              ? t('founderProducts.subtitleMobile')
+              : t('founderProducts.subtitleDesktop')}
           </p>
         </motion.div>
       </div>

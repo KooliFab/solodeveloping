@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Smartphone, Globe, Server, Cpu, Package, ExternalLink } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { skillCategories } from '@/data/skillCategories';
 
 // ─── Icon map for each category ──────────────────────────────────────────────
@@ -53,6 +54,7 @@ const AppIcon = ({ app, index }) => {
 
 // ─── Bento category card ──────────────────────────────────────────────────────
 const CategoryCard = ({ category, className = '', animDelay = 0 }) => {
+  const { t } = useTranslation();
   const Icon = CATEGORY_ICONS[category.id] || Package;
 
   return (
@@ -82,9 +84,11 @@ const CategoryCard = ({ category, className = '', animDelay = 0 }) => {
             <Icon className="w-4.5 h-4.5" style={{ color: category.accentColor, width: 18, height: 18 }} />
           </div>
           <div>
-            <h3 className="text-sm font-bold leading-tight">{category.label}</h3>
+            <h3 className="text-sm font-bold leading-tight">
+              {t(`skills.categories.${category.id}.label`)}
+            </h3>
             <p className="text-xs font-mono mt-0.5" style={{ color: `${category.accentColor}cc` }}>
-              {category.meta}
+              {t(`skills.categories.${category.id}.meta`)}
             </p>
           </div>
         </div>
@@ -102,6 +106,7 @@ const CategoryCard = ({ category, className = '', animDelay = 0 }) => {
 
 // ─── Section ─────────────────────────────────────────────────────────────────
 const SkillShowcase = () => {
+  const { t } = useTranslation();
   // Split into bento layout: [mobile, web] on row 1, [backend, blockchain, opensource] on row 2
   const [mobile, web, backend, blockchain, opensource] = skillCategories;
 
@@ -124,16 +129,15 @@ const SkillShowcase = () => {
             <div className="flex items-center gap-3 mb-3">
               <Cpu className="w-5 h-5 text-electric-500" />
               <span className="text-sm font-mono text-electric-500 uppercase tracking-widest">
-                Expertise technique
+                {t('skills.badge')}
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
-              Ce que je{' '}
-              <span className="text-electric-500">maîtrise</span>
+              {t('skills.title1')}{' '}
+              <span className="text-electric-500">{t('skills.title2')}</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              7 ans d'expérience Flutter &amp; iOS natif. Un éventail de projets
-              couvrant le mobile, le web, les APIs et la blockchain.
+              {t('skills.subtitle')}
             </p>
           </div>
         </motion.div>
