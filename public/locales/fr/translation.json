@@ -228,17 +228,6 @@
           }
         }
       },
-      "cogni": {
-        "role": "Solo Founder",
-        "year": "2023 — Présent",
-        "tagline": "Application compagnon du livre physique \"Les Aventures de Cogni\" — génère un nombre infini d'épisodes interactifs avec des énigmes aléatoires.",
-        "projects": {
-          "engine": {
-            "title": "Generative Episode Engine",
-            "description": "Moteur de génération d'épisodes et d'énigmes aléatoires lié au livre physique. Chaque session offre une expérience unique — le contenu ne s'épuise jamais."
-          }
-        }
-      },
       "hiiba": {
         "role": "Co-fondateur & CTO",
         "year": "2024 — Présent",
@@ -247,6 +236,17 @@
           "app": {
             "title": "Flutter Marketplace App",
             "description": "Application multiplateforme iOS, Android et Web. Gestion des annonces, matching géolocalisé, notifications push et système de messagerie intégré."
+          }
+        }
+      },
+      "cogni": {
+        "role": "Fondateur",
+        "year": "2023 — Présent",
+        "tagline": "Application compagnon du livre physique \"Les Aventures de Cogni\" — génère un nombre infini d'épisodes interactifs avec des énigmes aléatoires.",
+        "projects": {
+          "engine": {
+            "title": "Generative Episode Engine",
+            "description": "Moteur de génération d'épisodes et d'énigmes aléatoires lié au livre physique. Chaque session offre une expérience unique — le contenu ne s'épuise jamais."
           }
         }
       },
@@ -264,13 +264,13 @@
     }
   },
   "skills": {
-    "badge": "Expertise technique",
-    "title1": "Ce que je",
-    "title2": "maîtrise",
-    "subtitle": "7 ans d'expérience Flutter & iOS natif. Un éventail de projets couvrant le mobile, le web, les APIs et la blockchain.",
+    "badge": "stack.sh",
+    "title1": "Ce que j'ai",
+    "title2": "mis en prod",
+    "subtitle": "De l'app iOS au smart contract VeChain — livré en production.",
     "categories": {
       "mobile": {
-        "label": "Applications Mobile",
+        "label": "iOS & Flutter",
         "meta": "7 ans · 10 apps"
       },
       "web": {
@@ -279,15 +279,15 @@
       },
       "backend": {
         "label": "Backend & API",
-        "meta": "Node.js · PHP · Flask"
+        "meta": "4 projets · Node.js · PHP · Flask"
       },
       "blockchain": {
         "label": "Blockchain",
-        "meta": "ETH · EOS · BSC · VeChain"
+        "meta": "4 chaînes · Solidity · C++"
       },
       "opensource": {
         "label": "Open Source",
-        "meta": "pub.dev · Dart"
+        "meta": "pub.dev · pwa_installer"
       }
     }
   }

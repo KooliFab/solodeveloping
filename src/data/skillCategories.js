@@ -9,6 +9,7 @@ export const skillCategories = [
     apps: [
       {
         name: "ZeLoop",
+        icon: "/icons/apps/zeloop.png",
         initial: "Z",
         gradFrom: "#16a34a",
         gradTo: "#15803d",
@@ -16,6 +17,7 @@ export const skillCategories = [
       },
       {
         name: "LOVT",
+        icon: "/icons/apps/lovt.png",
         initial: "L",
         gradFrom: "#2563eb",
         gradTo: "#1d4ed8",
@@ -23,6 +25,7 @@ export const skillCategories = [
       },
       {
         name: "Cogni",
+        icon: "/icons/apps/cogni.png",
         initial: "C",
         gradFrom: "#d97706",
         gradTo: "#b45309",
@@ -30,6 +33,7 @@ export const skillCategories = [
       },
       {
         name: "Hiiba",
+        icon: "/icons/apps/hiiba.png",
         initial: "H",
         gradFrom: "#7c3aed",
         gradTo: "#6d28d9",
@@ -37,6 +41,7 @@ export const skillCategories = [
       },
       {
         name: "BarcodeVibe",
+        icon: "/icons/apps/barcodevibe.png",
         initial: "B",
         gradFrom: "#ea580c",
         gradTo: "#c2410c",
@@ -44,6 +49,7 @@ export const skillCategories = [
       },
       {
         name: "Myride901",
+        icon: "/icons/apps/myride901.png",
         initial: "M",
         gradFrom: "#0284c7",
         gradTo: "#0369a1",
@@ -51,6 +57,7 @@ export const skillCategories = [
       },
       {
         name: "OpenFleet",
+        icon: "/icons/apps/openfleet.png",
         initial: "OF",
         gradFrom: "#dc2626",
         gradTo: "#b91c1c",
@@ -58,6 +65,7 @@ export const skillCategories = [
       },
       {
         name: "Koolicar",
+        icon: "/icons/apps/koolicar.png",
         initial: "K",
         gradFrom: "#0f766e",
         gradTo: "#0d6c64",
@@ -65,6 +73,7 @@ export const skillCategories = [
       },
       {
         name: "Stepchain",
+        icon: "/icons/apps/stepchain.png",
         initial: "S",
         gradFrom: "#059669",
         gradTo: "#047857",
@@ -72,6 +81,7 @@ export const skillCategories = [
       },
       {
         name: "RecharjMe",
+        icon: "/icons/apps/recharjme.png",
         initial: "R",
         gradFrom: "#db2777",
         gradTo: "#be185d",
@@ -86,6 +96,7 @@ export const skillCategories = [
     apps: [
       {
         name: "LOVT",
+        icon: "/icons/apps/lovt.png",
         initial: "L",
         gradFrom: "#2563eb",
         gradTo: "#1d4ed8",
@@ -93,6 +104,7 @@ export const skillCategories = [
       },
       {
         name: "Cogni",
+        icon: "/icons/apps/cogni.png",
         initial: "C",
         gradFrom: "#d97706",
         gradTo: "#b45309",
@@ -100,6 +112,7 @@ export const skillCategories = [
       },
       {
         name: "Spotter",
+        icon: "/icons/apps/spotter.png",
         initial: "Sp",
         gradFrom: "#16a34a",
         gradTo: "#15803d",
@@ -107,6 +120,7 @@ export const skillCategories = [
       },
       {
         name: "BarcodeVibe",
+        icon: "/icons/apps/barcodevibe.png",
         initial: "B",
         gradFrom: "#ea580c",
         gradTo: "#c2410c",
@@ -128,6 +142,7 @@ export const skillCategories = [
     apps: [
       {
         name: "Reward Engine",
+        icon: "/icons/apps/reward_engine.png",
         initial: "RE",
         gradFrom: "#8b5cf6",
         gradTo: "#7c3aed",
@@ -135,6 +150,7 @@ export const skillCategories = [
       },
       {
         name: "Myride901",
+        icon: "/icons/apps/myride901.png",
         initial: "M",
         gradFrom: "#0284c7",
         gradTo: "#0369a1",
@@ -142,6 +158,7 @@ export const skillCategories = [
       },
       {
         name: "Stepchain",
+        icon: "/icons/apps/stepchain.png",
         initial: "S",
         gradFrom: "#059669",
         gradTo: "#047857",
@@ -149,6 +166,7 @@ export const skillCategories = [
       },
       {
         name: "RecharjMe",
+        icon: "/icons/apps/recharjme.png",
         initial: "R",
         gradFrom: "#db2777",
         gradTo: "#be185d",
@@ -163,6 +181,7 @@ export const skillCategories = [
     apps: [
       {
         name: "ZeLoop",
+        icon: "/icons/apps/zeloop.png",
         initial: "Z",
         gradFrom: "#f59e0b",
         gradTo: "#d97706",
@@ -177,6 +196,7 @@ export const skillCategories = [
       },
       {
         name: "Spotter",
+        icon: "/icons/apps/spotter.png",
         initial: "Sp",
         gradFrom: "#16a34a",
         gradTo: "#15803d",
@@ -184,6 +204,7 @@ export const skillCategories = [
       },
       {
         name: "Stepchain",
+        icon: "/icons/apps/stepchain.png",
         initial: "S",
         gradFrom: "#059669",
         gradTo: "#047857",
@@ -198,6 +219,7 @@ export const skillCategories = [
     apps: [
       {
         name: "pwa_installer",
+        icon: "/icons/apps/pwa_installer.png",
         initial: "P",
         gradFrom: "#6366f1",
         gradTo: "#4f46e5",

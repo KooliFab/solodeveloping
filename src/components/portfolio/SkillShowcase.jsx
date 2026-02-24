@@ -31,13 +31,17 @@ const AppIcon = ({ app, index }) => {
         }}
         className="w-14 h-14 rounded-2xl flex items-center justify-center
                    text-white font-bold text-base select-none
-                   shadow-md cursor-pointer"
+                   shadow-md cursor-pointer overflow-hidden relative bg-white"
         style={{
-          background: `linear-gradient(145deg, ${app.gradFrom}, ${app.gradTo})`,
+          background: app.icon ? '#ffffff' : `linear-gradient(145deg, ${app.gradFrom}, ${app.gradTo})`,
           boxShadow: `0 4px 14px ${app.gradFrom}55`,
         }}
       >
-        {app.initial}
+        {app.icon ? (
+          <img src={app.icon} alt={app.name} className="w-full h-full object-cover" />
+        ) : (
+          app.initial
+        )}
       </motion.div>
       {/* Label */}
       <span className="text-[10px] font-mono text-muted-foreground text-center leading-tight max-w-[64px] truncate">
@@ -127,7 +131,7 @@ const SkillShowcase = () => {
           transition={{ duration: 0.5 }}
         >
           <p className="text-7xl md:text-8xl font-bold font-display text-foreground/[0.06] mb-0 leading-none select-none">
-            STACK
+            PROD
           </p>
           <div className="-mt-4 md:-mt-6">
             <div className="flex items-center gap-2 mb-3">
