@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+
 
 const TableOfContents = ({ content }) => {
   const [activeId, setActiveId] = useState('');

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
@@ -11,22 +11,22 @@ import { projects } from '@/data/projects';
 
 const ProjectsShowcase = () => {
   const { t, i18n } = useTranslation();
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const categories = [
+    { id: 'all', label: t('projects.filterAll') },
+    { id: 'ai', label: t('projects.filterAI'), value: 'AI/Automation' },
+    { id: 'mobile', label: t('projects.filterMobile'), value: 'Mobile' },
+    { id: 'web', label: t('projects.filterWeb'), value: 'Web App' }
+  ];
+
+  const [selectedCategory, setSelectedCategory] = useState('all');
   const [hoveredProject, setHoveredProject] = useState(null);
 
   const langPrefix = i18n.language === 'fr' ? '/fr' : '';
-  const categories = [t('projects.filterAll'), t('projects.filterAI'), t('projects.filterMobile'), t('projects.filterWeb')];
 
-  const filteredProjects = selectedCategory === t('projects.filterAll')
+  const activeCategoryObj = categories.find(c => c.id === selectedCategory);
+  const filteredProjects = selectedCategory === 'all'
     ? projects
-    : projects.filter(p => {
-        const categoryMap = {
-          [t('projects.filterAI')]: 'AI/Automation',
-          [t('projects.filterMobile')]: 'Mobile',
-          [t('projects.filterWeb')]: 'Web App'
-        };
-        return p.category === categoryMap[selectedCategory];
-      });
+    : projects.filter(p => p.category === activeCategoryObj?.value);
 
   return (
     <section id="projects" className="py-24 px-4 bg-background">
@@ -62,15 +62,15 @@ const ProjectsShowcase = () => {
         >
           {categories.map((category) => (
             <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id)}
               className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                selectedCategory === category
+                selectedCategory === category.id
                   ? 'bg-electric-500 text-white shadow-lg shadow-electric-500/30'
                   : 'bg-card text-muted-foreground hover:bg-card/80 hover:text-foreground'
               }`}
             >
-              {category}
+              {category.label}
             </button>
           ))}
         </motion.div>

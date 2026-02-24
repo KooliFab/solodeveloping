@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Smartphone, Globe, Server, Cpu, Package, ExternalLink } from 'lucide-react';
+import { Smartphone, Globe, Server, Cpu, Package } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { skillCategories } from '@/data/skillCategories';
 

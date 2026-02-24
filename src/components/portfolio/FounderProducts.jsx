@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ExternalLink, Code2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { founderProducts } from '@/data/founderProducts';

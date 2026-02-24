@@ -1,5 +1,4 @@
 import SEO from '@/components/SEO';
-import { useTranslation } from 'react-i18next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/portfolio/Hero';
@@ -9,7 +8,6 @@ import ContactSection from '@/components/portfolio/ContactSection';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
 const LandingPage = () => {
-  const { t } = useTranslation();
   // Initialize Lenis smooth scrolling
   useSmoothScroll();
 

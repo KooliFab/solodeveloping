@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import SEO from '@/components/SEO';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, User, Clock, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Clock } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CodeBlock from '@/components/ui/CodeBlock';
