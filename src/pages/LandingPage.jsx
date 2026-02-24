@@ -24,8 +24,8 @@ const LandingPage = () => {
 
         <main className="relative">
           <Hero />
-          <FounderProducts />
           <SkillShowcase />
+          <FounderProducts />
           <ContactSection />
           <Footer />
         </main>

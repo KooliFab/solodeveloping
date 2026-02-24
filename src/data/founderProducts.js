@@ -48,7 +48,23 @@ export const founderProducts = [
   },
   {
     id: 3,
-    title: "Cogni",
+    title: "Hiiba",
+    translationKey: "hiiba",
+    color: "pink",
+    status: "MVP",
+    link: "https://hiiba.ae",
+    tags: ["Flutter", "Firebase", "Marketplace", "UAE"],
+    technicalProjects: [
+      {
+        translationKey: "app",
+        tags: ["Flutter", "Firebase", "iOS", "Android", "Géolocalisation"],
+        link: "https://hiiba.ae",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Cogni's Adventure",
     translationKey: "cogni",
     color: "blue",
     status: "live",
@@ -62,22 +78,7 @@ export const founderProducts = [
       },
     ],
   },
-  {
-    id: 4,
-    title: "Hiiba",
-    translationKey: "hiiba",
-    color: "pink",
-    status: "live",
-    link: "https://hiiba.ae",
-    tags: ["Flutter", "Firebase", "Marketplace", "UAE"],
-    technicalProjects: [
-      {
-        translationKey: "app",
-        tags: ["Flutter", "Firebase", "iOS", "Android", "Géolocalisation"],
-        link: "https://hiiba.ae",
-      },
-    ],
-  },
+
   {
     id: 5,
     title: "BarcodeVibe",

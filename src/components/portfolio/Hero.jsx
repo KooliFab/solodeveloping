@@ -229,6 +229,9 @@ const Hero = () => {
           >
             <Button
               size="lg"
+              onClick={() => {
+                document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="group relative overflow-hidden bg-transparent border-2 border-electric-500 text-electric-500 font-mono px-10 py-8 text-lg rounded-lg transition-all duration-300 hover:bg-electric-500/10 hover:shadow-[0_0_40px_rgba(34,197,94,0.35),inset_0_0_30px_rgba(34,197,94,0.05)] tracking-widest uppercase phosphor-glow"
             >
               <span className="relative z-10 flex items-center gap-3">

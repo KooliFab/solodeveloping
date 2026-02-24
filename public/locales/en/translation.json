@@ -230,7 +230,7 @@
       },
       "hiiba": {
         "role": "Co-founder & CTO",
-        "year": "2024 — Present",
+        "year": "2026 — Ongoing",
         "tagline": "First marketplace for item donations in the United Arab Emirates — connects donors and receivers in a local circular economy.",
         "projects": {
           "app": {
@@ -241,7 +241,7 @@
       },
       "cogni": {
         "role": "Founder",
-        "year": "2023 — Present",
+        "year": "2024 — Present",
         "tagline": "Companion app for the physical book \"Les Aventures de Cogni\" — generates an infinite number of interactive episodes with random puzzles.",
         "projects": {
           "engine": {
@@ -252,7 +252,7 @@
       },
       "barcode": {
         "role": "Founder",
-        "year": "2025 — Ongoing",
+        "year": "2026 — Ongoing",
         "tagline": "Price tracker via barcode scan — detects shrinkflation in real time when a product shrinks without its price dropping.",
         "projects": {
           "scanner": {
@@ -270,11 +270,11 @@
     "subtitle": "From iOS app to VeChain smart contract — shipped to production.",
     "categories": {
       "mobile": {
-        "label": "iOS & Flutter",
+        "label": "iOS & Android",
         "meta": "7 years · 10 apps"
       },
       "web": {
-        "label": "Web & PWA",
+        "label": "Websites & platforms",
         "meta": "5 years · 8 apps"
       },
       "backend": {
@@ -286,7 +286,7 @@
         "meta": "4 chains · Solidity · C++"
       },
       "opensource": {
-        "label": "Open Source",
+        "label": "Open Source projects",
         "meta": "pub.dev · pwa_installer"
       }
     }

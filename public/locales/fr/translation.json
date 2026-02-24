@@ -230,7 +230,7 @@
       },
       "hiiba": {
         "role": "Co-fondateur & CTO",
-        "year": "2024 — Présent",
+        "year": "2026 — En cours",
         "tagline": "Première marketplace de dons d'objets aux Émirats Arabes Unis — connecte donneurs et receveurs dans une économie circulaire locale.",
         "projects": {
           "app": {
@@ -241,7 +241,7 @@
       },
       "cogni": {
         "role": "Fondateur",
-        "year": "2023 — Présent",
+        "year": "2024 — Présent",
         "tagline": "Application compagnon du livre physique \"Les Aventures de Cogni\" — génère un nombre infini d'épisodes interactifs avec des énigmes aléatoires.",
         "projects": {
           "engine": {
@@ -251,8 +251,8 @@
         }
       },
       "barcode": {
-        "role": "Solopreneur",
-        "year": "2025 — En cours",
+        "role": "Fondateur",
+        "year": "2026 — En cours",
         "tagline": "Tracker de prix par scan de code-barres — détecte la shrinkflation en temps réel quand un produit rétrécit sans que son prix baisse.",
         "projects": {
           "scanner": {
@@ -270,11 +270,11 @@
     "subtitle": "De l'app iOS au smart contract VeChain — livré en production.",
     "categories": {
       "mobile": {
-        "label": "iOS & Flutter",
+        "label": "iOS & Android",
         "meta": "7 ans · 10 apps"
       },
       "web": {
-        "label": "Web & PWA",
+        "label": "Sites web & plateformes",
         "meta": "5 ans · 8 apps"
       },
       "backend": {
@@ -286,7 +286,7 @@
         "meta": "4 chaînes · Solidity · C++"
       },
       "opensource": {
-        "label": "Open Source",
+        "label": "Projets Open Source",
         "meta": "pub.dev · pwa_installer"
       }
     }
