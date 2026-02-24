@@ -92,7 +92,6 @@ ToastDescription.displayName = ToastPrimitives.Description.displayName;
 
 export {
 	Toast,
-	ToastAction,
 	ToastClose,
 	ToastDescription,
 	ToastProvider,

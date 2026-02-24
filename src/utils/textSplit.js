@@ -4,7 +4,7 @@
  * Splits text into words, characters, or lines for animation
  */
 
-export const splitText = (element, type = "words") => {
+const splitText = (element, type = "words") => {
   if (!element) return null;
 
   const text = element.textContent;
@@ -110,7 +110,7 @@ const getLines = (element) => {
 /**
  * Revert split text back to original
  */
-export const revertSplit = (element, originalHTML) => {
+const revertSplit = (element, originalHTML) => {
   if (element && originalHTML) {
     element.innerHTML = originalHTML;
   }

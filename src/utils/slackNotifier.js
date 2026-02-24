@@ -330,7 +330,7 @@ export const sendSlackNotification = async (buttonName, additionalData = {}) => 
  * Track button click with Slack notification
  * This is a wrapper that can be used directly in onClick handlers
  */
-export const trackButtonClick = (buttonName, additionalData = {}) => {
+const trackButtonClick = (buttonName, additionalData = {}) => {
   // Send notification asynchronously without blocking the UI
   sendSlackNotification(buttonName, additionalData).catch(console.error);
 };
@@ -341,7 +341,7 @@ export const trackButtonClick = (buttonName, additionalData = {}) => {
  * @param {string} pageName - Name of the page visited
  * @param {object} additionalData - Any additional data to include (UTM params, QR source, etc.)
  */
-export const trackPageVisit = async (pageName, additionalData = {}) => {
+const trackPageVisit = async (pageName, additionalData = {}) => {
   const webhookUrl = import.meta.env.VITE_SLACK_WEBHOOK_URL;
 
   if (!webhookUrl) {

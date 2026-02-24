@@ -34,7 +34,7 @@ const toastStore = {
   }
 }
 
-export const toast = ({ ...props }) => {
+const toast = ({ ...props }) => {
   const id = generateId()
 
   const update = (props) =>
