@@ -7,7 +7,6 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/Button';
 import { ArrowRight, Linkedin, Star, Award, Code, Terminal } from 'lucide-react';
-import profilePoster from '@/assets/images/fabien-chung-profile.webp';
 import profileVideo from '@/assets/videos/profile-loop.mp4';
 
 const About = () => {
@@ -76,7 +75,6 @@ const About = () => {
                        loop 
                        muted 
                        playsInline
-                       poster={profilePoster}
                      >
                         <source src={profileVideo} type="video/mp4" />
                         {/* Fallback for when video is loading or unsupported */}
