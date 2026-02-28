@@ -9,12 +9,20 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CodeBlock from '@/components/ui/CodeBlock';
 import { blogPosts } from '@/data/blogPosts';
+import { slugifyHeading } from '@/lib/utils';
 
 // New Components
 import ReadingProgress from '@/components/blog/ReadingProgress';
 import TableOfContents from '@/components/blog/TableOfContents';
 import ShareButtons from '@/components/blog/ShareButtons';
 import ArticleSuggestions from '@/components/blog/ArticleSuggestions';
+
+const getNodeText = (node) => {
+  if (typeof node === 'string' || typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(getNodeText).join('');
+  if (!node || typeof node !== 'object') return '';
+  return getNodeText(node.props?.children);
+};
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -160,7 +168,7 @@ const BlogPost = () => {
               <ReactMarkdown
                 components={{
                   h2: ({node, children, ...props}) => {
-                    const id = children?.[0]?.toString().toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+                    const id = slugifyHeading(getNodeText(children));
                     return (
                       <h2 
                         id={id} 
@@ -172,7 +180,7 @@ const BlogPost = () => {
                     );
                   },
                   h3: ({node, children, ...props}) => {
-                    const id = children?.[0]?.toString().toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+                    const id = slugifyHeading(getNodeText(children));
                     return (
                       <h3 
                         id={id} 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { slugifyHeading } from '@/lib/utils';
 
 
 const TableOfContents = ({ content }) => {
@@ -10,16 +11,19 @@ const TableOfContents = ({ content }) => {
     // Since we receive raw markdown, we can regex it
     const lines = content.split('\n');
     const matches = lines
-      .filter(line => line.startsWith('## '))
+      .filter(line => line.trimStart().startsWith('## '))
       .map(line => {
-        const title = line.replace('## ', '').replace(/\*\*/g, '');
-        // Create an ID: lowercase, remove special characters, replace spaces with hyphens
-        const id = title
-          .toLowerCase()
-          .replace(/[^\w\s-]/g, '')
-          .replace(/\s+/g, '-');
+        const title = line
+          .trimStart()
+          .replace(/^##\s+/, '')
+          .replace(/\*\*/g, '')
+          .replace(/`([^`]+)`/g, '$1')
+          .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+          .trim();
+        const id = slugifyHeading(title);
         return { id, title };
-      });
+      })
+      .filter(({ id }) => id);
     
     setHeadings(matches);
 
@@ -68,7 +72,16 @@ const TableOfContents = ({ content }) => {
               href={`#${id}`}
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+                const target = document.getElementById(id);
+                if (!target) return;
+
+                if (window.lenis?.scrollTo) {
+                  window.lenis.scrollTo(target, { duration: 1.1 });
+                } else {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+
+                window.history.replaceState(null, '', `#${id}`);
                 setActiveId(id);
               }}
               className={`block pl-4 py-1 text-sm border-l-2 transition-all duration-200 ${
