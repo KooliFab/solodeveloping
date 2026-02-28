@@ -41,8 +41,8 @@ For Netlify deployment, use `_redirects` file:
 Set up the following environment variables for production:
 
 ```bash
-VITE_SLACK_WEBHOOK_URL=your_slack_webhook_url
-VITE_EMAIL_SERVICE_URL=your_email_service_url
+VITE_CONTACT_FORM_ENDPOINT=https://your-api-domain.com/contact
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
 ## Deployment Steps
@@ -65,8 +65,8 @@ npm run deploy
 ## Verification
 After deployment, verify the following:
 - `https://solodeveloping.com/` - Main portfolio page loads
-- `https://solodeveloping.com/portfolio` - Portfolio section works
-- `https://solodeveloping.com/blog` - Blog section accessible
+- `https://solodeveloping.com/projects` - Portfolio section works
+- `https://solodeveloping.com/articles` - Blog section accessible
 - Contact form functionality
 - All project links and demos work correctly
 

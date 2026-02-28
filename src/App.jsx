@@ -1,7 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
-import { Toaster } from '@/components/ui/Toaster';
+import { Toaster } from '@/components/ui/toaster';
 import { useTranslation } from 'react-i18next';
 import IntroAnimation from '@/components/ui/IntroAnimation';
 import GreenCursor from '@/components/ui/GreenCursor';
@@ -62,7 +61,7 @@ const App = () => {
   }, [i18n]);
 
   return (
-    <HelmetProvider>
+    <>
       {showIntro && (
         <IntroAnimation onComplete={() => setShowIntro(false)} />
       )}
@@ -95,7 +94,7 @@ const App = () => {
           <Toaster />
         </div>
       </div>
-    </HelmetProvider>
+    </>
   );
 };
 

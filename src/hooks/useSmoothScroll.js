@@ -56,11 +56,12 @@ export const useSmoothScroll = () => {
         window.dispatchEvent(new CustomEvent("lenis:ready"));
 
         // Check for hash on initial load/mount
-        if (location.hash) {
+        const initialHash = window.location.hash;
+        if (initialHash) {
           // Force a refresh to ensure all pins (like HorizontalShowcase) are calculated
           ScrollTrigger.refresh();
 
-          const target = document.querySelector(location.hash);
+          const target = document.querySelector(initialHash);
           if (target) {
             // Small delay to ensure layout is ready
             setTimeout(() => {
@@ -81,7 +82,7 @@ export const useSmoothScroll = () => {
       }
       gsap.ticker.lagSmoothing(500, 33);
     };
-  }, []); // Run once on mount
+  }, []);
 
   // Handle hash changes while component is mounted
   useEffect(() => {

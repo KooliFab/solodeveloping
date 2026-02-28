@@ -9,7 +9,7 @@ A modern, responsive portfolio website showcasing full-stack development skills 
 - **Responsive Design** - Mobile-first approach with adaptive layouts
 - **Dark Theme** - Electric green accent on dark background
 - **Project Showcase** - Filterable portfolio with category tags
-- **Contact Form** - Integrated with Slack notifications
+- **Contact Form** - Integrated with backend endpoint for lead notifications
 - **Blog Ready** - MDX support for technical articles
 - **SEO Optimized** - React Helmet for meta management
 
@@ -22,7 +22,7 @@ A modern, responsive portfolio website showcasing full-stack development skills 
 | **Animation** | Framer Motion, GSAP, Lenis |
 | **i18n** | i18next, react-i18next |
 | **UI Components** | Radix UI, Lucide Icons |
-| **Backend** | Firebase (Firestore) |
+| **Backend** | Optional serverless endpoint for contact form |
 | **Code Highlighting** | Shiki, react-syntax-highlighter |
 | **Deployment** | FTP to Hostinger |
 
@@ -52,6 +52,13 @@ A modern, responsive portfolio website showcasing full-stack development skills 
    ```
 
 4. Configure your environment variables in `.env`
+   ```bash
+   # Required for contact form
+   VITE_CONTACT_FORM_ENDPOINT=https://your-api-domain.com/contact
+
+   # Optional analytics
+   VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+   ```
 
 5. Start the development server:
    ```bash

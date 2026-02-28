@@ -1,52 +1,4 @@
 /**
- * Text splitting utility for GSAP animations
- * Free alternative to GSAP's SplitText plugin
- * Splits text into words, characters, or lines for animation
- */
-
-const splitText = (element, type = "words") => {
-  if (!element) return null;
-
-  const text = element.textContent;
-
-  // Split by type
-  if (type === "chars") {
-    const chars = text.split("");
-    element.innerHTML = chars
-      .map((char, i) => {
-        return char === " "
-          ? `<span class="char" style="display: inline-block;">&nbsp;</span>`
-          : `<span class="char" style="display: inline-block;">${char}</span>`;
-      })
-      .join("");
-    return Array.from(element.querySelectorAll(".char"));
-  }
-
-  if (type === "words") {
-    const words = text.split(" ");
-    element.innerHTML = words
-      .map((word, i) => {
-        return `<span class="word" style="display: inline-block; white-space: nowrap;">${word}</span>${i < words.length - 1 ? " " : ""}`;
-      })
-      .join("");
-    return Array.from(element.querySelectorAll(".word"));
-  }
-
-  if (type === "lines") {
-    // For lines, we need to detect natural line breaks
-    const lines = text.split("\n");
-    element.innerHTML = lines
-      .map((line, i) => {
-        return `<span class="line" style="display: block;">${line}</span>`;
-      })
-      .join("");
-    return Array.from(element.querySelectorAll(".line"));
-  }
-
-  return null;
-};
-
-/**
  * Advanced text reveal utility
  * Wraps each character in a span for individual animation
  */
@@ -105,13 +57,4 @@ const getLines = (element) => {
   });
 
   return lines;
-};
-
-/**
- * Revert split text back to original
- */
-const revertSplit = (element, originalHTML) => {
-  if (element && originalHTML) {
-    element.innerHTML = originalHTML;
-  }
 };

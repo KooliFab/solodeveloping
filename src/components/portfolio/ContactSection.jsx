@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { sendSlackNotification } from '@/utils/slackNotifier';
+import { sendContactNotification } from '@/utils/contactNotifier';
 
 const ContactSection = () => {
   const { t } = useTranslation();
@@ -21,13 +21,7 @@ const ContactSection = () => {
     setIsSubmitting(true);
     setSubmitError(false);
 
-    const result = await sendSlackNotification('Contact Form Submission', {
-      Name: formData.name,
-      Email: formData.email,
-      'Project Type': formData.project,
-      Message: formData.message,
-      Status: 'New Lead',
-    });
+    const result = await sendContactNotification(formData);
 
     setIsSubmitting(false);
 

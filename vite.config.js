@@ -5,7 +5,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 import react from "@vitejs/plugin-react";
 import mdx from "@mdx-js/rollup";
-import { defineConfig, loadEnv } from "vite";
+import { defineConfig } from "vite";
 import rehypePrettyCode from "rehype-pretty-code";
 
 const configHorizonsViteErrorHandler = `
@@ -175,12 +175,9 @@ const addTransformIndexHtml = {
 };
 
 export default defineConfig(({ mode }) => {
-  // Load env file based on mode with VITE_ prefix
-  const env = loadEnv(mode, process.cwd(), "VITE_");
+  const isDev = mode === "development";
 
   console.log(`\n🔧 Vite running in "${mode}" mode`);
-  console.log(`📁 Loading env files for mode: ${mode}`);
-  console.log(`🔥 Firebase Project ID: ${env.VITE_FIREBASE_PROJECT_ID}`);
 
   return {
     plugins: [
@@ -203,29 +200,8 @@ export default defineConfig(({ mode }) => {
         }),
       },
       react(),
-      addTransformIndexHtml,
+      ...(isDev ? [addTransformIndexHtml] : []),
     ],
-    // Explicitly pass env variables to the app
-    define: {
-      "import.meta.env.VITE_FIREBASE_API_KEY": JSON.stringify(
-        env.VITE_FIREBASE_API_KEY,
-      ),
-      "import.meta.env.VITE_FIREBASE_AUTH_DOMAIN": JSON.stringify(
-        env.VITE_FIREBASE_AUTH_DOMAIN,
-      ),
-      "import.meta.env.VITE_FIREBASE_PROJECT_ID": JSON.stringify(
-        env.VITE_FIREBASE_PROJECT_ID,
-      ),
-      "import.meta.env.VITE_FIREBASE_STORAGE_BUCKET": JSON.stringify(
-        env.VITE_FIREBASE_STORAGE_BUCKET,
-      ),
-      "import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID": JSON.stringify(
-        env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-      ),
-      "import.meta.env.VITE_FIREBASE_APP_ID": JSON.stringify(
-        env.VITE_FIREBASE_APP_ID,
-      ),
-    },
     server: {
       cors: true,
       headers: {

@@ -27,7 +27,8 @@ const BlogPost = () => {
   );
 
   if (!post) {
-    return <Navigate to="/articles" replace />;
+    const fallback = currentLang === 'fr' ? '/fr/articles' : '/articles';
+    return <Navigate to={fallback} replace />;
   }
 
   // Get content safely based on language, fallback to English
