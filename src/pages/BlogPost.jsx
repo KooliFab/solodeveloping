@@ -158,13 +158,29 @@ const BlogPost = () => {
             >
               <ReactMarkdown
                 components={{
-                  h2: ({node, ...props}) => {
-                    const id = props.children[0]?.toString().toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
-                    return <h2 id={id} {...props} />;
+                  h2: ({node, children, ...props}) => {
+                    const id = children?.[0]?.toString().toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+                    return (
+                      <h2 
+                        id={id} 
+                        className={`text-3xl lg:text-4xl mt-16 mb-6 font-sans font-bold text-foreground scroll-mt-32 ${props.className || ''}`}
+                        {...props}
+                      >
+                        {children}
+                      </h2>
+                    );
                   },
-                  h3: ({node, ...props}) => {
-                    const id = props.children[0]?.toString().toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
-                    return <h3 id={id} {...props} />;
+                  h3: ({node, children, ...props}) => {
+                    const id = children?.[0]?.toString().toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+                    return (
+                      <h3 
+                        id={id} 
+                        className={`text-2xl lg:text-3xl mt-12 mb-4 font-sans font-bold text-foreground scroll-mt-32 ${props.className || ''}`}
+                        {...props}
+                      >
+                        {children}
+                      </h3>
+                    );
                   },
                   code: ({ node, inline, className, children, ...props }) => {
                     const match = /language-(\w+)/.exec(className || '');
@@ -184,6 +200,7 @@ const BlogPost = () => {
                     <span className="block my-12 group">
                       <img 
                         {...props} 
+                        alt={props.alt || ''}
                         className="rounded-2xl shadow-2xl w-full border border-white/10 group-hover:shadow-primary/10 transition-shadow duration-500"
                         loading="lazy"
                       />
@@ -194,8 +211,10 @@ const BlogPost = () => {
                       )}
                     </span>
                   ),
-                  a: ({node, ...props}) => (
-                    <a {...props} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors border-b border-primary/30 hover:border-primary" />
+                  a: ({node, children, ...props}) => (
+                    <a {...props} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors border-b border-primary/30 hover:border-primary">
+                      {children}
+                    </a>
                   ),
                 }}
               >
