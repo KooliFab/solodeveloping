@@ -290,5 +290,12 @@
         "meta": "pub.dev · pwa_installer"
       }
     }
+  },
+  "notFound": {
+    "title": "Lost in Space?",
+    "description": "The page you're looking for has moved to another dimension or never existed in this reality.",
+    "homeButton": "Back to Base",
+    "backButton": "Go Back",
+    "funMessage": "Don't worry, even the best travelers get lost sometimes."
   }
 }

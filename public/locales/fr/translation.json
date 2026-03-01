@@ -290,5 +290,12 @@
         "meta": "pub.dev · pwa_installer"
       }
     }
+  },
+  "notFound": {
+    "title": "Perdu dans l'espace ?",
+    "description": "La page que vous recherchez a déménagé dans une autre dimension ou n'a jamais existé dans cette réalité.",
+    "homeButton": "Retour à la base",
+    "backButton": "Retour en arrière",
+    "funMessage": "Pas d'inquiétude, même les meilleurs voyageurs s'égarent parfois."
   }
 }
