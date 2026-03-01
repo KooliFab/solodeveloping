@@ -55,6 +55,34 @@ const BlogPost = () => {
   };
 
   const langPrefix = currentLang === 'fr' ? '/fr' : '';
+  const canonicalUrl = currentLang === 'fr' ? alternates.fr : alternates.en;
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": subtitle,
+    "image": `https://solodeveloping.com${post.coverImage}`,
+    "author": {
+      "@type": "Person",
+      "name": post.author,
+      "url": "https://solodeveloping.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Solo Developing",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://solodeveloping.com/vite.svg"
+      }
+    },
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": canonicalUrl
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
@@ -66,6 +94,10 @@ const BlogPost = () => {
         path={`/articles/${slug}`}
         image={post.coverImage}
         alternates={alternates}
+        type="article"
+        author={post.author}
+        publishedTime={post.date}
+        schema={schema}
       />
       <Navbar />
       

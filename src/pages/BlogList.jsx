@@ -11,12 +11,32 @@ const BlogList = () => {
   const { i18n } = useTranslation();
   const currentLang = i18n.language || 'en';
 
+  const langPrefix = currentLang === 'fr' ? '/fr' : '';
+  const canonicalUrl = currentLang === 'fr' ? 'https://solodeveloping.com/fr/articles' : 'https://solodeveloping.com/articles';
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Articles | Solo Developing",
+    "description": "Thoughts on software engineering, architecture, and developer experience.",
+    "url": canonicalUrl,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Solo Developing",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://solodeveloping.com/vite.svg"
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO 
         title="Articles | Solo Developing"
         description="Thoughts on software engineering, architecture, and developer experience."
         path="/articles"
+        schema={schema}
       />
       <Navbar />
       
@@ -40,7 +60,6 @@ const BlogList = () => {
               const title = post.title[currentLang] || post.title['en'];
               const subtitle = post.subtitle[currentLang] || post.subtitle['en'];
               const slug = post.slug[currentLang] || post.slug['en'];
-              const langPrefix = currentLang === 'fr' ? '/fr' : '';
               const linkPath = `${langPrefix}/articles/${slug}`;
               
               return (

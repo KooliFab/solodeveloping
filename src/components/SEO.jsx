@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
-const SEO = ({ titleKey, descriptionKey, title, description, path = '', image, alternates }) => {
+const SEO = ({ titleKey, descriptionKey, title, description, path = '', image, alternates, type = 'website', author, publishedTime, schema }) => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language;
   
@@ -47,7 +47,7 @@ const SEO = ({ titleKey, descriptionKey, title, description, path = '', image, a
       <link rel="alternate" hreflang="x-default" href={urlEn} />
       
       {/* Open Graph / Facebook */}
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={type} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
@@ -59,6 +59,17 @@ const SEO = ({ titleKey, descriptionKey, title, description, path = '', image, a
       <meta property="twitter:title" content={metaTitle} />
       <meta property="twitter:description" content={metaDescription} />
       {image && <meta property="twitter:image" content={image} />}
+
+      {/* Article Specific */}
+      {author && <meta property="article:author" content={author} />}
+      {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+
+      {/* Schema Markup */}
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
     </Helmet>
   );
 };
