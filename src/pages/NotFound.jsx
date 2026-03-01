@@ -59,7 +59,7 @@ const NotFound = () => {
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           >
             <img
-              src="/illustrations/404.webp"
+              src="/illustrations/404.png"
               alt="Page not found"
               decoding="async"
               className="w-full h-full object-cover"
