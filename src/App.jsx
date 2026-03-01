@@ -1,9 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Toaster } from '@/components/ui/toaster';
 import { useTranslation } from 'react-i18next';
-import IntroAnimation from '@/components/ui/IntroAnimation';
-import GreenCursor from '@/components/ui/GreenCursor';
 
 // Lazy load pages
 const LandingPage = lazy(() => import('@/pages/LandingPage'));
@@ -11,6 +8,26 @@ const About = lazy(() => import('@/pages/About'));
 const BlogList = lazy(() => import('@/pages/BlogList'));
 const BlogPost = lazy(() => import('@/pages/BlogPost'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
+const IntroAnimation = lazy(() => import('@/components/ui/IntroAnimation'));
+const GreenCursor = lazy(() => import('@/components/ui/GreenCursor'));
+
+const canEnableEnhancedEffects = () => {
+  if (typeof window === 'undefined') return false;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+
+  const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+  return hasFinePointer && window.innerWidth >= 1024;
+};
+
+const shouldShowIntroOnLoad = () => {
+  if (!canEnableEnhancedEffects()) return false;
+
+  try {
+    return sessionStorage.getItem('sd:intro-seen') !== '1';
+  } catch {
+    return false;
+  }
+};
 
 // Loading component
 const PageLoader = () => (
@@ -23,7 +40,8 @@ const PageLoader = () => (
 
 const App = () => {
   const { i18n } = useTranslation();
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(shouldShowIntroOnLoad);
+  const [showCursor, setShowCursor] = useState(false);
 
   // Detect and set language based on URL path
   useEffect(() => {
@@ -60,12 +78,49 @@ const App = () => {
     };
   }, [i18n]);
 
+  useEffect(() => {
+    if (!canEnableEnhancedEffects()) return;
+
+    if (typeof window.requestIdleCallback === 'function') {
+      const idleId = window.requestIdleCallback(() => {
+        setShowCursor(true);
+      }, { timeout: 1500 });
+
+      return () => {
+        window.cancelIdleCallback(idleId);
+      };
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setShowCursor(true);
+    }, 1000);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, []);
+
+  const handleIntroComplete = () => {
+    try {
+      sessionStorage.setItem('sd:intro-seen', '1');
+    } catch {
+      // Ignore storage errors (private mode / blocked storage).
+    }
+    setShowIntro(false);
+  };
+
   return (
     <>
       {showIntro && (
-        <IntroAnimation onComplete={() => setShowIntro(false)} />
+        <Suspense fallback={null}>
+          <IntroAnimation onComplete={handleIntroComplete} />
+        </Suspense>
       )}
-      <GreenCursor />
+      {showCursor && (
+        <Suspense fallback={null}>
+          <GreenCursor />
+        </Suspense>
+      )}
       <div className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground relative">
         {/* Grid Background - Fixed across entire site */}
         <div className="fixed inset-0 grid-background pointer-events-none z-0"></div>
@@ -91,7 +146,6 @@ const App = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
-          <Toaster />
         </div>
       </div>
     </>

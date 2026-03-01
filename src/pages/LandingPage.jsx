@@ -1,21 +1,63 @@
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import SEO from '@/components/SEO';
 import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
 import Hero from '@/components/portfolio/Hero';
-import FounderProducts from '@/components/portfolio/FounderProducts';
-import SkillShowcase from '@/components/portfolio/SkillShowcase';
-import ContactSection from '@/components/portfolio/ContactSection';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
+const SkillShowcase = lazy(() => import('@/components/portfolio/SkillShowcase'));
+const FounderProducts = lazy(() => import('@/components/portfolio/FounderProducts'));
+const ContactSection = lazy(() => import('@/components/portfolio/ContactSection'));
+const Footer = lazy(() => import('@/components/layout/Footer'));
+
+const SectionSkeleton = ({ minHeight }) => (
+  <div className="w-full" style={{ minHeight }} aria-hidden="true" />
+);
+
+const DeferredSection = ({ children, minHeight = 240, rootMargin = '320px' }) => {
+  const containerRef = useRef(null);
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node || shouldRender) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldRender(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin }
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, [rootMargin, shouldRender]);
+
+  return (
+    <div ref={containerRef}>
+      {shouldRender ? (
+        <Suspense fallback={<SectionSkeleton minHeight={minHeight} />}>
+          {children}
+        </Suspense>
+      ) : (
+        <SectionSkeleton minHeight={minHeight} />
+      )}
+    </div>
+  );
+};
+
 const LandingPage = () => {
-  // Initialize Lenis smooth scrolling
+  // Initialize Lenis smooth scrolling for desktop only.
   useSmoothScroll();
 
   return (
     <>
-      <SEO 
-        titleKey="meta.title" 
-        descriptionKey="meta.description" 
+      <SEO
+        titleKey="meta.title"
+        descriptionKey="meta.description"
         path="/"
       />
 
@@ -24,10 +66,18 @@ const LandingPage = () => {
 
         <main className="relative">
           <Hero />
-          <SkillShowcase />
-          <FounderProducts />
-          <ContactSection />
-          <Footer />
+          <DeferredSection minHeight={820}>
+            <SkillShowcase />
+          </DeferredSection>
+          <DeferredSection minHeight={1200}>
+            <FounderProducts />
+          </DeferredSection>
+          <DeferredSection minHeight={960}>
+            <ContactSection />
+          </DeferredSection>
+          <DeferredSection minHeight={420}>
+            <Footer />
+          </DeferredSection>
         </main>
       </div>
     </>

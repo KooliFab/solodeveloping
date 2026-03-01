@@ -38,7 +38,13 @@ const AppIcon = ({ app, index }) => {
         }}
       >
         {app.icon ? (
-          <img src={app.icon} alt={app.name} className="w-full h-full object-cover" />
+          <img
+            src={app.icon}
+            alt={app.name}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover"
+          />
         ) : (
           app.initial
         )}

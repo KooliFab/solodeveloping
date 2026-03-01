@@ -73,7 +73,7 @@ const BlogPost = () => {
       "name": "Solo Developing",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://solodeveloping.com/vite.svg"
+        "url": "https://solodeveloping.com/favicon.png"
       }
     },
     "datePublished": post.date,
@@ -162,9 +162,12 @@ const BlogPost = () => {
                 className="rounded-3xl overflow-hidden shadow-2xl border border-white/10 aspect-video relative group"
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-60 z-10" />
-                <img 
-                  src={post.coverImage} 
-                  alt={title} 
+                <img
+                  src={post.coverImage}
+                  alt={title}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </motion.div>
@@ -244,6 +247,7 @@ const BlogPost = () => {
                         alt={props.alt || ''}
                         className="rounded-2xl shadow-2xl w-full border border-white/10 group-hover:shadow-primary/10 transition-shadow duration-500"
                         loading="lazy"
+                        decoding="async"
                       />
                       {props.alt && (
                         <span className="block text-center text-sm text-muted-foreground mt-4 italic">

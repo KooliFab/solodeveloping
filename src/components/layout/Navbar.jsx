@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Code2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -15,9 +14,14 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile nav after route changes.
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
   // Get language prefix for URLs
   const langPrefix = i18n.language === 'fr' ? '/fr' : '';
@@ -47,24 +51,25 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              className={`relative text-sm font-medium transition-colors hover:text-primary ${
-                location.pathname === link.path ? 'text-primary' : 'text-muted-foreground'
-              }`}
-              onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
-            >
-              {link.name}
-              {location.pathname === link.path && (
-                <motion.div
-                  layoutId="navbar-indicator"
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary shadow-[0_0_10px_var(--primary)]"
-                />
-              )}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.path;
+
+            return (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={`relative text-sm font-medium transition-colors hover:text-primary ${
+                  isActive ? 'text-primary' : 'text-muted-foreground'
+                }`}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+              >
+                {link.name}
+                {isActive && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary shadow-[0_0_10px_var(--primary)]" />
+                )}
+              </Link>
+            );
+          })}
           <LanguageSwitcher />
           <Link
             to={`${langPrefix}/#contact`}
@@ -77,49 +82,44 @@ const Navbar = () => {
         {/* Mobile Toggle */}
         <button
           className="md:hidden p-2 text-foreground"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isOpen}
         >
           {isOpen ? <X /> : <Menu />}
         </button>
       </div>
 
       {/* Mobile Nav */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-panel border-t border-white/10"
-          >
-            <div className="container px-6 py-8 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className="text-lg font-medium text-foreground/80 hover:text-primary transition-colors"
-                  onClick={() => {
-                    setIsOpen(false);
-                    window.scrollTo({ top: 0, behavior: 'instant' });
-                  }}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <div className="mt-2">
-                <LanguageSwitcher />
-              </div>
+      {isOpen && (
+        <div className="md:hidden glass-panel border-t border-white/10">
+          <div className="container px-6 py-8 flex flex-col gap-4">
+            {navLinks.map((link) => (
               <Link
-                to={`${langPrefix}/#contact`}
-                onClick={() => setIsOpen(false)}
-                className="mt-4 w-full py-3 bg-primary text-primary-foreground rounded-xl text-center font-bold inline-block"
+                key={link.name}
+                to={link.path}
+                className="text-lg font-medium text-foreground/80 hover:text-primary transition-colors"
+                onClick={() => {
+                  setIsOpen(false);
+                  window.scrollTo({ top: 0, behavior: 'instant' });
+                }}
               >
-                {t('navbar.hireMe')}
+                {link.name}
               </Link>
+            ))}
+            <div className="mt-2">
+              <LanguageSwitcher />
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <Link
+              to={`${langPrefix}/#contact`}
+              onClick={() => setIsOpen(false)}
+              className="mt-4 w-full py-3 bg-primary text-primary-foreground rounded-xl text-center font-bold inline-block"
+            >
+              {t('navbar.hireMe')}
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

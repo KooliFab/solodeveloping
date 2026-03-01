@@ -1,11 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { ArrowRight, Code2, Sparkles, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
-import gsap from 'gsap';
-import { splitTextAdvanced } from '@/utils/textSplit';
+
+const shouldEnableHeroAnimations = () => {
+  if (typeof window === 'undefined') return false;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+
+  const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+  return hasFinePointer && window.innerWidth >= 768;
+};
 
 /**
  * Hero section with dramatic text reveals and parallax
@@ -27,31 +32,35 @@ const Hero = () => {
   };
 
   useEffect(() => {
-    // Import ScrollTrigger dynamically
-    import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+    if (!shouldEnableHeroAnimations()) return undefined;
+
+    let isCancelled = false;
+    let animationContext;
+
+    const initAnimations = async () => {
+      const [{ default: gsap }, { ScrollTrigger }, { splitTextAdvanced }] =
+        await Promise.all([
+          import('gsap'),
+          import('gsap/ScrollTrigger'),
+          import('@/utils/textSplit'),
+        ]);
+
+      if (isCancelled || !heroRef.current) return;
+
       gsap.registerPlugin(ScrollTrigger);
 
-      // Check if mobile - skip text splitting animation to prevent cropping
-      const isMobile = window.innerWidth < 768;
+      animationContext = gsap.context(() => {
+        const tl = gsap.timeline({
+          defaults: { ease: 'power4.out' },
+          delay: 0.2,
+        });
 
-      // Timeline for entrance animations
-      const tl = gsap.timeline({
-        defaults: { ease: 'power4.out' },
-        delay: 0.2
-      });
-
-      // Only run character-by-character animation on desktop
-      // On mobile, the text splitting causes cropping due to white-space: nowrap
-      if (!isMobile) {
-        // Split text for character-by-character animation
         const titleElements = titleRef.current?.querySelectorAll('.hero-title-line');
 
-        // Animate each title line with stagger
         titleElements?.forEach((line, index) => {
           const isGradientLine = line.classList.contains('bg-gradient-to-r');
-          
+
           if (isGradientLine) {
-            // Simple fade-in for gradient text (text-splitting breaks gradient)
             tl.fromTo(
               line,
               {
@@ -62,12 +71,11 @@ const Hero = () => {
                 opacity: 1,
                 y: 0,
                 duration: 1,
-                ease: 'power4.out'
+                ease: 'power4.out',
               },
               index * 0.3
             );
           } else {
-            // Character-by-character animation for regular text
             const split = splitTextAdvanced(line);
 
             tl.fromTo(
@@ -76,7 +84,7 @@ const Hero = () => {
                 opacity: 0,
                 y: 120,
                 rotateX: -90,
-                transformOrigin: '50% 100%'
+                transformOrigin: '50% 100%',
               },
               {
                 opacity: 1,
@@ -84,66 +92,62 @@ const Hero = () => {
                 rotateX: 0,
                 duration: 1.2,
                 stagger: 0.03,
-                ease: 'power4.out'
+                ease: 'power4.out',
               },
               index * 0.3
             );
           }
         });
-      } else {
-        // Simple fade-in for mobile without text splitting
-        const titleElements = titleRef.current?.querySelectorAll('.hero-title-line');
+
         tl.fromTo(
-          titleElements,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
+          subtitleRef.current,
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 1 },
+          '-=0.6'
         );
+
+        gsap.to(bgLayerRef.current, {
+          y: () => window.innerHeight * 0.3,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        });
+
+        gsap.to(gridRef.current, {
+          y: () => window.innerHeight * 0.15,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        });
+
+        gsap.to(heroRef.current, {
+          opacity: 0.4,
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        });
+      }, heroRef);
+    };
+
+    initAnimations();
+
+    return () => {
+      isCancelled = true;
+      if (animationContext) {
+        animationContext.revert();
       }
-
-      // Subtitle fade in
-      tl.fromTo(
-        subtitleRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 1 },
-        '-=0.6'
-      );
-
-      // Parallax effect on background layers
-      gsap.to(bgLayerRef.current, {
-        y: () => window.innerHeight * 0.3,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1
-        }
-      });
-
-      // Grid parallax - slower
-      gsap.to(gridRef.current, {
-        y: () => window.innerHeight * 0.15,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1
-        }
-      });
-
-      // Fade out hero on scroll
-      gsap.to(heroRef.current, {
-        opacity: 0.4,
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1
-        }
-      });
-
-    });
+    };
   }, []);
 
   return (
@@ -172,7 +176,7 @@ const Hero = () => {
           className="w-full h-full"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E")`,
-            backgroundRepeat: 'repeat'
+            backgroundRepeat: 'repeat',
           }}
         />
       </div>
@@ -221,12 +225,7 @@ const Hero = () => {
           </div>
 
           {/* CTAs */}
-          <motion.div
-            className="flex flex-col sm:flex-row gap-6 items-start mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
-          >
+          <div className="flex flex-col sm:flex-row gap-6 items-start mb-20">
             <Button
               size="lg"
               onClick={() => {
@@ -250,32 +249,27 @@ const Hero = () => {
               <span className="font-mono opacity-40 mr-2 text-sm group-hover:opacity-70 transition-opacity">&lt;/&gt;</span>
               {t('hero.ctaSecondary')}
             </Button>
-          </motion.div>
+          </div>
 
           {/* Feature highlights - glass cards */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.8, duration: 0.8 }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl">
             {[
               {
                 icon: Zap,
                 title: t('hero.feature1Title'),
-                description: t('hero.feature1Desc')
+                description: t('hero.feature1Desc'),
               },
               {
                 icon: Sparkles,
                 title: t('hero.feature2Title'),
-                description: t('hero.feature2Desc')
+                description: t('hero.feature2Desc'),
               },
               {
                 icon: Code2,
                 title: t('hero.feature3Title'),
-                description: t('hero.feature3Desc')
-              }
-            ].map((feature, index) => (
+                description: t('hero.feature3Desc'),
+              },
+            ].map((feature) => (
               <div
                 key={feature.title}
                 className="group relative p-8 rounded-3xl bg-card/30 backdrop-blur-md border border-electric-500/20 hover:border-electric-500/50 transition-all duration-500 hover:bg-card/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.1)]"
@@ -288,27 +282,19 @@ const Hero = () => {
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-electric-500/0 via-electric-500/0 to-electric-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 0.8 }}
-      >
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20">
         <div className="flex flex-col items-center text-muted-foreground">
           <span className="text-sm mb-3 font-mono tracking-wider">{t('hero.scrollLabel')}</span>
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-          >
+          <div className="scroll-down">
             <div className="w-[2px] h-16 bg-gradient-to-b from-electric-500 to-transparent" />
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

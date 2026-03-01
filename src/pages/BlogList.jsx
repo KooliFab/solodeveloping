@@ -25,7 +25,7 @@ const BlogList = () => {
       "name": "Solo Developing",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://solodeveloping.com/vite.svg"
+        "url": "https://solodeveloping.com/favicon.png"
       }
     }
   };
@@ -75,6 +75,8 @@ const BlogList = () => {
                     <img 
                       src={post.coverImage} 
                       alt={title}
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
                       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                     />
                   </Link>

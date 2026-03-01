@@ -4,6 +4,10 @@ import { initReactI18next } from 'react-i18next';
 import HttpApi from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
+const translationVersion = import.meta.env.DEV
+  ? Date.now().toString()
+  : import.meta.env.VITE_TRANSLATION_VERSION;
+
 // Custom path detector for language prefix in URL
 const pathLanguageDetector = {
   name: 'path',
@@ -42,11 +46,12 @@ i18n
       cookieDomain: window.location.hostname,
     },
     backend: {
-      loadPath: '/locales/{{lng}}/translation.json?v=' + new Date().getTime(),
+      loadPath: translationVersion
+        ? `/locales/{{lng}}/translation.json?v=${translationVersion}`
+        : '/locales/{{lng}}/translation.json',
     },
     react: {
       useSuspense: true, 
     },
   });
-
 

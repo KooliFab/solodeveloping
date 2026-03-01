@@ -61,6 +61,7 @@ const NotFound = () => {
             <img
               src="/illustrations/404.webp"
               alt="Page not found"
+              decoding="async"
               className="w-full h-full object-cover"
             />
             {/* Radial vignette overlay */}
