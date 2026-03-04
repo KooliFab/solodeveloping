@@ -6,6 +6,8 @@ import { Calendar, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { blogPosts } from '@/data/blogPosts';
+import { shortArticles } from '@/data/shortArticles';
+import ShortArticleCard from '@/components/blog/ShortArticleCard';
 
 const BlogList = () => {
   const { i18n } = useTranslation();
@@ -27,7 +29,29 @@ const BlogList = () => {
         "@type": "ImageObject",
         "url": "https://solodeveloping.com/favicon.png"
       }
-    }
+    },
+    "blogPost": [
+      ...blogPosts.map(post => ({
+        "@type": "BlogPosting",
+        "headline": post.title[currentLang] || post.title['en'],
+        "url": `${canonicalUrl}/${post.slug[currentLang] || post.slug['en']}`,
+        "datePublished": post.date,
+        "author": {
+          "@type": "Person",
+          "name": post.author
+        }
+      })),
+      ...shortArticles.map(article => ({
+        "@type": "BlogPosting",
+        "headline": article.title[currentLang] || article.title['en'],
+        "text": article.content[currentLang] || article.content['en'],
+        "datePublished": article.date,
+        "author": {
+          "@type": "Person",
+          "name": "Solo Developing"
+        }
+      }))
+    ]
   };
 
   return (
@@ -118,6 +142,36 @@ const BlogList = () => {
               <p className="text-xl">No posts available yet. Check back soon!</p>
             </div>
           )}
+
+          {/* Short Articles Section */}
+          <div className="mt-24 max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-10"
+            >
+              <h2 className="text-3xl font-bold mb-4">
+                {currentLang === 'fr' ? 'En Bref' : 'Short News'}
+              </h2>
+              <p className="text-muted-foreground">
+                {currentLang === 'fr' ? 'Des réflexions rapides et des actualités.' : 'Quick thoughts and news updates.'}
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {shortArticles.map((article, index) => (
+                <ShortArticleCard key={article.id} article={article} index={index} />
+              ))}
+            </div>
+
+            {shortArticles.length === 0 && (
+              <div className="text-center py-10 text-muted-foreground">
+                <p>{currentLang === 'fr' ? 'Aucune actualité pour le moment.' : 'No short news available yet.'}</p>
+              </div>
+            )}
+          </div>
+
         </div>
       </main>
       <Footer />
