@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ChevronDown, ChevronUp, Calendar } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
-const ShortArticleCard = ({ article, index }) => {
+const ShortArticleListItem = ({ article, index }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { i18n } = useTranslation();
   const currentLang = i18n.language || 'en';
@@ -15,20 +15,20 @@ const ShortArticleCard = ({ article, index }) => {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-primary/30 transition-colors cursor-pointer"
+      transition={{ duration: 0.3, delay: index * 0.05 }}
+      className="border-b border-white/10 last:border-0 hover:bg-white/5 transition-colors cursor-pointer py-5 px-4 rounded-lg -mx-4"
       onClick={() => setIsExpanded(!isExpanded)}
     >
-      <div className="p-6">
-        <div className="flex justify-between items-start gap-4">
+      <div>
+        <div className="flex justify-between items-center gap-4">
           <div className="flex-1">
             <div className="flex items-center gap-2 text-xs text-primary mb-2">
               <Calendar className="w-3 h-3" />
               <time dateTime={article.date}>{date}</time>
             </div>
-            <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
+            <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
               {title}
             </h3>
           </div>
@@ -71,4 +71,4 @@ const ShortArticleCard = ({ article, index }) => {
   );
 };
 
-export default ShortArticleCard;
+export default ShortArticleListItem;

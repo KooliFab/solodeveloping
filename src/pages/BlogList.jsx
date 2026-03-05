@@ -7,7 +7,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { blogPosts } from '@/data/blogPosts';
 import { shortArticles } from '@/data/shortArticles';
-import ShortArticleCard from '@/components/blog/ShortArticleCard';
+import ShortArticleListItem from '@/components/blog/ShortArticleListItem';
 
 const BlogList = () => {
   const { i18n } = useTranslation();
@@ -159,9 +159,9 @@ const BlogList = () => {
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="flex flex-col max-w-4xl mx-auto">
               {shortArticles.map((article, index) => (
-                <ShortArticleCard key={article.id} article={article} index={index} />
+                <ShortArticleListItem key={article.id} article={article} index={index} />
               ))}
             </div>
 
