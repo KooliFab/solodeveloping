@@ -7,8 +7,8 @@ export const shortArticles = [
     },
     date: "2024-08-06",
     content: {
-      en: `Flutter 3.24 brings exciting new features including early access to the new Flutter GPU API for advanced graphics, improved web multi-window support, and iOS 18 readiness. The framework continues its push towards better performance and more powerful capabilities across all platforms.\n\n![Flutter Logo](https://storage.googleapis.com/cms-storage-bucket/0dbfcc7a59cd1cf16282.png)`,
-      fr: `Flutter 3.24 apporte de nouvelles fonctionnalités passionnantes, notamment un accès anticipé à la nouvelle API Flutter GPU pour des graphismes avancés, une meilleure prise en charge du multi-fenêtrage web et la préparation pour iOS 18. Le framework poursuit sa poussée vers de meilleures performances et des capacités plus puissantes sur toutes les plateformes.\n\n![Flutter Logo](https://storage.googleapis.com/cms-storage-bucket/0dbfcc7a59cd1cf16282.png)`,
+      en: `Flutter 3.24 brings exciting new features including early access to the new Flutter GPU API for advanced graphics, improved web multi-window support, and iOS 18 readiness. The framework continues its push towards better performance and more powerful capabilities across all platforms.`,
+      fr: `Flutter 3.24 apporte de nouvelles fonctionnalités passionnantes, notamment un accès anticipé à la nouvelle API Flutter GPU pour des graphismes avancés, une meilleure prise en charge du multi-fenêtrage web et la préparation pour iOS 18. Le framework poursuit sa poussée vers de meilleures performances et des capacités plus puissantes sur toutes les plateformes.`,
     },
   },
   {

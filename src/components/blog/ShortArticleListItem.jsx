@@ -58,7 +58,7 @@ const ShortArticleListItem = ({ article, index }) => {
           <div
             className="prose prose-invert prose-sm max-w-none text-zinc-300
               prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline
-              prose-p:leading-relaxed"
+              prose-p:leading-relaxed prose-img:rounded-lg prose-img:max-h-96 prose-img:mx-auto prose-img:my-4"
             style={{
               visibility: 'visible' // Override the parent visibility for accessibility/SEO, though visually clipped by height: 0
             }}
