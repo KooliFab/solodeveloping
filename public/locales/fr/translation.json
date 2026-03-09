@@ -120,7 +120,7 @@
     "metric3Label": "Apps livrées"
   },
   "footer": {
-    "ctaTitle": "PARLONS-EN",
+    "ctaTitle": "SUIVEZ MOI SUR",
     "email": "hello@solodeveloping.com",
     "linkLinkedIn": "LinkedIn",
     "linkGitHub": "GitHub",
@@ -257,7 +257,7 @@
         "projects": {
           "scanner": {
             "title": "Shrinkflation Scanner",
-            "description": "PWA Flutter qui suit l'historique des prix produit par produit et alerte quand le grammage diminue sans baisse de prix — un problème grand public, sous-détecté."
+            "description": "Application mobile qui suit l'historique des prix produit par produit et alerte quand le grammage diminue sans baisse de prix — un problème grand public, sous-détecté."
           }
         }
       }

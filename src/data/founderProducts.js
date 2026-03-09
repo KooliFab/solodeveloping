@@ -81,16 +81,16 @@ export const founderProducts = [
 
   {
     id: 5,
-    title: "BarcodeVibe",
+    title: "B****be",
     translationKey: "barcode",
     color: "red",
     status: "mvp",
     link: null,
-    tags: ["Flutter", "PWA", "Firebase", "Barcode"],
+    tags: ["iOS", "Android"],
     technicalProjects: [
       {
         translationKey: "scanner",
-        tags: ["Flutter Web", "Firebase", "Barcode Scanner", "PWA"],
+        tags: ["iOS", "Android", "Barcode Scanner"],
         link: null,
       },
     ],

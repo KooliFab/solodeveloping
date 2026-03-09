@@ -13,7 +13,7 @@ const SectionSkeleton = ({ minHeight }) => (
   <div className="w-full" style={{ minHeight }} aria-hidden="true" />
 );
 
-const DeferredSection = ({ children, minHeight = 240, rootMargin = '320px' }) => {
+const DeferredSection = ({ children, minHeight = 240, rootMargin = '320px', id }) => {
   const containerRef = useRef(null);
   const [shouldRender, setShouldRender] = useState(false);
 
@@ -37,7 +37,7 @@ const DeferredSection = ({ children, minHeight = 240, rootMargin = '320px' }) =>
   }, [rootMargin, shouldRender]);
 
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} id={id}>
       {shouldRender ? (
         <Suspense fallback={<SectionSkeleton minHeight={minHeight} />}>
           {children}
@@ -69,7 +69,7 @@ const LandingPage = () => {
           <DeferredSection minHeight={820}>
             <SkillShowcase />
           </DeferredSection>
-          <DeferredSection minHeight={1200}>
+          <DeferredSection minHeight={1200} id="products">
             <FounderProducts />
           </DeferredSection>
           <DeferredSection minHeight={960}>

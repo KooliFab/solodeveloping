@@ -6,13 +6,13 @@ const Footer = () => {
   const { t } = useTranslation();
   
   return (
-    <footer id="footer" className="py-32 px-6 bg-black text-center relative">
+    <footer id="footer" className="py-20 px-6 bg-black text-center relative">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <h2 className="font-display text-[10vw] leading-[0.8] font-bold text-white mb-8 hover:text-green-500 transition-colors duration-500 cursor-pointer">
+        <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-8 hover:text-green-500 transition-colors duration-500 cursor-pointer">
           <a href={`mailto:${t('footer.email')}`}>
             {t('footer.ctaTitle')}
           </a>
@@ -43,7 +43,7 @@ const Footer = () => {
           {t('footer.linkGitHub')}
         </a>
         <a
-          href="https://pub.dev/publishers/yourpublisher"
+          href="https://pub.dev/publishers/solodeveloping.com/packages"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-white transition-colors"
@@ -60,7 +60,7 @@ const Footer = () => {
         </a>
       </motion.div>
 
-      <div className="mt-20 text-xs text-gray-800">
+      <div className="mt-12 text-xs text-gray-800">
         {t('footer.copyright', { year: new Date().getFullYear() })}
       </div>
     </footer>

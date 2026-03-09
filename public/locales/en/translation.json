@@ -120,7 +120,7 @@
     "metric3Label": "Apps Shipped"
   },
   "footer": {
-    "ctaTitle": "LET'S TALK",
+    "ctaTitle": "FOLLOW ME ON",
     "email": "hello@solodeveloping.com",
     "linkLinkedIn": "LinkedIn",
     "linkGitHub": "GitHub",
@@ -252,12 +252,12 @@
       },
       "barcode": {
         "role": "Founder",
-        "year": "2026 — Ongoing",
+        "year": "2026 — Coming soon",
         "tagline": "Price tracker via barcode scan — detects shrinkflation in real time when a product shrinks without its price dropping.",
         "projects": {
           "scanner": {
             "title": "Shrinkflation Scanner",
-            "description": "Flutter PWA that tracks price history product by product and alerts when the weight decreases without a price drop — a mainstream, under-detected problem."
+            "description": "Mobile app that tracks price history product by product and alerts when the weight decreases without a price drop — a mainstream, under-detected problem."
           }
         }
       }

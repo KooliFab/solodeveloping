@@ -775,7 +775,7 @@ Après plusieurs semaines d'utilisation en conditions réelles, voici une analys
 
 C'est une excellente voie pour tester rapidement ses idées et affiner son produit avant de migrer éventuellement vers un processus plus traditionnel (natif) une fois le projet mature.
 
-![Bob l'éponge disant à bientôt](/images/blog/pwa-flutter/flutter-pwa-spongebob.gif)
+![](/images/blog/pwa-flutter/flutter-pwa-spongebob.gif)
       `,
     },
   },
