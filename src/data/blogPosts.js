@@ -1,5 +1,276 @@
 export const blogPosts = [
   {
+    id: "first-flutter-package",
+    slug: {
+      en: "first-flutter-package-pwa-installer",
+      fr: "premiere-librairie-flutter-pwa-installer",
+    },
+    title: {
+      en: "I'm publishing my first Flutter package! 🚀",
+      fr: "Je publie ma première librairie Flutter ! 🚀",
+    },
+    subtitle: {
+      en: "How I solved the PWA installation and In-App browsers nightmare.",
+      fr: "Comment j'ai résolu le cauchemar de l'installation PWA et des navigateurs In-App.",
+    },
+    seoTitle: {
+      en: "My First Flutter Package on pub.dev: pwa_installer",
+      fr: "Ma première librairie Flutter sur pub.dev : pwa_installer",
+    },
+    seoDescription: {
+      en: "How I turned a copy-paste hack into a Flutter pub.dev package. pwa_installer handles PWA install prompts and In-App Browser detection on iOS & Android.",
+      fr: "Comment j'ai publié pwa_installer, le package Flutter qui guide les utilisateurs vers l'installation PWA pour leur offrir la meilleure expérience possible.",
+    },
+    tags: [
+      "Flutter",
+      "Dart",
+      "pub.dev",
+      "PWA",
+      "pwa_installer",
+      "Progressive Web App",
+      "In-App Browser",
+      "Flutter package",
+      "Open Source",
+      "Flutter Web",
+    ],
+    date: "2026-03-09",
+    lastModified: "2026-03-09",
+    author: "Fabien Chung",
+    coverImage: "/images/blog/first-package/first-package-hero.png",
+    content: {
+      en: `
+For a long time, my developer routine when faced with a new need came down to this: I looked for a solution, I found the right tool on pub.dev, I typed \`flutter pub add\`... and I moved on. We are so used to consuming these libraries for free that we almost forget the unknown author who took the time to develop them.
+
+But when there was no miracle package, I fell back into another routine well known to developers: the famous \`utils.dart\` file or the specific Widget that we drag from one project to another.
+
+For me, it was managing the installation of my PWAs (Progressive Web Apps). I first coded it for a side-project then included it in my LOVT app, then I copied it for a client mission and so on.
+
+Until the day I had to fix a bug on iOS detection in project A, and I realized with weariness that I had to go apply this same fix manually in projects B and C.
+
+That was the signal.
+
+![It's open-source! Celebrating giving back to the developer community](https://media.giphy.com/media/DB4plq2gqPjLTFBmsq/giphy.gif)
+
+I spent years taking advantage of the community's open source work (thanks to the maintainers of \`url_launcher\` or \`device_info_plus\` who save my life on a daily basis). It was time for me to "return the elevator" and transform my personal "hack" into a clean, centralized, and shareable solution.
+
+Here is the story of my first package on pub.dev.
+
+---
+
+## The problem: The nightmare of PWAs and "In-App Browsers"
+
+If you read my previous article on PWAs, you know that I love this technology for its deployment speed. But it comes with two major pains for the user experience:
+
+1. **Installation is invisible:** On iOS (and sometimes Android), there is no magic "Install" button. You have to explain to the user to click on "Share" then "Add to Home Screen". Without a visual tutorial, no one does it.
+2. **The social network trap (In-App Browsers):** This is the critical point. If a user clicks on your app's link from Instagram, TikTok, or Facebook, your PWA opens in their internal browser.
+   - Consequence 1: Cookies and sessions often drop.
+   - Consequence 2: Permissions (camera, microphone, geolocation) are often blocked or bugged.
+
+For an app like mine that requires access, it's fatal. The user thinks the app doesn't work.
+
+![Developer after spending 10 hours on the same bug — the In-App browser nightmare is real](https://media.giphy.com/media/oaDcc0LTCuIAiGYrzn/giphy.gif)
+
+## The solution: pwa_installer
+
+So I decided to create a package that handles all this automatically.
+
+The goal was simple: offer a single Widget that detects the user's environment and acts accordingly.
+
+- **On a classic browser (Chrome/Safari):** It displays a beautiful instruction page adapted to the OS (iOS or Android) to guide the installation.
+- **On a Desktop:** You can choose to block access ("Mobile only") or let them use the application without having to install it.
+- **On an In-App Browser (TikTok/Insta):** It detects the User Agent and proposes (or forces) a redirection to the system browser (Chrome/Safari) to guarantee that the app works.
+
+![pwa_installer handles all 3 cases — Classic browser, Desktop, and In-App browser — like a rocket launch](https://media.giphy.com/media/b85mPT4Usz7fq/giphy.gif)
+
+## The challenge of Abstraction
+
+This is where things get tough. When this code was in my LOVT project, it was "hardcoded". It had the LOVT logo, LOVT colors, and LOVT texts.
+
+To make it a library, I had to do a lot of abstraction work. Every element had to be made configurable while keeping smart default values.
+
+- How to allow the developer to put their own logo?
+- How to handle the internationalization of instruction texts?
+- How to allow forcing display on Desktop if needed?
+
+This is the most technically interesting step: moving from "product" code to "tool" code. You have to anticipate the needs of other developers without turning the Widget into a gas factory.
+
+---
+
+## Demystification: A package is just code
+
+After researching how to publish a package, I realized that it ultimately wasn't that complicated.
+The structure is the same as for a classic Flutter application:
+- A \`pubspec.yaml\` file
+- A \`lib\` folder
+- Dart code.
+
+That's it. If you know how to write an \`if (Platform.isIOS)\` in your app, you have the technical skills to create a library. The barrier is not technical, it is psychological.
+
+---
+
+## The "Pre-Flight Checklist": My checks before takeoff
+
+Publishing on pub.dev implies a certain rigor that I imposed on myself. You don't publish "dirty" code. Here is the checklist I followed to be as professional as possible:
+
+**1. The ruthless Linter 🧹**
+I configured my \`analysis_options.yaml\` file to be strict. The goal: zero warnings. No unused variables, no forgotten prints. Clean code inspires confidence.
+
+**2. The Documentation (The real one) 📚**
+There are two types of docs and both are essential:
+- The \`README.md\`: This is the marketing showcase. I included Gifs, screenshots, and a "Copy-Paste" example so the user understands what the lib is for in 10 seconds.
+- The Dart Doc (\`///\`): I documented every public property. This is what allows your IDE to display help when you hover over a variable.
+
+**3. The \`example\` folder is not an option 📱**
+For a visual library like mine, the \`example\` folder is vital. I had to create a complete mini-app inside the package. It's extra work, but it allows developers to clone the repo and test the redirection or display immediately.
+
+**4. The hunt for "Pub Points" with Pana 💯**
+The pub.dev site awards a score out of 140 to your package. This score is calculated by a tool called \`pana\`.
+I ran it locally several times to fix small details (code formatting, description length) and aim for the 130+/140 score upon release. It's a guarantee of quality for those who discover the library.
+
+**5. The safety net: Dry Run 🚀**
+Before pressing the red button, the magic command:
+\`flutter pub publish --dry-run\`
+It simulates the publication and verifies that everything is green. It's the last check before the big jump.
+
+---
+
+## Conclusion
+
+That's it, it's online.
+
+![How I feel when my code finally works — package published on pub.dev!](https://media.giphy.com/media/1m4ukmk9Lu90At2FGu/giphy.gif)
+
+Seeing your name and your package on the pub.dev list brings a particular satisfaction. It's a mix of pride and humility.
+
+I know this is only a V1 and there might be edge cases I haven't covered. But that's the Open Source game. I'm ready to receive feedback and Issues on GitHub.
+
+"If you develop PWAs with Flutter and you encounter difficulties with installation or In-App browsers, go take a look at \`pwa_installer\`. I hope it will save you as much time as it did for me."
+
+Happy coding! 🚀
+
+---
+
+- The package: [https://pub.dev/packages/pwa_installer](https://pub.dev/packages/pwa_installer)
+- GitHub repo: [https://github.com/KooliFab/pwa_installer](https://github.com/KooliFab/pwa_installer)
+`,
+      fr: `
+Pendant longtemps, ma routine de développeur face à un nouveau besoin se résumait à ça : je cherchais une solution, je trouvais le bon outil sur pub.dev, je tapais \`flutter pub add\`... et je passais à la suite. On est tellement habitués à consommer ces librairies gratuitement qu'on en oublie presque l'auteur inconnu qui a pris le temps de les développer.
+
+Mais quand il n'y avait pas de package miracle, je retombais dans une autre routine bien connue des développeurs : le fameux fichier \`utils.dart\` ou le Widget spécifique que l'on traîne d'un projet à l'autre.
+
+Pour moi, c'était la gestion de l'installation de mes PWA (Progressive Web Apps). Je l'ai d'abord codée pour un side-project puis inclus dans mon app LOVT, puis je l'ai copiée pour une mission client et ainsi de suite.
+
+Jusqu'au jour où j'ai dû corriger un bug sur la détection iOS dans le projet A, et que j'ai réalisé avec lassitude que je devais aller appliquer ce même correctif manuellement dans les projets B et C.
+
+C'était le signal.
+
+![C'est open-source ! Célébrer le fait de redonner à la communauté des développeurs](https://media.giphy.com/media/DB4plq2gqPjLTFBmsq/giphy.gif)
+
+J'ai passé des années à profiter du travail open source de la communauté (merci aux mainteneurs de \`url_launcher\` ou \`device_info_plus\` qui me sauvent la vie au quotidien). Il était temps pour moi de "renvoyer l'ascenseur" et de transformer mon "hack" personnel en une solution propre, centralisée et partageable.
+
+Voici l'histoire de ma première librairie sur pub.dev.
+
+---
+
+## Le problème : Le cauchemar des PWA et des "In-App Browsers"
+
+Si vous avez lu mon précédent article sur les PWA, vous savez que j'adore cette technologie pour sa rapidité de déploiement. Mais elle vient avec deux douleurs majeures pour l'expérience utilisateur :
+
+1. **L'installation est invisible :** Sur iOS (et parfois Android), il n'y a pas de bouton magique "Installer". Il faut expliquer à l'utilisateur de cliquer sur "Partager" puis "Sur l'écran d'accueil". Sans un tutoriel visuel, personne ne le fait.
+2. **Le piège des réseaux sociaux (In-App Browsers) :** C'est le point critique. Si un utilisateur clique sur le lien de votre app depuis Instagram, TikTok ou Facebook, votre PWA s'ouvre dans leur navigateur interne.
+   - Conséquence 1 : Les cookies et sessions sautent souvent.
+   - Conséquence 2 : Les permissions (caméra, micro, géolocalisation) sont souvent bloquées ou buggées.
+
+Pour une app comme la mienne qui nécessite des accès, c'est fatal. L'utilisateur pense que l'app ne marche pas.
+
+![Le développeur après 10h sur le même bug — le cauchemar des In-App browsers est bien réel](https://media.giphy.com/media/oaDcc0LTCuIAiGYrzn/giphy.gif)
+
+## La solution : pwa_installer
+
+J'ai donc décidé de créer un package qui gère tout ça automatiquement.
+
+L'objectif était simple : proposer un Widget unique qui détecte l'environnement de l'utilisateur et agit en conséquence.
+
+- **Sur un navigateur classique (Chrome/Safari) :** Il affiche une belle page d'instruction adaptée à l'OS (iOS ou Android) pour guider l'installation.
+- **Sur un Desktop :** On peut choisir de bloquer l'accès ("Mobile only") ou de laisser passer utiliser l'application sans avoir à l'installer.
+- **Sur un In-App Browser (TikTok/Insta) :** Il détecte le User Agent et propose (ou force) une redirection vers le navigateur système (Chrome/Safari) pour garantir que l'app fonctionne.
+
+![pwa_installer gère les 3 cas automatiquement — comme une fusée qui décolle](https://media.giphy.com/media/b85mPT4Usz7fq/giphy.gif)
+
+## Le défi de l'Abstraction
+
+C'est là que les choses se corsent. Quand ce code était dans mon projet LOVT, il était "hardcodé". Il y avait le logo de LOVT, les couleurs de LOVT, et les textes de LOVT.
+
+Pour en faire une librairie, j'ai dû faire un gros travail d'abstraction. Il a fallu rendre chaque élément configurable tout en gardant des valeurs par défaut intelligentes.
+
+- Comment permettre au développeur de mettre son propre logo ?
+- Comment gérer l'internationalisation des textes d'instruction ?
+- Comment permettre de forcer l'affichage sur Desktop si besoin ?
+
+C'est l'étape la plus intéressante techniquement : passer d'un code "produit" à un code "outil". On doit anticiper les besoins des autres développeurs sans transformer le Widget en une usine à gaz.
+
+---
+
+## Démystification : Un package, c'est juste du code
+
+Après avoir recherché comment publier un package, je me suis rendu compte que ce n'était finalement pas si compliqué que ça.
+La structure est la même que pour une application Flutter classique :
+- Un fichier \`pubspec.yaml\`
+- Un dossier \`lib\`
+- Du code Dart.
+
+C'est tout. Si vous savez écrire un \`if (Platform.isIOS)\` dans votre app, vous avez les compétences techniques pour créer une librairie. La barrière n'est pas technique, elle est psychologique.
+
+---
+
+## La "Pre-Flight Checklist" : Mes vérifications avant le décollage
+
+Publier sur pub.dev implique une certaine rigueur que je me suis imposée. On ne publie pas du code "sale". Voici la checklist que j'ai suivie pour être le plus professionnel possible :
+
+**1. Le Linter impitoyable 🧹**
+J'ai configuré mon fichier \`analysis_options.yaml\` pour être strict. L'objectif : zéro warning. Pas de variables non utilisées, pas de print oubliés. Un code propre inspire confiance.
+
+**2. La Documentation (La vraie) 📚**
+Il y a deux types de docs et les deux sont indispensables :
+- Le \`README.md\` : C'est la vitrine marketing. J'ai inclus des Gifs, des captures d'écran et un exemple "Copier-Coller" pour que l'utilisateur comprenne en 10 secondes à quoi sert la lib.
+- La Dart Doc (\`///\`) : J'ai documenté chaque propriété publique. C'est ce qui permet à votre IDE de vous afficher l'aide quand vous survolez une variable.
+
+**3. Le dossier \`example\` n'est pas une option 📱**
+Pour une librairie visuelle comme la mienne, le dossier \`example\` est vital. J'ai dû créer une mini-app complète à l'intérieur du package. C'est du travail en plus, mais cela permet aux développeurs de cloner le repo et de tester la redirection ou l'affichage immédiatement.
+
+**4. La chasse aux "Pub Points" avec Pana 💯**
+Le site pub.dev attribue une note sur 140 à votre package. Cette note est calculée par un outil appelé \`pana\`.
+Je l'ai fait tourner en local plusieurs fois pour corriger les petits détails (formatage du code, longueur de la description) et viser le score de 130+/140 dès la sortie. C'est un gage de qualité pour ceux qui découvriront la librairie.
+
+**5. Le filet de sécurité : Dry Run 🚀**
+Avant d'appuyer sur le bouton rouge, la commande magique :
+\`flutter pub publish --dry-run\`
+Elle simule la publication et vérifie que tout est vert. C'est le dernier check avant le grand saut.
+
+---
+
+## Conclusion
+
+Ça y est, c'est en ligne.
+
+![Quand mon code fonctionne enfin — le package est publié sur pub.dev !](https://media.giphy.com/media/1m4ukmk9Lu90At2FGu/giphy.gif)
+
+Voir son nom et son package sur la liste de pub.dev procure une satisfaction particulière. C'est un mélange de fierté et d'humilité.
+
+Je sais que ce n'est qu'une V1 et il y aura peut-être des cas particuliers que je n'ai pas couverts. Mais c'est ça, le jeu de l'Open Source. Je suis prêt à recevoir les retours et les Issues sur GitHub.
+
+"Si vous développez des PWA avec Flutter et que vous rencontrez des difficultés avec l'installation ou les navigateurs In-App, allez jeter un œil à \`pwa_installer\`. J'espère qu'elle vous fera gagner autant de temps qu'à moi."
+
+Happy coding! 🚀
+
+---
+
+- La librairie: [https://pub.dev/packages/pwa_installer](https://pub.dev/packages/pwa_installer)
+- Le repo GitHub: [https://github.com/KooliFab/pwa_installer](https://github.com/KooliFab/pwa_installer)
+`,
+    },
+  },
+  {
     id: "the-power-of-lazy-loading",
     slug: {
       en: "flutter-firebase-lazy-loading",

@@ -44,6 +44,14 @@ const BlogPost = () => {
   const subtitle = post.subtitle[currentLang] || post.subtitle['en'];
   const content = post.content[currentLang] || post.content['en'];
 
+  // SEO-specific overrides (keyword-optimised title & longer description)
+  const seoTitle = post.seoTitle
+    ? (post.seoTitle[currentLang] || post.seoTitle['en'])
+    : title;
+  const seoDescription = post.seoDescription
+    ? (post.seoDescription[currentLang] || post.seoDescription['en'])
+    : subtitle;
+
   // Calculate read time (approximate)
   const wordCount = content.split(/\s+/).length;
   const readTime = Math.ceil(wordCount / 200);
@@ -56,13 +64,19 @@ const BlogPost = () => {
 
   const langPrefix = currentLang === 'fr' ? '/fr' : '';
   const canonicalUrl = currentLang === 'fr' ? alternates.fr : alternates.en;
+  const absoluteCoverImage = `https://solodeveloping.com${post.coverImage}`;
 
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": title,
-    "description": subtitle,
-    "image": `https://solodeveloping.com${post.coverImage}`,
+    "headline": seoTitle,
+    "description": seoDescription,
+    "image": {
+      "@type": "ImageObject",
+      "url": absoluteCoverImage,
+      "width": 1200,
+      "height": 630,
+    },
     "author": {
       "@type": "Person",
       "name": post.author,
@@ -77,7 +91,10 @@ const BlogPost = () => {
       }
     },
     "datePublished": post.date,
-    "dateModified": post.date,
+    "dateModified": post.lastModified || post.date,
+    "inLanguage": currentLang === 'fr' ? 'fr-FR' : 'en-US',
+    "wordCount": wordCount,
+    ...(post.tags && { "keywords": post.tags.join(', ') }),
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": canonicalUrl
@@ -88,16 +105,18 @@ const BlogPost = () => {
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
       <ReadingProgress />
       
-      <SEO 
-        title={title}
-        description={subtitle}
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
         path={`/articles/${slug}`}
-        image={post.coverImage}
+        image={absoluteCoverImage}
         alternates={alternates}
         type="article"
         author={post.author}
         publishedTime={post.date}
         schema={schema}
+        keywords={post.tags}
+        tags={post.tags}
       />
       <Navbar />
       
