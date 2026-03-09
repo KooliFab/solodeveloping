@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from '../Navbar';
@@ -86,7 +86,7 @@ describe('Navbar', () => {
     expect(closeButton).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('applies scrolled styles when scrolled', () => {
+  it('applies scrolled styles when scrolled', async () => {
     const { container } = renderNavbar();
     const nav = container.querySelector('nav');
 
@@ -104,9 +104,9 @@ describe('Navbar', () => {
     window.dispatchEvent(new Event('scroll'));
 
     // Wait for state update
-    setTimeout(() => {
+    await waitFor(() => {
       expect(nav).toHaveClass('glass-panel');
-    }, 0);
+    });
   });
 
   it('has proper accessibility attributes', () => {
