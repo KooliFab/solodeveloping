@@ -44,11 +44,12 @@ const BlogList = () => {
       ...shortArticles.map(article => ({
         "@type": "BlogPosting",
         "headline": article.title[currentLang] || article.title['en'],
+        "url": `${canonicalUrl.replace('/articles', '')}/shorts/${article.slug?.[currentLang] || article.slug?.['en'] || article.id}`,
         "text": article.content[currentLang] || article.content['en'],
         "datePublished": article.date,
         "author": {
           "@type": "Person",
-          "name": "Solo Developing"
+          "name": article.author || "Solo Developing"
         }
       }))
     ]

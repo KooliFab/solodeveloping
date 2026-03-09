@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 // Lazy load pages
@@ -7,6 +7,7 @@ const LandingPage = lazy(() => import('@/pages/LandingPage'));
 const About = lazy(() => import('@/pages/About'));
 const BlogList = lazy(() => import('@/pages/BlogList'));
 const BlogPost = lazy(() => import('@/pages/BlogPost'));
+const ShortArticlePage = lazy(() => import('@/pages/ShortArticlePage'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
 const IntroAnimation = lazy(() => import('@/components/ui/IntroAnimation'));
 const GreenCursor = lazy(() => import('@/components/ui/GreenCursor'));
@@ -133,6 +134,8 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/articles" element={<BlogList />} />
               <Route path="/articles/:slug" element={<BlogPost />} />
+              <Route path="/shorts" element={<Navigate to="/articles" replace />} />
+              <Route path="/shorts/:slug" element={<ShortArticlePage />} />
               <Route path="/projects" element={<LandingPage />} />
               
               {/* French routes (with /fr prefix) */}
@@ -140,6 +143,8 @@ const App = () => {
               <Route path="/fr/about" element={<About />} />
               <Route path="/fr/articles" element={<BlogList />} />
               <Route path="/fr/articles/:slug" element={<BlogPost />} />
+              <Route path="/fr/shorts" element={<Navigate to="/fr/articles" replace />} />
+              <Route path="/fr/shorts/:slug" element={<ShortArticlePage />} />
               <Route path="/fr/projects" element={<LandingPage />} />
               
               {/* 404 for all other routes */}
