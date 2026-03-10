@@ -20,7 +20,7 @@ const sendToEndpoint = async (endpoint, formData) => {
   return { success: true };
 };
 
-const sendToLegacySlackWebhook = async (webhookUrl, formData) => {
+const sendToSlackWebhook = async (webhookUrl, formData) => {
   const payload = {
     text: 'Contact Form Submission',
     attachments: [
@@ -51,20 +51,30 @@ const sendToLegacySlackWebhook = async (webhookUrl, formData) => {
 };
 
 /**
- * Prefer secure backend endpoint.
- * Fallback to legacy webhook env for compatibility with existing setups.
+ * Sends the contact form notification.
+ *
+ * Two intentional delivery strategies, tried in order:
+ *
+ * 1. VITE_CONTACT_FORM_ENDPOINT — preferred. POST to a backend proxy that
+ *    handles enrichment, validation and forwarding. The webhook URL never
+ *    leaves the server.
+ *
+ * 2. VITE_SLACK_WEBHOOK_URL — direct Slack Incoming Webhook, used when no
+ *    backend proxy is configured. The URL is read exclusively from the
+ *    environment variable and is never hardcoded in source. Set this variable
+ *    in your deployment environment to enable this path.
  */
 export const sendContactNotification = async (formData) => {
   const endpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT;
-  const legacyWebhook = import.meta.env.VITE_SLACK_WEBHOOK_URL;
+  const slackWebhookUrl = import.meta.env.VITE_SLACK_WEBHOOK_URL;
 
   try {
     if (endpoint) {
       return await sendToEndpoint(endpoint, formData);
     }
 
-    if (legacyWebhook) {
-      return await sendToLegacySlackWebhook(legacyWebhook, formData);
+    if (slackWebhookUrl) {
+      return await sendToSlackWebhook(slackWebhookUrl, formData);
     }
 
     return {

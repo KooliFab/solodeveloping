@@ -10,7 +10,7 @@ import { shortArticles } from '@/data/shortArticles';
 import ShortArticleListItem from '@/components/blog/ShortArticleListItem';
 
 const BlogList = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const currentLang = i18n.language || 'en';
 
   const langPrefix = currentLang === 'fr' ? '/fr' : '';
@@ -73,9 +73,9 @@ const BlogList = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Articles</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('blogList.pageTitle')}</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Thoughts on software engineering, architecture, and developer experience.
+              {t('blogList.pageSubtitle')}
             </p>
           </motion.div>
 
@@ -130,7 +130,7 @@ const BlogList = () => {
                       to={linkPath}
                       className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors mt-auto"
                     >
-                      Read Article <ArrowRight className="w-4 h-4" />
+                      {t('blogList.readArticle')} <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>
                 </motion.article>
@@ -140,7 +140,7 @@ const BlogList = () => {
 
           {blogPosts.length === 0 && (
             <div className="text-center py-20 text-muted-foreground">
-              <p className="text-xl">No posts available yet. Check back soon!</p>
+              <p className="text-xl">{t('blogList.noPosts')}</p>
             </div>
           )}
 
@@ -152,12 +152,8 @@ const BlogList = () => {
               transition={{ duration: 0.6 }}
               className="mb-10"
             >
-              <h2 className="text-3xl font-bold mb-4">
-                {currentLang === 'fr' ? 'En Bref' : 'Short News'}
-              </h2>
-              <p className="text-muted-foreground">
-                {currentLang === 'fr' ? 'Des réflexions rapides et des actualités.' : 'Quick thoughts and news updates.'}
-              </p>
+              <h2 className="text-3xl font-bold mb-4">{t('blogList.shortNewsTitle')}</h2>
+              <p className="text-muted-foreground">{t('blogList.shortNewsSubtitle')}</p>
             </motion.div>
 
             <div className="flex flex-col max-w-4xl mx-auto">
@@ -168,7 +164,7 @@ const BlogList = () => {
 
             {shortArticles.length === 0 && (
               <div className="text-center py-10 text-muted-foreground">
-                <p>{currentLang === 'fr' ? 'Aucune actualité pour le moment.' : 'No short news available yet.'}</p>
+                <p>{t('blogList.noShortNews')}</p>
               </div>
             )}
           </div>

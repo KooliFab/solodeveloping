@@ -7,15 +7,15 @@
     "hireMe": "Contact"
   },
   "hero": {
-    "title1": "Je bâtis la tech.",
-    "title2": "Vous propulsez le business.",
+    "title1": "Confiez-moi votre projet.",
+    "title2": "Je livre.",
     "tag1": "iOS & Android",
     "tag2": "Plateformes web",
     "tag3": "Blockchain",
     "tag4": "Automatisation IA",
     "experience": "Plus de 20 ans d'expérience.",
     "promise": "Pas de promesses en l'air, que des résultats.",
-    "action": "Je livre!",
+    "action": "Prêt à démarrer ?",
     "ctaPrimary": "Voir mes projets",
     "ctaSecondary": "Témoignages",
     "feature1Title": "Démarrage rapide",
@@ -290,6 +290,15 @@
         "meta": "pub.dev · pwa_installer"
       }
     }
+  },
+  "blogList": {
+    "pageTitle": "Articles",
+    "pageSubtitle": "Articles techniques et retours d'expérience sur le développement, le produit et la tech.",
+    "readArticle": "Lire l'article",
+    "noPosts": "Aucun article pour le moment. Revenez bientôt !",
+    "shortNewsTitle": "En Bref",
+    "shortNewsSubtitle": "Mes réflexions du moment.",
+    "noShortNews": "Aucune actualité pour le moment."
   },
   "notFound": {
     "title": "Perdu dans l'espace ?",

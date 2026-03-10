@@ -7,15 +7,15 @@
     "hireMe": "Contact"
   },
   "hero": {
-    "title1": "I ship fast.",
-    "title2": "You scale faster.",
+    "title1": "Hand me your project.",
+    "title2": "I deliver.",
     "tag1": "iOS & Android",
     "tag2": "Web platforms",
     "tag3": "Blockchain",
     "tag4": "AI Automation",
     "experience": "20+ years experience.",
     "promise": "No overpromise, no underdeliver.",
-    "action": "I ship!",
+    "action": "Ready to start?",
     "ctaPrimary": "See what I built",
     "ctaSecondary": "See what others say",
     "feature1Title": "Fast Start",
@@ -290,6 +290,15 @@
         "meta": "pub.dev · pwa_installer"
       }
     }
+  },
+  "blogList": {
+    "pageTitle": "Articles",
+    "pageSubtitle": "Technical articles and insights on development, product, and tech.",
+    "readArticle": "Read Article",
+    "noPosts": "No posts available yet. Check back soon!",
+    "shortNewsTitle": "Short News",
+    "shortNewsSubtitle": "My current thoughts.",
+    "noShortNews": "No short news available yet."
   },
   "notFound": {
     "title": "Lost in Space?",
