@@ -10,6 +10,7 @@ import Footer from '@/components/layout/Footer';
 import CodeBlock from '@/components/ui/CodeBlock';
 import { blogPosts } from '@/data/blogPosts';
 import { slugifyHeading } from '@/lib/utils';
+import { SITE_URL } from '@/constants/site';
 
 // New Components
 import ReadingProgress from '@/components/blog/ReadingProgress';
@@ -58,13 +59,13 @@ const BlogPost = () => {
 
   // Calculate alternates for SEO
   const alternates = {
-    en: `https://solodeveloping.com/articles/${post.slug.en}`,
-    fr: `https://solodeveloping.com/fr/articles/${post.slug.fr}`,
+    en: `${SITE_URL}/articles/${post.slug.en}`,
+    fr: `${SITE_URL}/fr/articles/${post.slug.fr}`,
   };
 
   const langPrefix = currentLang === 'fr' ? '/fr' : '';
   const canonicalUrl = currentLang === 'fr' ? alternates.fr : alternates.en;
-  const absoluteCoverImage = `https://solodeveloping.com${post.coverImage}`;
+  const absoluteCoverImage = `${SITE_URL}${post.coverImage}`;
 
   const schema = {
     "@context": "https://schema.org",
@@ -80,14 +81,14 @@ const BlogPost = () => {
     "author": {
       "@type": "Person",
       "name": post.author,
-      "url": "https://solodeveloping.com"
+      "url": SITE_URL
     },
     "publisher": {
       "@type": "Organization",
       "name": "Solo Developing",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://solodeveloping.com/favicon.png"
+        "url": `${SITE_URL}/favicon.png`
       }
     },
     "datePublished": post.date,
@@ -99,6 +100,31 @@ const BlogPost = () => {
       "@type": "WebPage",
       "@id": canonicalUrl
     }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": currentLang === 'fr' ? `${SITE_URL}/fr` : SITE_URL
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": currentLang === 'fr' ? 'Articles' : 'Articles',
+        "item": currentLang === 'fr' ? `${SITE_URL}/fr/articles` : `${SITE_URL}/articles`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": title,
+        "item": canonicalUrl
+      }
+    ]
   };
 
   return (
@@ -114,7 +140,7 @@ const BlogPost = () => {
         type="article"
         author={post.author}
         publishedTime={post.date}
-        schema={schema}
+        schema={[schema, breadcrumbSchema]}
         keywords={post.tags}
         tags={post.tags}
       />

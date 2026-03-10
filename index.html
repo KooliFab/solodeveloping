@@ -16,6 +16,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://analytics.google.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
@@ -33,6 +36,22 @@
       }
       #root {
         min-height: 100vh;
+      }
+      .skip-to-main {
+        position: absolute;
+        top: -100%;
+        left: 1rem;
+        z-index: 9999;
+        padding: 0.75rem 1.25rem;
+        background: #7c3aed;
+        color: #ffffff;
+        font-weight: 600;
+        border-radius: 0 0 0.5rem 0.5rem;
+        text-decoration: none;
+        transition: top 0.1s;
+      }
+      .skip-to-main:focus {
+        top: 0;
       }
     </style>
 

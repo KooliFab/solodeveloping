@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { Globe } from 'lucide-react';
 
 const languages = [
@@ -9,6 +10,7 @@ const languages = [
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
   const activeLanguage = i18n.language?.startsWith('fr') ? 'fr' : 'en';
 
   const changeLanguage = (lng) => {
@@ -28,12 +30,13 @@ const LanguageSwitcher = () => {
       // Remove /fr prefix if switching to English
       newPath = hasFrPrefix ? currentPath.replace(/^\/fr/, '') || '/' : currentPath;
     } else if (lng === 'fr') {
-      // Add /fr prefix if switching to French
-      newPath = hasFrPrefix ? currentPath : `/fr${currentPath}`;
+      // Add /fr prefix if switching to French, avoid trailing slash on home
+      const basePath = currentPath === '/' ? '' : currentPath;
+      newPath = hasFrPrefix ? currentPath : `/fr${basePath}`;
     }
 
-    // Navigate to the new path
-    window.location.href = newPath;
+    // Navigate client-side without full page reload
+    navigate(newPath);
   };
 
   return (

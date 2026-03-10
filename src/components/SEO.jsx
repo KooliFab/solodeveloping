@@ -1,13 +1,15 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import { SITE_URL } from '@/constants/site';
 
 const SEO = ({ titleKey, descriptionKey, title, description, path = '', image, alternates, type = 'website', author, publishedTime, schema, keywords, tags }) => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language;
 
   // Base URL - ensure no trailing slash
-  const siteUrl = 'https://solodeveloping.com';
+  const siteUrl = SITE_URL;
 
   // Construct canonical URL
   // If path is root '/', for default lang it's just siteUrl + '/'
@@ -91,14 +93,30 @@ const SEO = ({ titleKey, descriptionKey, title, description, path = '', image, a
         <meta key={tag} property="article:tag" content={tag} />
       ))}
 
-      {/* Schema Markup */}
-      {schema && (
-        <script type="application/ld+json">
-          {JSON.stringify(schema)}
+      {/* Schema Markup - accepts a single object or an array of schemas */}
+      {schema && (Array.isArray(schema) ? schema : [schema]).map((s, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(s)}
         </script>
-      )}
+      ))}
     </Helmet>
   );
+};
+
+SEO.propTypes = {
+  titleKey: PropTypes.string,
+  descriptionKey: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  path: PropTypes.string,
+  image: PropTypes.string,
+  alternates: PropTypes.shape({ en: PropTypes.string, fr: PropTypes.string }),
+  type: PropTypes.string,
+  author: PropTypes.string,
+  publishedTime: PropTypes.string,
+  schema: PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.object)]),
+  keywords: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+  tags: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default SEO;

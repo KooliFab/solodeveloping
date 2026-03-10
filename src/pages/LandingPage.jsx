@@ -72,7 +72,7 @@ const LandingPage = () => {
           <DeferredSection minHeight={1200} id="products">
             <FounderProducts />
           </DeferredSection>
-          <DeferredSection minHeight={960}>
+          <DeferredSection minHeight={960} id="contact">
             <ContactSection />
           </DeferredSection>
           <DeferredSection minHeight={420}>

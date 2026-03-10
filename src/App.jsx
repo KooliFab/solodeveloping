@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 // Lazy load pages
 const LandingPage = lazy(() => import('@/pages/LandingPage'));
@@ -112,6 +113,9 @@ const App = () => {
 
   return (
     <>
+      <a href="#main-content" className="skip-to-main">
+        Skip to main content
+      </a>
       {showIntro && (
         <Suspense fallback={null}>
           <IntroAnimation onComplete={handleIntroComplete} />
@@ -126,7 +130,8 @@ const App = () => {
         {/* Grid Background - Fixed across entire site */}
         <div className="fixed inset-0 grid-background pointer-events-none z-0"></div>
 
-        <div className="relative z-10">
+        <div id="main-content" className="relative z-10">
+          <ErrorBoundary>
           <Suspense fallback={<PageLoader />}>
             <Routes>
               {/* English routes (default - no language prefix) */}
@@ -151,6 +156,7 @@ const App = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
+          </ErrorBoundary>
         </div>
       </div>
     </>
