@@ -83,6 +83,7 @@ const FacetPage = ({ slug }) => {
         title={t(`${prefix}.seo.title`)}
         description={t(`${prefix}.seo.description`)}
         path={facet.seo.path}
+        image="/images/og-default.webp"
         keywords={t(`${prefix}.seo.keywords`, { returnObjects: true })}
         schema={serviceSchema}
       />

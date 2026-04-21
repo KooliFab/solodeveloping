@@ -184,6 +184,12 @@ const Hero = () => {
       {/* Content */}
       <div className="container relative z-10 px-4 mx-auto py-20">
         <div className="max-w-7xl mx-auto">
+          {/* Brand eyebrow — visible for SEO and for users */}
+          <p className="font-mono text-electric-500 text-sm md:text-base tracking-[0.3em] uppercase mb-8 flex items-center gap-2">
+            <span className="opacity-40">~/</span>
+            {t('hero.eyebrow')}
+          </p>
+
           {/* Main headline - Agency style large typography */}
           <div ref={titleRef} className="mb-10 space-y-2">
             <h1 className="font-display font-bold tracking-tight leading-[0.9] perspective-1000">

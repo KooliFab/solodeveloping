@@ -105,6 +105,10 @@ FileETag None
   RewriteRule ^articles/why-i-dont-build-saas-around-ai-api-keys$ /shorts/why-i-dont-build-saas-around-ai-api-keys [R=301,L]
   RewriteRule ^fr/articles/why-i-dont-build-saas-around-ai-api-keys$ /fr/shorts/why-i-dont-build-saas-around-ai-api-keys [R=301,L]
 
+  # 301 Redirects: Old article slugs still crawled by Google
+  RewriteRule ^articles/the-power-of-lazy-loading$ /articles/flutter-firebase-lazy-loading [R=301,L]
+  RewriteRule ^articles/how-to-successfully-wake-up-earlier$ /articles [R=301,L]
+
   # For all other requests to non-existent files or directories, handle SPA routing
   # This ensures /fr/blog, /fr/portfolio, etc. all load the React app
   RewriteCond %{REQUEST_FILENAME} !-f

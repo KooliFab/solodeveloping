@@ -28,10 +28,11 @@ const About = () => {
 
   return (
     <>
-      <SEO 
-        titleKey="aboutPage.title" 
-        descriptionKey="aboutPage.inspiration.content" 
+      <SEO
+        titleKey="aboutPage.seoTitle"
+        descriptionKey="aboutPage.seoDescription"
         path="/about"
+        image="/images/og-default.webp"
       />
 
       <div className="min-h-screen bg-background text-foreground relative selection:bg-primary/30 selection:text-primary-foreground">

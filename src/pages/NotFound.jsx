@@ -3,12 +3,17 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Home, ArrowLeft, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Helmet } from 'react-helmet-async';
 
 const NotFound = () => {
   const { t } = useTranslation();
 
   return (
     <div className="min-h-screen hero-gradient flex items-center justify-center px-4 py-16 relative overflow-hidden">
+      <Helmet>
+        <title>{t('notFound.title')} | Solo Developing</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-20 pattern-bg" aria-hidden="true" />
       

@@ -24,7 +24,8 @@
     "feature2Desc": "Work with who builds. Zero middlemen.",
     "feature3Title": "Full Stack",
     "feature3Desc": "One person. Total accountability. Real value.",
-    "scrollLabel": "SCROLL"
+    "scrollLabel": "SCROLL",
+    "eyebrow": "Solo Developing"
   },
   "expertise": {
     "title": "Areas of",
@@ -137,6 +138,8 @@
   },
   "aboutPage": {
     "title": "About Me",
+    "seoTitle": "About Fabien Chung — Full Stack & Mobile Developer",
+    "seoDescription": "20+ years of full-stack product development. Flutter, React, Node.js. Co-founder and CTO of 3 startups. Based in Montréal, available remotely.",
     "subtitle": "Solo Developer & Digital Craftsman",
     "inspiration": {
       "title": "The \"Solo Leveling\" Mindset",
@@ -310,7 +313,7 @@
   "facets": {
     "fullstack": {
       "seo": {
-        "title": "Full Stack Developer in Montreal | Fabien Chung — solodeveloping.com",
+        "title": "Full Stack Developer Montréal | Fabien Chung",
         "description": "Fabien Chung is a full stack developer based in Montreal, Canada with 20+ years of experience. He builds end-to-end platforms — mobile apps (Flutter, iOS, Android), web applications (React, Node.js), APIs and backend systems (Firebase, PostgreSQL). Available for freelance and contract work in Montreal and remotely.",
         "keywords": [
           "full stack developer Montreal",
@@ -363,7 +366,7 @@
     },
     "mobile": {
       "seo": {
-        "title": "Mobile App Developer in Montreal | Flutter · iOS · Android — solodeveloping.com",
+        "title": "Mobile App Developer Montréal | Flutter & iOS",
         "description": "Fabien Chung is a mobile app developer based in Montreal, Canada with 7+ years of Flutter experience and 15+ apps shipped to the App Store and Google Play. Cross-platform specialist: Flutter, iOS (Swift), Android (Kotlin), PWA. Available for freelance and contract work.",
         "keywords": [
           "mobile developer Montreal",
@@ -410,7 +413,7 @@
     },
     "ai": {
       "seo": {
-        "title": "AI Developer & Automation Engineer in Montreal | Fabien Chung — solodeveloping.com",
+        "title": "AI Developer Montréal | Fabien Chung",
         "description": "Fabien Chung is an AI developer and automation engineer based in Montreal, Canada. He builds production AI systems: generative content engines, ML-backed reward systems, workflow automation, and AI-augmented mobile and web applications. Available for freelance and contract work.",
         "keywords": [
           "AI developer Montreal",

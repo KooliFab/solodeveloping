@@ -1,26 +1,13 @@
-# robots.txt for Email Subscription with Firebase Firestore
-
 User-agent: *
 
 # Allow crawling of public content
 Allow: /
-Allow: /index.html
-Allow: /images/
-Allow: /illustrations/
 
-# Disallow crawling of private or unnecessary content
+# Disallow private directories and config files
 Disallow: /.env
 Disallow: /.env.example
 Disallow: /.vscode/
 Disallow: /node_modules/
-Disallow: /src/lib/
-
-# Disallow API endpoints and Firebase config
-Disallow: */api/*
-Disallow: */firebase*
-
-# Set crawl delay to prevent server overload
-Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://solodeveloping.com/sitemap.xml

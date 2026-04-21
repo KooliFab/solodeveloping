@@ -24,7 +24,8 @@
     "feature2Desc": "Travaillez avec celui qui construit. Zéro intermédiaire.",
     "feature3Title": "Full Stack",
     "feature3Desc": "Une personne. Responsabilité totale. Valeur réelle.",
-    "scrollLabel": "DÉFILER"
+    "scrollLabel": "DÉFILER",
+    "eyebrow": "Solo Developing"
   },
   "expertise": {
     "title": "Domaines d'",
@@ -137,6 +138,8 @@
   },
   "aboutPage": {
     "title": "À Propos",
+    "seoTitle": "À propos de Fabien Chung — Développeur Full Stack & Mobile",
+    "seoDescription": "Plus de 20 ans de développement full stack. Flutter, React, Node.js. Co-fondateur et CTO de 3 startups. Basé à Montréal, disponible à distance.",
     "subtitle": "Développeur Solo & Artisan Numérique",
     "inspiration": {
       "title": "L'esprit \"Solo Leveling\"",
@@ -310,7 +313,7 @@
   "facets": {
     "fullstack": {
       "seo": {
-        "title": "Développeur Full Stack à Montréal | Fabien Chung — solodeveloping.com",
+        "title": "Développeur Full Stack Montréal | Fabien Chung",
         "description": "Fabien Chung est un développeur full stack basé à Montréal, Canada avec plus de 20 ans d'expérience. Il conçoit des plateformes de bout en bout : applications mobiles (Flutter, iOS, Android), applications web (React, Node.js), API et systèmes backend (Firebase, PostgreSQL). Disponible en freelance et en contrat à Montréal et à distance.",
         "keywords": [
           "développeur full stack Montréal",
@@ -359,7 +362,7 @@
     },
     "mobile": {
       "seo": {
-        "title": "Développeur Applications Mobiles à Montréal | Flutter · iOS · Android — solodeveloping.com",
+        "title": "Développeur Mobile Montréal | Flutter & iOS",
         "description": "Fabien Chung est un développeur mobile basé à Montréal, Canada avec 7+ ans d'expérience Flutter et 15+ applications livrées sur l'App Store et Google Play. Spécialiste multiplateforme : Flutter, iOS (Swift), Android (Kotlin), PWA. Disponible en freelance et en contrat.",
         "keywords": [
           "développeur mobile Montréal",
@@ -406,7 +409,7 @@
     },
     "ai": {
       "seo": {
-        "title": "Développeur IA & Ingénieur Automatisation à Montréal | Fabien Chung — solodeveloping.com",
+        "title": "Développeur IA Montréal | Fabien Chung",
         "description": "Fabien Chung est un développeur IA et ingénieur automatisation basé à Montréal, Canada. Il conçoit des systèmes IA en production : moteurs de génération de contenu, systèmes de récompense ML, automatisation de workflows et applications mobiles et web augmentées par l'IA. Disponible en freelance et en contrat.",
         "keywords": [
           "développeur IA Montréal",

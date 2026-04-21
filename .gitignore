@@ -41,6 +41,11 @@ build
 .env.development
 .env.production
 
+# Local documentation
+documentation/
+TESTING_SUMMARY.md
+playwright-report/
+
 # Misc
 .cache
 .temp
