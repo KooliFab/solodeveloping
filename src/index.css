@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 6% 10%; /* Dark Zinc #18181B */
+    --foreground: 0 0% 98%;
+
+    --card: 240 6% 15%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 6% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Vibrant Blue Primary #2563EB */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Darker Blue Secondary */
+    --secondary: 240 5% 26%; /* Zinc 800 */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 5% 26%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 221 83% 53%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5% 26%;
+    --input: 240 5% 26%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Archivo", sans-serif;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Space Grotesk", sans-serif;
+    letter-spacing: -0.02em;
+  }
+  code,
+  pre {
+    font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+  }
+}
+
+/* Custom Utilities for Glow Effects */
+@layer utilities {
+  .text-glow {
+    text-shadow:
+      0 0 10px hsla(var(--primary), 0.5),
+      0 0 20px hsla(var(--primary), 0.3);
+  }
+
+  .glass-panel {
+    @apply bg-background/60 backdrop-blur-md border border-white/10;
+  }
+
+  .neon-border {
+    box-shadow:
+      0 0 5px theme("colors.primary.DEFAULT"),
+      0 0 10px theme("colors.primary.DEFAULT");
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Code Block Enhancements */
+.code-block-container {
+  @apply my-6 rounded-lg overflow-hidden border border-gray-700 bg-gray-900 shadow-2xl;
+}
+
+.code-block-header {
+  @apply flex items-center justify-between bg-gray-800 px-4 py-3 border-b border-gray-700;
+}
+
+.code-block-language {
+  @apply text-sm font-semibold text-gray-300 uppercase tracking-wide;
+}
+
+.code-block-copy-btn {
+  @apply flex items-center gap-2 px-3 py-1.5 text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 rounded transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+/* Syntax Highlighter Overrides */
+.syntax-highlighter {
+  @apply !m-0 !text-sm !leading-relaxed;
+}
+
+.syntax-highlighter code {
+  @apply !bg-transparent;
+}
+
+/* Better scrollbar for code blocks */
+.syntax-highlighter::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.syntax-highlighter::-webkit-scrollbar-track {
+  background: rgb(31 41 55);
+}
+
+.syntax-highlighter::-webkit-scrollbar-thumb {
+  background: rgb(75 85 99);
+  border-radius: 4px;
+}
+
+.syntax-highlighter::-webkit-scrollbar-thumb:hover {
+  background: rgb(107 114 128);
+}
+
+/* Inline code styling */
+.prose code:not(pre code) {
+  @apply bg-gray-800 text-blue-400 px-2 py-1 rounded text-sm font-mono border border-gray-700 before:content-none after:content-none font-medium;
+}
+
+/* Pre block reset for custom syntax highlighter */
+.prose pre {
+  @apply !p-0 !bg-transparent !border-none !rounded-none !overflow-visible;
+}
+
+/* Line numbers styling */
+.syntax-highlighter .linenumber {
+  @apply select-none;
+}
