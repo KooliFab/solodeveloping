@@ -10,14 +10,14 @@ A modern, responsive portfolio website showcasing full-stack development skills 
 - **Dark Theme** - Electric green accent on dark background
 - **Project Showcase** - Filterable portfolio with category tags
 - **Contact Form** - Integrated with backend endpoint for lead notifications
-- **Blog Ready** - MDX support for technical articles
+- **Blog** - Full MDX blog with bilingual articles, reading progress, TOC, and share buttons
 - **SEO Optimized** - React Helmet for meta management
 
 ## Tech Stack
 
 | Category | Technologies |
 |----------|-------------|
-| **Framework** | React 18, Vite |
+| **Framework** | React 19, Vite |
 | **Styling** | Tailwind CSS, PostCSS |
 | **Animation** | Framer Motion, GSAP, Lenis |
 | **i18n** | i18next, react-i18next |
@@ -37,8 +37,8 @@ A modern, responsive portfolio website showcasing full-stack development skills 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/portfolio.git
-   cd portfolio
+   git clone https://github.com/yourusername/solodeveloping.com.git
+   cd solodeveloping.com
    ```
 
 2. Install dependencies:
@@ -53,8 +53,11 @@ A modern, responsive portfolio website showcasing full-stack development skills 
 
 4. Configure your environment variables in `.env`
    ```bash
-   # Required for contact form
+   # Required for contact form (backend proxy endpoint)
    VITE_CONTACT_FORM_ENDPOINT=https://your-api-domain.com/contact
+
+   # Fallback: direct Slack webhook (if no backend)
+   VITE_SLACK_WEBHOOK_URL=https://hooks.slack.com/services/...
 
    # Optional analytics
    VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
@@ -76,7 +79,7 @@ Configure your FTP credentials in `.env.production`:
 FTP_USER=your_hostinger_ftp_username
 FTP_PASSWORD=your_hostinger_ftp_password
 FTP_HOST=your_hostinger_ftp_host.hostinger.com
-FTP_REMOTE_ROOT=/public_html
+FTP_REMOTE_ROOT=/
 ```
 
 ### Deploy

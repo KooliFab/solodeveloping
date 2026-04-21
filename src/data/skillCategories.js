@@ -40,7 +40,7 @@ export const skillCategories = [
         link: "https://hiiba.ae",
       },
       {
-        name: "BarcodeVibe",
+        name: "B****be",
         icon: "/icons/apps/barcodevibe.png",
         initial: "B",
         gradFrom: "#ea580c",
@@ -119,7 +119,7 @@ export const skillCategories = [
         link: "https://spotter.zeloop.net",
       },
       {
-        name: "BarcodeVibe",
+        name: "B****be",
         icon: "/icons/apps/barcodevibe.png",
         initial: "B",
         gradFrom: "#ea580c",

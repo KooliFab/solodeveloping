@@ -12,8 +12,6 @@ Thank you for your interest in contributing!
 3.  **Install dependencies**:
     ```bash
     npm install
-    # or
-    pnpm install
     ```
 4.  **Create a branch** for your feature or fix:
     ```bash
@@ -31,7 +29,7 @@ npm run dev
 ## Pull Requests
 
 1.  Push your changes to your fork.
-2.  Open a Pull Request against the `main` branch.
+2.  Open a Pull Request against the `master` branch.
 3.  Describe your changes and why they are needed.
 
 ## License

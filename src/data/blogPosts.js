@@ -36,7 +36,7 @@ export const blogPosts = [
     date: "2026-03-09",
     lastModified: "2026-03-09",
     author: "Fabien Chung",
-    coverImage: "/images/blog/first-package/first-package-hero.png",
+    coverImage: "/images/blog/first-package/flutter-pwa-installer-package-hero.webp",
     content: {
       en: `
 For a long time, my developer routine when faced with a new need came down to this: I looked for a solution, I found the right tool on pub.dev, I typed \`flutter pub add\`... and I moved on. We are so used to consuming these libraries for free that we almost forget the unknown author who took the time to develop them.
@@ -49,7 +49,7 @@ Until the day I had to fix a bug on iOS detection in project A, and I realized w
 
 That was the signal.
 
-![It's open-source! Celebrating giving back to the developer community](https://media.giphy.com/media/DB4plq2gqPjLTFBmsq/giphy.gif)
+![Developer copy-pasting code between Flutter projects](/images/blog/first-package/developer-copy-paste-code-reuse.gif "small")
 
 I spent years taking advantage of the community's open source work (thanks to the maintainers of \`url_launcher\` or \`device_info_plus\` who save my life on a daily basis). It was time for me to "return the elevator" and transform my personal "hack" into a clean, centralized, and shareable solution.
 
@@ -59,7 +59,7 @@ Here is the story of my first package on pub.dev.
 
 ## The problem: The nightmare of PWAs and "In-App Browsers"
 
-If you read my previous article on PWAs, you know that I love this technology for its deployment speed. But it comes with two major pains for the user experience:
+If you read [my previous article on PWAs](http://solodeveloping.com/articles/flutter-pwa-guide), you know that I love this technology for its deployment speed. But it comes with two major pains for the user experience:
 
 1. **Installation is invisible:** On iOS (and sometimes Android), there is no magic "Install" button. You have to explain to the user to click on "Share" then "Add to Home Screen". Without a visual tutorial, no one does it.
 2. **The social network trap (In-App Browsers):** This is the critical point. If a user clicks on your app's link from Instagram, TikTok, or Facebook, your PWA opens in their internal browser.
@@ -68,7 +68,7 @@ If you read my previous article on PWAs, you know that I love this technology fo
 
 For an app like mine that requires access, it's fatal. The user thinks the app doesn't work.
 
-![Developer after spending 10 hours on the same bug — the In-App browser nightmare is real](https://media.giphy.com/media/oaDcc0LTCuIAiGYrzn/giphy.gif)
+![PWA not working in an in-app browser](/images/blog/first-package/pwa-not-working-in-app-browser.gif "small")
 
 ## The solution: pwa_installer
 
@@ -80,19 +80,11 @@ The goal was simple: offer a single Widget that detects the user's environment a
 - **On a Desktop:** You can choose to block access ("Mobile only") or let them use the application without having to install it.
 - **On an In-App Browser (TikTok/Insta):** It detects the User Agent and proposes (or forces) a redirection to the system browser (Chrome/Safari) to guarantee that the app works.
 
-![pwa_installer handles all 3 cases — Classic browser, Desktop, and In-App browser — like a rocket launch](https://media.giphy.com/media/b85mPT4Usz7fq/giphy.gif)
-
-## The challenge of Abstraction
-
-This is where things get tough. When this code was in my LOVT project, it was "hardcoded". It had the LOVT logo, LOVT colors, and LOVT texts.
-
-To make it a library, I had to do a lot of abstraction work. Every element had to be made configurable while keeping smart default values.
-
-- How to allow the developer to put their own logo?
-- How to handle the internationalization of instruction texts?
-- How to allow forcing display on Desktop if needed?
-
-This is the most technically interesting step: moving from "product" code to "tool" code. You have to anticipate the needs of other developers without turning the Widget into a gas factory.
+<div style="display:flex;gap:16px;justify-content:center;margin:2rem 0">
+  <img src="/images/blog/first-package/pwa-install-prompt-android-guide.webp" alt="PWA install prompt guide for Android devices" style="flex:1;min-width:0;border-radius:12px" />
+  <img src="/images/blog/first-package/pwa-desktop-qr-code-redirect.webp" alt="Desktop QR code to redirect users to mobile PWA" style="flex:1;min-width:0;border-radius:12px" />
+  <img src="/images/blog/first-package/in-app-browser-detection-redirect.webp" alt="In-app browser detection and redirect to system browser" style="flex:1;min-width:0;border-radius:12px" />
+</div>
 
 ---
 
@@ -104,9 +96,65 @@ The structure is the same as for a classic Flutter application:
 - A \`lib\` folder
 - Dart code.
 
-That's it. If you know how to write an \`if (Platform.isIOS)\` in your app, you have the technical skills to create a library. The barrier is not technical, it is psychological.
+That's it. Any developer can do it, even a junior. The barrier is not technical, it is psychological.
 
 ---
+
+## The challenge of Abstraction
+
+This is where things get tough. When this code was in my LOVT project, it was "hardcoded": the LOVT logo, LOVT colors, and LOVT texts.
+
+To make it a library, I had to do a lot of abstraction work. This translated into four main axes.
+
+**The logo: a \`Widget?\`, not a \`String\`.** The first temptation would have been to accept a path to an asset. But that's too restrictive — every app loads images differently (assets, network, SVG…). By accepting a \`Widget?\`, we let the app pass whatever it wants. If \`null\`, the area is simply omitted.
+
+**The labels: \`PwaInstallerLabels\` and the \`copyWith\` pattern.** i18n is often the poor cousin of UI libraries. The \`PwaInstallerLabels\` class centralizes the 30+ required strings (iOS 26+, iOS legacy, Android, Desktop QR…) with English defaults. The \`copyWith\` pattern lets you override only what you need, without rewriting the entire object.
+
+**The theme: three levels of customization.** \`PwaInstallerTheme\` offers two ready-to-use presets (\`defaultTheme\` dark, \`lightTheme\`), a \`fromContext\` factory that automatically reads the app's Material \`ColorScheme\`, and a \`copyWith\` to adjust any token (color, gradient, borderRadius, padding).
+
+**Custom screens: builder functions.** For cases where the theme isn't enough, each screen can be fully replaced. The \`onDismiss\` passed as a parameter is \`null\` when \`forceInstall: true\` — that's the signal to hide the "Continue without installing" button.
+
+\`\`\`dart
+PwaInstaller.init(
+  // forceInstall: true = the user is blocked until installation.
+  // They cannot access the app from the browser.
+  forceInstall: true,
+);
+
+runApp(
+  MaterialApp(
+    home: PwaInstaller(
+      // You can pass whatever you want: Image.asset, SvgPicture, NetworkImage...
+      logo: Image.asset('assets/logo.png'),
+      appName: 'My App',
+
+      // Inherits the app's Material theme (defaultTheme / lightTheme)
+      // but individual values can also be overridden with copyWith().
+      theme: PwaInstallerTheme.fromContext(context).copyWith(
+        accentColor: Colors.deepPurple,
+      ),
+
+      // All view labels can be overridden with copyWith().
+      // Ideal for translating into multiple languages.
+      labels: const PwaInstallerLabels().copyWith(
+        titleAdd: 'Add ',
+        titleToHomeScreen: 'to Home Screen',
+      ),
+
+      // If the theme isn't enough, the entire screen can be replaced.
+      customMobileScreen: (context, onDismiss) => MyCustomInstallScreen(
+        onDismiss: onDismiss,
+      ),
+
+      child: MyHomePage(),
+    ),
+  ),
+);
+\`\`\`
+
+This is the most technically interesting step: moving from "product" code to "tool" code. Every design decision — \`Widget?\` over \`String\`, \`copyWith\` over a 30-parameter constructor, builder functions for custom screens — is a conscious choice to keep the API simple on the surface while remaining flexible in depth.
+
+
 
 ## The "Pre-Flight Checklist": My checks before takeoff
 
@@ -138,7 +186,7 @@ It simulates the publication and verifies that everything is green. It's the las
 
 That's it, it's online.
 
-![How I feel when my code finally works — package published on pub.dev!](https://media.giphy.com/media/1m4ukmk9Lu90At2FGu/giphy.gif)
+![Flutter package published on pub.dev](/images/blog/first-package/flutter-package-pubdev-launch.gif "medium")
 
 Seeing your name and your package on the pub.dev list brings a particular satisfaction. It's a mix of pride and humility.
 
@@ -154,19 +202,19 @@ Happy coding! 🚀
 - GitHub repo: [https://github.com/KooliFab/pwa_installer](https://github.com/KooliFab/pwa_installer)
 `,
       fr: `
-Pendant longtemps, ma routine de développeur face à un nouveau besoin se résumait à ça : je cherchais une solution, je trouvais le bon outil sur pub.dev, je tapais \`flutter pub add\`... et je passais à la suite. On est tellement habitués à consommer ces librairies gratuitement qu'on en oublie presque l'auteur inconnu qui a pris le temps de les développer.
+Pendant longtemps, ma routine de développeur face à un nouveau besoin se résumait à ça : imaginer la solution, trouver le package open-source qui allait faire le gros du travail, taper machinalement \`flutter pub add\` ou \`npm install\` dans mon terminal... et passer à la suite. On est tellement habitués à consommer ces librairies gratuitement qu'on en oublie presque l'auteur inconnu qui a pris le temps de les développer.
 
-Mais quand il n'y avait pas de package miracle, je retombais dans une autre routine bien connue des développeurs : le fameux fichier \`utils.dart\` ou le Widget spécifique que l'on traîne d'un projet à l'autre.
+Mais quand il n'y avait pas de package miracle, je retombais dans une autre routine bien connue des développeurs : le fameux fichier \`utils\` ou la classe spécifique que l'on traîne d'un projet à l'autre.
 
 Pour moi, c'était la gestion de l'installation de mes PWA (Progressive Web Apps). Je l'ai d'abord codée pour un side-project puis inclus dans mon app LOVT, puis je l'ai copiée pour une mission client et ainsi de suite.
 
+![Développeur copiant-collant du code entre projets Flutter](/images/blog/first-package/developer-copy-paste-code-reuse.gif "small")
+
 Jusqu'au jour où j'ai dû corriger un bug sur la détection iOS dans le projet A, et que j'ai réalisé avec lassitude que je devais aller appliquer ce même correctif manuellement dans les projets B et C.
 
-C'était le signal.
+C'était le signal. Au lieu de continuer à bricoler dans mon coin, pourquoi ne pas en faire une librairie ?
 
-![C'est open-source ! Célébrer le fait de redonner à la communauté des développeurs](https://media.giphy.com/media/DB4plq2gqPjLTFBmsq/giphy.gif)
-
-J'ai passé des années à profiter du travail open source de la communauté (merci aux mainteneurs de \`url_launcher\` ou \`device_info_plus\` qui me sauvent la vie au quotidien). Il était temps pour moi de "renvoyer l'ascenseur" et de transformer mon "hack" personnel en une solution propre, centralisée et partageable.
+Après tout, j'ai passé des années à profiter du travail open source de la communauté (merci aux mainteneurs de \`url_launcher\` ou \`device_info_plus\` qui me sauvent la vie au quotidien). Il était temps pour moi de "renvoyer l'ascenseur" et de transformer mon "hack" personnel en une solution propre, centralisée et partageable.
 
 Voici l'histoire de ma première librairie sur pub.dev.
 
@@ -174,7 +222,7 @@ Voici l'histoire de ma première librairie sur pub.dev.
 
 ## Le problème : Le cauchemar des PWA et des "In-App Browsers"
 
-Si vous avez lu mon précédent article sur les PWA, vous savez que j'adore cette technologie pour sa rapidité de déploiement. Mais elle vient avec deux douleurs majeures pour l'expérience utilisateur :
+Si vous avez lu [mon précédent article sur les PWA](http://solodeveloping.com/fr/articles/guide-flutter-pwa), vous savez que j'adore cette technologie pour sa rapidité de déploiement. Mais elle vient avec deux douleurs majeures pour l'expérience utilisateur :
 
 1. **L'installation est invisible :** Sur iOS (et parfois Android), il n'y a pas de bouton magique "Installer". Il faut expliquer à l'utilisateur de cliquer sur "Partager" puis "Sur l'écran d'accueil". Sans un tutoriel visuel, personne ne le fait.
 2. **Le piège des réseaux sociaux (In-App Browsers) :** C'est le point critique. Si un utilisateur clique sur le lien de votre app depuis Instagram, TikTok ou Facebook, votre PWA s'ouvre dans leur navigateur interne.
@@ -183,7 +231,7 @@ Si vous avez lu mon précédent article sur les PWA, vous savez que j'adore cett
 
 Pour une app comme la mienne qui nécessite des accès, c'est fatal. L'utilisateur pense que l'app ne marche pas.
 
-![Le développeur après 10h sur le même bug — le cauchemar des In-App browsers est bien réel](https://media.giphy.com/media/oaDcc0LTCuIAiGYrzn/giphy.gif)
+![PWA ne fonctionnant pas dans un navigateur in-app](/images/blog/first-package/pwa-not-working-in-app-browser.gif "small")
 
 ## La solution : pwa_installer
 
@@ -195,19 +243,11 @@ L'objectif était simple : proposer un Widget unique qui détecte l'environnemen
 - **Sur un Desktop :** On peut choisir de bloquer l'accès ("Mobile only") ou de laisser passer utiliser l'application sans avoir à l'installer.
 - **Sur un In-App Browser (TikTok/Insta) :** Il détecte le User Agent et propose (ou force) une redirection vers le navigateur système (Chrome/Safari) pour garantir que l'app fonctionne.
 
-![pwa_installer gère les 3 cas automatiquement — comme une fusée qui décolle](https://media.giphy.com/media/b85mPT4Usz7fq/giphy.gif)
-
-## Le défi de l'Abstraction
-
-C'est là que les choses se corsent. Quand ce code était dans mon projet LOVT, il était "hardcodé". Il y avait le logo de LOVT, les couleurs de LOVT, et les textes de LOVT.
-
-Pour en faire une librairie, j'ai dû faire un gros travail d'abstraction. Il a fallu rendre chaque élément configurable tout en gardant des valeurs par défaut intelligentes.
-
-- Comment permettre au développeur de mettre son propre logo ?
-- Comment gérer l'internationalisation des textes d'instruction ?
-- Comment permettre de forcer l'affichage sur Desktop si besoin ?
-
-C'est l'étape la plus intéressante techniquement : passer d'un code "produit" à un code "outil". On doit anticiper les besoins des autres développeurs sans transformer le Widget en une usine à gaz.
+<div style="display:flex;gap:16px;justify-content:center;margin:2rem 0">
+  <img src="/images/blog/first-package/pwa-install-prompt-android-guide.webp" alt="Guide d'installation PWA pour appareils Android" style="flex:1;min-width:0;border-radius:12px" />
+  <img src="/images/blog/first-package/pwa-desktop-qr-code-redirect.webp" alt="QR code desktop pour rediriger vers la PWA mobile" style="flex:1;min-width:0;border-radius:12px" />
+  <img src="/images/blog/first-package/in-app-browser-detection-redirect.webp" alt="Détection de navigateur in-app et redirection vers le navigateur système" style="flex:1;min-width:0;border-radius:12px" />
+</div>
 
 ---
 
@@ -219,9 +259,64 @@ La structure est la même que pour une application Flutter classique :
 - Un dossier \`lib\`
 - Du code Dart.
 
-C'est tout. Si vous savez écrire un \`if (Platform.isIOS)\` dans votre app, vous avez les compétences techniques pour créer une librairie. La barrière n'est pas technique, elle est psychologique.
+C'est tout. N'importe quel développeur peut le faire, même un junior. La barrière n'est pas technique, elle est psychologique.
 
 ---
+
+## Le défi de l'Abstraction
+
+C'est là que les choses se corsent. Quand ce code était dans mon projet LOVT, il était "hardcodé" : le logo de LOVT, les couleurs de LOVT, les textes de LOVT.
+
+Pour en faire une librairie, j'ai dû faire un gros travail d'abstraction. Ça s'est traduit par quatre axes principaux.
+
+**Le logo : un \`Widget?\`, pas une \`String\`.** La première tentation aurait été d'accepter un chemin vers un asset. Mais c'est trop restrictif — chaque app charge ses images différemment (assets, réseau, SVG…). En acceptant un \`Widget?\`, on laisse l'app passer ce qu'elle veut. Si \`null\`, la zone est simplement omise.
+
+**Les textes : \`PwaInstallerLabels\` et le pattern \`copyWith\`.** L'i18n est souvent le parent pauvre des librairies UI. La classe \`PwaInstallerLabels\` centralise les 30+ chaînes nécessaires (iOS 26+, iOS legacy, Android, Desktop QR…) avec des valeurs par défaut en anglais. Le pattern \`copyWith\` permet de ne surcharger que ce dont on a besoin, sans réécrire l'objet entier.
+
+**Le thème : trois niveaux de personnalisation.** \`PwaInstallerTheme\` propose deux presets prêts à l'emploi (\`defaultTheme\` dark, \`lightTheme\`), une factory \`fromContext\` qui lit automatiquement le \`ColorScheme\` Material de l'app, et un \`copyWith\` pour ajuster n'importe quel token (couleur, gradient, borderRadius, padding).
+
+**Les écrans custom : des builder functions.** Pour les cas où le thème ne suffit pas, chaque écran peut être entièrement remplacé. Le \`onDismiss\` passé en paramètre est \`null\` quand \`forceInstall: true\` — c'est le signal pour cacher le bouton "Continuer sans installer".
+
+\`\`\`dart
+PwaInstaller.init(
+  // forceInstall: true = l'utilisateur est bloqué jusqu'à l'installation.
+  // et ne peut pas accéder à l'application depuis le navigateur.
+  forceInstall: true,
+);
+
+runApp(
+  MaterialApp(
+    home: PwaInstaller(
+      // L'app passe ce qu'elle veut : Image.asset, SvgPicture, NetworkImage...
+      logo: Image.asset('assets/logo.png'),
+      appName: 'My App',
+
+      // Hérite du thème Material de l'app, (defaultTheme / lightTheme)
+      // mais on peut aussi surcharger les valeurs une par une avec copyWith().
+      theme: PwaInstallerTheme.fromContext(context).copyWith(
+        accentColor: Colors.deepPurple,
+      ),
+
+      // Tout les labels de la vue peuvent être surchargés avec copyWith().
+      // Idéal si on veut traduire en plusieurs langues.
+      labels: const PwaInstallerLabels().copyWith(
+        titleAdd: 'Ajouter ',
+        titleToHomeScreen: 'à l\'écran d\'accueil',
+      ),
+
+      // Si le thème ne suffit pas, on peut remplacer l'écran entièrement.
+      customMobileScreen: (context, onDismiss) => MyCustomInstallScreen(
+        onDismiss: onDismiss,
+      ),
+
+      child: MyHomePage(),
+    ),
+  ),
+);
+\`\`\`
+
+C'est l'étape la plus intéressante techniquement : passer d'un code "produit" à un code "outil". Chaque décision de design — \`Widget?\` plutôt que \`String\`, \`copyWith\` plutôt qu'un constructeur à 30 paramètres, des builder functions pour les écrans custom — est un choix conscient pour garder l'API simple en surface tout en restant flexible en profondeur.
+
 
 ## La "Pre-Flight Checklist" : Mes vérifications avant le décollage
 
@@ -253,11 +348,11 @@ Elle simule la publication et vérifie que tout est vert. C'est le dernier check
 
 Ça y est, c'est en ligne.
 
-![Quand mon code fonctionne enfin — le package est publié sur pub.dev !](https://media.giphy.com/media/1m4ukmk9Lu90At2FGu/giphy.gif)
+![Publication du package Flutter sur pub.dev](/images/blog/first-package/flutter-package-pubdev-launch.gif "medium")
 
-Voir son nom et son package sur la liste de pub.dev procure une satisfaction particulière. C'est un mélange de fierté et d'humilité.
+Voir son package publié sur pub.dev procure une satisfaction particulière. C'est un mélange de fierté et d'humilité.
 
-Je sais que ce n'est qu'une V1 et il y aura peut-être des cas particuliers que je n'ai pas couverts. Mais c'est ça, le jeu de l'Open Source. Je suis prêt à recevoir les retours et les Issues sur GitHub.
+Je sais que ce n'est qu'une V1 et il y aura peut-être des cas particuliers que je n'ai pas couverts. Mais ça fais partie du jeu. Je suis prêt à recevoir les retours et les Issues sur GitHub.
 
 "Si vous développez des PWA avec Flutter et que vous rencontrez des difficultés avec l'installation ou les navigateurs In-App, allez jeter un œil à \`pwa_installer\`. J'espère qu'elle vous fera gagner autant de temps qu'à moi."
 

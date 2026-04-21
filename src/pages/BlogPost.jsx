@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import SEO from '@/components/SEO';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
@@ -15,7 +16,6 @@ import { SITE_URL } from '@/constants/site';
 // New Components
 import ReadingProgress from '@/components/blog/ReadingProgress';
 import TableOfContents from '@/components/blog/TableOfContents';
-import ShareButtons from '@/components/blog/ShareButtons';
 import ArticleSuggestions from '@/components/blog/ArticleSuggestions';
 
 const getNodeText = (node) => {
@@ -223,13 +223,8 @@ const BlogPost = () => {
         {/* Content Layout */}
         <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
           
-          {/* Left Sidebar (Share) */}
-          <aside className="lg:col-span-1 hidden lg:block">
-            <ShareButtons title={title} url={window.location.href} description={subtitle} />
-          </aside>
-
           {/* Main Content */}
-          <article className="lg:col-span-8">
+          <article className="lg:col-span-9">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -246,6 +241,7 @@ const BlogPost = () => {
                 prose-code:font-mono prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none"
             >
               <ReactMarkdown
+                rehypePlugins={[rehypeRaw]}
                 components={{
                   h2: ({node, children, ...props}) => {
                     const id = slugifyHeading(getNodeText(children));
@@ -287,10 +283,10 @@ const BlogPost = () => {
                   },
                   img: ({node, ...props}) => (
                     <span className="block my-12 group">
-                      <img 
-                        {...props} 
+                      <img
+                        {...props}
                         alt={props.alt || ''}
-                        className="rounded-2xl shadow-2xl w-full border border-white/10 group-hover:shadow-primary/10 transition-shadow duration-500"
+                        className={`rounded-2xl shadow-2xl border border-white/10 group-hover:shadow-primary/10 transition-shadow duration-500 ${props.title === 'small' ? 'max-w-sm mx-auto block' : 'w-full'}`}
                         loading="lazy"
                         decoding="async"
                       />
@@ -310,14 +306,6 @@ const BlogPost = () => {
               >
                 {content}
               </ReactMarkdown>
-
-              {/* Mobile Share (Bottom) */}
-              <div className="lg:hidden mt-12 py-8 border-t border-white/10">
-                <p className="text-center mb-4 font-semibold">Share this article</p>
-                <div className="flex justify-center">
-                  <ShareButtons title={title} url={window.location.href} description={subtitle} />
-                </div>
-              </div>
 
             </motion.div>
             
