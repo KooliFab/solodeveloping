@@ -118,11 +118,69 @@ const CategoryCard = ({ category, className = '', animDelay = 0 }) => {
   );
 };
 
+// ─── Flexible bento grid for a filtered subset of categories ─────────────────
+const FilteredGrid = ({ categories }) => {
+  const count = categories.length;
+
+  if (count <= 2) {
+    return (
+      <div className={`grid grid-cols-1 ${count === 2 ? 'md:grid-cols-2' : ''} gap-4`}>
+        {categories.map((cat, i) => (
+          <CategoryCard key={cat.id} category={cat} animDelay={i * 0.08} />
+        ))}
+      </div>
+    );
+  }
+
+  if (count === 3) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {categories.map((cat, i) => (
+          <CategoryCard key={cat.id} category={cat} animDelay={i * 0.08} />
+        ))}
+      </div>
+    );
+  }
+
+  if (count === 4) {
+    return (
+      <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <CategoryCard category={categories[0]} className="md:col-span-2" animDelay={0} />
+          <CategoryCard category={categories[1]} className="md:col-span-1" animDelay={0.08} />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <CategoryCard category={categories[2]} animDelay={0.1} />
+          <CategoryCard category={categories[3]} animDelay={0.17} />
+        </div>
+      </div>
+    );
+  }
+
+  // 5 categories — original bento layout
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <CategoryCard category={categories[0]} className="md:col-span-2" animDelay={0} />
+        <CategoryCard category={categories[1]} className="md:col-span-1" animDelay={0.08} />
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {categories.slice(2).map((cat, i) => (
+          <CategoryCard key={cat.id} category={cat} animDelay={0.1 + i * 0.07} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 // ─── Section ─────────────────────────────────────────────────────────────────
-const SkillShowcase = () => {
+const SkillShowcase = ({ categoryFilter }) => {
   const { t } = useTranslation();
-  // Split into bento layout: [mobile, web] on row 1, [backend, blockchain, opensource] on row 2
-  const [mobile, web, backend, blockchain, opensource] = skillCategories;
+
+  // When a filter is provided, show only the requested categories in their original order.
+  const categories = categoryFilter
+    ? skillCategories.filter((c) => categoryFilter.includes(c.id))
+    : skillCategories;
 
   return (
     <section id="skills" className="py-24 px-4 bg-background/50">
@@ -157,23 +215,8 @@ const SkillShowcase = () => {
           </div>
         </motion.div>
 
-        {/* ── Bento grid ── */}
-        <div className="flex flex-col gap-4">
+        <FilteredGrid categories={categories} />
 
-          {/* Row 1: Mobile (wide) + Web */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <CategoryCard category={mobile}  className="md:col-span-2" animDelay={0} />
-            <CategoryCard category={web}     className="md:col-span-1" animDelay={0.08} />
-          </div>
-
-          {/* Row 2: Backend + Blockchain + Open Source */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <CategoryCard category={backend}    animDelay={0.1} />
-            <CategoryCard category={blockchain} animDelay={0.17} />
-            <CategoryCard category={opensource} animDelay={0.24} />
-          </div>
-
-        </div>
       </div>
     </section>
   );

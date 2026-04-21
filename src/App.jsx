@@ -10,6 +10,7 @@ const BlogList = lazy(() => import('@/pages/BlogList'));
 const BlogPost = lazy(() => import('@/pages/BlogPost'));
 const ShortArticlePage = lazy(() => import('@/pages/ShortArticlePage'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
+const FacetPage = lazy(() => import('@/pages/FacetPage'));
 const IntroAnimation = lazy(() => import('@/components/ui/IntroAnimation'));
 const GreenCursor = lazy(() => import('@/components/ui/GreenCursor'));
 
@@ -151,7 +152,17 @@ const App = () => {
               <Route path="/fr/shorts" element={<Navigate to="/fr/articles" replace />} />
               <Route path="/fr/shorts/:slug" element={<ShortArticlePage />} />
               <Route path="/fr/projects" element={<LandingPage />} />
-              
+
+              {/* Service facet pages — EN */}
+              <Route path="/fullstack" element={<FacetPage slug="fullstack" />} />
+              <Route path="/mobile-developer" element={<FacetPage slug="mobile-developer" />} />
+              <Route path="/ai-developer" element={<FacetPage slug="ai-developer" />} />
+
+              {/* Service facet pages — FR */}
+              <Route path="/fr/fullstack" element={<FacetPage slug="fullstack" />} />
+              <Route path="/fr/mobile-developer" element={<FacetPage slug="mobile-developer" />} />
+              <Route path="/fr/ai-developer" element={<FacetPage slug="ai-developer" />} />
+
               {/* 404 for all other routes */}
               <Route path="*" element={<NotFound />} />
             </Routes>

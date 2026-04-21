@@ -27,6 +27,12 @@ const Navbar = () => {
   // Get language prefix for URLs
   const langPrefix = i18n.language === 'fr' ? '/fr' : '';
 
+  // If the user entered via a facet page, the logo brings them back there
+  const originFacet = (() => {
+    try { return sessionStorage.getItem('sd:origin-facet'); } catch { return null; }
+  })();
+  const logoPath = originFacet ? `${langPrefix}/${originFacet}` : `${langPrefix}/`;
+
   const navLinks = [
     { name: t('navbar.home'), path: `${langPrefix}/` },
     { name: t('navbar.about'), path: `${langPrefix}/about` },
@@ -40,7 +46,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
+        <Link to={logoPath} className="flex items-center gap-2 group">
           <div className="relative w-10 h-10 flex items-center justify-center bg-primary/10 rounded-lg overflow-hidden group-hover:bg-primary/20 transition-colors border border-primary/20">
             <Code2 className="w-6 h-6 text-primary" />
             <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />

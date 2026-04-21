@@ -114,7 +114,7 @@
     "responseTime": "TEMPS_RÉPONSE: < 24h",
     "metric1Value": "100%",
     "metric1Label": "Livraison à temps",
-    "metric2Value": "10+",
+    "metric2Value": "20+",
     "metric2Label": "Ans d'expérience",
     "metric3Value": "15+",
     "metric3Label": "Apps livrées"
@@ -306,5 +306,155 @@
     "homeButton": "Retour à la base",
     "backButton": "Retour en arrière",
     "funMessage": "Pas d'inquiétude, même les meilleurs voyageurs s'égarent parfois."
+  },
+  "facets": {
+    "fullstack": {
+      "seo": {
+        "title": "Développeur Full Stack à Montréal | Fabien Chung — solodeveloping.com",
+        "description": "Fabien Chung est un développeur full stack basé à Montréal, Canada avec plus de 20 ans d'expérience. Il conçoit des plateformes de bout en bout : applications mobiles (Flutter, iOS, Android), applications web (React, Node.js), API et systèmes backend (Firebase, PostgreSQL). Disponible en freelance et en contrat à Montréal et à distance.",
+        "keywords": [
+          "développeur full stack Montréal",
+          "développeur full stack Montréal Canada",
+          "développeur React Montréal",
+          "développeur Flutter Montréal",
+          "freelance développeur full stack Montréal",
+          "ingénieur full stack Québec",
+          "développeur web Montréal",
+          "développeur mobile Montréal",
+          "développeur Node.js Montréal",
+          "développeur Firebase",
+          "freelance développeur Canada",
+          "full stack developer Montreal"
+        ],
+        "jobTitle": "Développeur Full Stack",
+        "serviceType": "Développement Full Stack"
+      },
+      "hero": {
+        "title1": "Full Stack",
+        "title2": "Nouvelle Ère.",
+        "tags": ["Outils & Agents IA", "Multi Stack", "Montréal · Remote"],
+        "experience": "Vitesse d'équipe grâce à l'IA.",
+        "promise": "Coût solo.",
+        "action": "Laissez-moi vous montrer.",
+        "ctaPrimary": "Voir mes réalisations",
+        "ctaSecondary": "Lire les témoignages",
+        "features": [
+          {
+            "title": "Orchestrateur IA",
+            "icon": "//",
+            "description": "J'optimise les coûts en choisissant les bons modèles et les bons prompts. Les agents IA gèrent le répétitif — je me concentre sur l'architecture et les décisions produit."
+          },
+          {
+            "title": "Multi Plateforme",
+            "icon": "▲",
+            "description": "15+ apps livrées sur iOS, Android, Web et blockchain. L'IA m'assiste pour gérer n'importe quelle stack technique — le bon outil pour chaque problème."
+          },
+          {
+            "title": "Au-delà du Code",
+            "icon": "⌖",
+            "description": "Ownership produit, vision marketing, alignement business. Je construis ce dont les utilisateurs ont besoin, pas juste ce qui est spécifié."
+          }
+        ]
+      }
+    },
+    "mobile": {
+      "seo": {
+        "title": "Développeur Applications Mobiles à Montréal | Flutter · iOS · Android — solodeveloping.com",
+        "description": "Fabien Chung est un développeur mobile basé à Montréal, Canada avec 7+ ans d'expérience Flutter et 15+ applications livrées sur l'App Store et Google Play. Spécialiste multiplateforme : Flutter, iOS (Swift), Android (Kotlin), PWA. Disponible en freelance et en contrat.",
+        "keywords": [
+          "développeur mobile Montréal",
+          "développeur Flutter Montréal",
+          "développeur iOS Montréal",
+          "développeur Android Montréal",
+          "développeur multiplateforme Montréal",
+          "développement application mobile Montréal",
+          "freelance développeur mobile Canada",
+          "développeur React Native Montréal",
+          "mobile developer Montreal",
+          "Flutter developer Montreal"
+        ],
+        "jobTitle": "Développeur Applications Mobiles",
+        "serviceType": "Développement Applications Mobiles"
+      },
+      "hero": {
+        "title1": "Développeur",
+        "title2": "Mobile.",
+        "tags": ["Flutter", "iOS & Android", "PWA", "Montréal · Remote"],
+        "experience": "7+ ans Flutter. 15+ apps livrées.",
+        "promise": "Un seul code. iOS, Android, Web.",
+        "action": "Voir les apps.",
+        "ctaPrimary": "Voir les projets mobiles",
+        "ctaSecondary": "Lire les témoignages",
+        "features": [
+          {
+            "title": "Multiplateforme",
+            "icon": "//",
+            "description": "Un seul code Flutter pour iOS, Android et Web — déployé sous 4 identités visuelles distinctes pour un même produit."
+          },
+          {
+            "title": "Prêt pour les stores",
+            "icon": "▲",
+            "description": "15+ applications publiées sur l'App Store et Google Play. Expérience avec TestFlight, processus de review et CI/CD."
+          },
+          {
+            "title": "Stratégie PWA",
+            "icon": "⌖",
+            "description": "3× plus d'inscriptions pour LOVT en déployant en PWA — zéro store, en ligne en quelques semaines."
+          }
+        ]
+      }
+    },
+    "ai": {
+      "seo": {
+        "title": "Développeur IA & Ingénieur Automatisation à Montréal | Fabien Chung — solodeveloping.com",
+        "description": "Fabien Chung est un développeur IA et ingénieur automatisation basé à Montréal, Canada. Il conçoit des systèmes IA en production : moteurs de génération de contenu, systèmes de récompense ML, automatisation de workflows et applications mobiles et web augmentées par l'IA. Disponible en freelance et en contrat.",
+        "keywords": [
+          "développeur IA Montréal",
+          "développeur automatisation IA Montréal",
+          "développeur machine learning Montréal",
+          "développeur IA générative",
+          "développement produit IA Montréal",
+          "ingénieur IA Canada",
+          "développeur automatisation Montréal",
+          "développeur OpenAI Montréal",
+          "AI developer Montreal",
+          "AI automation engineer Montreal"
+        ],
+        "jobTitle": "Développeur IA & Ingénieur Automatisation",
+        "serviceType": "Développement IA & Automatisation"
+      },
+      "hero": {
+        "title1": "Développeur",
+        "title2": "IA.",
+        "tags": [
+          "IA Générative",
+          "Systèmes ML",
+          "Automatisation",
+          "Montréal · Remote"
+        ],
+        "experience": "Des systèmes IA en production, pas des démos.",
+        "promise": "Vrais problèmes. IA pratique. Livré.",
+        "action": "Voir l'IA en action.",
+        "ctaPrimary": "Voir les projets IA",
+        "ctaSecondary": "Lire les témoignages",
+        "features": [
+          {
+            "title": "Moteur génératif",
+            "icon": "//",
+            "description": "Système de génération d'épisodes infinis pour Cogni — chaque session unique, piloté par un moteur de puzzles aléatoires."
+          },
+          {
+            "title": "Systèmes ML",
+            "icon": "▲",
+            "description": "Machine learning au cœur d'un moteur de récompenses en cryptomonnaie pour ZeLoop sur 4 blockchains."
+          },
+          {
+            "title": "IA en production",
+            "icon": "⌖",
+            "description": "Pas des démonstrations. De l'IA intégrée dans des applications réelles, avec un impact mesurable — pas des PowerPoints."
+          }
+        ]
+      }
+    }
   }
 }

@@ -315,10 +315,15 @@ const ProductCard = ({ product, isExpanded, isTabMode, onClick, layoutId, wrappe
 };
 
 // ─── Section ─────────────────────────────────────────────────────────────────
-const FounderProducts = () => {
+const FounderProducts = ({ productFilter }) => {
   const { t } = useTranslation();
   const [expandedId, setExpandedId] = useState(null);
   const isMobile = useIsMobile();
+
+  // When a filter is provided, show only the requested products in their original order.
+  const products = productFilter
+    ? founderProducts.filter((p) => productFilter.includes(p.id))
+    : founderProducts;
 
   const handleCardClick = (id) => {
     setExpandedId(expandedId === id ? null : id);
@@ -358,7 +363,7 @@ const FounderProducts = () => {
         {isMobile ? (
           /* ── Mobile: simple vertical list, all expanded ── */
           <div className="w-full flex flex-col gap-8">
-            {founderProducts.map((product, index) => (
+            {products.map((product, index) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -379,9 +384,9 @@ const FounderProducts = () => {
           expandedId === null ? (
             <div
               className="w-full max-w-5xl relative transition-all duration-500 ease-out"
-              style={{ height: `${160 + founderProducts.length * 100}px` }}
+              style={{ height: `${160 + products.length * 100}px` }}
             >
-              {founderProducts.map((product, index) => {
+              {products.map((product, index) => {
                 const stackYOffset = index * 100;
                 const scale = 1 - index * 0.02;
 
@@ -403,7 +408,7 @@ const FounderProducts = () => {
             <div className="w-full max-w-6xl flex flex-row transition-all duration-500 isolate">
               {/* Tabs Column (Unexpanded Cards) */}
               <div className="hidden md:flex flex-col gap-2 relative z-20 mt-12 mb-20 mr-[-1px]">
-                {founderProducts.map((product) => {
+                {products.map((product) => {
                   if (product.id === expandedId) return null;
                   return (
                     <ProductCard
@@ -417,10 +422,10 @@ const FounderProducts = () => {
                   );
                 })}
               </div>
-              
+
               {/* Expanded Card */}
               <div className="flex-1 min-w-0 relative z-10 drop-shadow-2xl flex flex-col items-stretch">
-                {founderProducts.map((product) => {
+                {products.map((product) => {
                   if (product.id !== expandedId) return null;
                   return (
                     <ProductCard
