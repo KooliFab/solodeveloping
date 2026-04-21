@@ -1,171 +1,310 @@
 {
-  "header": {
-    "title": "Cogni's Adventures",
-    "navBook": "The Book",
-    "navApp": "The App",
-    "navBenefits": "Benefits",
-    "navAbout": "About Us",
-    "navFreeStory": "Free Story",
-    "buyNow": "Buy Now"
+  "navbar": {
+    "brand": "SOLODEVELOPING",
+    "home": "Home",
+    "about": "About",
+    "blog": "Articles",
+    "hireMe": "Contact"
   },
   "hero": {
-    "title": "Explore Cogni’s Magical & Playful Universe",
-    "subtitle": "Join Cogni the corgi on interactive adventures that spark curiosity, creativity, and early skills through a beautifully illustrated storybook paired with a fun, activity-filled app.",
-    "buyBook": "Buy the Book",
-    "englishVersion": "English Version",
-    "frenchVersion": "French Version",
-    "downloadApp": "Discover the App",
-    "scrollToExplore": "Scroll to Explore",
-    "imageAlt": "Cogni the Corgi and his friend stepping through a magical portal – Illustration from the Cogni Adventures children's book"
+    "title1": "Hand me your project.",
+    "title2": "I deliver.",
+    "tag1": "iOS & Android",
+    "tag2": "Web platforms",
+    "tag3": "Blockchain",
+    "tag4": "AI Automation",
+    "experience": "20+ years experience.",
+    "promise": "No overpromise, no underdeliver.",
+    "action": "Ready to start?",
+    "ctaPrimary": "See what I built",
+    "ctaSecondary": "See what others say",
+    "feature1Title": "Fast Start",
+    "feature1Desc": "No agency overhead. Ship in days, not months.",
+    "feature2Title": "Direct Line",
+    "feature2Desc": "Work with who builds. Zero middlemen.",
+    "feature3Title": "Full Stack",
+    "feature3Desc": "One person. Total accountability. Real value.",
+    "scrollLabel": "SCROLL"
   },
-  "bookSection": {
-    "title": "The Cogni Adventures Book",
-    "description": "A colorful, captivating storybook that fuels imagination and makes every reading moment playful and engaging.",
-    "bookTitle": "Why Kids and Parents Love The Cogni Adventures",
-    "seasonTitle": "Stories Inspired by the Seasons",
-    "seasonDesc": "Each season unlocks a new magical quest—perfect for reading, playing, and exploring all year long.",
-    "multimediaTitle": "Audio & Interactive Content",
-    "multimediaDesc": "Pair the book with our free app to activate audio narration, mini-games, and exclusive surprises.",
-    "educationalTitle": "Designed for Learning Through Play",
-    "educationalDesc": "Stories and activities built to encourage logic, creativity, curiosity, and confidence—always with fun at the center.",
-    "buyButton": "Buy on Amazon",
-    "englishVersion": "English Version",
-    "frenchVersion": "French Version"
+  "expertise": {
+    "title": "Areas of",
+    "titleHighlight": "Expertise",
+    "subtitle": "Full-stack capabilities with deep specialization in AI, mobile, and modern web technologies.",
+    "aiTitle": "AI/Automation",
+    "aiDescription": "Build intelligent systems that save time and reduce costs. Document processing, data analysis, workflow automation.",
+    "aiHighlight1": "OpenAI Integration",
+    "aiHighlight2": "Custom ML Models",
+    "aiHighlight3": "Process Automation",
+    "mobileTitle": "Mobile Development",
+    "mobileDescription": "Native-quality apps for iOS and Android. Cross-platform with React Native or native Swift/Kotlin.",
+    "mobileHighlight1": "React Native",
+    "mobileHighlight2": "iOS/Android",
+    "mobileHighlight3": "App Store Deployment",
+    "fullstackTitle": "Full-Stack Development",
+    "fullstackDescription": "End-to-end web applications. Modern React frontends, scalable Node.js backends, cloud infrastructure.",
+    "fullstackHighlight1": "React/Next.js",
+    "fullstackHighlight2": "Node.js/Python",
+    "fullstackHighlight3": "API Design",
+    "databaseTitle": "Database Architecture",
+    "databaseDescription": "Design and optimize database systems. SQL, NoSQL, caching strategies, performance tuning.",
+    "databaseHighlight1": "PostgreSQL",
+    "databaseHighlight2": "MongoDB",
+    "databaseHighlight3": "Redis",
+    "cloudTitle": "Cloud & DevOps",
+    "cloudDescription": "Deploy and scale applications on AWS, GCP, or Azure. CI/CD pipelines, monitoring, infrastructure as code.",
+    "cloudHighlight1": "AWS/GCP",
+    "cloudHighlight2": "Docker/K8s",
+    "cloudHighlight3": "CI/CD",
+    "performanceTitle": "Performance Optimization",
+    "performanceDescription": "Make applications blazingly fast. Code optimization, caching, CDN setup, lighthouse scoring.",
+    "performanceHighlight1": "Code Splitting",
+    "performanceHighlight2": "Caching",
+    "performanceHighlight3": "Lighthouse 90+",
+    "ctaText": "Not sure which stack fits your project?",
+    "ctaLink": "Let's discuss your needs"
   },
-  "appSection": {
-    "title": "The Cogni App – Extend the Adventure",
-    "description": "Turn every story into a personalized interactive experience with our playful app for children aged 3 to 10.",
-    "experienceTitle": "What the App Offers",
-    "createStoryTitle": "Create Your Own Episodes",
-    "createStoryDesc": "Each season generates unique episodes inspired by the time of year, keeping your child engaged and excited.",
-    "gamesTitle": "Fun Built-In Games",
-    "gamesDesc": "Each episode unlocks puzzles, logic challenges, creative activities, and small interactive games that make learning joyful.",
-    "printStoryTitle": "Print Your Custom Story",
-    "printStoryDesc": "Combine your favorite episodes and print a unique book to enjoy together.",
-    "downloadButton": "Download the App",
-    "appImageAlt": "Cogni educational app interface"
+  "horizontalShowcase": {
+    "sectionTitle": "Projects",
+    "introTitle": "Featured",
+    "introTitleHighlight": "Work",
+    "introDescription": "A curated selection of projects that showcase technical excellence and business impact.",
+    "viewCode": "View Code",
+    "liveDemo": "Live Demo",
+    "ctaTitle": "Want to see",
+    "ctaTitleHighlight": "more?",
+    "ctaDescription": "These are just highlights. Let's discuss your project.",
+    "ctaButton": "Get in Touch",
+    "scrollHint": "DRAG TO SCROLL"
   },
-  "benefitsSection": {
-    "title": "Benefits & Whole-Child Growth",
-    "description": "Our long-term goal is to offer playful learning that supports the child’s overall development through interactive stories and immersive activities.",
-    "cognitiveTitle": "Cognitive Development",
-    "cognitiveDesc": "Visual riddles, logic puzzles, and memory challenges nurture observation, reasoning, and problem-solving.",
-    "motorTitle": "Fine Motor Skills",
-    "motorDesc": "Coloring, simple tracing, and hands-on interactions strengthen coordination and precise movements.",
-    "languageTitle": "Language Acquisition",
-    "languageDesc": "Rich storytelling, guided narration, and multilingual reading encourage expression and comprehension.",
-    "socialTitle": "Socio-Emotional Skills",
-    "socialDesc": "Adventures centered on friendship, courage, and cooperation help children develop empathy, confidence, and emotional awareness."
+  "projects": {
+    "title": "Featured",
+    "titleHighlight": "Projects",
+    "subtitle": "Curated selection of impactful work. Each project delivered on time, on budget.",
+    "filterAll": "All",
+    "filterAI": "AI/Automation",
+    "filterMobile": "Mobile",
+    "filterWeb": "Web App",
+    "viewAllButton": "View All Projects"
   },
-  "aboutUsSection": {
-    "title": "About Us",
-    "subtitle": "Meet the team behind Cogni’s playful adventures.",
-    "teamTitle": "Our Team",
-    "teamDesc": "Cogni’s Adventures was created by parents, storytellers, and creatives passionate about blending play, imagination, and digital experiences for children aged 4 to 10.",
-    "missionTitle": "Our Mission",
-    "missionDesc": "To create engaging, evolving, and inspiring experiences that help children develop key skills while having fun with Cogni the corgi.",
-    "beliefTitle": "Our Vision",
-    "beliefDesc": "We believe in the power of storytelling to inspire, spark wonder, and support children as they explore the world around them."
-  },
-  "ctaSection": {
-    "title": "Get a Free Story",
-    "description": "Download a free original Cogni Adventures story and receive new seasons, playful activities, and exclusive updates directly in your inbox.",
-    "emailPlaceholder": "Enter your email address",
-    "subscribeButton": "Get My Free Story",
-    "emailRequiredTitle": "Email Required",
-    "emailRequiredDesc": "Please enter your email address.",
-    "subscribedTitle": "You're In!",
-    "subscribedDesc": "Thank you for subscribing! Your story is on its way."
+  "contact": {
+    "title": "INITIATE",
+    "titleHighlight": "CONTACT",
+    "subtitle": "System ready. Awaiting transmission.",
+    "terminalHeader": "contact_system.exe",
+    "terminalInit1": "> CONTACT SYSTEM INITIALIZED...",
+    "terminalInit2": "> READY TO RECEIVE INPUT...",
+    "labelName": "> Name",
+    "labelEmail": "> Email",
+    "labelProject": "> Project Type",
+    "labelMessage": "> Message",
+    "placeholderName": "John Doe",
+    "placeholderEmail": "john@example.com",
+    "placeholderProject": "Select mission type...",
+    "placeholderMessage": "Describe your project concept, timeline, and objectives...",
+    "projectTypeAI": "AI/Automation",
+    "projectTypeMobile": "Mobile App",
+    "projectTypeWeb": "Web Application",
+    "projectTypeConsulting": "Consulting",
+    "projectTypeOther": "Other",
+    "statusReady": "READY",
+    "statusSent": "SENT",
+    "buttonSubmit": "TRANSMIT",
+    "buttonSubmitted": "TRANSMITTED",
+    "email": "hello@solodeveloping.com",
+    "responseTime": "RESPONSE_TIME: < 24h",
+    "metric1Value": "100%",
+    "metric1Label": "On-Time Delivery",
+    "metric2Value": "10+",
+    "metric2Label": "Years Experience",
+    "metric3Value": "15+",
+    "metric3Label": "Apps Shipped"
   },
   "footer": {
-    "title": "The Cogni Adventures",
-    "description": "Magical stories that spark curiosity and support your child’s early development through play and adventure.",
-    "quickLinks": "Quick Links",
-    "contact": "Contact",
-    "email": "Email: hello@cognibook.com",
-    "followUs": "Follow Us",
-    "copyright": "© {{year}} The Cogni Adventures. All rights reserved. Designed with 🩵 in Canada – Québec ⚜️"
-  },
-  "toastMessages": {
-    "buyInterestTitle": "Thank you for your interest!",
-    "buyInterestDesc": "The purchase feature is coming soon. Stay tuned!",
-    "appDownloadTitle": "App Download",
-    "appDownloadDesc": "The companion app will be available soon on iOS and Android!"
-  },
-  "faq": {
-    "title": "Frequently Asked Questions",
-    "subtitle": "Everything you need to know about Cogni's Adventures",
-    "ageQuestion": "What age is the book suitable for?",
-    "ageAnswer": "The book is designed for children ages 3–10.",
-    "contentQuestion": "What kind of content does the book include?",
-    "contentAnswer": "The book includes interactive stories, educational puzzles, and activities that promote cognitive, motor, language, and social-emotional development.",
-    "languagesQuestion": "Is the book available in multiple languages?",
-    "languagesAnswer": "Yes, the book is available in English, Spanish, and French.",
-    "appQuestion": "Is there a companion app for the book?",
-    "appAnswer": "Yes, our companion app extends the book experience with additional interactive content and games."
+    "ctaTitle": "FOLLOW ME ON",
+    "email": "hello@solodeveloping.com",
+    "linkLinkedIn": "LinkedIn",
+    "linkGitHub": "GitHub",
+    "linkPubDev": "Pub.dev",
+    "linkMedium": "Medium",
+    "copyright": "© {{year}} SOLO DEVELOPING. SYSTEM INTEGRITY 100%."
   },
   "meta": {
-    "website": {
-      "title": "Cogni's Adventures — Interactive Children's Book and Educational App",
-      "description": "Discover Cogni's Adventures — an interactive children's book and educational app that builds cognitive, language, motor, and social-emotional skills for kids ages 3–10.",
-      "keywords": "children's book, kids book, interactive book, educational app, kids learning app, social-emotional learning, language development, printable stories, corgi, Cogni's Adventures",
-      "author": "Cogni's Adventures",
-      "structuredData": {
-        "name": "Cogni's Adventures",
-        "description": "Interactive educational content for children with books and mobile app",
-        "offers": {
-          "price": "14.99",
-          "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock"
+    "title": "solodeveloping.com - Level Up Your Project | AI • Mobile • Web",
+    "description": "I build full stack platforms from mobile to web to blockchain. 20+ years experience. No overpromise, no underdeliver. I ship!",
+    "keywords": "full-stack developer, mobile app development, AI automation, React Native, web development, solo developer, UAE developer, Canada developer",
+    "ogTitle": "solodeveloping.com - Full-Stack Developer",
+    "ogDescription": "AI automation • Mobile apps • Full-stack development. Work directly with an experienced developer who delivers results."
+  },
+  "aboutPage": {
+    "title": "About Me",
+    "subtitle": "Solo Developer & Digital Craftsman",
+    "inspiration": {
+      "title": "The \"Solo Leveling\" Mindset",
+      "content": "The name is a nod to the manga Solo Leveling. However, \"Solo Developing\" doesn't mean working alone; it’s a commitment to constant progression. Like an infinite \"level up,\" I treat every project as an opportunity to master every facet of a product—from technical architecture to marketing and business strategy.\n\nSuccess requires more than just code; it depends on understanding the market and collaborating effectively with internal teams. This holistic approach allows me to bridge communication gaps and maintain a high-level vision. I combine the efficiency of an autonomous builder with the collaborative spirit needed to bring our shared vision to life, friction-free."
+    },
+    "profile": {
+      "title": "Who Am I?",
+      "name": "Fabien Chung",
+      "role": "Full Stack Product Developer",
+      "bio": "With over 20 years of experience in the tech industry, my core expertise lies in mobile-first full-stack development. However, my journey extends beyond code. Through my professional experience, I have honed Product Ownership skills to better align technology with business needs, while integrating AI automations to maximize efficiency.\n\nCurrently, I am expanding my marketing knowledge to build the most complete skillset possible. My goal is to offer a holistic vision that bridges the gap between robust engineering and product growth."
+    },
+    "recommendations": {
+      "title": "What Others Say",
+      "subtitle": "Trusted reviews from my linkedin profile",
+      "list": [
+        {
+          "id": 1,
+          "text": "Fabien is one of the most dedicated professionals I have met, with an impressive ability to think outside the box. He is pragmatic and focused on user benefits—often challenging me when I come up with 'crazy ideas' to funnel them into practical implementation. I highly recommend Fabien to anyone looking for skilled programming leadership.",
+          "author": "Eric S.",
+          "role": "Founder"
         },
-        "aggregateRating": {
-          "ratingValue": "4.8",
-          "reviewCount": "124"
+        {
+          "id": 2,
+          "text": "Fabien is an excellent Tech Lead. He designed and implemented efficient architectures while solving various business and technical issues. Most importantly, Fabien helped me personally tackle difficult challenges, from which I've learned a lot. He is a great collaborator, always available to offer support and guidance whenever needed.",
+          "author": "Mykyta G.",
+          "role": "ReactJS & Flutter Developer"
         },
-        "book": {
-          "name": "Cogni's Adventures",
-          "description": "Interactive children's book with multimedia content and educational activities"
+        {
+          "id": 3,
+          "text": "Fabien's role is both strategic (architectural capacity) and tactical (senior developer). He is professional and focused when collaborating with our QA and Dev teams, ensuring best practices. He provides thought leadership to recommend technical solutions and is highly responsive. A true pleasure to work with.",
+          "author": "Aysha V",
+          "role": "Co-Founder"
         },
-        "app": {
-          "name": "Cogni's Adventures App",
-          "description": "Interactive educational app with games and multimedia content for children"
+        {
+          "id": 4,
+          "text": "Fabien accompanies me as an entrepreneurship mentor. He helps me see clearly through the blind spots of my business, structure my ideas, and prioritize the essentials during the startup phase. I am very grateful for his support and highly recommend him to anyone looking to develop their business in a strategic and coherent way.",
+          "author": "Martine M.",
+          "role": "Teacher & Entrepreneur"
+        }
+      ]
+    },
+    "pricing": {
+      "title": "Services & Distinctions",
+      "subtitle": "Clear value, recognized expertise.",
+      "hourly": "Hourly Rate",
+      "project": "Project Based",
+      "contact": "Contact for Quote"
+    }
+  },
+  "founderProducts": {
+    "badge": "Founder & Solopreneur",
+    "title1": "What I've",
+    "title2": "built",
+    "subtitleMobile": "Products founded and developed independently.",
+    "subtitleDesktop": "Products founded and developed independently. Click on a project to expand and discover its technical architecture.",
+    "techComponents": "Technical Components",
+    "items": {
+      "zeloop": {
+        "role": "Co-founder & CTO",
+        "year": "2018 — Present",
+        "tagline": "Eco-friendly social network rewarding green actions with cryptocurrency — deployed under 4 distinct brands.",
+        "projects": {
+          "whitelabel": {
+            "title": "White Label Architecture",
+            "description": "A single Flutter codebase deployed under 4 visual identities — newBin, StopMego, Cherry and Eau de Paris. Dynamic theme system and per-client configuration."
+          },
+          "api": {
+            "title": "Reward Engine API",
+            "description": "Generic cryptocurrency reward REST API. 4 blockchains — Ethereum, EOS, Binance Smart Chain and VeChain. Smart contracts in Solidity & C++."
+          },
+          "spotter": {
+            "title": "ZeLoop Spotter",
+            "description": "Field application for waste collectors, integrated with the VeChain blockchain. Flutter web mini-app deployed without a store."
+          }
+        }
+      },
+      "lovt": {
+        "role": "Co-founder & CTO",
+        "year": "2024 — Present",
+        "tagline": "Service marketplace dedicated to young people — 2,000 registrations in 1 month thanks to a PWA strategy without going through the stores.",
+        "projects": {
+          "pwa": {
+            "title": "Flutter PWA Strategy",
+            "description": "Deployment in a few weeks, zero store. After lazy loading optimization: 3× more registrations while reducing Firebase reads below the free tier threshold."
+          },
+          "installer": {
+            "title": "pwa_installer",
+            "description": "Open source Dart library published on pub.dev. Natively triggers the PWA install banner from Flutter Web — a feature missing from the framework by default."
+          }
+        }
+      },
+      "hiiba": {
+        "role": "Co-founder & CTO",
+        "year": "2026 — Ongoing",
+        "tagline": "First marketplace for item donations in the United Arab Emirates — connects donors and receivers in a local circular economy.",
+        "projects": {
+          "app": {
+            "title": "Flutter Marketplace App",
+            "description": "Cross-platform iOS, Android and Web application. Ad management, localized matching, push notifications and integrated messaging system."
+          }
+        }
+      },
+      "cogni": {
+        "role": "Founder",
+        "year": "2024 — Present",
+        "tagline": "Companion app for the physical book \"Les Aventures de Cogni\" — generates an infinite number of interactive episodes with random puzzles.",
+        "projects": {
+          "engine": {
+            "title": "Generative Episode Engine",
+            "description": "Random episode and puzzle generation engine linked to the physical book. Each session offers a unique experience — the content never runs out."
+          }
+        }
+      },
+      "barcode": {
+        "role": "Founder",
+        "year": "2026 — Coming soon",
+        "tagline": "Price tracker via barcode scan — detects shrinkflation in real time when a product shrinks without its price dropping.",
+        "projects": {
+          "scanner": {
+            "title": "Shrinkflation Scanner",
+            "description": "Mobile app that tracks price history product by product and alerts when the weight decreases without a price drop — a mainstream, under-detected problem."
+          }
         }
       }
     }
   },
-  "notFound": {
-    "title": "Oops! Page Not Found",
-    "description": "It looks like Cogni wandered off the path! The page you're looking for doesn't exist or has been moved.",
-    "homeButton": "Back to Home",
-    "backButton": "Go Back",
-    "funMessage": "Even adventurers get lost sometimes! 🐕✨"
+  "skills": {
+    "badge": "stack.sh",
+    "title1": "What I've",
+    "title2": "shipped",
+    "subtitle": "From iOS app to VeChain smart contract — shipped to production.",
+    "categories": {
+      "mobile": {
+        "label": "iOS & Android",
+        "meta": "7 years · 10 apps"
+      },
+      "web": {
+        "label": "Websites & platforms",
+        "meta": "5 years · 8 apps"
+      },
+      "backend": {
+        "label": "Backend & API",
+        "meta": "4 projects · Node.js · PHP · Flask"
+      },
+      "blockchain": {
+        "label": "Blockchain",
+        "meta": "4 chains · Solidity · C++"
+      },
+      "opensource": {
+        "label": "Open Source projects",
+        "meta": "pub.dev · pwa_installer"
+      }
+    }
   },
-  "bookLanding": {
-    "highlight": "Get instant access",
-    "formTitle": "Continue the adventure",
-    "formSubtitle": "We'll send you a link to open the app on your phone or tablet.",
-    "emailLabel": "Your Email",
-    "emailPlaceholder": "your@email.com",
-    "submitButton": "Send Me the App Link",
-    "sendingButton": "Sending...",
-    "helperDesc": "Enter an email you can access on your mobile device.",
-    "secureLabel": "Safe & Secure",
-    "confirmLabel": "I confirm I purchased Cogni's Adventures book and agree to receive the app link by email.",
-    "confirmRequired": "Please confirm you own the book",
-    "emailRequiredTitle": "Email Required",
-    "emailRequiredDesc": "Please enter your email address.",
-    "invalidEmailTitle": "Invalid Email",
-    "invalidEmailDesc": "Please enter a valid email address.",
-    "successTitle": "Check Your Email!",
-    "successDesc": "We've sent you the link to access the app.",
-    "thankYouHelper": "Open the email on your phone or tablet to get started with Cogni.",
-    "thankYouCta": "Back to Home",
-    "errorTitle": "Oops!",
-    "errorDesc": "Something went wrong. Please try again.",
-    "thankYouTitle": "Email Sent!",
-    "thankYouDesc": "Check your inbox for the link to access Cogni's Adventures.",
-    "checkEmailMessage": "Don't forget to check your spam folder if you don't see it.",
-    "privacyNote": "We'll only use your email to send the app link. No spam, ever.",
-    "currentLanguage": "en"
+  "blogList": {
+    "pageTitle": "Articles",
+    "pageSubtitle": "Technical articles and insights on development, product, and tech.",
+    "readArticle": "Read Article",
+    "noPosts": "No posts available yet. Check back soon!",
+    "shortNewsTitle": "Short News",
+    "shortNewsSubtitle": "My current thoughts.",
+    "noShortNews": "No short news available yet."
+  },
+  "notFound": {
+    "title": "Lost in Space?",
+    "description": "The page you're looking for has moved to another dimension or never existed in this reality.",
+    "homeButton": "Back to Base",
+    "backButton": "Go Back",
+    "funMessage": "Don't worry, even the best travelers get lost sometimes."
   }
 }

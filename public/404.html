@@ -3,30 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting... - Cogni's Adventures</title>
+    <title>Redirecting... - Solo Developing</title>
     <script>
         // Enhanced redirect script for static hosting
         // This handles any 404 errors by redirecting to the correct page
         const path = window.location.pathname.toLowerCase().replace(/\/$/, ''); // Remove trailing slash
         
-        // Handle language paths
-        if (path === '/fr') {
-            window.location.replace('/?lang=fr');
-        } else if (path === '/es') {
-            window.location.replace('/?lang=es');
-        } else if (path === '/en') {
-            window.location.replace('/');
-        } 
-        // Handle paths that start with language codes
-        else if (path.startsWith('/fr/')) {
-            window.location.replace('/?lang=fr');
-        } else if (path.startsWith('/es/')) {
-            window.location.replace('/?lang=es');
-        } else if (path.startsWith('/en/')) {
-            window.location.replace('/');
-        }
-        // For any other 404, redirect to home
-        else {
+        // Keep the language context for unknown routes
+        if (path === '/fr' || path.startsWith('/fr/')) {
+            window.location.replace('/fr/');
+        } else {
             window.location.replace('/');
         }
     </script>

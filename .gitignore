@@ -24,9 +24,10 @@ dist-ssr
 build
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
+.vscode/
+.agent/
+.claude/
+.shared/
 .idea
 .DS_Store
 *.suo
