@@ -70,12 +70,14 @@ const About = () => {
                 >
                   <div className="relative aspect-video w-full rounded-3xl overflow-hidden border-2 border-primary/20 shadow-2xl bg-gradient-to-br from-primary/10 to-transparent group">
                      {/* Video Profile */}
-                     <video 
+                     <video
                        className="w-full h-full object-cover"
-                       autoPlay 
-                       loop 
-                       muted 
+                       autoPlay
+                       loop
+                       muted
                        playsInline
+                       aria-label="Fabien Chung, Next-Gen Full-Stack Developer based in Montréal"
+                       title="Fabien Chung — Next-Gen Full-Stack Developer, Montréal"
                      >
                         <source src={profileVideo} type="video/mp4" />
                         {/* Fallback for when video is loading or unsupported */}

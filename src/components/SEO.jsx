@@ -50,7 +50,7 @@ const SEO = ({ titleKey, descriptionKey, title, description, path = '', image, a
     : keywords || '';
 
   return (
-    <Helmet>
+    <Helmet htmlAttributes={{ lang: currentLang === 'fr' ? 'fr' : 'en' }}>
       {/* Primary Meta Tags */}
       <title>{metaTitle}</title>
       <meta name="description" content={metaDescription} />

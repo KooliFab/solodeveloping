@@ -200,6 +200,9 @@ const Hero = () => {
                 {t('hero.title2')}
               </div>
             </h1>
+            <p className="font-display text-xl md:text-2xl lg:text-3xl text-muted-foreground tracking-tight mt-6">
+              {t('hero.tagline')}
+            </p>
           </div>
 
           {/* Subtitle with proof points */}

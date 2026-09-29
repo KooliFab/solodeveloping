@@ -25,7 +25,8 @@
     "feature3Title": "Full Stack",
     "feature3Desc": "Une personne. Responsabilité totale. Valeur réelle.",
     "scrollLabel": "DÉFILER",
-    "eyebrow": "Solo Developing"
+    "eyebrow": "Fabien Chung · Développeur Full-Stack · Montréal, QC",
+    "tagline": "Développeur Full-Stack Nouvelle Génération · Maîtrise avancée des IA"
   },
   "expertise": {
     "title": "Domaines d'",
@@ -130,11 +131,11 @@
     "copyright": "© {{year}} SOLO DEVELOPING. INTÉGRITÉ DU SYSTÈME 100%."
   },
   "meta": {
-    "title": "solodeveloping.com - Faites évoluer votre projet | IA • Mobile • Web",
-    "description": "Je construis des plateformes full stack du mobile au web à la blockchain. Plus de 20 ans d'expérience. Pas de promesses en l'air, que des résultats. Je livre!",
-    "keywords": "développeur full-stack, développement d'applications mobiles, automatisation IA, React Native, développement web, développeur solo, développeur EAU, développeur Canada",
-    "ogTitle": "solodeveloping.com - Développeur Full-Stack",
-    "ogDescription": "Automatisation IA • Applications mobiles • Développement full-stack. Travaillez directement avec un développeur expérimenté qui livre des résultats."
+    "title": "Fabien Chung — Développeur Full-Stack Nouvelle Génération | Montréal",
+    "description": "Fabien Chung, développeur full-stack basé à Montréal — plus de 20 ans d'expérience. Maîtrise avancée des IA, web, mobile, automatisation. Solo, direct, livré.",
+    "keywords": "Fabien Chung, Fabien Chung Montréal, développeur full-stack nouvelle génération, maîtrise avancée des IA, développeur IA Montréal, développeur full-stack Montréal, développement d'applications mobiles, React Native, développeur solo, développeur EAU, développeur Canada",
+    "ogTitle": "Fabien Chung — Développeur Full-Stack Nouvelle Génération | Montréal",
+    "ogDescription": "Développeur full-stack basé à Montréal. 20+ ans d'expérience. Maîtrise avancée des IA, mobile, web, automatisation. Travaillez directement avec le bâtisseur."
   },
   "aboutPage": {
     "title": "À Propos",
