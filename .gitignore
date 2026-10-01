@@ -56,3 +56,5 @@ playwright-report/
 /node_modules
 .firebase/
 firebase-debug.log
+.gstack/
+output/
