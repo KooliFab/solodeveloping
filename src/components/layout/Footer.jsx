@@ -6,7 +6,7 @@ const Footer = () => {
   const { t } = useTranslation();
   
   return (
-    <footer id="footer" className="py-20 px-6 bg-black text-center relative">
+    <footer id="footer" className="py-20 px-6 bg-background text-center relative">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

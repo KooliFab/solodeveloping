@@ -2,12 +2,12 @@ import { lazy } from 'react';
 import SEO from '@/components/SEO';
 import Navbar from '@/components/layout/Navbar';
 import Hero from '@/components/portfolio/Hero';
+import SelectedWork from '@/components/portfolio/SelectedWork';
 import DeferredSection from '@/components/ui/DeferredSection';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 import { SITE_URL } from '@/constants/site';
 
 const SkillShowcase = lazy(() => import('@/components/portfolio/SkillShowcase'));
-const FounderProducts = lazy(() => import('@/components/portfolio/FounderProducts'));
 const AIWorkflow = lazy(() => import('@/components/portfolio/AIWorkflow'));
 const ContactSection = lazy(() => import('@/components/portfolio/ContactSection'));
 const Footer = lazy(() => import('@/components/layout/Footer'));
@@ -110,11 +110,9 @@ const LandingPage = () => {
 
         <main className="relative">
           <Hero />
+          <SelectedWork />
           <DeferredSection minHeight={820}>
             <SkillShowcase />
-          </DeferredSection>
-          <DeferredSection minHeight={1200} id="products">
-            <FounderProducts />
           </DeferredSection>
           <DeferredSection minHeight={640}>
             <AIWorkflow />

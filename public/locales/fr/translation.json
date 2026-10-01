@@ -275,7 +275,7 @@
       "barcode": {
         "role": "Fondateur",
         "year": "2026 — En cours",
-        "tagline": "Savoir si un prix est vraiment une bonne affaire : scan de code-barres, historique des prix disponibles, prix à l'unité, détection de la réduflation et alertes de baisse de prix.",
+        "tagline": "Application de comparaison de prix d'épicerie : scan de codes-barres, historique des prix disponibles, prix à l'unité, détection de la réduflation et alertes de baisse de prix.",
         "projects": {
           "scanner": {
             "title": "Application de scan de prix",
@@ -290,7 +290,7 @@
       "artkiddo": {
         "role": "Fondateur",
         "year": "2026 — Nouveau",
-        "tagline": "Préserver les dessins d'enfants : photos, métadonnées et notes vocales. Cœur local-first, cloud privé pour les familles.",
+        "tagline": "Conserver les dessins de vos enfants : photos, informations et notes vocales. Un cœur open source et gratuit qui fonctionne sans compte et hors ligne, et une extension propriétaire sur l'App Store et Google Play : espace familial, sauvegarde cloud et partage.",
         "projects": {
           "backend": {
             "title": "Backend Supabase & contrat d'API",
@@ -305,7 +305,7 @@
       "grimora": {
         "role": "Fondateur",
         "year": "2026 — En développement",
-        "tagline": "Flashcards et répétition espacée (FSRS-6) sur iOS, Android, tablette, macOS et Web — local-first et développé en clean-room.",
+        "tagline": "Application de révision gamifiée : cartes mémoire et répétition espacée (FSRS-6) sur iOS, Android, tablette, macOS et Web — fonctionne hors ligne, développée en clean-room.",
         "projects": {
           "sync": {
             "title": "Synchronisation local-first",
@@ -327,11 +327,11 @@
     "categories": {
       "mobile": {
         "label": "iOS & Android",
-        "meta": "Depuis 2012 · 10 apps"
+        "meta": "Depuis 2012 · 11 apps"
       },
       "web": {
         "label": "Sites web & plateformes",
-        "meta": "12 sites & apps · React · Next.js · Astro"
+        "meta": "13 sites & apps · React · Next.js · Astro"
       },
       "backend": {
         "label": "Backend & API",
@@ -343,7 +343,7 @@
       },
       "opensource": {
         "label": "Projets Open Source",
-        "meta": "pub.dev · pwa_installer"
+        "meta": "pub.dev · GitHub"
       }
     }
   },
@@ -543,5 +543,52 @@
         "description": "La doc de 5 produits, synchronisée depuis leurs dépôts, indexée en graphe de connaissances et interrogée par des skills Claude sur mesure."
       }
     ]
+  },
+  "showcase": {
+    "hero": {
+      "eyebrow": "Fabien Chung · Full-stack · Montréal",
+      "title1": "Des idées aux",
+      "title2": "applications.",
+      "description": "Je conçois et développe des applications web et mobiles, de l’architecture à la mise en production.",
+      "work": "Voir mes réalisations",
+      "contact": "Parlons de votre projet",
+      "recommendations": "Mes recommandations"
+    },
+    "title": "Réalisations sélectionnées",
+    "discover": "Découvrir le projet",
+    "hiiba": {
+      "meta": "Projet récent · En production",
+      "description": "Donner une seconde vie aux objets, aux Émirats arabes unis.",
+      "role": "Co-fondateur & CTO",
+      "scopeTitle": "Plateforme complète",
+      "scope": "App mobile · Admin panel & analytics · Web app",
+      "alt": "Application Hiiba : annonces d’objets disponibles, filtres de distance et catégories.",
+      "tags": [
+        "Lampe donnée · Dubai Marina",
+        "+50 points Eco Reward"
+      ],
+      "photoAlt": "Deux voisines se transmettent une lampe grâce à Hiiba."
+    },
+    "spotter": {
+      "meta": "PWA · En production",
+      "description": "Signaler les déchets. Cartographier les points de tri.",
+      "alt": "Tableau de bord ZeLoop Spotter : déchets signalés, points de tri et récompenses.",
+      "captureAlt": "ZeLoop Spotter : choix entre signaler un déchet et cartographier un point de tri.",
+      "tags": [
+        "Point de tri cartographié",
+        "+5 B3TR gagnés"
+      ]
+    },
+    "barcode": {
+      "meta": "Web & mobile",
+      "description": "Comparer les prix d’épicerie.",
+      "scope": "Application mobile iOS et Android",
+      "alt": "Application BarcodeVibe : fil de prix d’épicerie repérés par la communauté.",
+      "tags": [
+        "−2,00 $ repéré chez Walmart",
+        "Alerte réduflation : −65 g",
+        "Prix unitaire /100 g"
+      ]
+    }
   }
 }

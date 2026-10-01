@@ -36,13 +36,13 @@ export const founderProducts = [
     translationKey: "lovt",
     color: "green",
     status: "ended",
-    link: null,
+    link: "https://laruchequebec.com/fr/projets/ameliorez-votre-quotidien-investissez-dans-la-jeunesse",
     tags: ["Flutter", "PWA", "Firebase", "Analytics", "Growth"],
     technicalProjects: [
       {
         translationKey: "pwa",
         tags: ["Flutter Web", "PWA", "Firebase", "Lazy Loading"],
-        link: "https://lovt.web.app",
+        link: "https://laruchequebec.com/fr/projets/ameliorez-votre-quotidien-investissez-dans-la-jeunesse",
       },
       {
         translationKey: "installer",
@@ -56,18 +56,18 @@ export const founderProducts = [
     title: "Hiiba",
     translationKey: "hiiba",
     color: "pink",
-    status: "MVP",
+    status: "live",
     link: "https://hiiba.ae",
-    tags: ["Flutter", "Supabase", "Next.js", "Marketplace", "UAE"],
+    tags: ["Flutter", "Postgres", "Next.js", "Marketplace", "UAE"],
     technicalProjects: [
       {
         translationKey: "app",
-        tags: ["Flutter", "Supabase Realtime", "PostgreSQL", "Cloudflare R2", "Push"],
+        tags: ["Flutter", "Postgres", "PostgreSQL", "Cloudflare R2", "Push"],
         link: "https://hiiba.ae",
       },
       {
         translationKey: "admin",
-        tags: ["Next.js 15", "React 19", "TypeScript", "Supabase", "pnpm"],
+        tags: ["Next.js 15", "React 19", "TypeScript", "Postgres", "pnpm"],
         link: null,
       },
     ],
@@ -78,7 +78,7 @@ export const founderProducts = [
     translationKey: "artkiddo",
     color: "amber",
     status: "mvp",
-    link: "https://github.com/KooliFab/artkiddo",
+    link: "https://artkiddo.bencool.ca",
     tags: ["Flutter", "Supabase", "PostgreSQL", "Cloudflare R2", "TypeScript"],
     technicalProjects: [
       {

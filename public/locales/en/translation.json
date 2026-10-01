@@ -275,7 +275,7 @@
       "barcode": {
         "role": "Founder",
         "year": "2026 — Ongoing",
-        "tagline": "Know if a price is really a deal: barcode scan, available price history, price per unit, shrinkflation detection and price-drop alerts.",
+        "tagline": "Grocery price comparison app: barcode scan, available price history, price per unit, shrinkflation detection and price-drop alerts.",
         "projects": {
           "scanner": {
             "title": "Price scanner app",
@@ -290,7 +290,7 @@
       "artkiddo": {
         "role": "Founder",
         "year": "2026 — New",
-        "tagline": "Preserve children's artwork: photos, metadata and voice notes. Local-first core, private cloud for families.",
+        "tagline": "Keep your kids' drawings safe: photos, details and voice notes. A free open-source core that works offline with no account, plus a proprietary extension on the App Store and Google Play for a family space, cloud backup and sharing.",
         "projects": {
           "backend": {
             "title": "Supabase backend & API contract",
@@ -305,7 +305,7 @@
       "grimora": {
         "role": "Founder",
         "year": "2026 — In development",
-        "tagline": "Flashcards and spaced repetition (FSRS-6) on iOS, Android, tablet, macOS and Web — local-first and built clean-room.",
+        "tagline": "Gamified study app: flashcards and spaced repetition (FSRS-6) on iOS, Android, tablet, macOS and Web — works offline, built clean-room.",
         "projects": {
           "sync": {
             "title": "Local-first sync",
@@ -327,11 +327,11 @@
     "categories": {
       "mobile": {
         "label": "iOS & Android",
-        "meta": "Since 2012 · 10 apps"
+        "meta": "Since 2012 · 11 apps"
       },
       "web": {
         "label": "Websites & platforms",
-        "meta": "12 sites & apps · React · Next.js · Astro"
+        "meta": "13 sites & apps · React · Next.js · Astro"
       },
       "backend": {
         "label": "Backend & API",
@@ -343,7 +343,7 @@
       },
       "opensource": {
         "label": "Open Source projects",
-        "meta": "pub.dev · pwa_installer"
+        "meta": "pub.dev · GitHub"
       }
     }
   },
@@ -547,5 +547,52 @@
         "description": "Docs of 5 products synced from their repositories, indexed as a knowledge graph and queried by custom Claude skills."
       }
     ]
+  },
+  "showcase": {
+    "hero": {
+      "eyebrow": "Fabien Chung · Full-stack · Montréal",
+      "title1": "From ideas to",
+      "title2": "applications.",
+      "description": "I design and build web and mobile applications, from architecture to production.",
+      "work": "Explore my work",
+      "contact": "Let’s talk about your project",
+      "recommendations": "My recommendations"
+    },
+    "title": "Selected work",
+    "discover": "Explore the project",
+    "hiiba": {
+      "meta": "Latest project · In production",
+      "description": "Giving items a second life in the United Arab Emirates.",
+      "role": "Co-founder & CTO",
+      "scopeTitle": "Complete platform",
+      "scope": "Mobile app · Admin panel & analytics · Web app",
+      "alt": "Hiiba app: available items, distance filters and categories.",
+      "tags": [
+        "Lamp given · Dubai Marina",
+        "+50 Eco Reward points"
+      ],
+      "photoAlt": "Two neighbours handing over a lamp through Hiiba."
+    },
+    "spotter": {
+      "meta": "PWA · In production",
+      "description": "Spot litter. Map recycling bins.",
+      "alt": "ZeLoop Spotter dashboard: litter spotted, mapped bins and rewards.",
+      "captureAlt": "ZeLoop Spotter: choose between spotting litter and mapping a recycling bin.",
+      "tags": [
+        "Recycling bin mapped",
+        "+5 B3TR earned"
+      ]
+    },
+    "barcode": {
+      "meta": "Web & mobile",
+      "description": "Compare grocery prices.",
+      "scope": "iOS and Android mobile app",
+      "alt": "BarcodeVibe app: community feed of spotted grocery prices.",
+      "tags": [
+        "$2.00 off spotted at Walmart",
+        "Shrinkflation alert: −65 g",
+        "Unit price per 100 g"
+      ]
+    }
   }
 }

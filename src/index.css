@@ -5,13 +5,13 @@
 @layer base {
   /* Dark mode first (default) - Terminal green color palette */
   :root {
-    --background: 0 0% 2%; /* Obsidian Black #050505 */
+    --background: 240 8% 4%; /* Soft black #0A0A0B */
     --foreground: 0 0% 100%; /* Pure White */
 
     --card: 0 0% 8%; /* Slightly lighter #141414 */
     --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 2%;
+    --popover: 240 8% 4%;
     --popover-foreground: 0 0% 100%;
 
     /* Terminal Green - Main accent */
@@ -86,7 +86,7 @@
     @apply bg-background text-foreground;
     font-family: "Inter", sans-serif;
     overflow-x: hidden;
-    background-color: #050505;
+    background-color: #0a0a0b;
     /* cursor: none; - REMOVED: Managed by JS class now */
   }
 
