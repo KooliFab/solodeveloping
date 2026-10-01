@@ -8,6 +8,7 @@ import { SITE_URL } from '@/constants/site';
 
 const SkillShowcase = lazy(() => import('@/components/portfolio/SkillShowcase'));
 const FounderProducts = lazy(() => import('@/components/portfolio/FounderProducts'));
+const AIWorkflow = lazy(() => import('@/components/portfolio/AIWorkflow'));
 const ContactSection = lazy(() => import('@/components/portfolio/ContactSection'));
 const Footer = lazy(() => import('@/components/layout/Footer'));
 
@@ -34,7 +35,11 @@ const homepageSchema = [
     knowsAbout: [
       'Flutter',
       'React',
+      'Next.js',
+      'TypeScript',
       'Node.js',
+      'PostgreSQL',
+      'Supabase',
       'iOS',
       'Android',
       'AI Automation',
@@ -110,6 +115,9 @@ const LandingPage = () => {
           </DeferredSection>
           <DeferredSection minHeight={1200} id="products">
             <FounderProducts />
+          </DeferredSection>
+          <DeferredSection minHeight={640}>
+            <AIWorkflow />
           </DeferredSection>
           <DeferredSection minHeight={960} id="contact">
             <ContactSection />

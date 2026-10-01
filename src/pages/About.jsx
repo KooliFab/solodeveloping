@@ -13,6 +13,8 @@ const About = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const testimonials = t('aboutPage.recommendations.list', { returnObjects: true });
+  const distinctionsRaw = t('aboutPage.distinctions.list', { returnObjects: true });
+  const distinctions = Array.isArray(distinctionsRaw) ? distinctionsRaw : [];
   const testimonialsList = Array.isArray(testimonials) ? testimonials : [];
 
   useEffect(() => {
@@ -190,20 +192,14 @@ const About = () => {
                     <div className="w-14 h-14 bg-yellow-500/10 rounded-2xl flex items-center justify-center mb-6 text-yellow-500">
                       <Award className="w-8 h-8" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-6">Distinctions</h3>
+                    <h3 className="text-2xl font-bold mb-6">{t('aboutPage.distinctions.title')}</h3>
                     <ul className="space-y-4">
-                      <li className="flex items-start gap-3">
-                        <div className="mt-1 w-5 h-5 rounded-full bg-green-500/20 text-green-500 flex items-center justify-center text-xs shrink-0">✓</div>
-                        <span>Prix Coup de Cœur - Coopérathon 2024</span>
-                      </li>
-                       <li className="flex items-start gap-3">
-                        <div className="mt-1 w-5 h-5 rounded-full bg-green-500/20 text-green-500 flex items-center justify-center text-xs shrink-0">✓</div>
-                        <span>Business Impact Award - Westford 2024</span>
-                      </li>
-                       <li className="flex items-start gap-3">
-                        <div className="mt-1 w-5 h-5 rounded-full bg-green-500/20 text-green-500 flex items-center justify-center text-xs shrink-0">✓</div>
-                        <span>11+ Years Experience</span>
-                      </li>
+                      {distinctions.map((item) => (
+                        <li key={item} className="flex items-start gap-3">
+                          <div className="mt-1 w-5 h-5 rounded-full bg-green-500/20 text-green-500 flex items-center justify-center text-xs shrink-0">✓</div>
+                          <span>{item}</span>
+                        </li>
+                      ))}
                     </ul>
                  </motion.div>
 

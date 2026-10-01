@@ -22,8 +22,11 @@ const canEnableEnhancedEffects = () => {
   return hasFinePointer && window.innerWidth >= 1024;
 };
 
+// The intro word animation delayed the first paint by ~4s. Disabled; set to true to restore.
+const ENABLE_INTRO = false;
+
 const shouldShowIntroOnLoad = () => {
-  if (!canEnableEnhancedEffects()) return false;
+  if (!ENABLE_INTRO || !canEnableEnhancedEffects()) return false;
 
   try {
     return sessionStorage.getItem('sd:intro-seen') !== '1';

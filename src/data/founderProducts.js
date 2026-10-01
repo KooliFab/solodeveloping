@@ -6,7 +6,7 @@ export const founderProducts = [
     color: "purple",
     status: "live",
     link: "https://zeloop.net",
-    tags: ["Flutter", "Firebase", "Blockchain", "White Label", "ML"],
+    tags: ["Flutter", "Firebase", "Blockchain", "White Label", "Node.js"],
     technicalProjects: [
       {
         translationKey: "whitelabel",
@@ -15,13 +15,18 @@ export const founderProducts = [
       },
       {
         translationKey: "api",
-        tags: ["REST API", "Solidity", "C++", "Ethereum", "VeChain"],
-        link: "https://spotter.zeloop.net",
+        tags: ["REST API", "Node.js", "Solidity", "C++", "Ethereum", "VeChain"],
+        link: "https://zeloop.net",
       },
       {
         translationKey: "spotter",
         tags: ["Flutter Web", "VeChain", "PWA"],
         link: "https://spotter.zeloop.net",
+      },
+      {
+        translationKey: "exchange",
+        tags: ["Next.js", "TypeScript", "tRPC", "Prisma", "PostgreSQL", "Stripe", "Docker"],
+        link: "https://exchange.zeloop.net/",
       },
     ],
   },
@@ -30,8 +35,8 @@ export const founderProducts = [
     title: "LOVT",
     translationKey: "lovt",
     color: "green",
-    status: "live",
-    link: "https://lovt.ca",
+    status: "ended",
+    link: null,
     tags: ["Flutter", "PWA", "Firebase", "Analytics", "Growth"],
     technicalProjects: [
       {
@@ -53,17 +58,64 @@ export const founderProducts = [
     color: "pink",
     status: "MVP",
     link: "https://hiiba.ae",
-    tags: ["Flutter", "Firebase", "Marketplace", "UAE"],
+    tags: ["Flutter", "Supabase", "Next.js", "Marketplace", "UAE"],
     technicalProjects: [
       {
         translationKey: "app",
-        tags: ["Flutter", "Firebase", "iOS", "Android", "Géolocalisation"],
+        tags: ["Flutter", "Supabase Realtime", "PostgreSQL", "Cloudflare R2", "Push"],
         link: "https://hiiba.ae",
+      },
+      {
+        translationKey: "admin",
+        tags: ["Next.js 15", "React 19", "TypeScript", "Supabase", "pnpm"],
+        link: null,
       },
     ],
   },
   {
     id: 4,
+    title: "Artkiddo",
+    translationKey: "artkiddo",
+    color: "amber",
+    status: "mvp",
+    link: "https://github.com/KooliFab/artkiddo",
+    tags: ["Flutter", "Supabase", "PostgreSQL", "Cloudflare R2", "TypeScript"],
+    technicalProjects: [
+      {
+        translationKey: "backend",
+        tags: ["PostgreSQL", "RLS", "Edge Functions", "pgTAP", "GitHub Actions"],
+        link: null,
+      },
+      {
+        translationKey: "app",
+        tags: ["Flutter", "Riverpod", "Offline-first", "Astro"],
+        link: "https://github.com/KooliFab/artkiddo",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Grimora",
+    translationKey: "grimora",
+    color: "orange",
+    status: "mvp",
+    link: null,
+    tags: ["Flutter", "Local-first", "Supabase", "FSRS-6", "AI agents"],
+    technicalProjects: [
+      {
+        translationKey: "sync",
+        tags: ["SQLite", "Drift", "Supabase", "Text-to-speech"],
+        link: null,
+      },
+      {
+        translationKey: "agents",
+        tags: ["Claude Code", "Codex", "Specs & contracts", "Code review"],
+        link: null,
+      },
+    ],
+  },
+  {
+    id: 6,
     title: "Cogni's Adventure",
     translationKey: "cogni",
     color: "blue",
@@ -80,18 +132,23 @@ export const founderProducts = [
   },
 
   {
-    id: 5,
-    title: "B****be",
+    id: 7,
+    title: "BarcodeVibe",
     translationKey: "barcode",
     color: "red",
-    status: "mvp",
-    link: null,
-    tags: ["iOS", "Android"],
+    status: "live",
+    link: "https://barcodevibe.com",
+    tags: ["Flutter", "Supabase", "React", "TypeScript", "SEO"],
     technicalProjects: [
       {
         translationKey: "scanner",
-        tags: ["iOS", "Android", "Barcode Scanner"],
+        tags: ["Flutter", "Firestore", "Supabase", "Push", "Barcode Scanner"],
         link: null,
+      },
+      {
+        translationKey: "site",
+        tags: ["React 19", "TypeScript", "Vite", "Astro", "SEO"],
+        link: "https://barcodevibe.com",
       },
     ],
   },

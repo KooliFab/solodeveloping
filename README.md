@@ -37,8 +37,8 @@ A modern, responsive portfolio website showcasing full-stack development skills 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/solodeveloping.com.git
-   cd solodeveloping.com
+   git clone https://github.com/KooliFab/solodeveloping.git
+   cd solodeveloping
    ```
 
 2. Install dependencies:

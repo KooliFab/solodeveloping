@@ -12,17 +12,29 @@
 - Alternate names: Fab Chung, KooliFab
 - Role: Next-Gen Full-Stack Developer
 - Location: Montréal, Quebec, Canada
-- Availability: Freelance, remote worldwide, also serves UAE
+- Availability: Freelance and contract work, open to full-time roles in Montréal; remote worldwide, also serves UAE
 - Website: https://solodeveloping.com
 - Languages: English, French
 
 ## Expertise
 
-- Mobile: Flutter (7+ years, 15+ shipped apps), iOS, Android, React Native
-- Web: React 19, Node.js, Vite, Tailwind CSS, React Router
-- AI: LLM integration, AI agents, prompt engineering, Claude API, OpenAI API, generative AI, workflow automation
-- Backend & infra: Firebase, cloud (AWS/GCP), PostgreSQL, MongoDB
+- Mobile: Flutter (since 2018, 15+ shipped apps), native iOS / Swift (since 2012), Android
+- Web: React 19, Next.js 15, TypeScript, Node.js, tRPC, Vite, Astro, Tailwind CSS
+- AI: daily agentic development (Claude Code, Codex, Gemini, Jules) with specs, contracts, tests and CI as guardrails; LLM integration, multi-LLM content pipelines, n8n automation, MCP servers
+- Backend & data: PostgreSQL (RLS, RPC, pgTAP tests), Supabase (Auth, Realtime, Edge Functions), Prisma, Firebase, Cloudflare R2, AWS, GitHub Actions, Docker
 - Other: Blockchain, product ownership, 3 startup co-founder experience
+
+## Products
+
+- Applications Ben Cool (https://bencool.ca): Fabien's company, publisher of his apps on the App Store and Google Play
+- Artkiddo (2026): children's artwork preservation — Flutter, Supabase PostgreSQL with RLS, ~25 Edge Functions, Cloudflare R2
+- Grimora (2026): local-first flashcards (FSRS-6) on 5 platforms — Flutter, SQLite, Supabase
+- BarcodeVibe (https://barcodevibe.com): grocery price comparison — Flutter, Supabase, React / TypeScript SEO site
+- Hiiba (https://hiiba.ae): donation marketplace in the UAE, co-founder & CTO — Flutter, Supabase Realtime, Next.js admin
+- ZeLoop (https://zeloop.net): eco-rewards platform, co-founder & CTO — white label, multi-chain reward API, ZeLoop Exchange (https://exchange.zeloop.net/)
+- LOVT (2024–2025, ended): services marketplace for young people, co-founder & CTO — 2,000 sign-ups in 1 month via a PWA strategy
+- Cogni's Adventures (https://cognibook.com): interactive children's book companion app, founder — Flutter, Firebase
+- pwa_installer (https://pub.dev/packages/pwa_installer): open-source Flutter package
 
 ## Positioning
 

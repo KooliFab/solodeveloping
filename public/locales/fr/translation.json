@@ -26,7 +26,8 @@
     "feature3Desc": "Une personne. Responsabilité totale. Valeur réelle.",
     "scrollLabel": "DÉFILER",
     "eyebrow": "Fabien Chung · Développeur Full-Stack · Montréal, QC",
-    "tagline": "Développeur Full-Stack Nouvelle Génération · Maîtrise avancée des IA"
+    "tagline": "Développeur Full-Stack Nouvelle Génération · Maîtrise avancée des IA",
+    "githubLabel": "GitHub"
   },
   "expertise": {
     "title": "Domaines d'",
@@ -35,11 +36,11 @@
     "aiTitle": "IA/Automatisation",
     "aiDescription": "Construire des systèmes intelligents qui économisent du temps et réduisent les coûts. Traitement de documents, analyse de données, automatisation de workflows.",
     "aiHighlight1": "Intégration OpenAI",
-    "aiHighlight2": "Modèles ML personnalisés",
+    "aiHighlight2": "Pipelines LLM",
     "aiHighlight3": "Automatisation de processus",
     "mobileTitle": "Développement mobile",
-    "mobileDescription": "Applications de qualité native pour iOS et Android. Multiplateforme avec React Native ou Swift/Kotlin natif.",
-    "mobileHighlight1": "React Native",
+    "mobileDescription": "Applications de qualité native pour iOS et Android. Multiplateforme avec Flutter ou Swift natif.",
+    "mobileHighlight1": "Flutter",
     "mobileHighlight2": "iOS/Android",
     "mobileHighlight3": "Déploiement App Store",
     "fullstackTitle": "Développement Full-Stack",
@@ -133,7 +134,7 @@
   "meta": {
     "title": "Fabien Chung — Développeur Full-Stack Nouvelle Génération | Montréal",
     "description": "Fabien Chung, développeur full-stack basé à Montréal — plus de 20 ans d'expérience. Maîtrise avancée des IA, web, mobile, automatisation. Solo, direct, livré.",
-    "keywords": "Fabien Chung, Fabien Chung Montréal, développeur full-stack nouvelle génération, maîtrise avancée des IA, développeur IA Montréal, développeur full-stack Montréal, développement d'applications mobiles, React Native, développeur solo, développeur EAU, développeur Canada",
+    "keywords": "Fabien Chung, Fabien Chung Montréal, développeur full-stack nouvelle génération, maîtrise avancée des IA, développeur IA Montréal, développeur full-stack Montréal, développement d'applications mobiles, développeur solo, développeur EAU, développeur Canada",
     "ogTitle": "Fabien Chung — Développeur Full-Stack Nouvelle Génération | Montréal",
     "ogDescription": "Développeur full-stack basé à Montréal. 20+ ans d'expérience. Maîtrise avancée des IA, mobile, web, automatisation. Travaillez directement avec le bâtisseur."
   },
@@ -150,7 +151,7 @@
       "title": "Qui Suis-Je ?",
       "name": "Fabien Chung",
       "role": "Développeur Full Stack orienté Produit",
-      "bio": "Avec plus de 20 ans d'expérience dans l'industrie tech, mon expertise fondamentale repose sur le développement full-stack orienté mobile. Cependant, mon parcours ne s'arrête pas au code. J'y ai ajouté des compétences de Product Ownership, acquises au fil de mes expériences professionnelles, ce qui m'a permis de mieux aligner la technique aux besoins business, tout en intégrant les automatisations IA pour maximiser l'efficacité.\n\nActuellement, je développe mes connaissances en marketing afin d'avoir la palette la plus complète possible. Mon objectif est d'offrir une vision holistique qui fait le pont entre une ingénierie robuste et la croissance du produit."
+      "bio": "Avec plus de 20 ans d'expérience dans l'industrie tech, mon expertise fondamentale repose sur le développement full-stack orienté mobile. Cependant, mon parcours ne s'arrête pas au code. J'y ai ajouté des compétences de Product Ownership, acquises au fil de mes expériences professionnelles, ce qui m'a permis de mieux aligner la technique aux besoins business, tout en intégrant les automatisations IA pour maximiser l'efficacité.\n\nActuellement, je développe mes connaissances en marketing afin d'avoir la palette la plus complète possible. Mon objectif est d'offrir une vision holistique qui fait le pont entre une ingénierie robuste et la croissance du produit.\n\nAujourd'hui, je publie mes propres applications via ma compagnie, Applications Ben Cool, je développe des apps pour des clients — parfois comme actionnaire, comme pour Namewish — et je développe bénévolement l'application mobile de LocoMotion, un OBNL québécois de partage de véhicules entre voisins."
     },
     "recommendations": {
       "title": "Ils m'ont fait confiance",
@@ -188,14 +189,23 @@
       "hourly": "Taux Horaire",
       "project": "Au Projet",
       "contact": "Contactez pour Devis"
+    },
+    "distinctions": {
+      "title": "Distinctions",
+      "list": [
+        "Prix Coup de Cœur — Coopérathon 2024",
+        "Business Impact Award — Westford 2024",
+        "Programme d'accélération — Centech Montréal 2025",
+        "20+ ans en développement logiciel"
+      ]
     }
   },
   "founderProducts": {
     "badge": "Fondateur & Solopreneur",
     "title1": "Ce que j'ai",
     "title2": "construit",
-    "subtitleMobile": "Produits fondés et développés en autonomie.",
-    "subtitleDesktop": "Produits fondés et développés en autonomie. Cliquez sur un projet pour l'étendre et découvrir son architecture technique.",
+    "subtitleMobile": "Produits fondés ou cofondés — les plus récents sont publiés par ma compagnie, Applications Ben Cool.",
+    "subtitleDesktop": "Produits fondés ou cofondés — les plus récents sont publiés par ma compagnie, Applications Ben Cool. Cliquez sur un projet pour découvrir son architecture technique.",
     "techComponents": "Composants techniques",
     "items": {
       "zeloop": {
@@ -214,12 +224,16 @@
           "spotter": {
             "title": "ZeLoop Spotter",
             "description": "Application de terrain pour les collecteurs de déchets, intégrée à la blockchain VeChain. Mini-app web Flutter déployée sans store."
+          },
+          "exchange": {
+            "title": "ZeLoop Exchange",
+            "description": "Marketplace de valorisation des déchets bâtie sur mon boilerplate Next.js : TypeScript, tRPC, PostgreSQL + Prisma, Stripe et Docker."
           }
         }
       },
       "lovt": {
         "role": "Co-fondateur & CTO",
-        "year": "2024 — Présent",
+        "year": "2024 — 2025",
         "tagline": "Marketplace de services dédiée aux jeunes — 2 000 inscriptions en 1 mois grâce à une stratégie PWA sans passage par les stores.",
         "projects": {
           "pwa": {
@@ -239,7 +253,11 @@
         "projects": {
           "app": {
             "title": "Flutter Marketplace App",
-            "description": "Application multiplateforme iOS, Android et Web. Gestion des annonces, matching géolocalisé, notifications push et système de messagerie intégré."
+            "description": "Application multiplateforme iOS, Android et Web. Connexion Firebase (email, Google, Apple, téléphone), logique métier en RPC PostgreSQL, messagerie en temps réel avec Supabase Realtime, images sur Cloudflare R2 et notifications push."
+          },
+          "admin": {
+            "title": "Back-office & web app",
+            "description": "Back-office en Next.js 15, React 19 et TypeScript (Supabase, cartes, graphiques, e-mails), plus une web app Next.js et un site Astro localisé en monorepo pnpm, avec déploiements staging et production."
           }
         }
       },
@@ -257,11 +275,45 @@
       "barcode": {
         "role": "Fondateur",
         "year": "2026 — En cours",
-        "tagline": "Tracker de prix par scan de code-barres — détecte la shrinkflation en temps réel quand un produit rétrécit sans que son prix baisse.",
+        "tagline": "Savoir si un prix est vraiment une bonne affaire : scan de code-barres, historique des prix disponibles, prix à l'unité, détection de la réduflation et alertes de baisse de prix.",
         "projects": {
           "scanner": {
-            "title": "Shrinkflation Scanner",
-            "description": "Application mobile qui suit l'historique des prix produit par produit et alerte quand le grammage diminue sans baisse de prix — un problème grand public, sous-détecté."
+            "title": "Application de scan de prix",
+            "description": "App Flutter sur Firestore + Supabase : scan de codes-barres, listes de suivi, fil communautaire, découverte de promotions et alertes push quand un prix plus bas est signalé."
+          },
+          "site": {
+            "title": "Site SEO bilingue",
+            "description": "Site React 19 + TypeScript + Vite prérendu en 3 locales, blog Astro, audit SEO automatisé, sitemap et IndexNow."
+          }
+        }
+      },
+      "artkiddo": {
+        "role": "Fondateur",
+        "year": "2026 — Nouveau",
+        "tagline": "Préserver les dessins d'enfants : photos, métadonnées et notes vocales. Cœur local-first, cloud privé pour les familles.",
+        "projects": {
+          "backend": {
+            "title": "Backend Supabase & contrat d'API",
+            "description": "Schéma PostgreSQL avec RLS, RPC, triggers et jobs planifiés. ~25 Edge Functions TypeScript : uploads signés et en arrière-plan vers Cloudflare R2, invitations et permissions familiales, liens de partage révocables, corbeille et suppression de compte. 50 tests pgTAP et CI."
+          },
+          "app": {
+            "title": "App Flutter offline-first",
+            "description": "Fonctionne sans compte ni réseau. Cœur source-available, couche cloud privée, et site Astro avec galerie familiale épinglés sur un contrat backend versionné."
+          }
+        }
+      },
+      "grimora": {
+        "role": "Fondateur",
+        "year": "2026 — En développement",
+        "tagline": "Flashcards et répétition espacée (FSRS-6) sur iOS, Android, tablette, macOS et Web — local-first et développé en clean-room.",
+        "projects": {
+          "sync": {
+            "title": "Synchronisation local-first",
+            "description": "SQLite (Drift) est la source de vérité sur l'appareil ; Supabase Auth, PostgreSQL et Edge Functions sauvegardent et synchronisent. Droits appliqués côté serveur, synthèse vocale et réponses vocales synchronisées."
+          },
+          "agents": {
+            "title": "Livraison déléguée à l'IA",
+            "description": "J'écris les specs et les contrats ; des agents codeurs livrent des lots bornés avec fichiers, tests et migrations ; je relis chaque lot avant intégration."
           }
         }
       }
@@ -275,15 +327,15 @@
     "categories": {
       "mobile": {
         "label": "iOS & Android",
-        "meta": "7 ans · 10 apps"
+        "meta": "Depuis 2012 · 10 apps"
       },
       "web": {
         "label": "Sites web & plateformes",
-        "meta": "5 ans · 8 apps"
+        "meta": "12 sites & apps · React · Next.js · Astro"
       },
       "backend": {
         "label": "Backend & API",
-        "meta": "4 projets · Node.js · PHP · Flask"
+        "meta": "6 projets · Node.js · Supabase · PHP · Flask"
       },
       "blockchain": {
         "label": "Blockchain",
@@ -336,7 +388,11 @@
       "hero": {
         "title1": "Full Stack",
         "title2": "Nouvelle Ère.",
-        "tags": ["Outils & Agents IA", "Multi Stack", "Montréal · Remote"],
+        "tags": [
+          "Outils & Agents IA",
+          "Multi Stack",
+          "Montréal · Remote"
+        ],
         "experience": "Vitesse d'équipe grâce à l'IA.",
         "promise": "Coût solo.",
         "action": "Laissez-moi vous montrer.",
@@ -364,7 +420,7 @@
     "mobile": {
       "seo": {
         "title": "Développeur Mobile Montréal | Flutter & iOS",
-        "description": "Fabien Chung est un développeur mobile basé à Montréal, Canada avec 7+ ans d'expérience Flutter et 15+ applications livrées sur l'App Store et Google Play. Spécialiste multiplateforme : Flutter, iOS (Swift), Android (Kotlin), PWA. Disponible en freelance et en contrat.",
+        "description": "Fabien Chung est un développeur mobile basé à Montréal, Canada avec 8+ ans d'expérience Flutter et 15+ applications livrées sur l'App Store et Google Play. Spécialiste multiplateforme : Flutter, iOS (Swift), Android (Kotlin), PWA. Disponible en freelance et en contrat.",
         "keywords": [
           "développeur mobile Montréal",
           "développeur Flutter Montréal",
@@ -373,7 +429,6 @@
           "développeur multiplateforme Montréal",
           "développement application mobile Montréal",
           "freelance développeur mobile Canada",
-          "développeur React Native Montréal",
           "mobile developer Montreal",
           "Flutter developer Montreal"
         ],
@@ -383,8 +438,13 @@
       "hero": {
         "title1": "Développeur",
         "title2": "Mobile.",
-        "tags": ["Flutter", "iOS & Android", "PWA", "Montréal · Remote"],
-        "experience": "7+ ans Flutter. 15+ apps livrées.",
+        "tags": [
+          "Flutter",
+          "iOS & Android",
+          "PWA",
+          "Montréal · Remote"
+        ],
+        "experience": "8+ ans Flutter. 15+ apps livrées.",
         "promise": "Un seul code. iOS, Android, Web.",
         "action": "Voir les apps.",
         "ctaPrimary": "Voir les projets mobiles",
@@ -411,11 +471,10 @@
     "ai": {
       "seo": {
         "title": "Développeur IA Montréal | Fabien Chung",
-        "description": "Fabien Chung est un développeur IA et ingénieur automatisation basé à Montréal, Canada. Il conçoit des systèmes IA en production : moteurs de génération de contenu, systèmes de récompense ML, automatisation de workflows et applications mobiles et web augmentées par l'IA. Disponible en freelance et en contrat.",
+        "description": "Fabien Chung est un développeur IA et ingénieur automatisation basé à Montréal, Canada. Il développe chaque jour avec des agents IA encadrés par des garde-fous stricts et livre des fonctionnalités IA en production : pipelines de contenu multi-LLM, automatisation de workflows et applications mobiles et web augmentées par l'IA. Disponible en freelance, en contrat et pour un poste permanent.",
         "keywords": [
           "développeur IA Montréal",
           "développeur automatisation IA Montréal",
-          "développeur machine learning Montréal",
           "développeur IA générative",
           "développement produit IA Montréal",
           "ingénieur IA Canada",
@@ -432,7 +491,7 @@
         "title2": "IA.",
         "tags": [
           "IA Générative",
-          "Systèmes ML",
+          "Agents IA",
           "Automatisation",
           "Montréal · Remote"
         ],
@@ -445,12 +504,12 @@
           {
             "title": "Moteur génératif",
             "icon": "//",
-            "description": "Système de génération d'épisodes infinis pour Cogni — chaque session unique, piloté par un moteur de puzzles aléatoires."
+            "description": "Un pipeline multi-LLM (histoire, illustrations, formatage JSON) orchestré avec n8n alimente le moteur d'épisodes de Cogni — chaque session est unique."
           },
           {
-            "title": "Systèmes ML",
+            "title": "Livraison agentique",
             "icon": "▲",
-            "description": "Machine learning au cœur d'un moteur de récompenses en cryptomonnaie pour ZeLoop sur 4 blockchains."
+            "description": "Des agents codeurs livrent des lots bornés à partir de mes specs — tests, typecheck et CI valident chaque changement avant que je l'intègre."
           },
           {
             "title": "IA en production",
@@ -460,5 +519,29 @@
         ]
       }
     }
+  },
+  "aiWorkflow": {
+    "badge": "ai.workflow",
+    "title1": "Comment je développe",
+    "title2": "avec l'IA",
+    "subtitle": "Les agents écrivent une bonne partie de mon code. L'architecture, les contrats et la revue restent à moi.",
+    "items": [
+      {
+        "title": "Développement agentique",
+        "description": "Claude Code, Codex, Gemini et Jules au quotidien. Chaque dépôt embarque ses instructions d'agents (AGENTS.md, CLAUDE.md) et ses serveurs MCP."
+      },
+      {
+        "title": "Contrat lead / agents",
+        "description": "J'écris le plan d'exécution et les contrats. Chaque agent livre un lot borné — fichiers, tests, migrations — que je relis avant de l'intégrer."
+      },
+      {
+        "title": "Garde-fous d'abord",
+        "description": "Tests, typecheck, lint, tests de base de données pgTAP et CI GitHub Actions valident chaque changement. La vitesse sans la dette."
+      },
+      {
+        "title": "Base de connaissances projet",
+        "description": "La doc de 5 produits, synchronisée depuis leurs dépôts, indexée en graphe de connaissances et interrogée par des skills Claude sur mesure."
+      }
+    ]
   }
 }

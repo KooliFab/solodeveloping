@@ -194,14 +194,14 @@ const ProductCard = ({ product, isExpanded, isTabMode, onClick, layoutId, wrappe
                 <span
                   className="inline-flex items-center gap-1 px-2 py-0.5 font-mono text-[10px] rounded border"
                   style={{
-                    color:        product.status === 'live' ? accent : '#f59e0b',
-                    borderColor:  product.status === 'live' ? `${accent}40` : '#f59e0b40',
-                    background:   product.status === 'live' ? `${accent}08` : '#f59e0b08',
+                    color:        product.status === 'live' ? accent : product.status === 'ended' ? '#9ca3af' : '#f59e0b',
+                    borderColor:  product.status === 'live' ? `${accent}40` : product.status === 'ended' ? '#9ca3af40' : '#f59e0b40',
+                    background:   product.status === 'live' ? `${accent}08` : product.status === 'ended' ? '#9ca3af08' : '#f59e0b08',
                   }}
                 >
                   <span className={product.status === 'live' ? 'dot-live' : ''}>●</span>
                   <span className="uppercase tracking-widest ml-0.5">
-                    {product.status === 'live' ? 'LIVE' : 'MVP'}
+                    {product.status === 'live' ? 'LIVE' : product.status === 'ended' ? 'ENDED' : 'MVP'}
                   </span>
                 </span>
               </motion.div>
