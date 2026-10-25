@@ -52,7 +52,8 @@ ftpDeploy
   .deploy(config)
   .then(res => {
     console.log('✅ Deployment completed successfully!');
-    console.log(`📦 ${res.length} files transferred`);
+    // ftp-deploy resolves one array of upload results per directory
+    console.log(`📦 ${res.flat().length} files transferred in ${res.length} directories`);
   })
   .catch(err => {
     console.error('❌ Deployment failed:');
