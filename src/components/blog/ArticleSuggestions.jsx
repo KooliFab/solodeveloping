@@ -7,10 +7,10 @@ const ArticleSuggestions = ({ currentSlug }) => {
   const { i18n } = useTranslation();
   const currentLang = i18n.language || 'en';
 
-  // Get 3 random posts that are not the current one
+  // Up to 3 other posts, in a stable order so the prerendered HTML and the
+  // hydrated page always show the same suggestions
   const suggestions = blogPosts
     .filter(post => !Object.values(post.slug).includes(currentSlug))
-    .sort(() => 0.5 - Math.random())
     .slice(0, 3);
 
   if (suggestions.length === 0) return null;

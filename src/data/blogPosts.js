@@ -301,7 +301,7 @@ runApp(
       // Idéal si on veut traduire en plusieurs langues.
       labels: const PwaInstallerLabels().copyWith(
         titleAdd: 'Ajouter ',
-        titleToHomeScreen: 'à l\'écran d\'accueil',
+        titleToHomeScreen: 'à l\\'écran d\\'accueil',
       ),
 
       // Si le thème ne suffit pas, on peut remplacer l'écran entièrement.
