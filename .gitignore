@@ -45,6 +45,7 @@ build
 documentation/
 TESTING_SUMMARY.md
 playwright-report/
+test-results/
 
 # Misc
 .cache
