@@ -1,6 +1,7 @@
 import FtpDeploy from 'ftp-deploy';
 import dotenv from 'dotenv';
 import path from 'path';
+import tls from 'tls';
 import { fileURLToPath } from 'url';
 
 // Load production environment variables
@@ -29,9 +30,10 @@ const config = {
   secure: true,
   secureOptions: {
     rejectUnauthorized: true,
-    // Set when the certificate is issued for another name than FTP_HOST
-    // (for example when FTP_HOST is an IP address).
-    ...(process.env.FTP_TLS_SERVERNAME && { servername: process.env.FTP_TLS_SERVERNAME }),
+    // Hostinger serves its shared *.hstgr.io certificate on ftp.<domain>, so
+    // the certificate is checked against FTP_TLS_CERT_HOST instead of FTP_HOST.
+    checkServerIdentity: (host, cert) =>
+      tls.checkServerIdentity(process.env.FTP_TLS_CERT_HOST || host, cert),
   },
   localRoot: path.join(__dirname, 'dist'),
   remoteRoot: process.env.FTP_REMOTE_ROOT || '/',
@@ -55,5 +57,8 @@ ftpDeploy
   .catch(err => {
     console.error('❌ Deployment failed:');
     console.error(err);
+    if (String(err?.message).includes('altnames')) {
+      console.error('   The FTP certificate does not match FTP_TLS_CERT_HOST (ftp.hstgr.io on Hostinger).');
+    }
     process.exit(1);
   });

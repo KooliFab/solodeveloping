@@ -70,17 +70,24 @@ This project includes an automated FTPS deployment system to deploy to Hostinger
 
 ### Setup
 
-Configure your FTP credentials in `.env.production`:
+Fill in `.env.production` (git-ignored, never committed):
 ```
+FTP_HOST=ftp.solodeveloping.com
 FTP_USER=your_hostinger_ftp_username
 FTP_PASSWORD=your_hostinger_ftp_password
-FTP_HOST=your_hostinger_ftp_host.hostinger.com
 FTP_REMOTE_ROOT=/
-# Optional: certificate name when it differs from FTP_HOST (e.g. FTP_HOST is an IP)
-# FTP_TLS_SERVERNAME=your_hostinger_ftp_host.hostinger.com
+FTP_TLS_CERT_HOST=ftp.hstgr.io
 ```
 
 The upload uses explicit FTPS (TLS on port 21) with certificate verification.
+Hostinger serves its shared `*.hstgr.io` certificate on `ftp.<domain>`, so
+`FTP_TLS_CERT_HOST` names the identity the certificate is checked against.
+`FTP_REMOTE_ROOT` is `/` when the FTP account's directory is already
+`public_html` (hPanel > Files > FTP Accounts), otherwise `/public_html`.
+
+After a deploy, purge the Hostinger CDN cache in hPanel. `deleteRemote` is
+off, so files removed from `dist/` (old hashed bundles) stay on the server
+until you delete them from `public_html/assets`.
 
 ### Deploy
 
