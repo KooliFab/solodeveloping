@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      - run: npx vitest run
+
+      # `npx vite build` skips the npm postbuild hook: react-snap needs the
+      # local macOS Chrome. The bundle is still checked for leaked secrets.
+      - run: npx vite build
+
+      - run: npm run check:secrets
