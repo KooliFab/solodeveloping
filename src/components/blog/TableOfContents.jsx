@@ -1,37 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { slugifyHeading } from '@/lib/utils';
 
 
 const TableOfContents = ({ content }) => {
   const [activeId, setActiveId] = useState('');
-  const [headings, setHeadings] = useState([]);
 
-  useEffect(() => {
-    // Parse headings from markdown content directly if possible, or wait for DOM
-    // Since we receive raw markdown, we can regex it
-    const lines = content.split('\n');
-    const matches = lines
-      .filter(line => line.trimStart().startsWith('## '))
-      .map(line => {
-        const title = line
-          .trimStart()
-          .replace(/^##\s+/, '')
-          .replace(/\*\*/g, '')
-          .replace(/`([^`]+)`/g, '$1')
-          .replace(/\[(.*?)\]\(.*?\)/g, '$1')
-          .trim();
-        const id = slugifyHeading(title);
-        return { id, title };
-      })
-      .filter(({ id }) => id);
-    
-    setHeadings(matches);
-
-    // Also need to inject these IDs into the rendered markdown... 
-    // This part depends on how ReactMarkdown handles IDs.
-    // Usually it requires a plugin like rehype-slug.
-    // For now, let's assume valid IDs are generated or we'll add logic to matches.
-  }, [content]);
+  // Headings are derived from the raw markdown; the rendered headings get the
+  // same ids from slugifyHeading
+  const headings = useMemo(() => content
+    .split('\n')
+    .filter(line => line.trimStart().startsWith('## '))
+    .map(line => {
+      const title = line
+        .trimStart()
+        .replace(/^##\s+/, '')
+        .replace(/\*\*/g, '')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+        .trim();
+      const id = slugifyHeading(title);
+      return { id, title };
+    })
+    .filter(({ id }) => id), [content]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

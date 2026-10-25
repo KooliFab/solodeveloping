@@ -16,6 +16,7 @@
     "check:secrets": "node scripts/check-dist-secrets.mjs",
     "build:agent": "node scripts/agent/build-agent-files.mjs",
     "verify:agent": "node scripts/agent/verify-agent-ready.mjs",
+    "lint": "eslint .",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
@@ -57,7 +58,10 @@
   "reactSnap": {
     "source": "dist",
     "puppeteerExecutablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ],
     "include": [
       "/",
       "/about",
@@ -83,6 +87,7 @@
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "12.1.0",
+    "@eslint/js": "10.0.1",
     "@playwright/test": "^1.58.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
@@ -94,7 +99,10 @@
     "autoprefixer": "^10.4.16",
     "dotenv": "^16.5.0",
     "eslint": "^10.0.3",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.7",
     "ftp-deploy": "^2.4.7",
+    "globals": "17.13.0",
     "jsdom": "^28.1.0",
     "postcss": "^8.4.31",
     "react-snap": "^1.23.0",

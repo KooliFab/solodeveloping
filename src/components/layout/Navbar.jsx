@@ -18,10 +18,13 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile nav after route changes.
-  useEffect(() => {
+  // Close mobile nav after route changes (adjusting state during render
+  // avoids an extra render from an effect).
+  const [lastPathname, setLastPathname] = useState(location.pathname);
+  if (lastPathname !== location.pathname) {
+    setLastPathname(location.pathname);
     setIsOpen(false);
-  }, [location.pathname]);
+  }
 
   // Get language prefix for URLs
   const langPrefix = i18n.language === 'fr' ? '/fr' : '';

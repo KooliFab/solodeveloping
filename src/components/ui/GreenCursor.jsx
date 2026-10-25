@@ -25,11 +25,7 @@ const isTouchDevice = () => {
  * Automatically hidden on touch devices.
  */
 const GreenCursor = () => {
-  const [showCursor, setShowCursor] = useState(() => !isTouchDevice());
-
-  useEffect(() => {
-    setShowCursor(!isTouchDevice());
-  }, []);
+  const [showCursor] = useState(() => !isTouchDevice());
 
   useEffect(() => {
     if (!showCursor) return;
