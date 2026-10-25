@@ -121,6 +121,24 @@ describe('SEO Component', () => {
     });
   });
 
+  it('links to the Markdown mirror of the page', async () => {
+    renderWithHelmet(<SEO title="Test" description="Test" path="/about" />);
+
+    await waitFor(() => {
+      const markdown = document.querySelector('link[rel="alternate"][type="text/markdown"]');
+      expect(markdown?.getAttribute('href')).toBe('https://solodeveloping.com/about.md');
+    });
+  });
+
+  it('links the home page to its index.html.md mirror', async () => {
+    renderWithHelmet(<SEO title="Home" description="Home" path="/" />);
+
+    await waitFor(() => {
+      const markdown = document.querySelector('link[rel="alternate"][type="text/markdown"]');
+      expect(markdown?.getAttribute('href')).toBe('https://solodeveloping.com/index.html.md');
+    });
+  });
+
   it('handles article-specific meta tags', async () => {
     renderWithHelmet(
       <SEO 

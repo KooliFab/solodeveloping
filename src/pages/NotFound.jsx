@@ -11,7 +11,8 @@ const NotFound = () => {
   return (
     <div className="min-h-screen hero-gradient flex items-center justify-center px-4 py-16 relative overflow-hidden">
       <Helmet>
-        <title>{t('notFound.title')} | Solo Developing</title>
+        {/* React 19 only renders a <title> with a single string child */}
+        <title>{`${t('notFound.title')} | Solo Developing`}</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       {/* Background pattern */}

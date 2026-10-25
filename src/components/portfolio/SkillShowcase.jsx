@@ -20,18 +20,17 @@ const AppIcon = ({ app, index }) => {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3, delay: index * 0.04 }}
-      className="flex flex-col items-center gap-1.5 group/icon"
+      className="skill-app"
     >
-      {/* Icon square */}
+      {/* Icon square — decorative, the label below names the app */}
       <motion.div
         whileHover={{
           rotate: [0, -9, 7, -4, 2, 0],
           scale:  [1, 1.15, 1.1, 1.05, 1.02, 1],
           transition: { duration: 0.4, ease: 'easeInOut' },
         }}
-        className="w-14 h-14 rounded-2xl flex items-center justify-center
-                   text-white font-bold text-base select-none
-                   shadow-md cursor-pointer overflow-hidden relative bg-white"
+        className="skill-app-tile"
+        aria-hidden="true"
         style={{
           background: app.icon ? '#ffffff' : `linear-gradient(145deg, ${app.gradFrom}, ${app.gradTo})`,
           boxShadow: `0 4px 14px ${app.gradFrom}55`,
@@ -40,7 +39,7 @@ const AppIcon = ({ app, index }) => {
         {app.icon ? (
           <img
             src={app.icon}
-            alt={app.name}
+            alt=""
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover"
@@ -50,7 +49,7 @@ const AppIcon = ({ app, index }) => {
         )}
       </motion.div>
       {/* Label */}
-      <span className="text-[10px] font-mono text-muted-foreground text-center leading-tight max-w-[64px] truncate">
+      <span className="skill-app-label">
         {app.name}
       </span>
     </motion.div>
@@ -77,14 +76,12 @@ const CategoryCard = ({ category, className = '', animDelay = 0 }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: animDelay }}
-      className={`relative rounded-2xl border border-border/40 bg-card/40 backdrop-blur-sm
-                  overflow-hidden p-6 flex flex-col gap-5
-                  hover:border-[var(--accent)]/40 transition-colors duration-300 ${className}`}
+      className={`skill-card ${className}`}
       style={{ '--accent': category.accentColor }}
     >
       {/* Subtle glow in top-right corner */}
       <div
-        className="absolute -top-10 -right-10 w-32 h-32 rounded-full blur-2xl opacity-20 pointer-events-none"
+        className="skill-card-glow"
         style={{ background: category.accentColor }}
       />
 

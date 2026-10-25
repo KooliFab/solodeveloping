@@ -115,6 +115,29 @@
   }
 }
 
+/* Repeated portfolio elements. Their utility lists live here rather than on
+   each of the ~40 prerendered instances, which keeps the static HTML light. */
+@layer components {
+  .skill-card {
+    @apply relative rounded-2xl border border-border/40 bg-card/40 backdrop-blur-sm overflow-hidden p-6 flex flex-col gap-5 transition-colors duration-300;
+  }
+  .skill-card-glow {
+    @apply absolute -top-10 -right-10 w-32 h-32 rounded-full blur-2xl opacity-20 pointer-events-none;
+  }
+  .skill-app {
+    @apply flex flex-col items-center gap-1.5;
+  }
+  .skill-app-tile {
+    @apply w-14 h-14 rounded-2xl flex items-center justify-center text-white font-bold text-base select-none shadow-md cursor-pointer overflow-hidden relative bg-white;
+  }
+  .skill-app-label {
+    @apply text-[10px] font-mono text-muted-foreground text-center leading-tight max-w-[64px] truncate;
+  }
+  .scene-pill {
+    @apply absolute z-30 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-white/95 px-3 py-1.5 text-[11px] sm:text-xs font-semibold text-neutral-800 shadow-[0_10px_30px_-8px_rgba(0,0,0,0.35)];
+  }
+}
+
 /* Custom Utilities for Glow Effects */
 @layer utilities {
   .text-glow {

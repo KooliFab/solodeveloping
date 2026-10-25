@@ -6,6 +6,7 @@ import SelectedWork from '@/components/portfolio/SelectedWork';
 import DeferredSection from '@/components/ui/DeferredSection';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 import { SITE_URL } from '@/constants/site';
+import { profile } from '@/data/profile';
 
 const SkillShowcase = lazy(() => import('@/components/portfolio/SkillShowcase'));
 const AIWorkflow = lazy(() => import('@/components/portfolio/AIWorkflow'));
@@ -16,42 +17,17 @@ const homepageSchema = [
   {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Fabien Chung',
-    alternateName: ['Fab Chung', 'KooliFab'],
+    name: profile.name,
+    alternateName: profile.alternateName,
     url: SITE_URL,
-    jobTitle: 'Next-Gen Full-Stack Developer',
-    description:
-      'Fabien Chung is a Montréal-based full-stack developer with 20+ years of experience. Specialist in Flutter mobile, React/Node.js web, and advanced AI automation (maîtrise avancée des IA). Co-founder of 3 startups.',
+    jobTitle: profile.jobTitle,
+    description: profile.description,
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Montreal',
-      addressRegion: 'Quebec',
-      addressCountry: 'CA',
+      ...profile.address,
     },
-    sameAs: [
-      'https://www.linkedin.com/in/%F0%9F%92%BB-fabien-chung-a1793830/',
-      'https://github.com/KooliFab',
-    ],
-    knowsAbout: [
-      'Flutter',
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Node.js',
-      'PostgreSQL',
-      'Supabase',
-      'iOS',
-      'Android',
-      'AI Automation',
-      'Generative AI',
-      'LLM integration',
-      'AI agents',
-      'Prompt engineering',
-      'Claude API',
-      'OpenAI API',
-      'Firebase',
-      'Blockchain',
-    ],
+    sameAs: profile.sameAs,
+    knowsAbout: profile.knowsAbout,
   },
   {
     '@context': 'https://schema.org',

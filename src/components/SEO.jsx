@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { SITE_URL } from '@/constants/site';
+import { markdownPathFor } from '@/lib/markdownPath';
 
 const SEO = ({ titleKey, descriptionKey, title, description, path = '', image, alternates, type = 'website', author, publishedTime, schema, keywords, tags }) => {
   const { t, i18n } = useTranslation();
@@ -29,6 +30,9 @@ const SEO = ({ titleKey, descriptionKey, title, description, path = '', image, a
   // If alternates are provided (for localized slugs), use them, otherwise use standard path logic
   const urlEn = alternates?.en || `${siteUrl}${pathForUrl}`;
   const urlFr = alternates?.fr || `${siteUrl}/fr${pathForUrl}`;
+
+  // Markdown mirror of this page, generated at build time for AI agents
+  const markdownUrl = `${siteUrl}${markdownPathFor(canonicalUrl.slice(siteUrl.length))}`;
 
   // Get metadata content (prioritize direct props, then translation keys)
   const metaTitle = title || (titleKey ? t(titleKey) : 'Solo Developing');
@@ -64,6 +68,7 @@ const SEO = ({ titleKey, descriptionKey, title, description, path = '', image, a
       <link rel="alternate" hreflang="en" href={urlEn} />
       <link rel="alternate" hreflang="fr" href={urlFr} />
       <link rel="alternate" hreflang="x-default" href={urlEn} />
+      <link rel="alternate" type="text/markdown" href={markdownUrl} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />

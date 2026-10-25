@@ -10,7 +10,7 @@ const projects = [
 
 // Floating label, styled like the chips on each product's own landing page.
 const Pill = ({ children, dot, className = '' }) => (
-  <span className={`absolute z-30 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-white/95 px-3 py-1.5 text-[11px] sm:text-xs font-semibold text-neutral-800 shadow-[0_10px_30px_-8px_rgba(0,0,0,0.35)] ${className}`}>
+  <span className={`scene-pill ${className}`}>
     <span className="h-2 w-2 rounded-full shrink-0" style={{ background: dot }} aria-hidden="true" />
     {children}
   </span>

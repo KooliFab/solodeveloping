@@ -1,18 +1,28 @@
 # ========================================
+# CONTENT TYPES
+# ========================================
+
+# Markdown mirrors of every page, generated at build time (scripts/agent)
+AddType text/markdown .md
+AddCharset utf-8 .md
+
+# ========================================
 # PERFORMANCE OPTIMIZATIONS
 # ========================================
 
 # Enable Gzip Compression
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript text/markdown
   AddOutputFilterByType DEFLATE application/javascript application/json application/xml application/rss+xml
+  AddOutputFilterByType DEFLATE application/problem+json application/linkset+json
   AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
 
 # Enable Brotli Compression (better than Gzip, if available)
 <IfModule mod_brotli.c>
-  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript text/markdown
   AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json application/xml
+  AddOutputFilterByType BROTLI_COMPRESS application/problem+json application/linkset+json
 </IfModule>
 
 # Browser Caching
@@ -40,8 +50,9 @@
   ExpiresByType application/font-woff "access plus 1 year"
   ExpiresByType application/font-woff2 "access plus 1 year"
 
-  # HTML - 1 hour
+  # HTML and its Markdown mirrors - 1 hour
   ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType text/markdown "access plus 1 hour"
 
   # JSON - no cache
   ExpiresByType application/json "access plus 0 seconds"
@@ -62,10 +73,25 @@
     Header set Cache-Control "max-age=31536000, public, immutable"
   </FilesMatch>
 
-  # HTML - short cache with revalidation
-  <FilesMatch "\.(html|htm)$">
+  # HTML and Markdown - short cache with revalidation
+  <FilesMatch "\.(html|htm|md)$">
     Header set Cache-Control "max-age=3600, public, must-revalidate"
   </FilesMatch>
+
+  # Pages are negotiated between HTML and Markdown on the Accept header
+  <FilesMatch "\.(html|md)$">
+    Header merge Vary "Accept"
+  </FilesMatch>
+
+  # Advertise the API catalog (RFC 9727) on every page
+  <FilesMatch "\.html$">
+    Header add Link "</.well-known/api-catalog>; rel=api-catalog"
+  </FilesMatch>
+
+  # The API description can be fetched from any origin
+  <Files "openapi.json">
+    Header set Access-Control-Allow-Origin "*"
+  </Files>
 
   # Security Headers
   Header always set X-Content-Type-Options "nosniff"
@@ -109,9 +135,53 @@ FileETag None
   RewriteRule ^articles/the-power-of-lazy-loading$ /articles/flutter-firebase-lazy-loading [R=301,L]
   RewriteRule ^articles/how-to-successfully-wake-up-earlier$ /articles [R=301,L]
 
-  # For all other requests to non-existent files or directories, handle SPA routing
-  # This ensures /fr/blog, /fr/portfolio, etc. all load the React app
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^ index.html [QSA,L]
+  # Short posts have no index page of their own
+  RewriteRule ^shorts/?$ /articles [R=301,L]
+  RewriteRule ^fr/shorts/?$ /fr/articles [R=301,L]
+
+  # ---- Markdown content negotiation (https://acceptmarkdown.com) ----
+  # SD_MD=1 when the client prefers Markdown: text/markdown is listed, not
+  # refused with q=0, and not ranked below an unqualified text/html.
+  RewriteCond %{HTTP:Accept} text/markdown [NC]
+  RewriteCond %{HTTP:Accept} !text/markdown\s*;\s*q=0(\.0{0,3})?\s*(,|;|$) [NC]
+  RewriteCond %{HTTP:Accept} !text/markdown\s*;\s*q=0?\.\d+ [NC,OR]
+  RewriteCond %{HTTP:Accept} !text/html\s*(,|$) [NC]
+  RewriteRule ^ - [E=SD_MD:1]
+
+  # Error documents are not pages of their own: requested directly, they 404
+  RewriteCond %{ENV:REDIRECT_STATUS} ^$
+  RewriteRule ^(404\.html|404\.md|200\.html)$ - [R=404,L]
+
+  # 404 error pass: agents asking for Markdown get the Markdown 404 body
+  RewriteCond %{ENV:REDIRECT_STATUS} =404
+  RewriteCond %{ENV:SD_MD} =1
+  RewriteRule ^404\.html$ 404.md [L]
+
+  # "/" and "/fr/" -> index.html.md inside that directory
+  RewriteCond %{ENV:SD_MD} =1
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.html.md -f
+  RewriteRule ^(.*?)/?$ $1/index.html.md [L]
+
+  # "/about", "/articles/<slug>" (with or without trailing slash) -> about.md
+  RewriteCond %{ENV:SD_MD} =1
+  RewriteCond %{REQUEST_FILENAME} ^(.+?)/*$
+  RewriteCond %1.md -f
+  RewriteRule ^(.+?)/*$ $1.md [L]
+
+  # 406 for a page when the client accepts neither HTML nor Markdown
+  RewriteCond %{HTTP:Accept} .
+  RewriteCond %{HTTP:Accept} !(text/html|text/markdown|text/\*|\*/\*|application/xhtml\+xml) [NC]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^ - [R=406,L]
+
+  # The JSON API under /api/ has its own rules in api/.htaccess.
+
+  # Every route is prerendered to <route>/index.html, so there is no SPA
+  # fallback: unknown URLs get a real 404 (see ErrorDocument below).
 </IfModule>
+
+# Unknown URLs: real 404 status with the prerendered "not found" page
+# (or 404.md for Markdown clients, see the rewrite rules above)
+ErrorDocument 404 /404.html

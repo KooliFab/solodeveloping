@@ -1,0 +1,9 @@
+# RFC 9727 API catalog, in the Linkset format (RFC 9264)
+<Files "api-catalog">
+  ForceType application/linkset+json
+  <IfModule mod_headers.c>
+    Header set Content-Type 'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"'
+    Header set Link "</.well-known/api-catalog>; rel=api-catalog"
+    Header set Access-Control-Allow-Origin "*"
+  </IfModule>
+</Files>

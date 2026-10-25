@@ -129,6 +129,13 @@
     "linkGitHub": "GitHub",
     "linkPubDev": "Pub.dev",
     "linkMedium": "Medium",
+    "about": "Solo Developing est la pratique indépendante de Fabien Chung, développeur full-stack basé à Montréal avec plus de 20 ans d'expérience. Applications mobiles (Flutter, iOS, Android), plateformes web (React, Node.js) et automatisation IA — conçues, développées et livrées par le développeur à qui vous parlez, sans agence entre nous.",
+    "pagesLabel": "Services et pages",
+    "linkFullstack": "Développeur full-stack",
+    "linkMobile": "Développeur mobile",
+    "linkAI": "Développeur IA",
+    "linkArticles": "Articles",
+    "linkAbout": "À propos",
     "copyright": "© {{year}} SOLO DEVELOPING. INTÉGRITÉ DU SYSTÈME 100%."
   },
   "meta": {

@@ -90,6 +90,25 @@ npm run deploy
 
 This will build the project and deploy the `dist` folder via FTP.
 
+## AI Agent Access
+
+After react-snap, `scripts/agent/build-agent-files.mjs` writes the machine-readable side of the site into `dist/`:
+
+- **Markdown mirrors** of every page (`/about.md`, `/index.html.md`, …), also served on the page URL itself to clients sending `Accept: text/markdown` (with `Vary: Accept`; see `public/.htaccess`)
+- **Real 404s**: there is no SPA fallback. Unknown URLs return 404 with the prerendered not-found page, or `404.md` for Markdown clients. Every route must therefore be prerendered (`reactSnap.include`) or redirected in `.htaccess`; `scripts/agent/__tests__/routing.test.mjs` enforces this.
+- **Read-only JSON API** under `/api/` (profile, projects, articles), described by `/openapi.json`, with RFC 9457 `application/problem+json` errors and an RFC 9727 catalog at `/.well-known/api-catalog`
+
+To check the server behavior before deploying (macOS Apache; Apache can't read `~/Desktop`, so serve a copy):
+
+```bash
+cp -R dist /tmp/solodev-dist
+job_id="$(portly temp 'node scripts/agent/apache-preview.mjs 8088 /tmp/solodev-dist' --path . --timeout 30m)"
+npm run verify:agent -- http://127.0.0.1:8088
+portly stop "$job_id"
+```
+
+After deploying, run `npm run verify:agent` (defaults to https://solodeveloping.com).
+
 ## Security Notes
 
 - The `.env` files containing credentials are excluded from Git via `.gitignore`

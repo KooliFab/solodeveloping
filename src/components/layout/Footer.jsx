@@ -1,10 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+const PAGE_LINKS = [
+  { path: '/fullstack', labelKey: 'footer.linkFullstack' },
+  { path: '/mobile-developer', labelKey: 'footer.linkMobile' },
+  { path: '/ai-developer', labelKey: 'footer.linkAI' },
+  { path: '/articles', labelKey: 'footer.linkArticles' },
+  { path: '/about', labelKey: 'footer.linkAbout' },
+];
+
 const Footer = () => {
-  const { t } = useTranslation();
-  
+  const { t, i18n } = useTranslation();
+  const prefix = i18n.resolvedLanguage === 'fr' ? '/fr' : '';
+
   return (
     <footer id="footer" className="py-20 px-6 bg-background text-center relative">
       <motion.div
@@ -59,6 +69,22 @@ const Footer = () => {
           {t('footer.linkMedium')}
         </a>
       </motion.div>
+
+      <div className="mt-12 max-w-2xl mx-auto">
+        <p className="text-sm text-gray-500 leading-relaxed">
+          {t('footer.about')}
+        </p>
+        <nav
+          aria-label={t('footer.pagesLabel')}
+          className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-mono text-gray-500 uppercase tracking-widest"
+        >
+          {PAGE_LINKS.map(({ path, labelKey }) => (
+            <Link key={path} to={`${prefix}${path}`} className="hover:text-white transition-colors">
+              {t(labelKey)}
+            </Link>
+          ))}
+        </nav>
+      </div>
 
       <div className="mt-12 text-xs text-gray-800">
         {t('footer.copyright', { year: new Date().getFullYear() })}
