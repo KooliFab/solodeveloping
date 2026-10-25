@@ -53,7 +53,9 @@ describe('.htaccess', () => {
 
   it('runs the post-prerender generator in build and deploy', () => {
     expect(packageJson.scripts.postbuild).toContain('scripts/agent/build-agent-files.mjs');
-    expect(packageJson.scripts.deploy).toMatch(/react-snap && node scripts\/agent\/build-agent-files\.mjs && node deploy\.js/);
+    expect(packageJson.scripts.deploy).toMatch(
+      /react-snap && node scripts\/agent\/build-agent-files\.mjs && node scripts\/check-dist-secrets\.mjs && node deploy\.js/,
+    );
   });
 });
 
