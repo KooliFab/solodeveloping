@@ -9,7 +9,6 @@ import DeferredSection from '@/components/ui/DeferredSection';
 import { getFacetBySlug } from '@/data/facets';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 import { SITE_URL } from '@/constants/site';
-import { notifyPageVisit } from '@/utils/pageVisitNotifier';
 
 const SkillShowcase = lazy(() => import('@/components/portfolio/SkillShowcase'));
 const FounderProducts = lazy(() => import('@/components/portfolio/FounderProducts'));
@@ -28,7 +27,6 @@ const FacetPage = ({ slug }) => {
 
   useEffect(() => {
     if (facet) {
-      notifyPageVisit(`Facet: ${facet.id}`);
       try {
         sessionStorage.setItem('sd:origin-facet', facet.slug);
       } catch {

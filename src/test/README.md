@@ -37,10 +37,6 @@ src/
 │   ├── useSmoothScroll.js
 │   └── __tests__/
 │       └── useSmoothScroll.test.js
-├── utils/
-│   ├── contactNotifier.js
-│   └── __tests__/
-│       └── contactNotifier.test.js
 └── test/
     ├── setup.js              # Test configuration
     ├── integration/          # Integration tests
@@ -55,8 +51,7 @@ Current test coverage includes:
 - ✅ **Button Component** - All variants, sizes, and interactions
 - ✅ **SEO Component** - Meta tags, Open Graph, Twitter Cards, hreflang
 - ✅ **Navbar Component** - Navigation, mobile menu, scroll behavior
-- ✅ **ContactSection Component** - Form validation, submission, error handling
-- ✅ **contactNotifier Utility** - API calls, error handling, endpoint priority
+- ✅ **ContactSection Component** - mailto call to action, no form
 - ✅ **useSmoothScroll Hook** - Initialization, cleanup, device detection
 
 ### Integration Tests

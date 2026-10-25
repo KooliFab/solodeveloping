@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Code2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/layout/LanguageSwitcher';
-import { notifyPageVisit } from '@/utils/pageVisitNotifier';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,10 +67,7 @@ const Navbar = () => {
                 className={`relative text-sm font-medium transition-colors hover:text-primary ${
                   isActive ? 'text-primary' : 'text-muted-foreground'
                 }`}
-                onClick={() => {
-                  notifyPageVisit(link.name);
-                  window.scrollTo({ top: 0, behavior: 'instant' });
-                }}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
               >
                 {link.name}
                 {isActive && (
@@ -110,7 +106,6 @@ const Navbar = () => {
                 to={link.path}
                 className="text-lg font-medium text-foreground/80 hover:text-primary transition-colors"
                 onClick={() => {
-                  notifyPageVisit(link.name);
                   setIsOpen(false);
                   window.scrollTo({ top: 0, behavior: 'instant' });
                 }}

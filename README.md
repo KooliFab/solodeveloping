@@ -9,7 +9,7 @@ A modern, responsive portfolio website showcasing full-stack development skills 
 - **Responsive Design** - Mobile-first approach with adaptive layouts
 - **Dark Theme** - Electric green accent on dark background
 - **Project Showcase** - Filterable portfolio with category tags
-- **Contact Form** - Integrated with backend endpoint for lead notifications
+- **Contact** - Direct mailto call to action (no data is sent from the browser)
 - **Blog** - Full MDX blog with bilingual articles, reading progress, TOC, and share buttons
 - **SEO Optimized** - React Helmet for meta management
 
@@ -22,7 +22,6 @@ A modern, responsive portfolio website showcasing full-stack development skills 
 | **Animation** | Framer Motion, GSAP, Lenis |
 | **i18n** | i18next, react-i18next |
 | **UI Components** | Radix UI, Lucide Icons |
-| **Backend** | Optional serverless endpoint for contact form |
 | **Code Highlighting** | Shiki, react-syntax-highlighter |
 | **Deployment** | FTP to Hostinger |
 
@@ -53,15 +52,12 @@ A modern, responsive portfolio website showcasing full-stack development skills 
 
 4. Configure your environment variables in `.env`
    ```bash
-   # Required for contact form (backend proxy endpoint)
-   VITE_CONTACT_FORM_ENDPOINT=https://your-api-domain.com/contact
-
-   # Fallback: direct Slack webhook (if no backend)
-   VITE_SLACK_WEBHOOK_URL=https://hooks.slack.com/services/...
-
    # Optional analytics
    VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
    ```
+
+   Every `VITE_*` variable is inlined into the JavaScript bundle and is public.
+   Never put a secret, token or webhook URL in one.
 
 5. Start the development server:
    ```bash
