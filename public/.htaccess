@@ -93,6 +93,13 @@ AddCharset utf-8 .md
     Header set Access-Control-Allow-Origin "*"
   </Files>
 
+  # Error documents and react-snap's SPA shell stay reachable at their own
+  # URL (LiteSpeed cannot tell a direct request from the ErrorDocument pass),
+  # so keep them out of search results instead
+  <FilesMatch "^(404\.html|404\.md|200\.html)$">
+    Header set X-Robots-Tag "noindex"
+  </FilesMatch>
+
   # Security Headers
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"
@@ -148,13 +155,12 @@ FileETag None
   RewriteCond %{HTTP:Accept} !text/html\s*(,|$) [NC]
   RewriteRule ^ - [E=SD_MD:1]
 
-  # Error documents are not pages of their own: requested directly, they 404
-  RewriteCond %{ENV:REDIRECT_STATUS} ^$
-  RewriteRule ^(404\.html|404\.md|200\.html)$ - [R=404,L]
-
-  # 404 error pass: agents asking for Markdown get the Markdown 404 body
-  RewriteCond %{ENV:REDIRECT_STATUS} =404
+  # 404 error pass: agents asking for Markdown get the Markdown 404 body.
+  # The ErrorDocument pass is recognized by its URI (/404.html) differing
+  # from the client's request line: LiteSpeed (Hostinger) does not set
+  # REDIRECT_STATUS like Apache does.
   RewriteCond %{ENV:SD_MD} =1
+  RewriteCond %{THE_REQUEST} !^\S+\s+/404\.html[\s?] [NC]
   RewriteRule ^404\.html$ 404.md [L]
 
   # "/" and "/fr/" -> index.html.md inside that directory

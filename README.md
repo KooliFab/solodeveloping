@@ -102,7 +102,7 @@ This builds the project, fails if `scripts/check-dist-secrets.mjs` finds a secre
 After react-snap, `scripts/agent/build-agent-files.mjs` writes the machine-readable side of the site into `dist/`:
 
 - **Markdown mirrors** of every page (`/about.md`, `/index.html.md`, …), also served on the page URL itself to clients sending `Accept: text/markdown` (with `Vary: Accept`; see `public/.htaccess`)
-- **Real 404s**: there is no SPA fallback. Unknown URLs return 404 with the prerendered not-found page, or `404.md` for Markdown clients. Every route must therefore be prerendered (`reactSnap.include`) or redirected in `.htaccess`; `scripts/agent/__tests__/routing.test.mjs` enforces this.
+- **Real 404s**: there is no SPA fallback. Unknown URLs return 404 with the prerendered not-found page, or `404.md` for Markdown clients. Every route must therefore be prerendered (`reactSnap.include`) or redirected in `.htaccess`; `scripts/agent/__tests__/routing.test.mjs` enforces this. Hostinger runs LiteSpeed, which does not set `REDIRECT_STATUS`: the rules never use it, and the error documents (`/404.html`, `/404.md`, `/200.html`, `/api/errors/*.json`) stay reachable directly with `X-Robots-Tag: noindex`.
 - **Read-only JSON API** under `/api/` (profile, projects, articles), described by `/openapi.json`, with RFC 9457 `application/problem+json` errors and an RFC 9727 catalog at `/.well-known/api-catalog`
 
 To check the server behavior before deploying (macOS Apache; Apache can't read `~/Desktop`, so serve a copy):

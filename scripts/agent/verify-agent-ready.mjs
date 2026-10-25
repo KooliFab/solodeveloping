@@ -106,12 +106,22 @@ const checks = {
     assert.match(body, /llms\.txt/);
   },
   'Unknown paths return 404 with the HTML page for browsers': async () => {
-    for (const path of [MISSING_PATH, '/articles/not-an-article', '/fr/nope', '/404.html', '/200.html', '/assets/missing.js']) {
+    for (const path of [MISSING_PATH, '/articles/not-an-article', '/fr/nope', '/assets/missing.js']) {
       const response = await request(path, { accept: 'text/html' });
       assert.equal(response.status, 404, path);
     }
     const body = await (await request(MISSING_PATH, { accept: 'text/html' })).text();
     assert.match(body, /noindex/, '404 page is not indexable');
+    assert.doesNotMatch(body, /<title>\s*404 Not Found/i, 'prerendered 404 page, not the server default');
+  },
+  'Error documents requested directly are not indexable': async () => {
+    // LiteSpeed cannot tell a direct request from the ErrorDocument pass, so
+    // these stay reachable and are kept out of search results instead.
+    for (const path of ['/404.html', '/404.md', '/200.html', '/api/errors/404.json']) {
+      const response = await request(path);
+      assert.ok(response.status < 500, `${path}: status ${response.status}`);
+      assert.match(header(response, 'x-robots-tag'), /noindex/i, `${path}: X-Robots-Tag`);
+    }
   },
   'Client routes and redirects still resolve': async () => {
     await expectHtml('/projects');
@@ -135,7 +145,6 @@ const checks = {
   },
   'API errors are JSON problem details': async () => {
     await expectProblem('/api/does-not-exist', 404, 'not_found');
-    await expectProblem('/api/errors/404.json', 404, 'not_found');
     await expectProblem('/api/profile', 405, 'method_not_allowed', 'POST');
     const notAllowed = await request('/api/profile', { method: 'DELETE' });
     assert.match(header(notAllowed, 'allow'), /GET/, '405 lists the allowed methods');

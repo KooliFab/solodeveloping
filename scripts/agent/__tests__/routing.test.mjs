@@ -45,6 +45,17 @@ describe('.htaccess', () => {
     expect(fs.existsSync(path.join(rootDir, 'public/404.html'))).toBe(false);
   });
 
+  it('does not rely on REDIRECT_STATUS, which LiteSpeed (Hostinger) does not set', () => {
+    for (const file of ['public/.htaccess', 'public/api/.htaccess', 'public/api/errors/.htaccess']) {
+      expect(read(file), file).not.toMatch(/%\{ENV:REDIRECT_STATUS\}/);
+    }
+  });
+
+  it('never answers a direct error-document request with a 404 (it would loop on LiteSpeed)', () => {
+    expect(htaccess).not.toMatch(/RewriteRule \^\(?404\\\.html[^\n]*R=404/);
+    expect(htaccess).toMatch(/<FilesMatch "\^\(404\\\.html\|404\\\.md\|200\\\.html\)\$">\s*Header set X-Robots-Tag "noindex"/);
+  });
+
   it('negotiates Markdown with Vary: Accept and a UTF-8 text/markdown type', () => {
     expect(htaccess).toMatch(/^AddType text\/markdown \.md$/m);
     expect(htaccess).toMatch(/^AddCharset utf-8 \.md$/m);

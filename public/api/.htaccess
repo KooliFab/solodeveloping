@@ -15,13 +15,14 @@ ErrorDocument 405 /api/errors/405.json
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 
-  # Read-only API
+  # Read-only API (the 405 error document itself is exempt, or its own
+  # ErrorDocument pass, still carrying the client's method, would loop)
   RewriteCond %{REQUEST_METHOD} !^(GET|HEAD|OPTIONS)$
+  RewriteCond %{REQUEST_URI} !^/api/errors/
   RewriteRule ^ - [R=405,L]
 
-  # Error documents are not resources: requested directly, they 404
-  RewriteCond %{ENV:REDIRECT_STATUS} ^$
-  RewriteRule ^errors/ - [R=404,L]
+  # errors/*.json stay reachable directly: blocking them would also block the
+  # ErrorDocument pass on LiteSpeed, which does not set REDIRECT_STATUS.
 
   # /api/ -> index.json, /api/profile -> profile.json
   RewriteRule ^$ index.json [L]

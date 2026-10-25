@@ -1,2 +1,7 @@
 # RFC 9457 problem details
 ForceType application/problem+json
+
+# Error bodies, not resources: keep them out of search results
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex"
+</IfModule>
