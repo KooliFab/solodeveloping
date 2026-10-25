@@ -10,6 +10,12 @@ dotenv.config({ path: '.env.production', override: true });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const missing = ['FTP_HOST', 'FTP_USER', 'FTP_PASSWORD'].filter((name) => !process.env[name]);
+if (missing.length > 0) {
+  console.error(`❌ Missing deployment variables in .env.production: ${missing.join(', ')}`);
+  process.exit(1);
+}
+
 // Create FTP deployment instance
 const ftpDeploy = new FtpDeploy();
 
@@ -19,6 +25,14 @@ const config = {
   password: process.env.FTP_PASSWORD,
   host: process.env.FTP_HOST,
   port: 21,
+  // Explicit FTPS: credentials and files never travel in clear text.
+  secure: true,
+  secureOptions: {
+    rejectUnauthorized: true,
+    // Set when the certificate is issued for another name than FTP_HOST
+    // (for example when FTP_HOST is an IP address).
+    ...(process.env.FTP_TLS_SERVERNAME && { servername: process.env.FTP_TLS_SERVERNAME }),
+  },
   localRoot: path.join(__dirname, 'dist'),
   remoteRoot: process.env.FTP_REMOTE_ROOT || '/',
   include: ['*', '**/*', '.*', '**/.*'],  // Include all files, directories, and hidden files (like .htaccess)
@@ -28,9 +42,8 @@ const config = {
 };
 
 // Start deployment
-console.log('🚀 Starting deployment to Hostinger...');
+console.log('🚀 Starting deployment to Hostinger over FTPS...');
 console.log('📍 Host:', config.host);
-console.log('👤 User:', config.user);
 console.log('📁 Remote path:', config.remoteRoot);
 
 ftpDeploy

@@ -23,7 +23,7 @@ A modern, responsive portfolio website showcasing full-stack development skills 
 | **i18n** | i18next, react-i18next |
 | **UI Components** | Radix UI, Lucide Icons |
 | **Code Highlighting** | Shiki, react-syntax-highlighter |
-| **Deployment** | FTP to Hostinger |
+| **Deployment** | FTPS to Hostinger |
 
 ## Getting Started
 
@@ -66,7 +66,7 @@ A modern, responsive portfolio website showcasing full-stack development skills 
 
 ## Deployment
 
-This project includes an automated FTP deployment system to deploy to Hostinger.
+This project includes an automated FTPS deployment system to deploy to Hostinger.
 
 ### Setup
 
@@ -76,7 +76,11 @@ FTP_USER=your_hostinger_ftp_username
 FTP_PASSWORD=your_hostinger_ftp_password
 FTP_HOST=your_hostinger_ftp_host.hostinger.com
 FTP_REMOTE_ROOT=/
+# Optional: certificate name when it differs from FTP_HOST (e.g. FTP_HOST is an IP)
+# FTP_TLS_SERVERNAME=your_hostinger_ftp_host.hostinger.com
 ```
+
+The upload uses explicit FTPS (TLS on port 21) with certificate verification.
 
 ### Deploy
 
@@ -84,7 +88,7 @@ FTP_REMOTE_ROOT=/
 npm run deploy
 ```
 
-This will build the project and deploy the `dist` folder via FTP.
+This builds the project, fails if `scripts/check-dist-secrets.mjs` finds a secret in `dist/`, then uploads `dist/` over FTPS.
 
 ## AI Agent Access
 
