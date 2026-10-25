@@ -93,6 +93,11 @@ AddCharset utf-8 .md
     Header set Access-Control-Allow-Origin "*"
   </Files>
 
+  # LiteSpeed (Hostinger) ignores AddCharset: set the Markdown charset here
+  <FilesMatch "\.md$">
+    Header set Content-Type "text/markdown; charset=utf-8"
+  </FilesMatch>
+
   # Error documents and react-snap's SPA shell stay reachable at their own
   # URL (LiteSpeed cannot tell a direct request from the ErrorDocument pass),
   # so keep them out of search results instead
