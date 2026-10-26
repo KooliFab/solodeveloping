@@ -6,6 +6,9 @@
 AddType text/markdown .md
 AddCharset utf-8 .md
 
+# OpenAPI description in YAML (openapi.yaml, api/openapi.yaml)
+AddType application/yaml .yaml
+
 # ========================================
 # PERFORMANCE OPTIMIZATIONS
 # ========================================
@@ -88,20 +91,31 @@ AddCharset utf-8 .md
     Header add Link "</.well-known/api-catalog>; rel=api-catalog"
   </FilesMatch>
 
-  # The API description can be fetched from any origin
-  <Files "openapi.json">
-    Header set Access-Control-Allow-Origin "*"
-  </Files>
+  # The API description can be fetched from any origin ("always", like the
+  # api/.htaccess header, so the copies under /api/ get it once, not twice)
+  <FilesMatch "^openapi\.(json|yaml)$">
+    Header always set Access-Control-Allow-Origin "*"
+  </FilesMatch>
 
   # LiteSpeed (Hostinger) ignores AddCharset: set the Markdown charset here
   <FilesMatch "\.md$">
     Header set Content-Type "text/markdown; charset=utf-8"
   </FilesMatch>
+  <FilesMatch "\.yaml$">
+    Header set Content-Type "application/yaml; charset=utf-8"
+  </FilesMatch>
+
+  # JSON 404 body (RFC 9457) for clients asking for JSON, negotiated like
+  # the Markdown one
+  <Files "404.json">
+    Header set Content-Type "application/problem+json"
+    Header merge Vary "Accept"
+  </Files>
 
   # Error documents and react-snap's SPA shell stay reachable at their own
   # URL (LiteSpeed cannot tell a direct request from the ErrorDocument pass),
   # so keep them out of search results instead
-  <FilesMatch "^(404\.html|404\.md|200\.html)$">
+  <FilesMatch "^(404\.html|404\.md|404\.json|200\.html)$">
     Header set X-Robots-Tag "noindex"
   </FilesMatch>
 
@@ -168,6 +182,13 @@ FileETag None
   RewriteCond %{THE_REQUEST} !^\S+\s+/404\.html[\s?] [NC]
   RewriteRule ^404\.html$ 404.md [L]
 
+  # Same for clients asking for JSON (API clients, agents): JSON is listed
+  # and neither HTML nor Markdown is, so browsers keep the HTML page.
+  RewriteCond %{HTTP:Accept} (application/json|application/problem\+json) [NC]
+  RewriteCond %{HTTP:Accept} !(text/html|text/markdown) [NC]
+  RewriteCond %{THE_REQUEST} !^\S+\s+/404\.html[\s?] [NC]
+  RewriteRule ^404\.html$ 404.json [L]
+
   # "/" and "/fr/" -> index.html.md inside that directory
   RewriteCond %{ENV:SD_MD} =1
   RewriteCond %{REQUEST_FILENAME} -d
@@ -194,5 +215,5 @@ FileETag None
 </IfModule>
 
 # Unknown URLs: real 404 status with the prerendered "not found" page
-# (or 404.md for Markdown clients, see the rewrite rules above)
+# (or 404.md / 404.json for Markdown / JSON clients, see the rewrite rules above)
 ErrorDocument 404 /404.html

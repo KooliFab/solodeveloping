@@ -183,7 +183,7 @@ export const buildOpenApi = ({ siteUrl }) => ({
     description: 'Static, read-only JSON describing Fabien Chung — the Montréal full-stack developer behind Solo Developing — with his services, products and articles. No authentication, no rate-limit keys. Every page of the site is also available as Markdown: request it with `Accept: text/markdown`, or append `.md` to the page URL (`index.html.md` for the home pages).',
     contact: { name: 'Fabien Chung', email: 'hello@solodeveloping.com', url: `${siteUrl}/` },
   },
-  externalDocs: { description: 'Site guide for AI agents (llms.txt)', url: `${siteUrl}/llms.txt` },
+  externalDocs: { description: 'Solo Developing developer resources', url: `${siteUrl}/developers` },
   servers: [{ url: siteUrl }],
   tags: [{ name: 'Public data', description: 'Content published on solodeveloping.com.' }],
   paths: {

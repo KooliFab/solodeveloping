@@ -9,6 +9,9 @@ const PAGE_LINKS = [
   { path: '/ai-developer', labelKey: 'footer.linkAI' },
   { path: '/articles', labelKey: 'footer.linkArticles' },
   { path: '/about', labelKey: 'footer.linkAbout' },
+  { path: '/contact', labelKey: 'footer.linkContact' },
+  { path: '/developers', labelKey: 'footer.linkDevelopers' },
+  { path: '/privacy', labelKey: 'footer.linkPrivacy' },
 ];
 
 const Footer = () => {
@@ -73,6 +76,9 @@ const Footer = () => {
       <div className="mt-12 max-w-2xl mx-auto">
         <p className="text-sm text-gray-500 leading-relaxed">
           {t('footer.about')}
+        </p>
+        <p className="mt-4 text-sm text-gray-500 leading-relaxed">
+          {t('footer.work')}
         </p>
         <nav
           aria-label={t('footer.pagesLabel')}

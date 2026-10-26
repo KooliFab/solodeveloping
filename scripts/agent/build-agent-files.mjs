@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 // Writes the machine-readable side of the site into the prerendered build:
-// Markdown mirrors of every page, the Markdown 404 body, the static JSON API,
-// its OpenAPI description and the RFC 9727 API catalog.
+// Markdown mirrors of every page, the Markdown and JSON 404 bodies, the static
+// JSON API, its OpenAPI description (JSON and YAML) and the RFC 9727 API catalog.
 // Run after react-snap: `node scripts/agent/build-agent-files.mjs [distDir]`.
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import YAML from 'yaml';
 import { LANGUAGE_ROOTS, markdownPathFor } from '../../src/lib/markdownPath.js';
 import { articleToMarkdown, htmlPageToMarkdown, notFoundMarkdown, readPageMeta } from './markdown.mjs';
 import {
@@ -15,6 +16,7 @@ import {
   buildProblem,
   buildProfile,
   buildProjects,
+  buildSiteNotFound,
 } from './api.mjs';
 import { buildOpenApi } from './openapi.mjs';
 
@@ -87,9 +89,18 @@ export const buildJsonFiles = (data, siteUrl = SITE_URL) => ({
   'api/articles.json': buildArticles({ siteUrl, ...data }),
   'api/errors/404.json': buildProblem({ siteUrl, status: 404 }),
   'api/errors/405.json': buildProblem({ siteUrl, status: 405 }),
+  '404.json': buildSiteNotFound({ siteUrl }),
   'openapi.json': buildOpenApi({ siteUrl }),
+  // Copy at the other conventional location agents probe
+  'api/openapi.json': buildOpenApi({ siteUrl }),
   '.well-known/api-catalog': buildApiCatalog({ siteUrl }),
 });
+
+// The OpenAPI description in YAML, at both conventional locations.
+export const buildYamlFiles = (siteUrl = SITE_URL) => {
+  const yaml = YAML.stringify(buildOpenApi({ siteUrl }), { aliasDuplicateObjects: false, lineWidth: 0 });
+  return { 'openapi.yaml': yaml, 'api/openapi.yaml': yaml };
+};
 
 const writeFile = async (distDir, relativePath, content) => {
   const target = path.join(distDir, relativePath);
@@ -113,6 +124,11 @@ export const buildAgentFiles = async (distDir, siteUrl = SITE_URL) => {
 
   for (const [target, document] of Object.entries(buildJsonFiles(data, siteUrl))) {
     await writeFile(distDir, target, `${JSON.stringify(document, null, 2)}\n`);
+    written.push(target);
+  }
+
+  for (const [target, content] of Object.entries(buildYamlFiles(siteUrl))) {
+    await writeFile(distDir, target, content);
     written.push(target);
   }
 

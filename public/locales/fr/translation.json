@@ -122,13 +122,17 @@
     "linkAI": "Développeur IA",
     "linkArticles": "Articles",
     "linkAbout": "À propos",
-    "copyright": "© {{year}} SOLO DEVELOPING. INTÉGRITÉ DU SYSTÈME 100%."
+    "copyright": "© {{year}} SOLO DEVELOPING. INTÉGRITÉ DU SYSTÈME 100%.",
+    "work": "Disponible en freelance et en contrat, à distance partout dans le monde ou à Montréal, en français et en anglais. Applications Flutter depuis 2018 (plus de 15 publiées), iOS natif depuis 2012, plateformes React 19 et Node.js, backends Supabase et PostgreSQL, et développement agentique au quotidien, encadré par des spécifications, des tests et la CI. Une seule personne, une responsabilité totale : livrer en jours, pas en mois.",
+    "linkContact": "Contact",
+    "linkPrivacy": "Confidentialité",
+    "linkDevelopers": "Développeurs"
   },
   "meta": {
-    "title": "Fabien Chung — Développeur Full-Stack Nouvelle Génération | Montréal",
-    "description": "Fabien Chung, développeur full-stack basé à Montréal — plus de 20 ans d'expérience. Maîtrise avancée des IA, web, mobile, automatisation. Solo, direct, livré.",
+    "title": "Solo Developing — Fabien Chung, développeur full-stack freelance, Montréal",
+    "description": "Solo Developing est la pratique freelance de Fabien Chung, développeur full-stack à Montréal avec plus de 20 ans d’expérience : web, mobile et automatisation IA. Solo, direct, livré.",
     "keywords": "Fabien Chung, Fabien Chung Montréal, développeur full-stack nouvelle génération, maîtrise avancée des IA, développeur IA Montréal, développeur full-stack Montréal, développement d'applications mobiles, développeur solo, développeur EAU, développeur Canada",
-    "ogTitle": "Fabien Chung — Développeur Full-Stack Nouvelle Génération | Montréal",
+    "ogTitle": "Solo Developing — Fabien Chung, développeur full-stack freelance, Montréal",
     "ogDescription": "Développeur full-stack basé à Montréal. 20+ ans d'expérience. Maîtrise avancée des IA, mobile, web, automatisation. Travaillez directement avec le bâtisseur."
   },
   "aboutPage": {
@@ -539,7 +543,7 @@
   },
   "showcase": {
     "hero": {
-      "eyebrow": "Fabien Chung · Full-stack · Montréal",
+      "eyebrow": "Solo Developing · Fabien Chung · Montréal",
       "title1": "Des idées aux",
       "title2": "applications.",
       "description": "Je conçois et développe des applications web et mobiles, de l’architecture à la mise en production.",
@@ -583,5 +587,307 @@
         "Prix unitaire /100 g"
       ]
     }
+  },
+  "contactPage": {
+    "seoTitle": "Contacter Solo Developing — Fabien Chung, développeur freelance à Montréal",
+    "seoDescription": "Comment joindre Solo Developing : écrivez à Fabien Chung à hello@solodeveloping.com pour un projet web, mobile ou IA. Basé à Montréal, à distance partout dans le monde, réponse sous 24 heures.",
+    "eyebrow": "Contact",
+    "title": "Contacter Solo Developing",
+    "intro": "Solo Developing est une pratique d’une seule personne : pas d’équipe commerciale, pas de formulaire de contact, pas de compte à créer. Les courriels arrivent directement chez Fabien Chung, le développeur qui concevrait et développerait votre projet, et chaque message reçoit une réponse personnelle.",
+    "sections": [
+      {
+        "id": "email",
+        "title": "Courriel",
+        "paragraphs": [
+          "Écrivez à hello@solodeveloping.com. Les messages reçoivent une réponse sous 24 heures, en français ou en anglais. Le courriel est le seul moyen de contact : rien de ce que vous envoyez ne passe par un formulaire ou un CRM tiers."
+        ],
+        "items": [
+          {
+            "term": "hello@solodeveloping.com",
+            "href": "mailto:hello@solodeveloping.com",
+            "description": "Projets, contrats, offres d’emploi et questions sur le site ou son API"
+          }
+        ]
+      },
+      {
+        "id": "project",
+        "title": "Quoi inclure",
+        "paragraphs": [
+          "Une courte description du produit ou du problème, à qui il s’adresse, les plateformes visées (iOS, Android, web, backend, IA), votre échéancier et tout code, maquette ou document existant. Une fourchette de budget aide à proposer le bon type de mandat : le tarif horaire est communiqué sur demande, et les projets à périmètre fixe font l’objet d’un devis sur mesure."
+        ]
+      },
+      {
+        "id": "availability",
+        "title": "Disponibilité",
+        "paragraphs": [
+          "Disponible en freelance et en contrat, à distance partout dans le monde ou sur place à Montréal, et ouvert aux postes à temps plein à Montréal. Des clients sont aussi accompagnés aux Émirats arabes unis. Mandats typiques : applications mobiles Flutter pour iOS et Android, plateformes web React et Node.js, backends Supabase et PostgreSQL, agents IA et automatisation."
+        ]
+      },
+      {
+        "id": "details",
+        "title": "Informations",
+        "items": [
+          {
+            "term": "Développeur",
+            "description": "Fabien Chung"
+          },
+          {
+            "term": "Marque",
+            "description": "Solo Developing (solodeveloping.com)"
+          },
+          {
+            "term": "Entreprise",
+            "description": "Applications Ben Cool, éditeur des applications sur l’App Store et Google Play",
+            "href": "https://bencool.ca"
+          },
+          {
+            "term": "Lieu",
+            "description": "Montréal, Québec, Canada"
+          },
+          {
+            "term": "Langues",
+            "description": "Français, anglais"
+          }
+        ]
+      },
+      {
+        "id": "elsewhere",
+        "title": "Ailleurs",
+        "items": [
+          {
+            "term": "LinkedIn",
+            "href": "https://www.linkedin.com/in/%F0%9F%92%BB-fabien-chung-a1793830/"
+          },
+          {
+            "term": "GitHub",
+            "href": "https://github.com/KooliFab"
+          },
+          {
+            "term": "Pub.dev",
+            "href": "https://pub.dev/publishers/solodeveloping.com/packages"
+          },
+          {
+            "term": "Medium",
+            "href": "https://medium.com/@fabien.chung"
+          }
+        ]
+      }
+    ]
+  },
+  "privacyPage": {
+    "seoTitle": "Politique de confidentialité — Solo Developing",
+    "seoDescription": "Les renseignements personnels recueillis par solodeveloping.com (statistiques Google Analytics, journaux du serveur, préférence de langue, courriels envoyés), pourquoi, et comment exercer vos droits.",
+    "eyebrow": "Confidentialité",
+    "title": "Politique de confidentialité",
+    "intro": "Cette politique explique quels renseignements personnels solodeveloping.com recueille, pourquoi, qui les reçoit et ce que vous pouvez faire. Le site n’a ni compte, ni formulaire, ni publicité.",
+    "updated": "Dernière mise à jour : 25 octobre 2026",
+    "sections": [
+      {
+        "id": "responsible",
+        "title": "Responsable",
+        "paragraphs": [
+          "solodeveloping.com est exploité par Fabien Chung (Solo Developing), Montréal, Québec, Canada. Fabien Chung est la personne responsable de la protection des renseignements personnels et peut être joint à hello@solodeveloping.com."
+        ]
+      },
+      {
+        "id": "analytics",
+        "title": "Mesure d’audience (Google Analytics)",
+        "paragraphs": [
+          "Le site utilise Google Analytics 4 pour compter les visites et savoir quelles pages sont lues. Google Analytics dépose des témoins internes (_ga et _ga_<ID>, conservés jusqu’à 2 ans) et reçoit l’adresse de la page, la page de provenance, le type de navigateur et d’appareil, une localisation approximative déduite de votre adresse IP, et des événements comme le défilement ou les clics. Google Analytics 4 n’enregistre ni ne conserve les adresses IP.",
+          "Les données sont traitées par Google LLC et peuvent être stockées hors du Canada. Les statistiques servent uniquement à améliorer le site. Vous pouvez bloquer ces témoins dans les réglages de votre navigateur ou avec le module de désactivation de Google Analytics."
+        ],
+        "items": [
+          {
+            "term": "Module de désactivation de Google Analytics",
+            "href": "https://tools.google.com/dlpage/gaoptout"
+          }
+        ]
+      },
+      {
+        "id": "fonts",
+        "title": "Polices de caractères",
+        "paragraphs": [
+          "Les polices sont chargées depuis Google Fonts (fonts.googleapis.com et fonts.gstatic.com) : votre navigateur transmet donc votre adresse IP et les détails du navigateur à Google au chargement d’une page. Google Fonts ne dépose pas de témoins."
+        ]
+      },
+      {
+        "id": "hosting",
+        "title": "Hébergement et journaux du serveur",
+        "paragraphs": [
+          "Le site est hébergé par Hostinger. Ses serveurs et son réseau de diffusion de contenu enregistrent des données techniques de requête (adresse IP, date et heure, adresse demandée, agent utilisateur du navigateur et page de provenance) pour servir les pages et protéger le service. Ces journaux sont conservés par Hostinger selon sa propre politique de conservation."
+        ]
+      },
+      {
+        "id": "storage",
+        "title": "Préférences enregistrées dans votre navigateur",
+        "paragraphs": [
+          "Le site mémorise votre langue dans le stockage local de votre navigateur (i18nextLng) et dans un témoin nommé i18next qui expire après 7 jours. Pendant la navigation, le stockage de session garde la page de service d’où vous venez (sd:origin-facet) pour que le menu puisse y renvoyer. Ces valeurs restent dans votre navigateur et ne servent pas au suivi."
+        ]
+      },
+      {
+        "id": "email",
+        "title": "Courriel",
+        "paragraphs": [
+          "Si vous écrivez à hello@solodeveloping.com, votre nom, votre adresse courriel et votre message servent uniquement à vous répondre et à donner suite à votre demande. Ils ne sont ni vendus, ni partagés à des fins de marketing, ni ajoutés à une liste d’envoi."
+        ]
+      },
+      {
+        "id": "links",
+        "title": "Liens vers d’autres sites",
+        "paragraphs": [
+          "Les liens vers LinkedIn, GitHub, pub.dev, Medium, les magasins d’applications et les projets clients ouvrent des services qui ont leur propre politique de confidentialité."
+        ]
+      },
+      {
+        "id": "rights",
+        "title": "Vos droits",
+        "paragraphs": [
+          "En vertu de la Loi sur la protection des renseignements personnels dans le secteur privé du Québec et de la LPRPDE du Canada, vous pouvez demander à consulter, corriger ou supprimer les renseignements personnels qui vous concernent, ou retirer votre consentement. Envoyez votre demande à hello@solodeveloping.com ; elle reçoit une réponse dans un délai de 30 jours. Vous pouvez aussi porter plainte auprès de la Commission d’accès à l’information du Québec."
+        ],
+        "items": [
+          {
+            "term": "Commission d’accès à l’information du Québec",
+            "href": "https://www.cai.gouv.qc.ca/"
+          }
+        ]
+      },
+      {
+        "id": "changes",
+        "title": "Modifications",
+        "paragraphs": [
+          "Lorsque cette politique change, la date en haut de la page est mise à jour."
+        ]
+      }
+    ]
+  },
+  "developersPage": {
+    "seoTitle": "API Solo Developing — ressources développeurs, OpenAPI et llms.txt",
+    "seoDescription": "Ressources développeurs de solodeveloping.com : l’API JSON en lecture seule de Solo Developing, sa description OpenAPI 3.1, le catalogue d’API, llms.txt et une version Markdown de chaque page. Sans authentification.",
+    "eyebrow": "Développeurs",
+    "title": "Ressources développeurs Solo Developing",
+    "intro": "Tout le contenu de solodeveloping.com est lisible par les programmes et les agents IA : une API JSON en lecture seule, une description OpenAPI, un guide llms.txt et une version Markdown de chaque page. Aucune clé, aucun compte, aucune authentification.",
+    "sections": [
+      {
+        "id": "api",
+        "title": "API Solo Developing",
+        "paragraphs": [
+          "Une API JSON statique en lecture seule avec le profil, les services, les produits et les articles de Fabien Chung, en français et en anglais. L’URL de base est https://solodeveloping.com/api/. Les réponses sont en JSON UTF-8 et accessibles depuis n’importe quelle origine (Access-Control-Allow-Origin: *)."
+        ],
+        "items": [
+          {
+            "term": "GET /api/",
+            "href": "https://solodeveloping.com/api/",
+            "code": true,
+            "description": "Index de toutes les ressources et emplacement de la description"
+          },
+          {
+            "term": "GET /api/profile",
+            "href": "https://solodeveloping.com/api/profile",
+            "code": true,
+            "description": "Identité, coordonnées et services"
+          },
+          {
+            "term": "GET /api/projects",
+            "href": "https://solodeveloping.com/api/projects",
+            "code": true,
+            "description": "Produits fondés et leurs composants techniques"
+          },
+          {
+            "term": "GET /api/articles",
+            "href": "https://solodeveloping.com/api/articles",
+            "code": true,
+            "description": "Articles et billets courts avec leurs URL HTML et Markdown"
+          }
+        ],
+        "code": "curl https://solodeveloping.com/api/profile"
+      },
+      {
+        "id": "openapi",
+        "title": "Description OpenAPI",
+        "paragraphs": [
+          "L’API est décrite par un document OpenAPI 3.1, en JSON et en YAML. Elle figure aussi dans le catalogue d’API RFC 9727, annoncé par chaque page dans un en-tête Link (rel=\"api-catalog\")."
+        ],
+        "items": [
+          {
+            "term": "/openapi.json",
+            "href": "https://solodeveloping.com/openapi.json",
+            "code": true,
+            "description": "OpenAPI 3.1, JSON (aussi à /api/openapi.json)"
+          },
+          {
+            "term": "/openapi.yaml",
+            "href": "https://solodeveloping.com/openapi.yaml",
+            "code": true,
+            "description": "OpenAPI 3.1, YAML (aussi à /api/openapi.yaml)"
+          },
+          {
+            "term": "/.well-known/api-catalog",
+            "href": "https://solodeveloping.com/.well-known/api-catalog",
+            "code": true,
+            "description": "Catalogue d’API (application/linkset+json)"
+          }
+        ]
+      },
+      {
+        "id": "errors",
+        "title": "Erreurs",
+        "paragraphs": [
+          "Les erreurs sont des « problem details » RFC 9457 (application/problem+json) avec un code lisible par machine et une indication pour corriger la requête. Un chemin d’API inconnu répond 404 avec le code not_found ; toute méthode autre que GET, HEAD et OPTIONS répond 405 avec le code method_not_allowed. Partout ailleurs sur le site, une requête envoyée avec Accept: application/json reçoit aussi sa 404 en JSON."
+        ],
+        "code": "{\n  \"type\": \"about:blank\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"code\": \"not_found\",\n  \"detail\": \"No API resource exists at this path.\",\n  \"hint\": \"List the available resources at https://solodeveloping.com/api/ …\",\n  \"documentation\": \"https://solodeveloping.com/openapi.json\"\n}"
+      },
+      {
+        "id": "access",
+        "title": "Authentification et limites",
+        "paragraphs": [
+          "Aucune authentification : l’API ne sert que des données publiques. Les réponses sont des fichiers statiques servis par un CDN, sans limite de débit publiée ; merci de mettre en cache ce que vous récupérez. La version actuelle est 1.0.0, indiquée dans info.version du document OpenAPI."
+        ]
+      },
+      {
+        "id": "markdown",
+        "title": "Pages en Markdown",
+        "paragraphs": [
+          "Demandez n’importe quelle page avec Accept: text/markdown, ou ajoutez .md à son adresse (index.html.md pour / et /fr/), pour obtenir une version Markdown propre, sans navigation ni scripts. Les pages inconnues répondent 404 avec un corps Markdown."
+        ],
+        "code": "curl -H 'Accept: text/markdown' https://solodeveloping.com/fr/about"
+      },
+      {
+        "id": "guides",
+        "title": "Guides du site",
+        "items": [
+          {
+            "term": "/llms.txt",
+            "href": "https://solodeveloping.com/llms.txt",
+            "code": true,
+            "description": "Guide pour les agents IA avec toutes les pages clés"
+          },
+          {
+            "term": "/sitemap.xml",
+            "href": "https://solodeveloping.com/sitemap.xml",
+            "code": true,
+            "description": "Toutes les URL publiques"
+          },
+          {
+            "term": "/robots.txt",
+            "href": "https://solodeveloping.com/robots.txt",
+            "code": true,
+            "description": "Règles des robots ; les robots IA sont autorisés"
+          }
+        ]
+      },
+      {
+        "id": "support",
+        "title": "Support",
+        "paragraphs": [
+          "Une question sur l’API, ou une réponse qui semble erronée : écrivez à hello@solodeveloping.com."
+        ],
+        "items": [
+          {
+            "term": "hello@solodeveloping.com",
+            "href": "mailto:hello@solodeveloping.com"
+          }
+        ]
+      }
+    ]
   }
 }

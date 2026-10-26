@@ -3,6 +3,7 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
+import YAML from 'yaml';
 import { buildAgentFiles, buildPageMarkdown, findPageRoutes, loadSiteData } from '../build-agent-files.mjs';
 
 const SITE = 'https://solodeveloping.com';
@@ -56,8 +57,18 @@ describe('buildAgentFiles', () => {
 
   it('writes the Markdown 404 body and every JSON document', async () => {
     expect(await read('404.md')).toContain('llms.txt');
-    for (const file of ['api/index.json', 'api/profile.json', 'api/projects.json', 'api/articles.json', 'api/errors/404.json', 'api/errors/405.json', 'openapi.json', '.well-known/api-catalog']) {
+    for (const file of ['404.json', 'api/index.json', 'api/profile.json', 'api/projects.json', 'api/articles.json', 'api/errors/404.json', 'api/errors/405.json', 'openapi.json', 'api/openapi.json', '.well-known/api-catalog']) {
       expect(JSON.parse(await read(file)), file).toBeTypeOf('object');
+    }
+  });
+
+  it('publishes the same OpenAPI description as JSON and YAML at both locations', async () => {
+    const spec = JSON.parse(await read('openapi.json'));
+    expect(JSON.parse(await read('api/openapi.json'))).toEqual(spec);
+    for (const file of ['openapi.yaml', 'api/openapi.yaml']) {
+      const yaml = await read(file);
+      expect(yaml, file).toMatch(/^openapi: 3\.1\.0\n/);
+      expect(YAML.parse(yaml), file).toEqual(spec);
     }
   });
 });

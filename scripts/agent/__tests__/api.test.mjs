@@ -54,6 +54,7 @@ describe('API documents', () => {
     ['api/articles.json', 'ArticleList'],
     ['api/errors/404.json', 'Problem'],
     ['api/errors/405.json', 'Problem'],
+    ['404.json', 'Problem'],
   ])('%s matches the %s schema', (file, schema) => {
     const validate = validator().getSchema(`openapi#/components/schemas/${schema}`);
     const valid = validate(files[file]);
@@ -87,6 +88,12 @@ describe('API documents', () => {
     expect(files['api/errors/405.json']).toMatchObject({ type: 'about:blank', title: 'Method Not Allowed', status: 405, code: 'method_not_allowed' });
     expect(files['api/errors/404.json'].hint).toContain(`${SITE}/openapi.json`);
   });
+
+  it('answers unknown site URLs with a JSON 404 that points to the site guides', () => {
+    expect(files['404.json']).toMatchObject({ type: 'about:blank', title: 'Not Found', status: 404, code: 'not_found' });
+    expect(files['404.json'].hint).toContain(`${SITE}/llms.txt`);
+    expect(files['404.json'].documentation).toBe(`${SITE}/developers`);
+  });
 });
 
 describe('API catalog (RFC 9727)', () => {
@@ -97,6 +104,7 @@ describe('API catalog (RFC 9727)', () => {
       item: [{ href: `${SITE}/api/`, title: 'Solo Developing public API' }],
     });
     expect(linkset[1].anchor).toBe(`${SITE}/api/`);
-    expect(linkset[1]['service-desc'][0].href).toBe(`${SITE}/openapi.json`);
+    expect(linkset[1]['service-desc'].map(({ href }) => href)).toEqual([`${SITE}/openapi.json`, `${SITE}/openapi.yaml`]);
+    expect(linkset[1]['service-doc'].map(({ href }) => href)).toEqual([`${SITE}/developers`, `${SITE}/llms.txt`]);
   });
 });

@@ -53,7 +53,21 @@ describe('.htaccess', () => {
 
   it('never answers a direct error-document request with a 404 (it would loop on LiteSpeed)', () => {
     expect(htaccess).not.toMatch(/RewriteRule \^\(?404\\\.html[^\n]*R=404/);
-    expect(htaccess).toMatch(/<FilesMatch "\^\(404\\\.html\|404\\\.md\|200\\\.html\)\$">\s*Header set X-Robots-Tag "noindex"/);
+    expect(htaccess).toMatch(/<FilesMatch "\^\(404\\\.html\|404\\\.md\|404\\\.json\|200\\\.html\)\$">\s*Header set X-Robots-Tag "noindex"/);
+  });
+
+  it('answers unknown URLs with the JSON 404 body for clients that ask for JSON only', () => {
+    expect(htaccess).toMatch(
+      /RewriteCond %\{HTTP:Accept\} \(application\/json\|application\/problem\\\+json\) \[NC\]\s+RewriteCond %\{HTTP:Accept\} !\(text\/html\|text\/markdown\) \[NC\]\s+RewriteCond %\{THE_REQUEST\} !\^\\S\+\\s\+\/404\\\.html\[\\s\?\] \[NC\]\s+RewriteRule \^404\\\.html\$ 404\.json \[L\]/,
+    );
+    expect(htaccess).toMatch(/<Files "404\.json">\s*Header set Content-Type "application\/problem\+json"\s*Header merge Vary "Accept"/);
+  });
+
+  it('serves the YAML OpenAPI description with a YAML type, readable from any origin', () => {
+    expect(htaccess).toMatch(/^AddType application\/yaml \.yaml$/m);
+    expect(htaccess).toMatch(/<FilesMatch "\\\.yaml\$">\s*Header set Content-Type "application\/yaml; charset=utf-8"/);
+    // "always", like api/.htaccess, or /api/openapi.* would send the header twice
+    expect(htaccess).toMatch(/<FilesMatch "\^openapi\\\.\(json\|yaml\)\$">\s*Header always set Access-Control-Allow-Origin "\*"/);
   });
 
   it('negotiates Markdown with Vary: Accept and a UTF-8 text/markdown type', () => {
@@ -105,5 +119,28 @@ describe('llms.txt', () => {
   it('lists the developer resources', () => {
     expect(llms).toContain('## Developer resources');
     expect(llms).toContain('(https://solodeveloping.com/openapi.json)');
+    expect(llms).toContain('(https://solodeveloping.com/openapi.yaml)');
+    expect(llms).toContain('(https://solodeveloping.com/developers.md)');
+  });
+
+  it('links the contact and privacy pages in both languages', () => {
+    for (const page of ['contact', 'privacy', 'developers']) {
+      expect(llms).toContain(`(https://solodeveloping.com/${page}.md)`);
+      expect(llms).toContain(`(https://solodeveloping.com/fr/${page}.md)`);
+    }
+  });
+});
+
+describe('sitemap.xml', () => {
+  const sitemap = read('public/sitemap.xml');
+  const locs = [...sitemap.matchAll(/<loc>https:\/\/solodeveloping\.com([^<]*)<\/loc>/g)].map((match) => match[1]);
+
+  it('lists the contact, privacy and developer pages in both languages, which are prerendered', () => {
+    for (const page of ['contact', 'privacy', 'developers']) {
+      for (const loc of [`/${page}`, `/fr/${page}`]) {
+        expect(locs).toContain(loc);
+        expect(prerendered.has(loc), loc).toBe(true);
+      }
+    }
   });
 });

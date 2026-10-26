@@ -209,5 +209,6 @@ Where to go next:
 - [llms.txt](${siteUrl}/llms.txt): site guide for AI agents, with every key page
 - [Sitemap](${siteUrl}/sitemap.xml): every public URL
 - [Home page in Markdown](${siteUrl}/index.html.md)
+- [Developer resources](${siteUrl}/developers.md): public API, OpenAPI description and Markdown access
 - [Public API description (OpenAPI)](${siteUrl}/openapi.json)
 `;

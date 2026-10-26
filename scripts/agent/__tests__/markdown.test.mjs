@@ -119,5 +119,6 @@ describe('notFoundMarkdown', () => {
     expect(markdown).toContain(`${SITE}/llms.txt`);
     expect(markdown).toContain(`${SITE}/sitemap.xml`);
     expect(markdown).toContain(`${SITE}/openapi.json`);
+    expect(markdown).toContain(`${SITE}/developers.md`);
   });
 });

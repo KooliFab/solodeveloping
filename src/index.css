@@ -130,6 +130,9 @@
   .skill-app-tile {
     @apply w-14 h-14 rounded-2xl flex items-center justify-center text-white font-bold text-base select-none shadow-md cursor-pointer overflow-hidden relative bg-white;
   }
+  .skill-app-tile img {
+    @apply w-full h-full object-cover;
+  }
   .skill-app-label {
     @apply text-[10px] font-mono text-muted-foreground text-center leading-tight max-w-[64px] truncate;
   }

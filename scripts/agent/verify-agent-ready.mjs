@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Checks the agent-facing HTTP behaviour of a deployed build:
-// Markdown negotiation, real 404s, the JSON API and its error format,
-// the OpenAPI document, the API catalog, llms.txt and sitemap links.
+// Markdown negotiation, real 404s (HTML, Markdown and JSON bodies), the JSON
+// API and its error format, the OpenAPI document (JSON and YAML), the API
+// catalog, the trust and developer pages, llms.txt and sitemap links.
 //
 //   node scripts/agent/verify-agent-ready.mjs https://solodeveloping.com
 //   node scripts/agent/verify-agent-ready.mjs http://127.0.0.1:8088
@@ -145,6 +146,21 @@ const checks = {
     assert.equal(spec.openapi, '3.1.0');
     assert.ok(Object.keys(spec.paths).length >= 4);
   },
+  'OpenAPI document in YAML and under /api/': async () => {
+    const spec = await expectJson('/openapi.json');
+    assert.deepEqual(await expectJson('/api/openapi.json'), spec, '/api/openapi.json matches /openapi.json');
+    for (const path of ['/openapi.yaml', '/api/openapi.yaml']) {
+      const response = await request(path);
+      assert.equal(response.status, 200, `${path}: status`);
+      assert.match(header(response, 'content-type'), /^application\/yaml/i, `${path}: content-type`);
+      assert.match(await response.text(), /^openapi: 3\.1\.0\n/, `${path}: OpenAPI 3.1 YAML`);
+    }
+    for (const path of ['/openapi.json', '/openapi.yaml', '/api/openapi.json', '/api/openapi.yaml']) {
+      // A repeated header arrives joined ("*, *"), which browsers reject
+      const response = await request(path, { method: 'HEAD' });
+      assert.equal(header(response, 'access-control-allow-origin'), '*', `${path}: one CORS header`);
+    }
+  },
   'API resources return JSON': async () => {
     const index = await expectJson('/api/');
     await expectRedirect('/api', '/api/');
@@ -157,6 +173,17 @@ const checks = {
     await expectProblem('/api/profile', 405, 'method_not_allowed', 'POST');
     const notAllowed = await request('/api/profile', { method: 'DELETE' });
     assert.match(header(notAllowed, 'allow'), /GET/, '405 lists the allowed methods');
+  },
+  'Unknown URLs return JSON problem details to JSON clients': async () => {
+    for (const accept of ['application/json', 'application/json, text/plain, */*']) {
+      const response = await request(`${MISSING_PATH}-${Date.now()}`, { accept });
+      assert.equal(response.status, 404, `${accept}: status`);
+      assert.match(header(response, 'content-type'), /^application\/problem\+json/i, `${accept}: content-type`);
+      assert.ok(varyIncludesAccept(response), `${accept}: Vary: Accept`);
+      const problem = await response.json();
+      assert.equal(problem.code, 'not_found');
+      assert.match(problem.hint, /llms\.txt/);
+    }
   },
   'API catalog (RFC 9727)': async () => {
     const response = await request('/.well-known/api-catalog');
@@ -182,6 +209,28 @@ const checks = {
     console.log(`      text ${text.length} chars / html ${html.length} bytes = ${(ratio * 100).toFixed(2)}%`);
     assert.ok(text.length >= 500, 'at least 500 characters of text');
     assert.ok(ratio >= 0.05, 'content ratio of at least 5%');
+  },
+  'Homepage title names the brand': async () => {
+    for (const path of ['/', '/fr/']) {
+      const html = await (await request(path, { accept: 'text/html' })).text();
+      assert.match(new JSDOM(html).window.document.title, /Solo Developing/, `${path}: title`);
+    }
+  },
+  'Trust and developer pages have real content': async () => {
+    for (const page of ['about', 'contact', 'privacy', 'developers']) {
+      for (const path of [`/${page}`, `/fr/${page}`]) {
+        const response = await expectHtml(path);
+        const { document } = new JSDOM(await response.text()).window;
+        assert.equal(document.querySelectorAll('h1').length, 1, `${path}: one H1`);
+        const main = document.querySelector('main');
+        main.querySelectorAll('script, style, svg, footer').forEach((node) => node.remove());
+        const text = main.textContent.replace(/\s+/g, ' ').trim();
+        assert.ok(text.length >= 500, `${path}: ${text.length} characters of text`);
+        assert.ok((await expectMarkdown(path)).length >= 500, `${path}: Markdown has content`);
+      }
+    }
+    const developers = await (await request('/developers', { accept: 'text/html' })).text();
+    assert.match(new JSDOM(developers).window.document.title, /Solo Developing/, '/developers: title names the brand');
   },
   'llms.txt links resolve': async () => {
     const response = await request('/llms.txt');

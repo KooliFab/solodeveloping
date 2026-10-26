@@ -28,11 +28,18 @@ describe('Footer', () => {
     expect(screen.getByText('footer.about').tagName).toBe('P');
   });
 
-  it('links to the service pages, articles and about page', () => {
+  it('describes the work on offer in a second paragraph', () => {
+    renderFooter();
+    expect(screen.getByText('footer.work').tagName).toBe('P');
+  });
+
+  it('links to the service pages, articles, about and the trust pages', () => {
     renderFooter();
     const nav = screen.getByRole('navigation', { name: 'footer.pagesLabel' });
     const hrefs = [...nav.querySelectorAll('a')].map((link) => link.getAttribute('href'));
-    expect(hrefs).toEqual(['/fullstack', '/mobile-developer', '/ai-developer', '/articles', '/about']);
+    expect(hrefs).toEqual([
+      '/fullstack', '/mobile-developer', '/ai-developer', '/articles', '/about', '/contact', '/developers', '/privacy',
+    ]);
   });
 
   it('keeps French visitors on French pages', () => {

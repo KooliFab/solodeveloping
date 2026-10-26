@@ -42,6 +42,66 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Contact -->
+  <url>
+    <loc>https://solodeveloping.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://solodeveloping.com/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solodeveloping.com/contact"/>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://solodeveloping.com/fr/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://solodeveloping.com/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solodeveloping.com/contact"/>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Developer resources -->
+  <url>
+    <loc>https://solodeveloping.com/developers</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/developers"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://solodeveloping.com/fr/developers"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solodeveloping.com/developers"/>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://solodeveloping.com/fr/developers</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/developers"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://solodeveloping.com/fr/developers"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solodeveloping.com/developers"/>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Privacy -->
+  <url>
+    <loc>https://solodeveloping.com/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://solodeveloping.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solodeveloping.com/privacy"/>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://solodeveloping.com/fr/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solodeveloping.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://solodeveloping.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solodeveloping.com/privacy"/>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
   <!-- Articles (Blog) -->
   <url>
     <loc>https://solodeveloping.com/articles</loc>

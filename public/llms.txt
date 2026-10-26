@@ -11,6 +11,8 @@ Every page of this site is also available as Markdown: request any page
 URL with `Accept: text/markdown`, or append `.md` to it (`index.html.md`
 for the home pages `/` and `/fr/`). Structured data is available from a
 read-only JSON API described by an OpenAPI document (see Developer resources).
+Unknown URLs answer 404 with a Markdown body for `Accept: text/markdown` and
+an RFC 9457 JSON body for `Accept: application/json`.
 
 **Identity**
 
@@ -63,6 +65,9 @@ and positioning above.
 - [Mobile Developer service — Montréal](https://solodeveloping.com/mobile-developer.md)
 - [AI Developer service — Montréal](https://solodeveloping.com/ai-developer.md)
 - [Articles](https://solodeveloping.com/articles.md): list of articles and short posts
+- [Contact Solo Developing](https://solodeveloping.com/contact.md): email, availability and business details
+- [Solo Developing developer resources](https://solodeveloping.com/developers.md): public API, OpenAPI description, errors and Markdown access
+- [Privacy policy](https://solodeveloping.com/privacy.md): data collected (analytics, server logs, preferences) and your rights
 
 ## Articles
 
@@ -79,10 +84,15 @@ and positioning above.
 - [Développeur Mobile Montréal](https://solodeveloping.com/fr/mobile-developer.md)
 - [Développeur IA Montréal](https://solodeveloping.com/fr/ai-developer.md)
 - [Articles](https://solodeveloping.com/fr/articles.md)
+- [Contact](https://solodeveloping.com/fr/contact.md)
+- [Ressources développeurs](https://solodeveloping.com/fr/developers.md)
+- [Politique de confidentialité](https://solodeveloping.com/fr/privacy.md)
 
 ## Developer resources
 
+- [Solo Developing developer resources](https://solodeveloping.com/developers.md): how to use the API, error format, authentication and limits
 - [OpenAPI description](https://solodeveloping.com/openapi.json): OpenAPI 3.1 document for the Solo Developing public API (read-only JSON, no authentication)
+- [OpenAPI description (YAML)](https://solodeveloping.com/openapi.yaml): the same OpenAPI 3.1 document in YAML
 - [API index](https://solodeveloping.com/api/): entry point listing every API resource
 - [Profile API](https://solodeveloping.com/api/profile): identity, contact details and services, in English and French
 - [Projects API](https://solodeveloping.com/api/projects): founded products and their technical components

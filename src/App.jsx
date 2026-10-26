@@ -11,6 +11,7 @@ const BlogPost = lazy(() => import('@/pages/BlogPost'));
 const ShortArticlePage = lazy(() => import('@/pages/ShortArticlePage'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
 const FacetPage = lazy(() => import('@/pages/FacetPage'));
+const InfoPage = lazy(() => import('@/pages/InfoPage'));
 const IntroAnimation = lazy(() => import('@/components/ui/IntroAnimation'));
 const GreenCursor = lazy(() => import('@/components/ui/GreenCursor'));
 
@@ -165,6 +166,14 @@ const App = () => {
               <Route path="/fr/fullstack" element={<FacetPage slug="fullstack" />} />
               <Route path="/fr/mobile-developer" element={<FacetPage slug="mobile-developer" />} />
               <Route path="/fr/ai-developer" element={<FacetPage slug="ai-developer" />} />
+
+              {/* Contact, privacy and developer resources — EN / FR */}
+              <Route path="/contact" element={<InfoPage page="contact" />} />
+              <Route path="/privacy" element={<InfoPage page="privacy" />} />
+              <Route path="/developers" element={<InfoPage page="developers" />} />
+              <Route path="/fr/contact" element={<InfoPage page="contact" />} />
+              <Route path="/fr/privacy" element={<InfoPage page="privacy" />} />
+              <Route path="/fr/developers" element={<InfoPage page="developers" />} />
 
               {/* 404 for all other routes */}
               <Route path="*" element={<NotFound />} />

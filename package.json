@@ -73,6 +73,9 @@
       "/fullstack",
       "/mobile-developer",
       "/ai-developer",
+      "/contact",
+      "/privacy",
+      "/developers",
       "/fr/",
       "/fr/about",
       "/fr/projects",
@@ -80,6 +83,9 @@
       "/fr/fullstack",
       "/fr/mobile-developer",
       "/fr/ai-developer",
+      "/fr/contact",
+      "/fr/privacy",
+      "/fr/developers",
       "/articles/first-flutter-package-pwa-installer",
       "/articles/flutter-firebase-lazy-loading",
       "/articles/flutter-pwa-guide",
@@ -113,6 +119,7 @@
     "terser": "^5.39.0",
     "turndown": "7.2.2",
     "vite": "^7.3.1",
-    "vitest": "^4.0.18"
+    "vitest": "^4.0.18",
+    "yaml": "2.8.2"
   }
 }

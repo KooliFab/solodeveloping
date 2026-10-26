@@ -32,7 +32,8 @@ const AppIcon = ({ app, index }) => {
         className="skill-app-tile"
         aria-hidden="true"
         style={{
-          background: app.icon ? '#ffffff' : `linear-gradient(145deg, ${app.gradFrom}, ${app.gradTo})`,
+          // Icon tiles keep the white .skill-app-tile background
+          ...(app.icon ? {} : { background: `linear-gradient(145deg, ${app.gradFrom}, ${app.gradTo})` }),
           boxShadow: `0 4px 14px ${app.gradFrom}55`,
         }}
       >
@@ -42,7 +43,6 @@ const AppIcon = ({ app, index }) => {
             alt=""
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover"
           />
         ) : (
           app.initial

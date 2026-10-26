@@ -32,7 +32,7 @@ export const buildApiIndex = ({ siteUrl }) => ({
   description: 'Read-only JSON data about Fabien Chung (Solo Developing): profile, services, products and articles. No authentication required.',
   version: API_VERSION,
   openapi: `${siteUrl}/openapi.json`,
-  documentation: `${siteUrl}/llms.txt`,
+  documentation: `${siteUrl}/developers`,
   resources: API_RESOURCES.map(({ path, summary }) => ({ href: `${siteUrl}${path}`, summary })),
 });
 
@@ -125,6 +125,18 @@ export const buildProblem = ({ siteUrl, status }) => {
   };
 };
 
+// RFC 9457 problem details for any other unknown URL, served instead of the
+// HTML 404 page to clients that ask for JSON (see the root .htaccess).
+export const buildSiteNotFound = ({ siteUrl }) => ({
+  type: 'about:blank',
+  status: 404,
+  title: 'Not Found',
+  code: 'not_found',
+  detail: 'No page or resource exists at this path.',
+  hint: `Every page is listed in ${siteUrl}/llms.txt and ${siteUrl}/sitemap.xml. JSON data is available from the API at ${siteUrl}/api/.`,
+  documentation: `${siteUrl}/developers`,
+});
+
 // RFC 9727 API catalog (application/linkset+json, RFC 9264).
 export const buildApiCatalog = ({ siteUrl }) => ({
   linkset: [
@@ -134,8 +146,14 @@ export const buildApiCatalog = ({ siteUrl }) => ({
     },
     {
       anchor: `${siteUrl}/api/`,
-      'service-desc': [{ href: `${siteUrl}/openapi.json`, type: 'application/vnd.oai.openapi+json;version=3.1' }],
-      'service-doc': [{ href: `${siteUrl}/llms.txt`, type: 'text/plain' }],
+      'service-desc': [
+        { href: `${siteUrl}/openapi.json`, type: 'application/vnd.oai.openapi+json;version=3.1' },
+        { href: `${siteUrl}/openapi.yaml`, type: 'application/vnd.oai.openapi;version=3.1' },
+      ],
+      'service-doc': [
+        { href: `${siteUrl}/developers`, type: 'text/html' },
+        { href: `${siteUrl}/llms.txt`, type: 'text/plain' },
+      ],
     },
   ],
 });
