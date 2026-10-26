@@ -85,9 +85,21 @@ Hostinger serves its shared `*.hstgr.io` certificate on `ftp.<domain>`, so
 `FTP_REMOTE_ROOT` is `/` when the FTP account's directory is already
 `public_html` (hPanel > Files > FTP Accounts), otherwise `/public_html`.
 
-After a deploy, purge the Hostinger CDN cache in hPanel. `deleteRemote` is
-off, so files removed from `dist/` (old hashed bundles) stay on the server
-until you delete them from `public_html/assets`.
+After a deploy, purge the Hostinger CDN cache in hPanel.
+
+Once the upload succeeds, the deploy deletes the files of the server's
+`assets/` folder that `dist/assets/` no longer contains (old hashed bundles).
+It deletes nothing if `dist/assets/` is empty or if one of its files is missing
+on the server, which means `dist/` is not the deployed build. Visitors whose
+cached HTML still points at a removed bundle get one automatic reload
+(`vite:preloadError` in `src/main.jsx`).
+
+To run only the cleanup, against the `dist/` that was just deployed:
+
+```bash
+npm run deploy:prune -- --dry-run   # list the stale assets
+npm run deploy:prune                # delete them
+```
 
 ### Deploy
 
@@ -95,7 +107,7 @@ until you delete them from `public_html/assets`.
 npm run deploy
 ```
 
-This builds the project, fails if `scripts/check-dist-secrets.mjs` finds a secret in `dist/`, then uploads `dist/` over FTPS.
+This builds the project, fails if `scripts/check-dist-secrets.mjs` finds a secret in `dist/`, uploads `dist/` over FTPS, then removes the stale files of `assets/` on the server.
 
 ## AI Agent Access
 
